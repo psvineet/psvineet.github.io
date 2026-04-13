@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Vineet Pratap Singh – B.Pharm student and cybersecurity enthusiast.">
+    <title>Vineet Pratap Singh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F2F2F7;
+            --card-bg: #FFFFFF;
+            --text-main: #000000;
+            --text-muted: #8E8E93;
+            --blue: #007AFF;
+            --border-color: #E5E5EA;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle, rgba(0,0,0,0.045) 1px, transparent 1px);
+            background-size: 22px 22px;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 110px;
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 36px 16px 0;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            text-align: center;
+            margin-bottom: 22px;
+            padding-top: 8px;
+        }
+        .memoji-wrap-outer {
+            perspective: 420px;
+            margin: 0 auto 18px;
+            width: 96px;
+            height: 96px;
+            display: block;
+        }
+        .memoji-wrap {
+            width: 96px;
+            height: 96px;
+            background: linear-gradient(145deg, #1C1C2E 0%, #2D2D44 50%, #1a1a2e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 -3px 8px rgba(0,0,0,0.25), 0 8px 32px rgba(0,0,0,0.22), 0 0 0 3px rgba(255,255,255,0.08);
+            transform-style: preserve-3d;
+            transition: transform 0.08s linear, box-shadow 0.08s linear;
+            will-change: transform;
+            cursor: default;
+        }
+        .memoji-wrap img {
+            width: 96px;
+            height: 96px;
+            object-fit: cover;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(17px, 4.5vw, 21px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            margin-top: 4px;
+            color: var(--text-main);
+        }
+        .hero .subtitle {
+            font-size: clamp(11px, 2.8vw, 13px);
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* ── Action Buttons ── */
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .action-btn {
+            flex: 1;
+            min-width: 0;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 13px 6px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--blue);
+            font-size: clamp(10px, 2.4vw, 11px);
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 7px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .action-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+        }
+        .action-btn:active { background: #E5E5EA; transform: scale(0.94); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .action-btn svg { width: 20px; height: 20px; stroke-width: 1.6; flex-shrink: 0; }
+
+        /* ── Section titles ── */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            padding: 0 2px;
+        }
+        .section-title {
+            font-size: clamp(15px, 4vw, 18px);
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            color: var(--text-main);
+        }
+        .view-all-btn {
+            background: none;
+            border: none;
+            color: var(--blue);
+            font-size: clamp(11px, 2.8vw, 12px);
+            font-weight: 500;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+        .view-all-btn:active { opacity: 0.6; }
+
+        /* ── Standalone group label ── */
+        .group-label {
+            font-size: clamp(15px, 4vw, 17px);
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-top: 12px;
+            margin-bottom: 10px;
+            padding: 0 2px;
+            display: block;
+            color: var(--text-main);
+        }
+
+        /* ── Settings-style list ── */
+        .settings-group {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .settings-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 13px 14px;
+            border-bottom: 0.5px solid var(--border-color);
+            gap: 12px;
+            transition: background 0.15s;
+            position: relative;
+        }
+        .settings-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 20%; bottom: 20%;
+            width: 3px;
+            border-radius: 0 2px 2px 0;
+            background: var(--blue);
+            opacity: 0;
+            transform: scaleY(0);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .settings-item:active::before { opacity: 1; transform: scaleY(1); }
+        .settings-item:last-child { border-bottom: none; }
+        .settings-item:active { background: #F2F2F7; }
+
+        .settings-icon {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .settings-content {
+            flex: 1;
+            min-width: 0;
+            padding-top: 2px;
+        }
+        .settings-content strong {
+            display: block;
+            font-size: clamp(12px, 3.2vw, 13px);
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: var(--text-main);
+        }
+        .settings-content p {
+            font-size: clamp(11px, 2.8vw, 12px);
+            color: var(--text-muted);
+            line-height: 1.45;
+            word-break: break-word;
+        }
+
+        /* ── View Certificate pill ── */
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 9px;
+            background: #F2F2F7;
+            color: var(--blue);
+            padding: 6px 14px;
+            border-radius: 14px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.15s;
+        }
+        .cert-link:active { transform: scale(0.93); opacity: 0.8; }
+
+        /* ── Horizontal scroll ── */
+        .h-scroll-wrap {
+            margin: 0 -16px;
+            overflow: hidden;
+        }
+        .h-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 4px 16px 20px;
+            scroll-snap-type: x mandatory;
+            scroll-padding-left: 16px;
+            -webkit-overflow-scrolling: touch;
+            align-items: stretch;
+        }
+        .h-scroll::-webkit-scrollbar { display: none; }
+
+        .app-card {
+            flex: 0 0 min(260px, 78vw);
+            width: min(260px, 78vw);
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            scroll-snap-align: start;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border: 0.5px solid rgba(0,0,0,0.06);
+            background-clip: padding-box;
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s;
+            position: relative;
+        }
+
+        .app-card:active { transform: scale(0.96); box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+        .app-card h4 {
+            font-size: clamp(12px, 3.2vw, 13px);
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+        .app-card p {
+            font-size: clamp(11px, 2.8vw, 12px);
+            color: var(--text-muted);
+            line-height: 1.45;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .app-btn {
+            display: inline-block;
+            background: rgba(0,122,255,0.10);
+            color: var(--blue);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            align-self: flex-start;
+            margin-top: auto;
+            transition: background 0.15s, transform 0.15s;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .app-btn:active { transform: scale(0.9); background: rgba(0,122,255,0.18); }
+
+        /* ── Floating Dock ── */
+        .ios-dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 0.5px solid rgba(255,255,255,0.9);
+            border-radius: 34px;
+            padding: 10px 12px;
+            display: flex;
+            gap: 0;
+            z-index: 9999;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.95) inset;
+            max-width: calc(100vw - 32px);
+        }
+        .dock-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-muted);
+            padding: 6px 10px;
+            border-radius: 16px;
+            transition: color 0.2s, transform 0.15s;
+            position: relative;
+        }
+        .dock-btn svg { width: 24px; height: 24px; stroke-width: 1.7; }
+        .dock-btn:active { transform: scale(0.82); color: var(--blue); }
+        .dock-btn.dock-active { color: var(--blue); }
+        .dock-btn.dock-active::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,122,255,0.10);
+            border-radius: 14px;
+            z-index: -1;
+        }
+        /* dot removed */
+
+        /* ── Bottom Sheet Modal ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 10000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.28s ease;
+        }
+        .modal-overlay.active { display: block; opacity: 1; }
+        .modal-sheet {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: var(--bg-color);
+            border-radius: 22px 22px 0 0;
+            max-height: 88vh;
+            max-width: 680px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 -12px 48px rgba(0,0,0,0.12);
+        }
+        .modal-overlay.active .modal-sheet { transform: translateY(0); }
+        .sheet-pill {
+            width: 36px; height: 5px;
+            background: #C7C7CC;
+            border-radius: 3px;
+            margin: 10px auto 12px;
+            flex-shrink: 0;
+        }
+        .modal-header {
+            padding: 0 18px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0.5px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        .modal-header h3 { font-size: 15px; font-weight: 700; }
+        .close-btn {
+            background: #E5E5EA; border: none;
+            width: 28px; height: 28px; border-radius: 50%;
+            font-size: 12px; font-weight: 700; color: #8E8E93;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .close-btn:active { opacity: 0.7; transform: scale(0.9); }
+        .modal-body {
+            padding: 16px; overflow-y: auto; flex: 1;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .modal-card {
+            background: var(--card-bg); border-radius: 14px;
+            padding: 14px 16px; display: flex; justify-content: space-between;
+            align-items: center; gap: 12px;
+            border: 0.5px solid var(--border-color);
+        }
+        .modal-card:active { transform: scale(0.98); }
+        .modal-card-text { flex: 1; min-width: 0; }
+        .modal-card-text h4 {
+            font-size: clamp(11px, 2.8vw, 12px);
+            font-weight: 600; margin-bottom: 2px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .modal-card-text p {
+            font-size: clamp(10px, 2.5vw, 11px);
+            color: var(--text-muted); line-height: 1.4;
+        }
+
+        /* ── Entry Animations ── */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .anim-item {
+            opacity: 0;
+            animation: slideUpFade 0.55s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.08s; }
+        .delay-2 { animation-delay: 0.16s; }
+        .delay-3 { animation-delay: 0.24s; }
+        .delay-4 { animation-delay: 0.32s; }
+
+        /* ── Dock tap: fade-up flash, same feel as page entry ── */
+        @keyframes bounceFocus {
+            0%   { opacity: 0.4; transform: translateY(10px); }
+            60%  { opacity: 1;   transform: translateY(-3px); }
+            100% { opacity: 1;   transform: translateY(0); }
+        }
+        .bounce-focus { animation: bounceFocus 0.42s cubic-bezier(0.25, 1, 0.5, 1); }
+
+        /* ── Responsive ── */
+        @media (max-width: 380px) {
+            .container { padding: 24px 12px 0; }
+            .memoji-wrap-outer { width: 78px; height: 78px; }
+            .memoji-wrap { width: 78px; height: 78px; }
+            .memoji-wrap img { width: 78px; height: 78px; }
+            .hero { margin-bottom: 20px; }
+            .action-row { gap: 7px; margin-bottom: 26px; }
+            .action-btn { padding: 10px 4px; border-radius: 12px; }
+            .settings-item { padding: 10px 12px; gap: 10px; }
+            .settings-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 7px; }
+            .settings-icon svg { width: 15px; height: 15px; }
+            .settings-group { margin-bottom: 22px; }
+            .app-card { padding: 14px; }
+            .ios-dock { padding: 8px 8px; bottom: 14px; }
+            .dock-btn { padding: 5px 7px; }
+            .dock-btn svg { width: 20px; height: 20px; }
+        }
+        @media (min-width: 600px) {
+            .container { padding: 44px 24px 0; }
+            .memoji-wrap-outer { width: 108px; height: 108px; }
+            .memoji-wrap { width: 108px; height: 108px; }
+            .memoji-wrap img { width: 108px; height: 108px; }
+            .app-card { flex: 0 0 240px; width: 240px; }
+        }
+
+        /* ── Scroll Progress ── */
+        #scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 2.5px;
+            width: 0%;
+            background: linear-gradient(90deg, #007AFF, #9370db);
+            z-index: 99999;
+            transition: width 0.1s linear;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── Avatar ring pulse ── */
+        @keyframes ringPulse {
+            0%   { box-shadow: inset 0 -3px 8px rgba(0,0,0,0.35), 0 8px 32px rgba(28,28,46,0.45), 0 0 0 3px rgba(80,70,160,0.55), 0 0 0 7px rgba(60,50,140,0); }
+            50%  { box-shadow: inset 0 -3px 8px rgba(0,0,0,0.35), 0 8px 32px rgba(28,28,46,0.55), 0 0 0 4px rgba(100,90,200,0.90), 0 0 0 10px rgba(70,55,160,0.28); }
+            100% { box-shadow: inset 0 -3px 8px rgba(0,0,0,0.35), 0 8px 32px rgba(28,28,46,0.45), 0 0 0 3px rgba(80,70,160,0.55), 0 0 0 7px rgba(60,50,140,0); }
+        }
+        @keyframes avatarEntry {
+            from { opacity: 0; transform: scale(0.82); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .memoji-wrap {
+            animation: avatarEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* ── Typewriter ── */
+        .hero .subtitle {
+            font-size: clamp(11px, 2.8vw, 13px);
+            color: var(--text-muted);
+            font-weight: 400;
+            display: block;
+            margin-bottom: 2px;
+        }
+        #typewriter {
+            display: inline;
+            border-right: 2px solid var(--text-muted);
+            animation: blink 0.75s step-end infinite;
+        }
+        @keyframes blink { 50% { border-color: transparent; } }
+    </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div class="container" id="profile">
+
+    <!-- Hero -->
+    <div class="hero anim-item">
+        <div class="memoji-wrap-outer">
+            <div class="memoji-wrap" id="avatarWrap">
+                <img src="data:image/png;base64,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" alt="Avatar">
+            </div><!-- /memoji-wrap -->
+        </div><!-- /memoji-wrap-outer -->
+        <h1>Vineet Pratap Singh</h1>
+        <p class="subtitle">B.Pharm Student & <span id="typewriter"></span></p>
+    </div>
+
+    <!-- Action Row -->
+    <div class="action-row anim-item delay-1">
+        <a href="https://github.com/psvineet" target="_blank" class="action-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
+        </a>
+        <a href="mailto:psvineet@zohomail.in" class="action-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Email
+        </a>
+        <a href="https://orcid.org/0009-0006-8424-0643" target="_blank" class="action-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            ORCID
+        </a>
+    </div>
+
+    <!-- About -->
+    <div id="about-section">
+
+        <!-- About Me — bounce target for dock -->
+        <div class="settings-group anim-item delay-2" id="about-card">
+            <div class="settings-item">
+                <div class="settings-icon" style="background:#34C759;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="settings-content">
+                    <strong>About Me</strong>
+                    <p>Bridging the gap between pharmaceutical sciences and cybersecurity. Focused on secure, data-driven web applications, in-silico drug discovery, and modern digital forensics.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <span class="group-label anim-item delay-2">Achievements</span>
+        <div class="settings-group anim-item delay-2" id="achievements-card">
+            <div class="settings-item">
+                <div class="settings-icon" style="background:#FF9500;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="settings-content">
+                    <strong>IPGA 2025 Presenter</strong>
+                    <p>Engineered an advanced in-silico pipeline utilizing STRING, ShinyGO, SwissTargetPrediction, and SwissADME to support PhD-level research on the anti-cancer potential of <em>Nigella sativa</em>.</p>
+                    <a href="https://i.ibb.co/NgcNCBrF/IPGA-37th-Annual-Conference-1.jpg" target="_blank" class="cert-link">
+                        View Certificate
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon" style="background:#FF2D55;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                </div>
+                <div class="settings-content">
+                    <strong>Distinguished Academic Excellence</strong>
+                    <p>Achieved 92.4% in the Higher Secondary Board Examination (PCB), 2024 — demonstrating a rigorous foundation in core medical sciences.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Capabilities -->
+        <span class="group-label anim-item delay-2">Capabilities</span>
+        <div class="settings-group anim-item delay-2" id="skills-card">
+            <div class="settings-item">
+                <div class="settings-icon" style="background:#32ADE6;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
+                </div>
+                <div class="settings-content">
+                    <strong>Pharmacy</strong>
+                    <p>Drug Formulation &amp; Delivery, Pharmacokinetics Analysis, Quality Assurance &amp; Control, Medicinal Chemistry.</p>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon" style="background:#007AFF;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="settings-content">
+                    <strong>Web Development</strong>
+                    <p>Front-End (HTML/CSS/JS), Back-End (Python, PHP), Responsive UI/UX Design, Database Architecture.</p>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon" style="background:#5E5CE6;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <div class="settings-content">
+                    <strong>Digital Forensics</strong>
+                    <p>Evidence Recovery &amp; Handling, Data Carving Techniques, Volatile Memory Analysis, Chain of Custody.</p>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon" style="background:#FF3B30;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="settings-content">
+                    <strong>Cybersecurity</strong>
+                    <p>Ethical Hacking Fundamentals, Network Vulnerability Assessment, Security Threat Modeling, Healthcare Data Protection.</p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /about-section -->
+
+    <!-- Projects -->
+    <div id="projects-section">
+        <div class="section-header anim-item delay-3">
+            <h2 class="section-title">Projects</h2>
+            <button class="view-all-btn" onclick="openModal('projects')">See All</button>
+        </div>
+        <div class="h-scroll-wrap anim-item delay-3" id="projects-card">
+            <div class="h-scroll" id="projectsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Certifications -->
+    <div id="certs-section">
+        <div class="section-header anim-item delay-4">
+            <h2 class="section-title">Certifications</h2>
+            <button class="view-all-btn" onclick="openModal('certs')">See All</button>
+        </div>
+        <div class="h-scroll-wrap anim-item delay-4" id="certs-card">
+            <div class="h-scroll" id="certsGrid"></div>
+        </div>
+    </div>
+
+</div><!-- /container -->
+
+<!-- Floating iOS Dock -->
+<div class="ios-dock">
+    <a href="#about-section" class="dock-btn dock-active" data-section="about-section" data-bounce="about-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    </a>
+    <a href="#about-section" class="dock-btn" data-section="about-section" data-bounce="achievements-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+    </a>
+    <a href="#about-section" class="dock-btn" data-section="about-section" data-bounce="skills-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+    </a>
+    <a href="#projects-section" class="dock-btn" data-section="projects-section" data-bounce="projects-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+    </a>
+    <a href="#certs-section" class="dock-btn" data-section="certs-section" data-bounce="certs-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"><circle cx="12" cy="9" r="5"></circle><path d="M8 14.5L6 22l6-2 6 2-2-7.5"></path></svg>
+    </a>
+    <a href="mailto:psvineet@zohomail.in" class="dock-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </a>
+</div>
+
+<!-- Bottom Sheet Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="sheet-pill"></div>
+        <div class="modal-header">
+            <h3 id="modalTitle"></h3>
+            <button class="close-btn" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    /* ── Infinite Typewriter ── */
+    (function() {
+        const words = [
+            'Cybersecurity Enthusiast',
+            'Software Developer',
+            'Web Developer',
+            'Linux Administrator',
+            'UI/UX Designer',
+            'Open Source Contributor'
+        ];
+        const el = document.getElementById('typewriter');
+        let wi = 0, ci = 0, deleting = false;
+        const TYPE_SPEED = 68, DELETE_SPEED = 38, PAUSE = 1600, START_PAUSE = 420;
+
+        function tick() {
+            const word = words[wi];
+            if (!deleting) {
+                el.textContent = word.slice(0, ci + 1);
+                ci++;
+                if (ci === word.length) {
+                    deleting = true;
+                    setTimeout(tick, PAUSE);
+                    return;
+                }
+                setTimeout(tick, TYPE_SPEED);
+            } else {
+                el.textContent = word.slice(0, ci - 1);
+                ci--;
+                if (ci === 0) {
+                    deleting = false;
+                    wi = (wi + 1) % words.length;
+                    setTimeout(tick, START_PAUSE);
+                    return;
+                }
+                setTimeout(tick, DELETE_SPEED);
+            }
+        }
+        setTimeout(tick, START_PAUSE);
+    })();
+
+    /* ── 3D Avatar cursor follow ── */
+    (function() {
+        const wrap = document.getElementById('avatarWrap');
+        if (!wrap) return;
+        const MAX_TILT = 22;
+        const DEPTH    = 8;
+        let targetRX = 0, targetRY = 0, currentRX = 0, currentRY = 0;
+        let startTime = performance.now();
+
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+        function animate(now) {
+            currentRX = lerp(currentRX, targetRX, 0.10);
+            currentRY = lerp(currentRY, targetRY, 0.10);
+
+            // Pulsing ring synced in JS (3s cycle)
+            const t = ((now - startTime) % 3000) / 3000; // 0→1
+            const pulse = Math.sin(t * Math.PI * 2) * 0.5 + 0.5; // 0→1→0
+            const ring1Size  = 3 + pulse * 1.5;
+            const ring1Alpha = 0.70 + pulse * 0.30;
+            const ring2Size  = 8 + pulse * 4;
+            const ring2Alpha = 0.12 + pulse * 0.22;
+            const glowSpread = 28 + pulse * 10;
+            const glowAlpha  = 0.30 + pulse * 0.15;
+
+            wrap.style.transform = `rotateX(${currentRX}deg) rotateY(${currentRY}deg) translateZ(${DEPTH * 0}px)`;
+            wrap.style.boxShadow = `
+                inset 0 -3px 8px rgba(0,0,0,0.35),
+                0 8px ${glowSpread}px rgba(28,28,46,${glowAlpha}),
+                0 0 0 ${ring1Size}px rgba(180,170,255,${ring1Alpha}),
+                0 0 0 ${ring2Size}px rgba(160,148,255,${ring2Alpha})
+            `;
+
+            requestAnimationFrame(animate);
+        }
+
+        function onMove(clientX, clientY) {
+            const rect = wrap.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const dx = (clientX - cx) / (window.innerWidth  / 2);
+            const dy = (clientY - cy) / (window.innerHeight / 2);
+            targetRY =  dx * MAX_TILT;
+            targetRX = -dy * MAX_TILT;
+        }
+
+        document.addEventListener('mousemove', e => { onMove(e.clientX, e.clientY); }, { passive: true });
+        document.addEventListener('touchmove', e => {
+            if (e.touches.length > 0) onMove(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        document.addEventListener('mouseleave', () => { targetRX = 0; targetRY = 0; });
+        document.addEventListener('touchend',   () => { targetRX = 0; targetRY = 0; }, { passive: true });
+
+        requestAnimationFrame(animate);
+    })();
+
+    const manualProjects = [
+    {title: 'Resume Generator',    desc: 'Engineered a dynamic, responsive utility for generating and exporting professional resume layouts.',     link: 'https://admin.xo.je/shared/tools/re-gt.html'},
+
+    {title: 'Chemical Concentration Calculator', 
+     desc: 'Developed a precision tool for calculating molarity, normality, and solution dilutions used in analytical and pharmaceutical chemistry.', 
+     link: 'https://admin.xo.je/shared/tools/chem-conc.html'},
+
+    {title: 'BMI Tool',            
+     desc: 'Designed an interactive health dashboard and BMI calculator featuring personalized health insights.',    
+     link: 'https://admin.xo.je/shared/tools/bmi.html'},
+
+    {title: 'Dosage Calculator',   
+     desc: 'Programmed a clinical computation tool to ensure high-precision pharmaceutical drug dosing.',            
+     link: 'https://admin.xo.je/shared/tools/dose-calc.html'},
+
+    {title: 'Patient Case Summary Generator', 
+     desc: 'Developed a structured clinical tool for generating comprehensive patient case summaries for medical analysis and reporting.', 
+     link: 'https://admin.xo.je/shared/tools/pcsg.html'},
+
+    {title: 'Scientific Calculator', 
+     desc: 'Built an advanced scientific calculator supporting logarithmic, trigonometric, and exponential computations.', 
+     link: 'https://admin.xo.je/shared/tools/sci-calc.html'},
+
+    {title: 'Scientific Prefix Calculator', 
+     desc: 'Designed a conversion system for handling SI prefixes such as yocto, nano, milli, kilo, and beyond for precise scientific calculations.', 
+     link: 'https://admin.xo.je/shared/tools/sci-precalc.html'},
+
+    {title: 'Universal Converter', 
+     desc: 'Engineered a multi-domain unit conversion system covering medical, scientific, and general unit transformations.', 
+     link: 'https://admin.xo.je/shared/tools/uni-con.html'}
+];
+
+    const certs = [
+        {title: 'Introduction to CyberSecurity',      platform: 'Simplilearn', year: '2025', link: 'https://simpli-web.app.link/e/XGxxzwSL5Vb'},
+{title: 'Java',      platform: 'Simplilearn', year: '2025', link: 'https://simpli-web.app.link/e/b4EnOZHsaWb'},
+        {title: 'Graphic Design Fundamentals',         platform: 'Canva',       year: '2025', link: 'https://simpli-web.app.link/e/1ZMWOCrS5Vb'},
+        {title: 'Intro to Computer Networking',        platform: 'Simplilearn', year: '2025', link: 'https://simpli-web.app.link/e/hGdQswzsaWb'},
+        {title: 'Web Development Fundamentals',        platform: 'Simplilearn', year: '2025', link: 'https://simpli-web.app.link/e/5MRFlE4N5Vb'},
+        {title: 'Search Engine Optimization',          platform: 'Simplilearn', year: '2025', link: 'https://simpli-web.app.link/e/N802ehHeaWb'},
+{title: 'WordPress',          platform: 'Simplilearn', year: '2025', link: 'https://simpli-web.app.link/e/6LPJqpTQ5Vb'},
+        {title: 'Digital Marketing Strategy',          platform: 'Simplilearn', year: '2025', link: 'https://simpli-web.app.link/e/kjZvW94RaWb'}
+    ];
+
+    function renderScroll(data, id, isCert = false) {
+        document.getElementById(id).innerHTML = data.map(item => `
+            <div class="app-card">
+                <h4>${item.title}</h4>
+                <p>${isCert ? item.platform + ' · ' + item.year : item.desc}</p>
+                <a href="${item.link}" target="_blank" class="app-btn">${isCert ? 'VIEW' : 'GET'}</a>
+            </div>
+        `).join('');
+    }
+
+    function capitalizeRepoName(name) {
+        return name
+            .replace(/[-_]/g, ' ')
+            .replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function mixArrays(gitProjects, manualProjects) {
+        // Spread git projects across the whole list at roughly equal intervals
+        const total = gitProjects.length + manualProjects.length;
+        const result = [];
+        const git = [...gitProjects];
+        const manual = [...manualProjects];
+        // Place git projects at positions that spread them out
+        const gitPositions = new Set();
+        if (git.length > 0) {
+            const step = total / git.length;
+            for (let i = 0; i < git.length; i++) {
+                gitPositions.add(Math.round(step * i + step * 0.5));
+            }
+        }
+        let gi = 0, mi = 0;
+        for (let i = 0; i < total; i++) {
+            if (gitPositions.has(i) && gi < git.length) {
+                result.push(git[gi++]);
+            } else if (mi < manual.length) {
+                result.push(manual[mi++]);
+            } else {
+                result.push(git[gi++]);
+            }
+        }
+        return result;
+    }
+
+    async function fetchGitHubRepos() {
+        try {
+            const res = await fetch('https://api.github.com/users/psvineet/repos?sort=updated&per_page=100');
+            if (!res.ok) throw new Error();
+            const repos = await res.json();
+            const ignored = ['drxstore-basic', 'syniq-release','js.org'];
+            const gitProjects = repos
+                .filter(r => !ignored.some(ig => r.name.toLowerCase().includes(ig)))
+                .map(r => ({ title: capitalizeRepoName(r.name), desc: r.description || 'Open source project on GitHub.', link: r.html_url }));
+            allProjectsGlobal = mixArrays(gitProjects, manualProjects);
+        } catch {
+            allProjectsGlobal = [...manualProjects];
+        }
+        renderScroll(allProjectsGlobal, 'projectsGrid');
+    }
+
+    // Render immediately then enhance with GitHub
+    allProjectsGlobal = [...manualProjects];
+    renderScroll(allProjectsGlobal, 'projectsGrid');
+    renderScroll(certs, 'certsGrid', true);
+    fetchGitHubRepos();
+
+    /* ── Dock click: scroll + bounce ONLY the specific card ── */
+    document.querySelectorAll('.dock-btn[data-section]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelectorAll('.dock-btn').forEach(b => b.classList.remove('dock-active'));
+            this.classList.add('dock-active');
+
+            const sectionEl = document.getElementById(this.dataset.section);
+            if (sectionEl) sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Bounce ONLY the specific element, not the whole section
+            const bounceEl = document.getElementById(this.dataset.bounce);
+            if (bounceEl) {
+                setTimeout(() => {
+                    bounceEl.classList.remove('bounce-focus');
+                    void bounceEl.offsetWidth; // force reflow
+                    bounceEl.classList.add('bounce-focus');
+                    bounceEl.addEventListener('animationend', () => bounceEl.classList.remove('bounce-focus'), { once: true });
+                }, 300);
+            }
+        });
+    });
+
+    /* ── Dock: auto-highlight on scroll ── */
+    const dockBtns = document.querySelectorAll('.dock-btn[data-section]');
+
+    function updateDockHighlight() {
+        const vh = window.innerHeight;
+        const threshold = vh * 0.5;
+        const atBottom = (window.scrollY + vh) >= (document.documentElement.scrollHeight - 8);
+
+        const aboutTop    = document.getElementById('about-card')?.getBoundingClientRect().top ?? Infinity;
+        const achieveTop  = document.getElementById('achievements-card')?.getBoundingClientRect().top ?? Infinity;
+        const skillsTop   = document.getElementById('skills-card')?.getBoundingClientRect().top ?? Infinity;
+        const projTop     = document.getElementById('projects-section')?.getBoundingClientRect().top ?? Infinity;
+        const certsTop    = document.getElementById('certs-section')?.getBoundingClientRect().top ?? Infinity;
+
+        dockBtns.forEach(b => b.classList.remove('dock-active'));
+
+        if (atBottom || certsTop <= threshold) {
+            dockBtns[4]?.classList.add('dock-active');
+        } else if (projTop <= threshold) {
+            dockBtns[3]?.classList.add('dock-active');
+        } else if (skillsTop <= threshold) {
+            dockBtns[2]?.classList.add('dock-active');
+        } else if (achieveTop <= threshold) {
+            dockBtns[1]?.classList.add('dock-active');
+        } else {
+            dockBtns[0]?.classList.add('dock-active');
+        }
+    }
+
+    window.addEventListener('scroll', updateDockHighlight, { passive: true });
+    updateDockHighlight();
+
+    /* ── Modal ── */
+    function openModal(type) {
+        const overlay = document.getElementById('modalOverlay');
+        document.getElementById('modalTitle').innerText = type === 'projects' ? 'All Projects' : 'All Certifications';
+        renderModalList(type === 'projects' ? allProjectsGlobal : certs, type === 'certs');
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => overlay.classList.add('active'));
+    }
+
+    function closeModal() {
+        const overlay = document.getElementById('modalOverlay');
+        overlay.classList.remove('active');
+        setTimeout(() => { overlay.style.display = 'none'; }, 320);
+    }
+
+    function renderModalList(data, isCert) {
+        document.getElementById('modalBody').innerHTML = data.map(item => `
+            <div class="modal-card">
+                <div class="modal-card-text">
+                    <h4>${item.title}</h4>
+                    <p>${isCert ? item.platform + ' · ' + item.year : item.desc}</p>
+                </div>
+                <a href="${item.link}" target="_blank" class="app-btn" style="flex-shrink:0;">${isCert ? 'VIEW' : 'GET'}</a>
+            </div>
+        `).join('');
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    /* ── Scroll progress bar ── */
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrollTop / docHeight * 100).toFixed(1) + '%';
+    }, { passive: true });
+
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"2b2a362954674fd5b56a58c09f42ff8e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"2b2a362954674fd5b56a58c09f42ff8e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+  </html>
