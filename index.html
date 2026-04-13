@@ -886,7 +886,7 @@
             const res = await fetch('https://api.github.com/users/psvineet/repos?sort=updated&per_page=100');
             if (!res.ok) throw new Error();
             const repos = await res.json();
-            const ignored = ['drxstore-basic', 'syniq-release','js.org','psvineet.github.io'];
+            const ignored = ['drxstore-basic', 'syniq-release','js.org','psvineet'];
             const gitProjects = repos
                 .filter(r => !ignored.some(ig => r.name.toLowerCase().includes(ig)))
                 .map(r => ({ title: capitalizeRepoName(r.name), desc: r.description || 'Open source project on GitHub.', link: r.html_url }));
