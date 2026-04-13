@@ -43,7 +43,7 @@ This project functions as a **professional digital identity**, not just a portfo
 ### 🔄 Dynamic GitHub Integration
 Projects are fetched in real-time from:
 
-`https://api.github.com/users/Vptsh/repos`
+`https://api.github.com/users/psvineet/repos`
 
 #### ⚙️ Behavior
 - Merges GitHub repositories with manual entries  
