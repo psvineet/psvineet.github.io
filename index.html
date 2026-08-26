@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vineet Pratap Singh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+
+    :root{
+      --bg:#F8F7F4;
+      --white:#FFFFFF;
+      --surface:#F2F0EB;
+      --ink:#1A1A1A;
+      --ink2:#4A4A4A;
+      --ink3:#8A8A8A;
+      --line:#E0DDD6;
+      --accent:#1A3A5C;
+      --accent-soft:#EBF0F6;
+      --tag-cy-bg:#FEF0EE;--tag-cy:#8B2F1E;--tag-cy-br:#F5C5BC;
+      --tag-wb-bg:#EEF2FE;--tag-wb:#1E3A8A;--tag-wb-br:#C3CFF8;
+      --tag-ph-bg:#EEFAF2;--tag-ph:#1A5C38;--tag-ph-br:#B8E8CA;
+      --tag-or-bg:#FEF6EE;--tag-or:#7C3A00;--tag-or-br:#F5D9B8;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      font-size:13.5px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .page{max-width:1000px;margin:0 auto;padding:40px 24px 80px;}
+
+    /* HERO */
+    .hero{padding:0 0 36px;border-bottom:1px solid var(--line);margin-bottom:36px;}
+    h1{
+      font-size:clamp(32px,5vw,52px);
+      font-weight:700;
+      letter-spacing:-1.5px;
+      line-height:1;
+      color:var(--ink);
+      margin-bottom:10px;
+    }
+    h1 em{font-style:normal;color:var(--accent);}
+    .tagline{
+      font-size:12px;font-weight:500;color:var(--ink3);
+      letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;
+    }
+    .hero-bio{
+      font-size:15px;color:var(--ink2);line-height:1.75;
+      max-width:100%;margin-bottom:20px;
+    }
+    .hero-links{display:flex;gap:10px;flex-wrap:wrap;}
+    .hlink{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:12px;font-weight:600;color:var(--ink);
+      background:var(--white);border:1px solid var(--line);
+      padding:7px 14px;border-radius:6px;text-decoration:none;
+      transition:border-color .15s,color .15s;
+      letter-spacing:0.01em;
+    }
+    .hlink:hover{border-color:var(--accent);color:var(--accent);}
+    .hlink svg{width:13px;height:13px;flex-shrink:0;}
+
+    /* BODY LAYOUT */
+    .body{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
+    .col{display:flex;flex-direction:column;gap:28px;}
+
+    /* SECTION */
+    .section{}
+    .sec-label{
+      font-size:9.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--ink3);margin-bottom:16px;
+      display:flex;align-items:center;gap:10px;
+    }
+    .sec-label::after{content:'';flex:1;height:1px;background:var(--line);}
+
+    /* TIMELINE */
+    .tl-item{margin-bottom:18px;}
+    .tl-item:last-child{margin-bottom:0;}
+    .tl-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+    .tl-date{
+      font-size:10px;font-weight:600;color:var(--ink3);
+      font-family:'JetBrains Mono',monospace;
+      letter-spacing:0.04em;
+    }
+    .tl-dot{width:3px;height:3px;border-radius:50%;background:var(--line);flex-shrink:0;}
+    .tl-org{font-size:10.5px;color:var(--ink3);}
+    .tl-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+    .tl-body{font-size:12.5px;color:var(--ink2);line-height:1.6;}
+    .tl-body li{list-style:none;padding-left:12px;position:relative;margin:2px 0;}
+    .tl-body li::before{content:'•';position:absolute;left:0;color:var(--line);font-size:16px;line-height:1.4;}
+
+    /* TAGS */
+    .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+    .tag{
+      font-size:10px;font-weight:600;letter-spacing:0.04em;
+      padding:3px 9px;border-radius:4px;white-space:nowrap;
+      border:1px solid;
+    }
+    .t-cy{color:var(--tag-cy);background:var(--tag-cy-bg);border-color:var(--tag-cy-br);}
+    .t-wb{color:var(--tag-wb);background:var(--tag-wb-bg);border-color:var(--tag-wb-br);}
+    .t-ph{color:var(--tag-ph);background:var(--tag-ph-bg);border-color:var(--tag-ph-br);}
+    .t-or{color:var(--tag-or);background:var(--tag-or-bg);border-color:var(--tag-or-br);}
+
+    /* SKILL GROUPS */
+    .sk-group{margin-bottom:16px;}
+    .sk-group:last-child{margin-bottom:0;}
+    .sk-label{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:7px;}
+    .sk-pills{display:flex;flex-wrap:wrap;gap:5px;}
+    .sk-pill{
+      font-size:11.5px;font-weight:500;
+      padding:4px 10px;border-radius:4px;border:1px solid;
+      white-space:nowrap;
+    }
+    .p-cy{color:var(--tag-cy);background:var(--tag-cy-bg);border-color:var(--tag-cy-br);}
+    .p-wb{color:var(--tag-wb);background:var(--tag-wb-bg);border-color:var(--tag-wb-br);}
+    .p-ph{color:var(--tag-ph);background:var(--tag-ph-bg);border-color:var(--tag-ph-br);}
+    .p-or{color:var(--tag-or);background:var(--tag-or-bg);border-color:var(--tag-or-br);}
+
+    /* CERTS */
+    .cert-row{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+      padding:9px 0;border-bottom:1px solid var(--line);
+    }
+    .cert-row:last-child{border-bottom:none;padding-bottom:0;}
+    .cert-row:first-child{padding-top:0;}
+    .cert-date{
+      font-size:9.5px;font-weight:600;color:var(--ink3);
+      font-family:'JetBrains Mono',monospace;
+      white-space:nowrap;flex-shrink:0;
+      letter-spacing:0.04em;
+    }
+    .cert-name{
+      font-size:12.5px;font-weight:500;color:var(--ink);
+      text-decoration:none;flex:1;min-width:0;transition:color .15s;
+    }
+    .cert-name:hover{color:var(--accent);}
+    .cert-plat{
+      font-size:10px;font-weight:600;
+      padding:2px 8px;border-radius:4px;border:1px solid;
+      white-space:nowrap;flex-shrink:0;
+    }
+    .plat-thm{color:var(--tag-cy);background:var(--tag-cy-bg);border-color:var(--tag-cy-br);}
+    .plat-li{color:var(--tag-wb);background:var(--tag-wb-bg);border-color:var(--tag-wb-br);}
+    .plat-gc{color:var(--tag-wb);background:var(--tag-wb-bg);border-color:var(--tag-wb-br);}
+    .plat-sl{color:var(--ink3);background:var(--surface);border-color:var(--line);}
+
+    /* PROJECTS */
+    .proj-row{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:9px 0;border-bottom:1px solid var(--line);
+    }
+    .proj-row:last-child{border-bottom:none;padding-bottom:0;}
+    .proj-row:first-child{padding-top:0;}
+    .proj-lang{
+      font-size:9px;font-weight:700;letter-spacing:0.06em;
+      padding:3px 7px;border-radius:4px;border:1px solid var(--line);
+      color:var(--ink3);background:var(--surface);
+      white-space:nowrap;flex-shrink:0;margin-top:2px;
+      font-family:'JetBrains Mono',monospace;
+    }
+    .proj-name{
+      font-size:13px;font-weight:600;color:var(--ink);
+      text-decoration:none;display:block;margin-bottom:2px;transition:color .15s;
+    }
+    .proj-name:hover{color:var(--accent);}
+    .proj-desc{font-size:11.5px;color:var(--ink3);line-height:1.5;}
+
+    /* FOOTNOTE */
+    .footnote{font-size:11px;color:var(--ink3);margin-top:12px;}
+    .footnote a{color:var(--accent);text-decoration:none;font-weight:600;}
+    .footnote a:hover{text-decoration:underline;}
+
+    /* VIEW MORE */
+    .vm-btn{
+      display:inline-flex;align-items:center;gap:6px;
+      margin-top:14px;
+      font-family:'Inter',sans-serif;
+      font-size:11.5px;font-weight:600;
+      color:var(--ink);background:var(--white);
+      border:1px solid var(--line);padding:8px 16px;border-radius:6px;cursor:pointer;
+      transition:border-color .15s,color .15s;
+    }
+    .vm-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+    /* MODAL */
+    .modal-ov{
+      position:fixed;inset:0;z-index:200;
+      background:rgba(0,0,0,0.25);backdrop-filter:blur(4px);
+      display:none;align-items:center;justify-content:center;padding:20px;
+    }
+    .modal-ov.open{display:flex;}
+    .modal-box{
+      background:var(--white);border:1px solid var(--line);
+      border-radius:12px;
+      max-width:440px;width:100%;padding:0;overflow:hidden;
+    }
+    .modal-hdr{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 22px 14px;border-bottom:1px solid var(--line);
+    }
+    .modal-hdr h3{font-size:15px;font-weight:600;color:var(--ink);}
+    .modal-close{
+      background:none;border:none;cursor:pointer;
+      width:28px;height:28px;border-radius:50%;
+      font-size:14px;color:var(--ink3);
+      display:flex;align-items:center;justify-content:center;transition:background .15s;
+    }
+    .modal-close:hover{background:var(--surface);}
+    .modal-scroll{max-height:68vh;overflow-y:auto;padding:6px 22px 20px;}
+
+    /* email modal */
+    .modal-box-em{max-width:380px;padding:26px;}
+    .modal-box-em h3{font-size:15px;font-weight:600;margin-bottom:16px;}
+    .modal-box-em label{display:block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink3);margin:12px 0 4px;}
+    .modal-box-em input,.modal-box-em textarea{
+      width:100%;font-family:'Inter',sans-serif;font-size:13px;
+      padding:8px 11px;border:1px solid var(--line);
+      border-radius:6px;background:var(--bg);color:var(--ink);outline:none;transition:border-color .15s;
+    }
+    .modal-box-em input:focus,.modal-box-em textarea:focus{border-color:var(--accent);}
+    .modal-box-em textarea{min-height:80px;resize:vertical;}
+    .modal-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;}
+    .modal-acts button{
+      font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+      padding:8px 18px;border-radius:6px;cursor:pointer;transition:all .15s;
+    }
+    .m-cancel{background:none;color:var(--ink3);border:1px solid var(--line);}
+    .m-cancel:hover{border-color:var(--ink3);}
+    .m-send{background:var(--accent);color:#fff;border:none;}
+    .m-send:hover{opacity:.88;}
+
+    /* PROGRESS */
+    #pgbar{position:fixed;top:0;left:0;height:2px;width:0;z-index:999;background:var(--accent);transition:width .1s;}
+
+    /* ANIMATIONS */
+    @keyframes up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+    .a1{opacity:0;animation:up .45s .04s ease forwards;}
+    .a2{opacity:0;animation:up .45s .10s ease forwards;}
+    .a3{opacity:0;animation:up .45s .16s ease forwards;}
+    .a4{opacity:0;animation:up .45s .22s ease forwards;}
+    .a5{opacity:0;animation:up .45s .28s ease forwards;}
+
+    @keyframes rv{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+    .rv{opacity:0;}
+
+    /* THM badge */
+    .thm-badge{
+      display:inline-flex;align-items:center;gap:5px;
+      font-size:10px;font-weight:700;
+      padding:3px 10px 3px 8px;border-radius:4px;
+      color:var(--tag-cy);background:var(--tag-cy-bg);border:1px solid var(--tag-cy-br);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:720px){
+      .body{grid-template-columns:1fr;}
+      h1{font-size:clamp(28px,9vw,44px);}
+      .page{padding:24px 16px 60px;}
+    }
+    @media print{
+      body::before{content:"Printing disabled.";position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fff;font-size:18pt;z-index:9999;}
+      body>*{display:none!important;}
+    }
+  </style>
+</head>
+<body oncontextmenu="return false" oncopy="return false">
+<div id="pgbar"></div>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="a1">
+      <h1>Vineet Pratap <em>Singh</em></h1>
+    </div>
+    <p class="tagline a2">B.Pharm Student · Cybersecurity · Full-Stack Developer</p>
+    <p class="hero-bio a3">I'm a pharmacy student who got into building things on the side — mostly security tooling and web apps. I spend a fair bit of time on CTF platforms write PHP and Python projects,while learning the pharmaceutical science and healthcare management. Still figuring it all out, but enjoying every bit of it.</p>
+    <div class="hero-links a4">
+      <a class="hlink" href="https://github.com/psvineet" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.69c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+        GitHub
+      </a>
+      <a class="hlink" href="#" id="emailLink">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email
+      </a>
+      <a class="hlink" href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        TryHackMe
+      </a>
+      <a class="hlink" href="https://orcid.org/0009-0006-8424-0643" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zM7.18 19.35H5.1V8.24h2.08v11.11zM6.14 7.28a1.24 1.24 0 1 1 0-2.48 1.24 1.24 0 0 1 0 2.48zm12.72 12.07h-2.08v-5.4c0-1.29-.46-2.17-1.61-2.17-.88 0-1.4.59-1.63 1.16-.08.21-.1.5-.1.79v5.62H11.4V11.1c0-.82-.03-1.5-.06-2.1h1.8l.1 1.08h.04c.48-.77 1.3-1.26 2.41-1.26 2.11 0 2.97 1.47 2.97 3.67v7.86h.2z"/></svg>
+        ORCID
+      </a>
+      <a class="hlink" href="https://linkedin.com/in/psvineet" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14H7V9h3v8zm-1.5-9.25a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5zM18 17h-3v-3.5c0-1-.75-1.5-1.5-1.5s-1.5.5-1.5 1.5V17h-3V9h3v1c.5-.75 1.5-1 2.25-1C16.75 8 18 9.25 18 11.5V17z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+    <div class="col">
+
+      <!-- EDUCATION -->
+      <div class="section rv">
+        <div class="sec-label">Education</div>
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-date">2024 – 2028</span>
+            <span class="tl-dot"></span>
+            <span class="tl-org">AKTU, Lucknow</span>
+          </div>
+          <div class="tl-title">Bachelor of Pharmacy (B.Pharm)</div>
+          <ul class="tl-body">
+            <li>Currently in third year, learning drug formulation, pharmacokinetics, and medicinal chemistry</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-meta"><span class="tl-date">2024</span></div>
+          <div class="tl-title">Higher Secondary — PCB</div>
+          <ul class="tl-body"><li>Scored <strong>92.4%</strong> in Physics, Chemistry and Biology</li></ul>
+        </div>
+      </div>
+
+      <!-- RESEARCH & ACHIEVEMENTS (Top 2% TryHackMe here) -->
+      <div class="section rv">
+        <div class="sec-label">Research & Achievements</div>
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-date">2025</span>
+            <span class="tl-dot"></span>
+            <span class="tl-org">IPGA 37th Annual Conference</span>
+          </div>
+          <div class="tl-title">Conference Poster — Anti-Cancer Potential of Nigella sativa</div>
+          <ul class="tl-body">
+            <li>Network pharmacology study using STRING, ShinyGO, SwissTargetPrediction, and SwissADME</li>
+            <li>Co-authored with Dr. Shreya Singh</li>
+          </ul>
+          <div class="tags">
+            <span class="tag t-ph">In-Silico</span>
+            <span class="tag t-ph">Network Pharmacology</span>
+          </div>
+        </div>
+        <!-- TryHackMe Top 2% achievement with link -->
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-date">2025 – 2026</span>
+            <span class="tl-dot"></span>
+            <span class="tl-org">TryHackMe</span>
+          </div>
+          <div class="tl-title">Top 2% Globally</div>
+          <ul class="tl-body">
+            <li>Completed Cyber Security 101, Pre Security, and Hacker Holidays paths</li>
+            <li>Hands-on practice with networking, Linux, web hacking, and basic exploitation</li>
+          </ul>
+          <div class="tags" style="margin-top:8px;">
+            <a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener" style="text-decoration:none;">
+              <span class="thm-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                Top 2% — View Profile ↗
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="section rv">
+        <div class="sec-label">Skills</div>
+
+        <div class="sk-group">
+          <div class="sk-label">Security (learning)</div>
+          <div class="sk-pills">
+            <span class="sk-pill p-cy">Pentesting</span>
+            <span class="sk-pill p-cy">Wireshark</span>
+            <span class="sk-pill p-cy">Metasploit</span>
+            <span class="sk-pill p-cy">Burp Suite</span>
+            <span class="sk-pill p-cy">Nmap</span>
+          </div>
+        </div>
+
+        <div class="sk-group">
+          <div class="sk-label">Web & Development</div>
+          <div class="sk-pills">
+            <span class="sk-pill p-wb">PHP</span>
+            <span class="sk-pill p-wb">HTML / CSS</span>
+            <span class="sk-pill p-wb">JavaScript</span>
+            <span class="sk-pill p-wb">Python & Shell</span>
+            <span class="sk-pill p-wb">Go</span>
+            <span class="sk-pill p-wb">MySQL</span>
+            <span class="sk-pill p-wb">Git</span>
+            <span class="sk-pill p-wb">Linux</span>
+          </div>
+        </div>
+
+        <div class="sk-group">
+          <div class="sk-label">Pharmacy (coursework)</div>
+          <div class="sk-pills">
+            <span class="sk-pill p-ph">Pharmacology</span>
+            <span class="sk-pill p-ph">Pharmacokinetics</span>
+            <span class="sk-pill p-ph">Medicinal Chemistry</span>
+            <span class="sk-pill p-ph">Quality Assurance</span>
+          </div>
+        </div>
+
+        <div class="sk-group">
+          <div class="sk-label">Tools & AI</div>
+          <div class="sk-pills">
+            <span class="sk-pill p-or">ChatGPT/Copilot</span>
+            <span class="sk-pill p-or">GitHub Actions</span>
+            <span class="sk-pill p-or">Prompt Engineering</span>
+            <span class="sk-pill p-or">Canva</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col">
+
+      <!-- CERTIFICATIONS (Hacker Holidays back here with link) -->
+      <div class="section rv">
+        <div class="sec-label">Certifications</div>
+        <div id="certList"></div>
+        <button class="vm-btn" id="certMoreBtn" style="display:none" onclick="openModal('certs')">View all certifications →</button>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="section rv">
+        <div class="sec-label">Projects</div>
+        <div id="projectsList"></div>
+        <button class="vm-btn" id="projMoreBtn" style="display:none" onclick="openModal('projects')">View all projects →</button>
+        <p class="footnote">All repos: <a href="https://github.com/psvineet" target="_blank">github.com/psvineet</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- List Modal -->
+<div class="modal-ov" id="listModal">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <h3 id="listModalTitle"></h3>
+      <button class="modal-close" onclick="document.getElementById('listModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-scroll" id="listModalBody"></div>
+  </div>
+</div>
+
+<!-- Email Modal -->
+<div class="modal-ov" id="emailModal">
+  <div class="modal-box modal-box-em">
+    <h3>Send a message</h3>
+    <label>Subject</label>
+    <input type="text" id="mSub" value="Portfolio Inquiry">
+    <label>Message</label>
+    <textarea id="mBod">Hi Vineet,
+
+</textarea>
+    <div class="modal-acts">
+      <button class="m-cancel" id="mCancel">Cancel</button>
+      <button class="m-send" id="mSend">Open email app</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const LIMIT = 6;
+
+// Hacker Holidays is back in certifications with the certificate link
+const certs = [
+  {d:'Aug 2026',t:'Hacker Holidays — Byte Lotus',p:'TryHackMe',l:'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf'},
+  {d:'Jul 2026',t:'Cyber Security 101',p:'TryHackMe',l:'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf'},
+  {d:'Jun 2026',t:'Pre Security',p:'TryHackMe',l:'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf'},
+  {d:'May 2026',t:'Microsoft Copilot: Prompt Writing',p:'LinkedIn',l:'https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/'},
+  {d:'May 2026',t:'Practical GitHub Actions',p:'LinkedIn',l:'https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/'},
+  {d:'Apr 2026',t:'Generative AI',p:'Google Cloud',l:'https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858'},
+  {d:'2025',t:'UI/UX Design via ChatGPT',p:'Simplilearn',l:'https://simpli-web.app.link/e/nrAyF5CfYXb'},
+  {d:'2025',t:'WordPress',p:'Simplilearn',l:'https://simpli-web.app.link/e/6LPJqpTQ5Vb'},
+  {d:'2025',t:'SEO',p:'Simplilearn',l:'https://simpli-web.app.link/e/N802ehHeaWb'},
+  {d:'2025',t:'Computer Networking',p:'Simplilearn',l:'https://simpli-web.app.link/e/hGdQswzsaWb'},
+  {d:'2025',t:'HTML',p:'Simplilearn',l:'https://simpli-web.app.link/e/5MRFlE4N5Vb'},
+  {d:'2025',t:'Canva Designing',p:'Simplilearn',l:'https://simpli-web.app.link/e/1ZMWOCrS5Vb'},
+  {d:'2025',t:'Java',p:'Simplilearn',l:'https://simpli-web.app.link/e/b4EnOZHsaWb'},
+  {d:'2025',t:'Introduction to Cybersecurity',p:'Simplilearn',l:'https://simpli-web.app.link/e/XGxxzwSL5Vb'}
+];
+
+function platCls(p){
+  if(p==='TryHackMe') return 'plat-thm';
+  if(p==='LinkedIn') return 'plat-li';
+  if(p==='Google Cloud') return 'plat-gc';
+  return 'plat-sl';
+}
+
+function certHTML(list){
+  return list.map(c=>`<div class="cert-row">
+    <span class="cert-date">${c.d}</span>
+    <a class="cert-name" href="${c.l}" target="_blank" rel="noopener">${c.t}</a>
+    <span class="cert-plat ${platCls(c.p)}">${c.p}</span>
+  </div>`).join('');
+}
+
+document.getElementById('certList').innerHTML = certHTML(certs.slice(0,LIMIT));
+if(certs.length > LIMIT) document.getElementById('certMoreBtn').style.display='inline-flex';
+
+const manualProjects = [
+  {t:'php-router',d:'Zero Trust PHP router with signed URLs, bot detection, rate limiting, and access logging.',l:'https://github.com/psvineet/php-router',lang:'PHP'},
+  {t:'drxstore',d:'Lightweight pharmacy management system with portals for admin, staff, suppliers, and customers.',l:'https://github.com/psvineet/drxstore',lang:'PHP'},
+  {t:'syniq',d:'CLI tool that translates natural language to safe Linux shell commands using an LLM backend.',l:'https://github.com/psvineet/syniq',lang:'Go'},
+  {t:'lexivault',d:'Single-file vocabulary management app with smart learning modes and a small API.',l:'https://github.com/psvineet/lexivault',lang:'PHP'},
+  {t:'Dosage Calculator',d:'High-precision pharmaceutical drug dosing tool.',l:'https://admin.xo.je/shared/tools/dose-calc.html',lang:'JS'},
+  {t:'BMI Tool',d:'Interactive health dashboard with BMI calculation and basic health insights.',l:'https://admin.xo.je/shared/tools/bmi.html',lang:'JS'},
+  {t:'Chemical Concentration Calc',d:'Molarity, normality, and dilution calculator for lab use.',l:'https://admin.xo.je/shared/tools/chem-conc.html',lang:'JS'},
+  {t:'Scientific Calculator',d:'Handles log, trig, and exponential operations.',l:'https://admin.xo.je/shared/tools/sci-calc.html',lang:'JS'}
+];
+
+let allProjects = [...manualProjects];
+
+function projHTML(list){
+  return list.map(p=>`<div class="proj-row">
+    <span class="proj-lang">${p.lang}</span>
+    <div>
+      <a class="proj-name" href="${p.l}" target="_blank" rel="noopener">${p.t}</a>
+      <div class="proj-desc">${p.d}</div>
+    </div>
+  </div>`).join('');
+}
+
+function renderProj(list){
+  allProjects = list;
+  document.getElementById('projectsList').innerHTML = projHTML(list.slice(0,LIMIT));
+  document.getElementById('projMoreBtn').style.display = list.length > LIMIT ? 'inline-flex' : 'none';
+}
+renderProj(manualProjects);
+
+async function fetchGH(){
+  try{
+    const r = await fetch('https://api.github.com/users/psvineet/repos?sort=updated&per_page=100');
+    if(!r.ok) return;
+    const repos = await r.json();
+    const skip = ['drxstore-basic','syniq-release','syniq-releases','js.org','psvineet'];
+    const git = repos
+      .filter(r => !r.fork && !skip.some(s=>r.name.toLowerCase().includes(s)))
+      .map(r => ({
+        t: r.name,
+        d: r.description || 'GitHub repository.',
+        l: r.html_url,
+        lang: r.language || '?'
+      }));
+    const knownNames = manualProjects.map(p=>p.t.toLowerCase());
+    const extra = git.filter(g => !knownNames.includes(g.t.toLowerCase()));
+    renderProj([...manualProjects, ...extra]);
+  }catch{}
+}
+fetchGH();
+
+function openModal(type){
+  document.getElementById('listModalTitle').textContent = type==='certs' ? 'All certifications' : 'All projects';
+  document.getElementById('listModalBody').innerHTML = type==='certs' ? certHTML(certs) : projHTML(allProjects);
+  document.getElementById('listModal').classList.add('open');
+}
+
+document.getElementById('listModal').addEventListener('click', e=>{
+  if(e.target===document.getElementById('listModal'))
+    document.getElementById('listModal').classList.remove('open');
+});
+
+const emailModal = document.getElementById('emailModal');
+document.getElementById('emailLink').addEventListener('click', e=>{e.preventDefault();emailModal.classList.add('open');});
+document.getElementById('mCancel').addEventListener('click', ()=>emailModal.classList.remove('open'));
+emailModal.addEventListener('click', e=>{if(e.target===emailModal)emailModal.classList.remove('open');});
+document.getElementById('mSend').addEventListener('click', ()=>{
+  const s = encodeURIComponent(document.getElementById('mSub').value||'');
+  const b = encodeURIComponent(document.getElementById('mBod').value||'');
+  window.location.href = `mailto:connect.vps@icloud.com?subject=${s}&body=${b}`;
+  emailModal.classList.remove('open');
+});
+
+window.addEventListener('scroll', ()=>{
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('pgbar').style.width = pct + '%';
+},{passive:true});
+
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.style.animation='rv .5s ease forwards';io.unobserve(e.target);}});
+},{threshold:0.06});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+document.addEventListener('contextmenu', e=>e.preventDefault());
+document.addEventListener('keydown', e=>{
+  const k=e.key.toLowerCase();
+  if(k==='f12'||(e.ctrlKey&&e.shiftKey&&['i','j','c'].includes(k))||(e.ctrlKey&&['u','s','p'].includes(k)))e.preventDefault();
+});
+document.addEventListener('copy', e=>e.preventDefault());
+document.addEventListener('cut', e=>e.preventDefault());
+</script>
+</body>
+</html>
