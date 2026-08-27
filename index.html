@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+<script>
+// ── APPLY SAVED THEME + ACCENT BEFORE FIRST PAINT (no flash, no late jump) ──
+(function(){
+  try{
+    var html = document.documentElement;
+    var savedTheme = localStorage.getItem('theme');
+    var theme = savedTheme === 'dark' ? 'dark'
+      : savedTheme === 'light' ? 'light'
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    html.setAttribute('data-theme', theme);
+
+    var accentPresets = {
+      blue:   { light:{accent:'#4B6BFB',soft:'#EEF1FE',hover:'#3A57E8',tag:'#3A4FC7',tagBg:'#EEF1FE',tagBr:'#C7D0FA'},
+                dark: {accent:'#6B86FC',soft:'#1A2040',hover:'#7B94FD',tag:'#8CA0FA',tagBg:'#1A2040',tagBr:'#2A3560'} },
+      purple: { light:{accent:'#7C5CFC',soft:'#F1EEFE',hover:'#6A47F0',tag:'#6A47CE',tagBg:'#F1EEFE',tagBr:'#D8CFFA'},
+                dark: {accent:'#9B82FF',soft:'#241A40',hover:'#A991FF',tag:'#B39CFF',tagBg:'#241A40',tagBr:'#3A2A5C'} },
+      green:  { light:{accent:'#1FA97A',soft:'#E8F8F1',hover:'#17875F',tag:'#17875F',tagBg:'#E8F8F1',tagBr:'#BEEBD6'},
+                dark: {accent:'#3ED6A0',soft:'#0E2A20',hover:'#5BE0B2',tag:'#5BE0B2',tagBg:'#0E2A20',tagBr:'#1B4A38'} },
+      rose:   { light:{accent:'#F1436D',soft:'#FEEBF0',hover:'#D62F58',tag:'#D62F58',tagBg:'#FEEBF0',tagBr:'#FAC8D6'},
+                dark: {accent:'#FB6F92',soft:'#341620',hover:'#FF87A3',tag:'#FF87A3',tagBg:'#341620',tagBr:'#522233'} },
+      amber:  { light:{accent:'#E08A00',soft:'#FFF3E0',hover:'#C57600',tag:'#C57600',tagBg:'#FFF3E0',tagBr:'#FBDDA8'},
+                dark: {accent:'#F5A623',soft:'#2E2008',hover:'#FFC15C',tag:'#FFC15C',tagBg:'#2E2008',tagBr:'#4A3610'} }
+    };
+    var savedAccent = localStorage.getItem('accent') || 'blue';
+    var preset = accentPresets[savedAccent] || accentPresets.blue;
+    var v = preset[theme] || preset.light;
+    function hexToRgb(hex){ var m = hex.replace('#','').match(/.{1,2}/g); return m.map(function(x){return parseInt(x,16);}).join(','); }
+    var s = html.style;
+    s.setProperty('--accent', v.accent);
+    s.setProperty('--accent-rgb', hexToRgb(v.accent));
+    s.setProperty('--accent-soft', v.soft);
+    s.setProperty('--accent-hover', v.hover);
+    s.setProperty('--tag', v.tag);
+    s.setProperty('--tag-bg', v.tagBg);
+    s.setProperty('--tag-br', v.tagBr);
+  }catch(e){}
+})();
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,7 +56,7 @@
   <meta name="rating" content="general">
   <meta name="revisit-after" content="7 days">
   <link rel="canonical" href="https://psvineet.github.io/">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text x=%2216%22 y=%2224%22 font-size=%2226%22 text-anchor=%22middle%22>%F0%9F%AB%80</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text x=%2216%22 y=%2226%22 font-size=%2226%22 text-anchor=%22middle%22>%F0%9F%AB%80</text></svg>">
   <link rel="apple-touch-icon" href="https://psvineet.github.io/apple-touch-icon.png">
 
   <!-- ── OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ── -->
@@ -128,15 +166,14 @@
       --glass-bg: rgba(20,22,30,.72);
     }
 
-    html { scroll-behavior: smooth; font-size: 15px; }
+    html { scroll-behavior: smooth; font-size: 15px; height: 100%; overflow: hidden; }
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
       background: var(--bg); color: var(--ink);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow: hidden;
+      height: 100%; overflow: hidden;
       user-select: none;
       -webkit-user-select: none;
       cursor: none;
@@ -224,16 +261,23 @@
     .sections-wrap {
       height: 100vh; overflow-y: scroll;
       scroll-snap-type: y proximity;
-      scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+      scrollbar-width: auto; scrollbar-color: var(--border) transparent;
+      scrollbar-gutter: stable;
     }
-    .sections-wrap::-webkit-scrollbar { width: 4px; }
-    .sections-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    .sections-wrap::-webkit-scrollbar { width: 12px; }
+    .sections-wrap::-webkit-scrollbar-track { background: var(--surface2); }
+    .sections-wrap::-webkit-scrollbar-thumb {
+      background: var(--ink3); border-radius: 6px; border: 3px solid var(--surface2);
+      min-height: 40px;
+    }
 
     .section {
       min-height: 100vh; scroll-snap-align: start; scroll-snap-stop: normal;
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: flex-start; justify-content: center;
       padding: 64px 56px; border-bottom: 1px solid var(--border); position: relative;
+      box-sizing: border-box;
     }
+    .section-inner { margin: auto 0; }
     .section-inner {
       width: 100%; max-width: 720px;
       opacity: 0; transform: translateY(18px);
@@ -259,7 +303,7 @@
     .hero-name span { color: var(--accent); }
     .hero-tagline {
       font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: .06em;
-      color: var(--ink3); margin-bottom: 22px; display:flex; align-items:center; gap:8px;
+      color: var(--ink3); margin-bottom: 8px; display:flex; align-items:center; gap:8px;
     }
     .hero-tagline .tl-prompt { color: var(--accent); }
     .hero-tagline .tl-cursor {
@@ -696,7 +740,7 @@
 <aside class="sidebar">
   <div class="sidebar-logo">
     <div class="name">Vineet Pratap Singh</div>
-    <div class="role">B.Pharm · Dev · Security</div>
+    <div class="role">B.Pharm · Dev · Cybersecurity</div>
     <div class="status-badge"><span class="status-dot"></span><span id="statusText"></span></div>
   </div>
   <ul class="sidebar-nav">
@@ -902,7 +946,7 @@
               <div class="sk-icon-wrap">
                 <svg class="sk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
               </div>
-              <div class="sk-group-label">Security (learning)</div>
+              <div class="sk-group-label">Cybersecurity (learning)</div>
             </div>
             <div class="sk-items">
               <span>Pentesting</span><span>Wireshark</span><span>Metasploit</span><span>Burp Suite</span><span>Nmap</span>
@@ -1151,6 +1195,66 @@ const CURRENT_STATUS = 'studying · 3rd year';
   if(el) el.textContent = CURRENT_STATUS;
 })();
 
+// ── BEATING FAVICON — 72 BPM lub-dub, biological heart, emoji heart every 72nd beat ──
+// Shared beat counter also drives the cursor heart (same logic, same cadence).
+const HEART_BEAT = (function(){
+  const faviconEl = document.querySelector('link[rel="icon"]');
+
+  function makeFavicon(emoji, size){
+    return 'data:image/svg+xml,' + encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><text x="16" y="26" font-size="${size}" text-anchor="middle">${emoji}</text></svg>`
+    );
+  }
+
+  const BIO = '\u{1FAC0}';      // 🫀 anatomical/biological heart — the default, always
+  const EMOJI = '\u2764\uFE0F'; // ❤️ — shown for exactly one beat, every 72nd beat
+
+  // Bigger than before at every stage. Rest is still small/quiet, lub/dub are the big beats.
+  const f_rest     = faviconEl ? makeFavicon(BIO, 26) : null;
+  const f_lub_bio  = faviconEl ? makeFavicon(BIO, 42) : null;
+  const f_dub_bio  = faviconEl ? makeFavicon(BIO, 34) : null;
+  const f_lub_emoji= faviconEl ? makeFavicon(EMOJI, 42) : null;
+  const f_dub_emoji= faviconEl ? makeFavicon(EMOJI, 34) : null;
+
+  let paused = false;
+  let beatTimer = null;
+  let beatCount = 0;
+  const listeners = [];
+
+  function schedBeat(){
+    if(paused) return;
+    beatCount++;
+    const specialBeat = (beatCount % 72 === 0); // every 72nd beat: emoji heart, once
+
+    if(faviconEl){
+      faviconEl.href = specialBeat ? f_lub_emoji : f_lub_bio;
+      setTimeout(()=>{ if(!paused) faviconEl.href = f_rest; }, 70);
+      setTimeout(()=>{ if(!paused) faviconEl.href = specialBeat ? f_dub_emoji : f_dub_bio; }, 160);
+      setTimeout(()=>{ if(!paused) faviconEl.href = f_rest; }, 240);
+    }
+
+    listeners.forEach(fn=>{ try{ fn(specialBeat); }catch(e){} });
+
+    beatTimer = setTimeout(schedBeat, 833);
+  }
+
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.hidden){
+      paused = true;
+      clearTimeout(beatTimer);
+      if(faviconEl) faviconEl.href = f_rest;
+    } else {
+      paused = false;
+      schedBeat();
+    }
+  });
+
+  schedBeat();
+
+  // Lets other heart elements (the cursor) subscribe to the same beat cadence.
+  return { onBeat(fn){ listeners.push(fn); } };
+})();
+
 // ── CUSTOM HEART CURSOR ──
 const cursorHeart = document.getElementById('cursorHeart');
 document.addEventListener('mousemove', e=>{
@@ -1167,6 +1271,13 @@ document.addEventListener('mouseout', e=>{
 });
 document.addEventListener('mouseleave', ()=> cursorHeart.style.opacity='0');
 document.addEventListener('mouseenter', ()=> cursorHeart.style.opacity='1');
+
+// Same "biological heart, emoji heart once every 72 beats" logic as the favicon.
+const cursorHeartInner = cursorHeart.querySelector('.cursor-heart-inner');
+HEART_BEAT.onBeat(specialBeat=>{
+  if(!cursorHeartInner) return;
+  cursorHeartInner.textContent = specialBeat ? '\u2764\uFE0F' : '\u{1FAC0}';
+});
 
 document.addEventListener('click', e=>{
   const el = document.createElement('span');
@@ -1503,7 +1614,7 @@ wrap.addEventListener('scroll',()=>{
                  : hour >= 12 && hour < 17 ? 'good afternoon'
                  : hour >= 17 && hour < 21 ? 'good evening'
                  : 'still up?';
-  const text = `${greeting} — portfolio --since 2024 active`;
+  const text = `${greeting} — portfolio --since 2024 --status active`;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduceMotion){ el.textContent = text; return; }
   let i = 0;
@@ -1624,55 +1735,6 @@ function tickClock(){
 }
 tickClock();
 setInterval(tickClock,1000);
-
-// ── BEATING FAVICON — 72 BPM lub-dub ──
-(function(){
-  const faviconEl = document.querySelector('link[rel="icon"]');
-  if(!faviconEl) return;
-
-  function makeFavicon(emoji, size){
-    return 'data:image/svg+xml,' + encodeURIComponent(
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><text x="16" y="26" font-size="${size}" text-anchor="middle">${emoji}</text></svg>`
-    );
-  }
-
-  // Rest: small anatomical heart, quiet
-  // Lub: big red heart, maximum size
-  // Dub: medium red heart
-  const f_rest = makeFavicon('\u{1FAC0}', 20); // 🫀 small
-  const f_lub  = makeFavicon('\u2764\uFE0F', 32); // ❤️ full bleed
-  const f_dub  = makeFavicon('\u2764\uFE0F', 26); // ❤️ medium
-
-  let paused = false;
-  let beatTimer = null;
-
-  function schedBeat(){
-    if(paused) return;
-    // Lub — big slam
-    faviconEl.href = f_lub;
-    // 70ms: back to rest
-    setTimeout(()=>{ if(!paused) faviconEl.href = f_rest; }, 70);
-    // 160ms: dub — second beat
-    setTimeout(()=>{ if(!paused) faviconEl.href = f_dub; }, 160);
-    // 240ms: rest until next cycle
-    setTimeout(()=>{ if(!paused) faviconEl.href = f_rest; }, 240);
-    // Next beat at 833ms (72 BPM)
-    beatTimer = setTimeout(schedBeat, 833);
-  }
-
-  document.addEventListener('visibilitychange', ()=>{
-    if(document.hidden){
-      paused = true;
-      clearTimeout(beatTimer);
-      faviconEl.href = f_rest;
-    } else {
-      paused = false;
-      schedBeat();
-    }
-  });
-
-  schedBeat();
-})();
 
 // ── SECURITY ──
 // Clickjacking guard — bust out if embedded in a foreign frame (best-effort; sandboxed
