@@ -18,13 +18,13 @@
   <meta name="rating" content="general">
   <meta name="revisit-after" content="7 days">
   <link rel="canonical" href="https://psvineet.github.io/">
-  <link rel="icon" type="image/png" href="https://psvineet.github.io/favicon.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text x=%2216%22 y=%2224%22 font-size=%2226%22 text-anchor=%22middle%22>%F0%9F%AB%80</text></svg>">
   <link rel="apple-touch-icon" href="https://psvineet.github.io/apple-touch-icon.png">
 
   <!-- ── OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ── -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Vineet Pratap Singh — Developer & Cybersecurity Learner">
-  <meta property="og:description" content="Pharmacy student building security tooling and web apps. Top 2% on TryHackMe. Open-source projects in PHP, Go, and JS. Based in Uttar Pradesh, India.">
+  <meta property="og:description" content="B.Pharm student at AKTU Lucknow. Top 2% globally on TryHackMe. Building open-source security tools and web apps in PHP, Go, and JS.">
   <meta property="og:url" content="https://psvineet.github.io/">
   <meta property="og:site_name" content="Vineet Pratap Singh">
   <meta property="og:image" content="https://psvineet.github.io/og-cover.png">
@@ -42,9 +42,9 @@
   <meta name="twitter:site" content="@psvineet">
   <meta name="twitter:creator" content="@psvineet">
   <meta name="twitter:title" content="Vineet Pratap Singh — Developer & Cybersecurity Learner">
-  <meta name="twitter:description" content="Pharmacy student building security tooling and web apps. Top 2% on TryHackMe. Open-source projects in PHP, Go, and JS.">
+  <meta name="twitter:description" content="B.Pharm student. Top 2% globally on TryHackMe. Open-source tools in PHP, Go, and JS.">
   <meta name="twitter:image" content="https://psvineet.github.io/og-cover.png">
-  <meta name="twitter:image:alt" content="Vineet Pratap Singh Portfolio">
+  <meta name="twitter:image:alt" content="Vineet Pratap Singh — Portfolio">
 
   <!-- ── LINKEDIN / OTHER PLATFORMS FALLBACK ── -->
   <meta itemprop="name" content="Vineet Pratap Singh — Developer & Cybersecurity Learner">
@@ -92,11 +92,19 @@
   <!-- ── FONTS ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style id="preloader-style">
+    #preloader{position:fixed;inset:0;z-index:99999;background:var(--bg,#F7F8FA);display:flex;align-items:center;justify-content:center;transition:opacity .25s ease;}
+    #preloader.done{opacity:0;pointer-events:none;}
+    @media(prefers-color-scheme:dark){#preloader{background:var(--bg,#0F1117);}}
+    .pl-dot{width:6px;height:6px;border-radius:50%;background:var(--accent,#4B6BFB);display:inline-block;margin:0 3px;animation:plBounce .8s ease-in-out infinite;}
+    .pl-dot:nth-child(2){animation-delay:.15s;}
+    .pl-dot:nth-child(3){animation-delay:.3s;}
+    @keyframes plBounce{0%,80%,100%{transform:scale(0.6);opacity:.4;}40%{transform:scale(1);opacity:1;}}
+  </style>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg: #F7F8FA;
       --surface: #FFFFFF;
@@ -106,6 +114,7 @@
       --ink2: #3D4048;
       --ink3: #8A8E9A;
       --accent: #4B6BFB;
+      --accent-rgb: 75,107,251;
       --accent-soft: #EEF1FE;
       --accent-hover: #3A57E8;
       --tag-bg:#EEF1FE;--tag:#3A4FC7;--tag-br:#C7D0FA;
@@ -132,6 +141,11 @@
       cursor: none;
     }
     *, *::before, *::after { cursor: none !important; }
+    body.modal-open, body.modal-open *, body.modal-open *::before, body.modal-open *::after { cursor: auto !important; }
+    body.modal-open #cursorHeart { display: none !important; }
+    html.theme-fade, html.theme-fade *, html.theme-fade *::before, html.theme-fade *::after {
+      transition: background-color .4s ease, color .4s ease, border-color .4s ease, fill .4s ease, stroke .4s ease, box-shadow .4s ease !important;
+    }
 
     #cursorHeart {
       position: fixed; top: 0; left: 0; z-index: 9999;
@@ -141,10 +155,23 @@
       transition: transform .12s ease-out;
     }
     .cursor-heart-inner { display:inline-block; transform-origin:50% 50%; }
-    #cursorHeart.pulsing .cursor-heart-inner { animation: cursorPulse .6s ease-in-out infinite; }
+    #cursorHeart.pulsing .cursor-heart-inner { animation: cursorPulse 0.833s ease-in-out infinite; }
     @keyframes cursorPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.45); }
+      /* 72 BPM lub-dub: beat at 0%, short gap, beat at 18%, long rest */
+      0%   { transform: scale(1.45); }
+      8%   { transform: scale(1); }
+      18%  { transform: scale(1.28); }
+      30%  { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .heart-burst {
+      position: fixed; z-index: 9998; pointer-events: none;
+      font-size: 22px; line-height: 1; will-change: transform, opacity;
+      animation: heartBurst .55s ease-out forwards;
+    }
+    @keyframes heartBurst {
+      0% { transform: translate(-50%,-50%) scale(1.6); opacity: .9; }
+      100% { transform: translate(-50%,-50%) scale(0.2); opacity: 0; }
     }
 
     /* ── SIDEBAR ── */
@@ -159,6 +186,19 @@
     .sidebar-logo { padding: 0 24px 28px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
     .sidebar-logo .name { font-family:'Manrope','Inter',sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; line-height: 1.2; }
     .sidebar-logo .role { font-size: 11px; color: var(--ink3); margin-top: 3px; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 8px; padding: 3px 8px; border-radius: 999px;
+      background: var(--accent-soft); border: 1px solid var(--tag-br);
+      font-size: 10px; font-weight: 600; color: var(--accent); letter-spacing: .01em;
+    }
+    .status-dot {
+      width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+      animation: statusPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; } 50% { opacity: .35; }
+    }
     .sidebar-nav { flex: 1; display: flex; flex-direction: column; gap: 2px; padding: 0 12px; list-style: none; }
     .sidebar-nav li a {
       display: flex; align-items: center; gap: 10px;
@@ -217,10 +257,16 @@
     }
     .hero-name span { color: var(--accent); }
     .hero-tagline {
-      font-size: 12px; font-weight: 500; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: 22px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: .06em;
+      color: var(--ink3); margin-bottom: 22px; display:flex; align-items:center; gap:8px;
     }
-    .hero-bio { font-size: 16.5px; font-weight: 300; color: var(--ink2); line-height: 1.85; max-width: 620px; margin-bottom: 32px; }
+    .hero-tagline .tl-prompt { color: var(--accent); }
+    .hero-tagline .tl-cursor {
+      display:inline-block; width:7px; height:14px; background:var(--accent);
+      animation: cursorBlink 1s step-end infinite; flex-shrink:0;
+    }
+    @keyframes cursorBlink { 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
+    .hero-bio { font-size: 14.5px; font-weight: 400; color: var(--ink2); line-height: 1.8; max-width: 620px; margin-bottom: 32px; }
     .sec-intro { font-size: 13px; color: var(--ink2); line-height: 1.75; margin-bottom: 22px; max-width: 620px; }
     .hero-links { display: flex; gap: 8px; flex-wrap: wrap; }
     .hlink {
@@ -300,8 +346,11 @@
     .cert-list { display: flex; flex-direction: column; }
     .cert-row {
       display:flex; align-items:center; gap:10px;
-      padding:10px 0; border-bottom:1px solid var(--border); flex-wrap:wrap;
+      padding:10px 14px; margin:0 -14px; border-bottom:1px solid var(--border); flex-wrap:wrap;
+      border-radius:10px; transition:transform .2s ease, box-shadow .25s ease, background .25s ease;
+      will-change:transform;
     }
+    .cert-row:hover { background:var(--surface2); box-shadow:0 10px 26px rgba(0,0,0,.09); }
     .cert-row:last-child { border-bottom:none; }
     .cert-date { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink3); white-space:nowrap; flex-shrink:0; }
     .cert-name { font-size:13px; font-weight:500; color:var(--ink); text-decoration:none; flex:1; min-width:0; transition:color .15s; }
@@ -316,8 +365,11 @@
     .proj-list { display: flex; flex-direction: column; }
     .proj-row {
       display:flex; gap:12px; align-items:flex-start;
-      padding:11px 0; border-bottom:1px solid var(--border);
+      padding:11px 14px; margin:0 -14px; border-bottom:1px solid var(--border);
+      border-radius:10px; transition:transform .2s ease, box-shadow .25s ease, background .25s ease;
+      will-change:transform;
     }
+    .proj-row:hover { background:var(--surface2); box-shadow:0 10px 26px rgba(0,0,0,.09); }
     .proj-row:last-child { border-bottom:none; }
     .proj-lang {
       font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:.04em;
@@ -342,13 +394,103 @@
     .blog-read { display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:11.5px; font-weight:600; color:var(--accent); text-decoration:none; }
     .blog-read:hover { text-decoration:underline; }
 
+    /* ── BLOG READER MODAL ── */
+    .reader-box {
+      position:relative; background:var(--surface); border:1px solid var(--border);
+      border-radius:18px; max-width:760px; width:100%; height:85vh;
+      box-shadow:0 24px 60px rgba(0,0,0,.22);
+      display:flex; flex-direction:column; overflow:hidden;
+    }
+    .reader-box::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:4px; z-index:2;
+      background:linear-gradient(90deg, var(--accent), var(--accent-hover));
+    }
+    .reader-close {
+      position:absolute; top:16px; right:16px; z-index:3;
+      width:32px; height:32px; border-radius:50%; border:1px solid var(--border);
+      background:var(--surface); color:var(--ink3); display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:border-color .15s, color .15s, background .15s;
+    }
+    .reader-close svg { width:15px; height:15px; }
+    .reader-close:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
+    .reader-head { padding:36px 44px 16px; flex-shrink:0; }
+    .reader-date {
+      font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:.06em;
+      color:var(--accent); background:var(--accent-soft); padding:4px 10px; border-radius:6px;
+      display:inline-block; margin-bottom:12px;
+    }
+    .reader-title {
+      font-family:'Manrope','Inter',sans-serif; font-size:21px; font-weight:700;
+      line-height:1.3; color:var(--ink); letter-spacing:-.3px;
+    }
+    .reader-frame-wrap { position:relative; flex:1; margin:0 20px; border-radius:12px; overflow:hidden; background:var(--surface2); }
+    .reader-frame { width:100%; height:100%; border:none; display:block; position:relative; z-index:1; background:var(--surface); }
+    .reader-frame-loading {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink3); z-index:0;
+    }
+    .reader-footer { flex-shrink:0; border-top:1px solid var(--border); padding:16px 44px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+    .reader-source {
+      width:34px; height:34px; border-radius:50%; border:1px solid var(--border);
+      background:var(--surface2); color:var(--accent); display:flex; align-items:center; justify-content:center;
+      text-decoration:none; transition:border-color .15s, background .15s, transform .15s;
+    }
+    .reader-source svg { width:15px; height:15px; }
+    .reader-source:hover { border-color:var(--accent); background:var(--accent-soft); transform:translateY(-1px); }
+    .reader-share { display:flex; align-items:center; gap:8px; }
+    .reader-share-label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink3); margin-right:2px; }
+    .share-btn {
+      width:30px; height:30px; border-radius:50%; border:1px solid var(--border);
+      background:var(--surface2); color:var(--ink3); display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:border-color .15s, color .15s, background .15s, transform .15s;
+    }
+    .share-btn svg { width:14px; height:14px; }
+    .share-btn:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-soft); transform:translateY(-1px); }
+    .share-btn.copied { border-color:#1FA97A; color:#1FA97A; background:#E8F8F1; }
+    @media(max-width:600px){
+      .reader-head { padding:56px 20px 14px; }
+      .reader-title { font-size:18px; }
+      .reader-frame-wrap { margin:0 10px; }
+      .reader-footer { padding:14px 20px; }
+    }
+
+    /* ── EASTER EGG ── */
+    #konamiMsg {
+      position:fixed; top:24px; left:50%; transform:translateX(-50%) translateY(-16px);
+      background:var(--surface); border:1px solid var(--accent); color:var(--accent);
+      font-family:'Inter',sans-serif; font-size:13px; font-weight:500;
+      padding:13px 24px; border-radius:10px; z-index:9997; letter-spacing:.01em;
+      box-shadow:0 4px 24px rgba(var(--accent-rgb),.15), 0 1px 4px rgba(0,0,0,.08);
+      opacity:0; transition:opacity .3s ease, transform .3s ease;
+      pointer-events:none;
+    }
+    #konamiMsg::before { content:''; }
+    #konamiMsg.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .konami-heart {
+      position:fixed; top:-40px; z-index:9996; pointer-events:none;
+      filter:drop-shadow(0 0 6px rgba(225,75,90,.6)) drop-shadow(0 0 14px rgba(225,75,90,.3));
+      animation:konamiFall linear forwards;
+    }
+    @keyframes konamiFall {
+      0%   { transform:translateY(0)      translateX(0)    rotate(0deg)   scale(1);    opacity:1; }
+      8%   { transform:translateY(7vh)    translateX(8px)  rotate(8deg)   scale(1.35); }
+      16%  { transform:translateY(14vh)   translateX(-6px) rotate(-6deg)  scale(1);    }
+      30%  { transform:translateY(30vh)   translateX(10px) rotate(14deg)  scale(1.3);  }
+      42%  { transform:translateY(44vh)   translateX(-8px) rotate(-12deg) scale(1);    }
+      58%  { transform:translateY(62vh)   translateX(9px)  rotate(10deg)  scale(1.25); }
+      72%  { transform:translateY(78vh)   translateX(-7px) rotate(-8deg)  scale(1);    }
+      100% { transform:translateY(112vh)  translateX(0)    rotate(360deg) scale(.7);   opacity:0; }
+    }
+
     /* ── MOBILE PILL NAV ── */
     .pill-nav {
       display:none; position:fixed; bottom:calc(16px + env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%);
-      background:var(--glass-bg); border:1px solid rgba(255,255,255,.25); border-radius:999px;
+      background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.3); border-radius:999px;
       padding:7px; gap:2px; z-index:200; max-width:calc(100vw - 24px); overflow-x:auto; overflow-y:hidden;
-      backdrop-filter:blur(24px) saturate(1.8); -webkit-backdrop-filter:blur(24px) saturate(1.8);
-      box-shadow:0 8px 28px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.25);
+      scroll-snap-type:x proximity; scroll-behavior:smooth;
+      backdrop-filter:blur(28px) saturate(2.1); -webkit-backdrop-filter:blur(28px) saturate(2.1);
+      box-shadow:0 10px 34px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.06), inset 0 1px 1px rgba(255,255,255,.35), inset 0 -1px 1px rgba(0,0,0,.04);
       -ms-overflow-style:none; scrollbar-width:none;
     }
     .pill-nav::-webkit-scrollbar { display:none; }
@@ -359,7 +501,7 @@
       transition:transform .4s cubic-bezier(.65,0,.35,1), width .4s cubic-bezier(.65,0,.35,1);
     }
     .pill-nav-item {
-      position:relative; z-index:1;
+      position:relative; z-index:1; scroll-snap-align:center;
       display:grid; grid-template-columns: 40px 0fr; align-items:center;
       height:40px; padding:0; border-radius:999px; border:none; background:none; cursor:pointer;
       color:var(--ink3); transition:color .25s, transform .2s, grid-template-columns .4s cubic-bezier(.65,0,.35,1);
@@ -388,11 +530,15 @@
       padding:7px 12px; border-radius:999px; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
       box-shadow:0 4px 16px rgba(0,0,0,.08); white-space:nowrap;
     }
-    .live-dot { width:6px; height:6px; border-radius:50%; background:#3ecf6e; flex-shrink:0; animation:pulseDot 2s infinite; }
-    @keyframes pulseDot {
-      0% { box-shadow:0 0 0 0 rgba(62,207,110,.45); }
-      70% { box-shadow:0 0 0 6px rgba(62,207,110,0); }
-      100% { box-shadow:0 0 0 0 rgba(62,207,110,0); }
+    .live-dot { position:relative; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+    .live-dot::after {
+      content:''; position:absolute; inset:0; border-radius:50%;
+      background:var(--accent); animation:liveDotRipple 1.8s cubic-bezier(.4,0,.3,1) infinite;
+    }
+    @keyframes liveDotRipple {
+      0%   { transform:scale(1);   opacity:.7; }
+      75%  { transform:scale(3.2); opacity:0; }
+      100% { transform:scale(3.2); opacity:0; }
     }
     .settings-btn {
       width:32px; height:32px; border-radius:50%; border:1px solid var(--border);
@@ -424,10 +570,12 @@
       position:relative; transition:transform .15s, border-color .15s; padding:0;
     }
     .accent-dot:hover { transform:scale(1.14); }
-    .accent-dot.active { border-color:var(--ink); }
+    .accent-dot.active { border-color:#0D0E12; box-shadow:0 0 0 2px #fff, 0 0 0 3px #0D0E12; }
+    [data-theme="dark"] .accent-dot.active { border-color:#fff; box-shadow:0 0 0 2px #0D0E12, 0 0 0 3px #fff; }
     .accent-dot.active::after {
       content:''; position:absolute; inset:6px; border-radius:50%; background:#fff; opacity:.95;
     }
+    [data-theme="dark"] .accent-dot.active::after { background:#0D0E12; }
     @media(max-width:480px){
       .live-clock span:last-child { display:none; }
       .util-bar { right:12px; top:calc(12px + env(safe-area-inset-top)); }
@@ -473,10 +621,25 @@
     .m-cancel { background:none; color:var(--ink3); border:1px solid var(--border); }
     .m-cancel:hover { border-color:var(--ink3); }
     .m-send { background:var(--accent); color:#fff; border:none; }
+    .sc-kbd { font-family:'JetBrains Mono',monospace; font-size:10px; padding:3px 7px; border-radius:5px; border:1px solid var(--border); background:var(--surface2); color:var(--ink2); box-shadow:0 1px 0 var(--border); }
     .m-send:hover { background:var(--accent-hover); }
 
     /* ── PROGRESS ── */
     #pgbar { position:fixed; top:0; left:220px; height:2px; width:0; z-index:999; background:var(--accent); transition:width .1s; }
+
+    /* ── SECTION DOTS ── */
+    .section-dots {
+      position:fixed; right:18px; top:50%; transform:translateY(-50%);
+      display:flex; flex-direction:column; gap:10px; z-index:200;
+    }
+    .section-dot {
+      width:6px; height:6px; border-radius:50%; border:1.5px solid var(--border);
+      background:transparent; cursor:pointer; transition:background .2s, border-color .2s, transform .2s;
+      padding:0;
+    }
+    .section-dot:hover { transform:scale(1.4); border-color:var(--accent); }
+    .section-dot.active { background:var(--accent); border-color:var(--accent); transform:scale(1.2); }
+    @media(max-width:768px){ .section-dots{ display:none; } }
 
     /* ── RESPONSIVE ── */
     @media(max-width:768px){
@@ -494,11 +657,13 @@
       body>*{display:none!important;}
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- jsPDF loaded on demand -->
 </head>
 <body>
+<div id="preloader"><span class="pl-dot"></span><span class="pl-dot"></span><span class="pl-dot"></span></div>
 <div id="cursorHeart"><span class="cursor-heart-inner">🫀</span></div>
 <div id="pgbar"></div>
+<nav class="section-dots" id="sectionDots" aria-label="Section navigation"></nav>
 
 <!-- UTILITY BAR: live clock + settings (theme + accent) -->
 <div class="util-bar">
@@ -517,6 +682,11 @@
       </div>
       <div class="settings-label">Accent</div>
       <div class="accent-row" id="accentRow"></div>
+      <div class="settings-label" style="margin-top:14px;">Sound</div>
+      <button class="theme-btn" id="soundToggle" style="border:1px solid var(--border); background:var(--surface2); border-radius:9px;">
+        <svg id="soundIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <span id="soundLabel">Heartbeat sound</span>
+      </button>
     </div>
   </div>
 </div>
@@ -526,6 +696,7 @@
   <div class="sidebar-logo">
     <div class="name">Vineet Pratap Singh</div>
     <div class="role">B.Pharm · Dev · Security</div>
+    <div class="status-badge"><span class="status-dot"></span><span id="statusText"></span></div>
   </div>
   <ul class="sidebar-nav">
     <li><a href="#intro" class="nav-link active" data-section="intro">
@@ -535,13 +706,13 @@
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education
     </a></li>
     <li><a href="#research" class="nav-link" data-section="research">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>Research
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 5H4a2 2 0 0 0 2 4M17 5h3a2 2 0 0 1-2 4"/></svg>Achievements
     </a></li>
     <li><a href="#skills" class="nav-link" data-section="skills">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Skills
     </a></li>
     <li><a href="#certs" class="nav-link" data-section="certs">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Certs
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 10v6"/></svg>Certs
     </a></li>
     <li><a href="#projects" class="nav-link" data-section="projects">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Projects
@@ -565,10 +736,10 @@
     <!-- INTRO -->
     <section class="section" id="intro">
       <div class="section-inner">
-        <p class="hero-tagline">Portfolio · 2024 – Present</p>
+        <p class="hero-tagline"><span class="tl-prompt">$</span><span id="tlText"></span><span class="tl-cursor"></span></p>
         <h1 class="hero-name">Vineet Pratap <span>Singh</span></h1>
         <p class="hero-bio">
-          I'm a pharmacy student at AKTU, Lucknow, who builds things alongside the degree — security tooling, web apps, and tools at the intersection of tech and healthcare. Days split between pharmacokinetics and writing PHP or Go; evenings go to CTFs, currently top 2% on TryHackMe. Still a work in progress, which is where I want to be.
+          I'm a pharmacy student at AKTU, Lucknow, spending most of my free time in the offensive security world — breaking things on TryHackMe (currently top 2%), working through CTFs, and picking apart how web apps and networks fail. I build tools around that curiosity too: recon scripts, small security utilities, and web apps written in PHP and Go. Pharmaceuticals by day, packet captures and privilege escalation by night. Still learning the stack from the ground up, one exploit at a time.
         </p>
         <div class="hero-links">
           <a class="hlink hlink-primary" href="resume.pdf" id="resumeLink">
@@ -815,29 +986,29 @@
 <!-- MOBILE PILL NAV -->
 <nav class="pill-nav" id="pillNav">
   <div class="pill-highlight" id="pillHighlight"></div>
-  <button class="pill-nav-item active" data-target="intro" title="Home">
+  <button class="pill-nav-item active" data-target="intro" title="Intro">
     <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-    <span class="pill-label-wrap"><span class="pill-label">Home</span></span>
+    <span class="pill-label-wrap"><span class="pill-label">Intro</span></span>
   </button>
   <button class="pill-nav-item" data-target="education" title="Education">
     <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
     <span class="pill-label-wrap"><span class="pill-label">Education</span></span>
   </button>
-  <button class="pill-nav-item" data-target="research" title="Research">
-    <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
-    <span class="pill-label-wrap"><span class="pill-label">Research</span></span>
+  <button class="pill-nav-item" data-target="research" title="Achievements">
+    <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 5H4a2 2 0 0 0 2 4M17 5h3a2 2 0 0 1-2 4"/></svg></span>
+    <span class="pill-label-wrap"><span class="pill-label">Achievements</span></span>
   </button>
   <button class="pill-nav-item" data-target="skills" title="Skills">
     <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
     <span class="pill-label-wrap"><span class="pill-label">Skills</span></span>
   </button>
   <button class="pill-nav-item" data-target="certs" title="Certs">
-    <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+    <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 10v6"/></svg></span>
     <span class="pill-label-wrap"><span class="pill-label">Certs</span></span>
   </button>
-  <button class="pill-nav-item" data-target="projects" title="Work">
+  <button class="pill-nav-item" data-target="projects" title="Projects">
     <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
-    <span class="pill-label-wrap"><span class="pill-label">Work</span></span>
+    <span class="pill-label-wrap"><span class="pill-label">Projects</span></span>
   </button>
   <button class="pill-nav-item" data-target="blog" title="Blog">
     <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
@@ -878,7 +1049,107 @@
   </div>
 </div>
 
+<!-- KEYBOARD SHORTCUTS MODAL -->
+<div class="modal-ov" id="shortcutsModal">
+  <div class="modal-box" style="max-width:340px;">
+    <h3>Keyboard shortcuts</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+        <span style="color:var(--ink2)">Navigate sections</span>
+        <span style="display:flex;gap:4px;"><kbd class="sc-kbd">↑</kbd><kbd class="sc-kbd">↓</kbd><kbd class="sc-kbd">J</kbd><kbd class="sc-kbd">K</kbd></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+        <span style="color:var(--ink2)">First / last section</span>
+        <span style="display:flex;gap:4px;"><kbd class="sc-kbd">Home</kbd><kbd class="sc-kbd">End</kbd></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+        <span style="color:var(--ink2)">Toggle theme</span>
+        <kbd class="sc-kbd">T</kbd>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+        <span style="color:var(--ink2)">Close modal / overlay</span>
+        <kbd class="sc-kbd">Esc</kbd>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+        <span style="color:var(--ink2)">This help</span>
+        <kbd class="sc-kbd">?</kbd>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+        <span style="color:var(--ink2)">Easter egg</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);">type "vineet"</span>
+      </div>
+    </div>
+    <div class="modal-acts"><button class="m-cancel" id="shortcutsClose">Close</button></div>
+  </div>
+</div>
+
+<!-- BLOG READER MODAL -->
+<div class="modal-ov" id="blogModal">
+  <div class="reader-box">
+    <button class="reader-close" id="readerClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="reader-head">
+      <span class="reader-date" id="readerDate"></span>
+      <h2 class="reader-title" id="readerTitle"></h2>
+    </div>
+    <div class="reader-frame-wrap">
+      <div class="reader-frame-loading" id="readerFrameLoading">Loading post…</div>
+      <iframe class="reader-frame" id="readerFrame" title="Blog post" loading="lazy"></iframe>
+    </div>
+    <div class="reader-footer">
+      <a class="reader-source" id="readerSource" href="#" target="_blank" rel="noopener" title="Read original source" aria-label="Read original source">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+      <div class="reader-share">
+        <span class="reader-share-label">Share</span>
+        <button class="share-btn" id="shareX" title="Share on X" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22H16.9l-5-6.5-5.7 6.5H2.9l8.1-9.3L2 2h6.6l4.5 5.9L18.9 2zm-1.1 18h1.7L7 3.9H5.2l12.6 16.1z"/></svg>
+        </button>
+        <button class="share-btn" id="shareLinkedin" title="Share on LinkedIn" aria-label="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.68H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+        </button>
+        <button class="share-btn" id="shareCopyLink" title="Copy link" aria-label="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+// ── PRELOADER ──
+(function(){
+  const pl = document.getElementById('preloader');
+  if(!pl) return;
+  // Sync bg with saved theme immediately
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme === 'dark') pl.style.background = '#0F1117';
+  const savedAccent = localStorage.getItem('accent');
+  const ACCENT_HEX = { blue:{light:'#4B6BFB',dark:'#6B86FC'}, purple:{light:'#7C5CFC',dark:'#9B82FF'}, green:{light:'#1FA97A',dark:'#3ED6A0'}, rose:{light:'#F1436D',dark:'#FB6F92'}, amber:{light:'#E08A00',dark:'#F5A623'} };
+  if(savedAccent && ACCENT_HEX[savedAccent]){
+    const hex = ACCENT_HEX[savedAccent][savedTheme==='dark'?'dark':'light'];
+    pl.querySelectorAll('.pl-dot').forEach(d=>d.style.background=hex);
+  }
+  // Dismiss as soon as DOM is interactive
+  function dismissPreloader(){
+    pl.classList.add('done');
+    setTimeout(()=>{ pl.remove(); document.getElementById('preloader-style')?.remove(); }, 280);
+  }
+  if(document.readyState === 'complete') dismissPreloader();
+  else window.addEventListener('load', dismissPreloader, {once:true});
+  // Failsafe: never show more than 1.5s
+  setTimeout(dismissPreloader, 1500);
+})();
+
+// ── CURRENTLY STATUS (edit this to update your status) ──
+const CURRENT_STATUS = 'studying · 3rd year';
+// ↑ Change this anytime. Examples: 'open to collabs', 'building syniq', 'on a break'
+(function(){
+  const el = document.getElementById('statusText');
+  if(el) el.textContent = CURRENT_STATUS;
+})();
+
 // ── CUSTOM HEART CURSOR ──
 const cursorHeart = document.getElementById('cursorHeart');
 document.addEventListener('mousemove', e=>{
@@ -895,6 +1166,16 @@ document.addEventListener('mouseout', e=>{
 });
 document.addEventListener('mouseleave', ()=> cursorHeart.style.opacity='0');
 document.addEventListener('mouseenter', ()=> cursorHeart.style.opacity='1');
+
+document.addEventListener('click', e=>{
+  const el = document.createElement('span');
+  el.className = 'heart-burst';
+  el.textContent = '🫀';
+  el.style.left = e.clientX+'px';
+  el.style.top = e.clientY+'px';
+  document.body.appendChild(el);
+  el.addEventListener('animationend', ()=>el.remove());
+});
 
 // ── DATA ──
 const certs = [
@@ -979,30 +1260,76 @@ const blogPosts = [
   {
     d:'Aug 2026',
     t:'Hacker Holidays 2026 — The Byte Lotus Writeups',
+    excerpt:'Completed all 14 rooms of TryHackMe Hacker Holidays 2026 — AI security, web enumeration, cloud security, PCAP/network analysis, digital forensics, OSINT, cryptography, and malware analysis.',
     desc:`Completed all 14 rooms of TryHackMe Hacker Holidays 2026, covering AI security, web enumeration, cloud security, PCAP/network analysis, digital forensics, OSINT, cryptography, and malware analysis.
 
 The core takeaway: follow the evidence — Observe → Enumerate → Analyse → Correlate → Exploit/Investigate → Verify.
 
 14/14 rooms completed.`,
-    l:'https://lnkd.in/ggsXM8QE'
+    l:'https://admin.xo.je/Cyber%20Security/Hacker%20Holiday%202026/index.html'
   },
   {
     d:'Aug 2026',
     t:'Common Cyber Attacks — What They Are & How to Stay Safe',
+    excerpt:'A field-guide style breakdown of the attack types people actually run into: social engineering, phishing, malware and ransomware, SQL injection and XSS, DDoS, password attacks, and newer threats like SIM swapping and AI voice cloning.',
     desc:'A field-guide style breakdown of the attack types people actually run into: social engineering, phishing, malware and ransomware, SQL injection and XSS, DDoS, password attacks, and newer threats like SIM swapping and AI voice cloning. Each section pairs the mechanics with practical defences — MFA, password managers, the 3-2-1 backup rule, and patching discipline. ~23 min read.',
     l:'https://psvineet.me/cyber-attacks'
   }
 ];
 
 function blogHTML(list){
-  return list.map(b=>`<div class="blog-card">
+  return list.map((b,i)=>`<div class="blog-card">
     <span class="blog-date">${b.d}</span>
-    <a class="blog-title" href="${b.l}" target="_blank" rel="noopener">${b.t}</a>
-    <div class="blog-desc">${b.desc}</div>
-    <a class="blog-read" href="${b.l}" target="_blank" rel="noopener">Read full post ↗</a>
+    <a class="blog-title" href="${b.l}" data-blog-index="${i}">${b.t}</a>
+    <div class="blog-desc">${b.excerpt || b.desc}</div>
+    <a class="blog-read" href="${b.l}" data-blog-index="${i}">Read full post ↗</a>
   </div>`).join('');
 }
 document.getElementById('blogList').innerHTML = blogHTML(blogPosts);
+
+// ── BLOG READER MODAL ──
+const blogModal = document.getElementById('blogModal');
+function openBlogReader(index){
+  cursorHeart.style.opacity = '0';
+  document.body.classList.add('modal-open');
+  const post = blogPosts[index];
+  if(!post) return;
+  document.getElementById('readerDate').textContent = post.d;
+  document.getElementById('readerTitle').textContent = post.t;
+  const sourceLink = document.getElementById('readerSource');
+  sourceLink.href = post.l;
+  const frame = document.getElementById('readerFrame');
+  const loading = document.getElementById('readerFrameLoading');
+  loading.style.display = 'flex';
+  loading.textContent = 'Loading post…';
+  frame.style.opacity = '0';
+  frame.src = post.l;
+  frame.onload = ()=>{ loading.style.display='none'; frame.style.opacity='1'; };
+  document.getElementById('shareX').onclick = ()=>{
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(post.l)}&text=${encodeURIComponent(post.t)}`, '_blank', 'noopener');
+  };
+  document.getElementById('shareLinkedin').onclick = ()=>{
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(post.l)}`, '_blank', 'noopener');
+  };
+  document.getElementById('shareCopyLink').onclick = (e)=>{
+    copyText(post.l, e.currentTarget);
+  };
+  blogModal.classList.add('open');
+}
+function closeBlogReader(){
+  blogModal.classList.remove('open');
+  document.getElementById('readerFrame').src = 'about:blank';
+  cursorHeart.style.opacity = '1';
+  document.body.classList.remove('modal-open');
+}
+document.getElementById('blogList').addEventListener('click', e=>{
+  const trigger = e.target.closest('[data-blog-index]');
+  if(!trigger) return;
+  e.preventDefault();
+  openBlogReader(Number(trigger.dataset.blogIndex));
+});
+document.getElementById('readerClose').addEventListener('click', closeBlogReader);
+blogModal.addEventListener('click', e=>{ if(e.target===blogModal) closeBlogReader(); });
 
 // ── EMAIL MODAL ──
 const emailModal=document.getElementById('emailModal');
@@ -1075,6 +1402,23 @@ function animateHighlightTracking(){
 }
 
 const sectionEls = Array.from(document.querySelectorAll('.section'));
+
+// ── BUILD SECTION DOTS ──
+(function(){
+  const dotsNav = document.getElementById('sectionDots');
+  if(!dotsNav) return;
+  const labels = {intro:'Intro',education:'Education',research:'Achievements',skills:'Skills',certs:'Certs',projects:'Projects',blog:'Blog'};
+  sectionEls.forEach(s=>{
+    const btn = document.createElement('button');
+    btn.className = 'section-dot';
+    btn.dataset.target = s.id;
+    btn.title = labels[s.id] || s.id;
+    btn.setAttribute('aria-label', labels[s.id] || s.id);
+    btn.addEventListener('click', ()=> s.scrollIntoView({behavior:'smooth'}));
+    dotsNav.appendChild(btn);
+  });
+})();
+
 function updateActiveSection(){
   const wrapRect = wrap.getBoundingClientRect();
   const markerY = wrapRect.top + wrapRect.height * 0.35;
@@ -1086,7 +1430,13 @@ function updateActiveSection(){
   const id = current.id;
   document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.section===id));
   document.querySelectorAll('.pill-nav-item').forEach(b=>b.classList.toggle('active',b.dataset.target===id));
+  document.querySelectorAll('.section-dot').forEach(d=>d.classList.toggle('active',d.dataset.target===id));
   animateHighlightTracking();
+  const activePill = document.querySelector('.pill-nav-item.active');
+  const pillBar = document.getElementById('pillNav');
+  if(activePill && pillBar){
+    activePill.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  }
 }
 let navRaf=null;
 wrap.addEventListener('scroll',()=>{
@@ -1143,6 +1493,29 @@ wrap.addEventListener('scroll',()=>{
 },{passive:true});
 
 // ── THEME + ACCENT ──
+// ── TERMINAL-STYLE TYPING TAGLINE (time-aware) ──
+(function(){
+  const el = document.getElementById('tlText');
+  if(!el) return;
+  const hour = new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata', hour:'numeric', hour12:false}) | 0;
+  const greeting = hour >= 5 && hour < 12 ? 'good morning'
+                 : hour >= 12 && hour < 17 ? 'good afternoon'
+                 : hour >= 17 && hour < 21 ? 'good evening'
+                 : 'still up?';
+  const text = `${greeting} — portfolio --since 2024 active`;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){ el.textContent = text; return; }
+  let i = 0;
+  function typeChar(){
+    if(i <= text.length){
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(typeChar, 35 + Math.random() * 45);
+    }
+  }
+  setTimeout(typeChar, 300);
+})();
+
 const html=document.documentElement;
 
 const accentPresets = {
@@ -1160,12 +1533,17 @@ const accentPresets = {
 
 let currentAccent = localStorage.getItem('accent') || 'blue';
 
+function hexToRgb(hex){
+  const m = hex.replace('#','').match(/.{1,2}/g);
+  return m.map(x=>parseInt(x,16)).join(',');
+}
 function applyAccent(){
   const theme = html.getAttribute('data-theme') || 'light';
   const preset = accentPresets[currentAccent] || accentPresets.blue;
   const v = preset[theme] || preset.light;
   const r = html.style;
   r.setProperty('--accent', v.accent);
+  r.setProperty('--accent-rgb', hexToRgb(v.accent));
   r.setProperty('--accent-soft', v.soft);
   r.setProperty('--accent-hover', v.hover);
   r.setProperty('--tag', v.tag);
@@ -1198,11 +1576,15 @@ function updateModeButtons(){
   const t=html.getAttribute('data-theme')||'light';
   document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===t));
 }
+let themeFadeT=null;
 function setTheme(next){
+  html.classList.add('theme-fade');
   html.setAttribute('data-theme',next);
   localStorage.setItem('theme',next);
   updateModeButtons();
   applyAccent();
+  clearTimeout(themeFadeT);
+  themeFadeT=setTimeout(()=>html.classList.remove('theme-fade'),420);
 }
 document.getElementById('themeToggle').addEventListener('click',()=>{
   setTheme(html.getAttribute('data-theme')==='light'?'dark':'light');
@@ -1242,6 +1624,55 @@ function tickClock(){
 tickClock();
 setInterval(tickClock,1000);
 
+// ── BEATING FAVICON — 72 BPM lub-dub ──
+(function(){
+  const faviconEl = document.querySelector('link[rel="icon"]');
+  if(!faviconEl) return;
+
+  function makeFavicon(emoji, size){
+    return 'data:image/svg+xml,' + encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><text x="16" y="26" font-size="${size}" text-anchor="middle">${emoji}</text></svg>`
+    );
+  }
+
+  // Rest: small anatomical heart, quiet
+  // Lub: big red heart, maximum size
+  // Dub: medium red heart
+  const f_rest = makeFavicon('\u{1FAC0}', 20); // 🫀 small
+  const f_lub  = makeFavicon('\u2764\uFE0F', 32); // ❤️ full bleed
+  const f_dub  = makeFavicon('\u2764\uFE0F', 26); // ❤️ medium
+
+  let paused = false;
+  let beatTimer = null;
+
+  function schedBeat(){
+    if(paused) return;
+    // Lub — big slam
+    faviconEl.href = f_lub;
+    // 70ms: back to rest
+    setTimeout(()=>{ if(!paused) faviconEl.href = f_rest; }, 70);
+    // 160ms: dub — second beat
+    setTimeout(()=>{ if(!paused) faviconEl.href = f_dub; }, 160);
+    // 240ms: rest until next cycle
+    setTimeout(()=>{ if(!paused) faviconEl.href = f_rest; }, 240);
+    // Next beat at 833ms (72 BPM)
+    beatTimer = setTimeout(schedBeat, 833);
+  }
+
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.hidden){
+      paused = true;
+      clearTimeout(beatTimer);
+      faviconEl.href = f_rest;
+    } else {
+      paused = false;
+      schedBeat();
+    }
+  });
+
+  schedBeat();
+})();
+
 // ── SECURITY ──
 // Clickjacking guard — bust out if embedded in a foreign frame (best-effort; sandboxed
 // previews without top-navigation permission will throw, so this is wrapped safely)
@@ -1249,14 +1680,12 @@ try {
   if (window.top !== window.self) { window.top.location.href = window.self.location.href; }
 } catch (err) { /* blocked by sandbox — ignore, nothing more we can do from here */ }
 
-const _w = ['f', 'u', 'c', 'k', ' ', 'y', 'o', 'u'].join('');
-const _s = ['🚨', ' Access', ' Denied.', ' This', ' page', ' is', ' protected.'].join('');
-
 function flagUnauthorized(sub){
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#4B6BFB';
   console.clear();
-  console.log('%c' + _s, 'color:#e74c3c;font-size:18px;font-weight:bold;');
-  console.log('%c' + _w, 'color:#e74c3c;font-size:52px;font-weight:900;');
-  if(sub) console.log('%c ' + sub, 'color:#888;font-size:12px;');
+  console.log('%cPortfolio of Vineet Pratap Singh', `color:${accent};font-size:15px;font-weight:700;`);
+  console.log('%cThis portfolio is not open for inspection or copying.\nYou are not going to get anything here.', 'color:#888;font-size:12px;');
+  if(sub) console.log('%c' + sub, 'color:#aaa;font-size:11px;');
 }
 
 // DevTools detection via size delta
@@ -1309,9 +1738,12 @@ window.addEventListener('beforeprint',e=>{
 // Selection prevention
 document.addEventListener('selectstart',e=>e.preventDefault());
 
-// Console warning on load
-console.log('%c🚨 Protected Portfolio','color:#e74c3c;font-size:14px;font-weight:bold;');
-console.log('%cThis page is the property of Vineet Pratap Singh.\nUnauthorised copying, scraping, or inspection is not permitted.','color:#888;font-size:11px;');
+// Console notice on load
+setTimeout(()=>{
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#4B6BFB';
+  console.log('%cPortfolio of Vineet Pratap Singh', `color:${accent};font-size:15px;font-weight:700;`);
+  console.log('%cThis portfolio is personal property. Copying, scraping, or redistribution of content is not permitted.', 'color:#888;font-size:11px;');
+}, 200);
 
 // ── RESUME: use resume.pdf if present, else build one from the page content ──
 const resumeLink = document.getElementById('resumeLink');
@@ -1332,7 +1764,16 @@ resumeLink.addEventListener('click', async (e)=>{
       return;
     }
   } catch(err) { /* no resume.pdf on disk — fall through to generated version */ }
+  // Lazy-load jsPDF only when needed
   try {
+    if(!window.jspdf){
+      await new Promise((res,rej)=>{
+        const s=document.createElement('script');
+        s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        s.onload=res; s.onerror=rej;
+        document.head.appendChild(s);
+      });
+    }
     generateResumePdf();
   } catch(err) {
     console.error('Resume generation failed', err);
@@ -1399,6 +1840,139 @@ function generateResumePdf(){
 
   doc.save('Vineet_Pratap_Singh_Resume.pdf');
 }
+
+// ── TILT / PARALLAX ON PROJECT + CERT ROWS ──
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(window.matchMedia('(hover: none)').matches) return; // skip on touch devices
+  const MAX_TILT = 4;
+  function handleMove(e, container){
+    const row = e.target.closest('.proj-row, .cert-row');
+    if(!row || !container.contains(row)) return;
+    const rect = row.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    row.style.transform = `perspective(700px) rotateX(${(-py*MAX_TILT).toFixed(2)}deg) rotateY(${(px*MAX_TILT).toFixed(2)}deg) translateY(-2px)`;
+  }
+  function handleLeave(e, container){
+    const row = e.target.closest('.proj-row, .cert-row');
+    if(row) row.style.transform = '';
+  }
+  ['projectsList','certList'].forEach(id=>{
+    const container = document.getElementById(id);
+    if(!container) return;
+    container.addEventListener('mousemove', e=>handleMove(e, container));
+    container.addEventListener('mouseout', e=>handleLeave(e, container));
+  });
+})();
+
+// ── KEYBOARD SHORTCUTS MODAL ──
+const shortcutsModal = document.getElementById('shortcutsModal');
+document.getElementById('shortcutsClose').addEventListener('click', ()=> shortcutsModal.classList.remove('open'));
+shortcutsModal.addEventListener('click', e=>{ if(e.target===shortcutsModal) shortcutsModal.classList.remove('open'); });
+
+// ── ESC CLOSES OPEN MODALS ──
+document.addEventListener('keydown', e=>{
+  if(e.key !== 'Escape') return;
+  if(blogModal.classList.contains('open')) closeBlogReader();
+  document.querySelectorAll('.modal-ov.open').forEach(m=>m.classList.remove('open'));
+});
+
+// ── GLOBAL KEY SHORTCUTS ──
+document.addEventListener('keydown', e=>{
+  const tag = (e.target.tagName||'').toLowerCase();
+  if(tag==='input'||tag==='textarea'||e.metaKey||e.ctrlKey||e.altKey) return;
+  if(e.key==='?'){ e.preventDefault(); shortcutsModal.classList.toggle('open'); }
+  if(e.key.toLowerCase()==='t'){ e.preventDefault(); setTheme(html.getAttribute('data-theme')==='light'?'dark':'light'); }
+});
+
+// ── AMBIENT HEARTBEAT SOUND (Web Audio API) ──
+(function(){
+  let ctx = null, soundOn = false, soundTimer = null;
+  const btn = document.getElementById('soundToggle');
+  const label = document.getElementById('soundLabel');
+  const icon = document.getElementById('soundIcon');
+
+  const MUTE_SVG = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>`;
+  const ON_SVG   = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>`;
+
+  function thump(time, freq, duration, gain){
+    const osc = ctx.createOscillator();
+    const env = ctx.createGain();
+    osc.connect(env); env.connect(ctx.destination);
+    osc.frequency.setValueAtTime(freq, time);
+    osc.frequency.exponentialRampToValueAtTime(freq * 0.5, time + duration);
+    env.gain.setValueAtTime(0, time);
+    env.gain.linearRampToValueAtTime(gain, time + 0.01);
+    env.gain.exponentialRampToValueAtTime(0.001, time + duration);
+    osc.start(time); osc.stop(time + duration);
+  }
+
+  function schedSound(){
+    if(!soundOn) return;
+    const now = ctx.currentTime;
+    const CYCLE = 0.833; // 72 BPM
+    // lub — low thump
+    thump(now,       55, 0.12, 0.28);
+    // dub — slightly higher, softer
+    thump(now + 0.15, 48, 0.10, 0.18);
+    soundTimer = setTimeout(schedSound, CYCLE * 1000);
+  }
+
+  function updateUI(){
+    label.textContent = soundOn ? 'Sound on' : 'Heartbeat sound';
+    icon.innerHTML = soundOn ? ON_SVG : MUTE_SVG;
+  }
+
+  btn.addEventListener('click', async ()=>{
+    if(!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if(ctx.state === 'suspended') await ctx.resume();
+    soundOn = !soundOn;
+    updateUI();
+    if(soundOn) schedSound();
+    else { clearTimeout(soundTimer); }
+  });
+})();
+
+// ── EASTER EGG: type "vineet" anywhere ──
+(function(){
+  const SECRET = 'vineet';
+  let buffer = '';
+  let bufTimer = null;
+  document.addEventListener('keydown', e=>{
+    const tag = (e.target.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea') return;
+    if(e.key.length !== 1) return;
+    clearTimeout(bufTimer);
+    buffer += e.key.toLowerCase();
+    if(buffer.length > SECRET.length) buffer = buffer.slice(-SECRET.length);
+    bufTimer = setTimeout(()=>{ buffer = ''; }, 1500);
+    if(buffer === SECRET){ buffer = ''; triggerEasterEgg(); }
+  });
+
+  function triggerEasterEgg(){
+    const msg = document.createElement('div');
+    msg.id = 'konamiMsg';
+    msg.textContent = 'You found it. Welcome to the portfolio — there is nothing else hidden here.';
+    document.body.appendChild(msg);
+    setTimeout(()=>msg.classList.add('show'), 10);
+    setTimeout(()=>{ msg.classList.remove('show'); setTimeout(()=>msg.remove(), 500); }, 3200);
+
+    const count = 24;
+    for(let i=0;i<count;i++){
+      setTimeout(()=>{
+        const h = document.createElement('span');
+        h.className = 'konami-heart';
+        h.textContent = '🫀';
+        h.style.left = Math.random()*100 + 'vw';
+        h.style.animationDuration = (2.2 + Math.random()*1.6) + 's';
+        h.style.fontSize = (14 + Math.random()*16) + 'px';
+        document.body.appendChild(h);
+        h.addEventListener('animationend', ()=>h.remove());
+      }, i*40);
+    }
+  }
+})();
 </script>
 </body>
 </html>
