@@ -127,6 +127,13 @@
   }
   </script>
 
+  <!-- ── PWA ── -->
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Vineet%20Pratap%20Singh%22%2C%22short_name%22%3A%22psvineet%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23F7F8FA%22%2C%22theme_color%22%3A%22%234B6BFB%22%2C%22orientation%22%3A%22portrait%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fpsvineet.github.io%2Fapple-touch-icon.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="psvineet">
+
   <!-- ── FONTS ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,15 +260,10 @@
     .sections-wrap {
       height: 100vh; overflow-y: scroll;
       scroll-snap-type: y proximity;
-      scrollbar-width: auto; scrollbar-color: var(--border) transparent;
-      scrollbar-gutter: stable;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
-    .sections-wrap::-webkit-scrollbar { width: 12px; }
-    .sections-wrap::-webkit-scrollbar-track { background: var(--surface2); }
-    .sections-wrap::-webkit-scrollbar-thumb {
-      background: var(--ink3); border-radius: 6px; border: 3px solid var(--surface2);
-      min-height: 40px;
-    }
+    .sections-wrap::-webkit-scrollbar { display: none; width: 0; }
 
     .section {
       min-height: 100vh; scroll-snap-align: start; scroll-snap-stop: normal;
@@ -708,25 +710,103 @@
     .section-dot:hover { transform:scale(1.4); border-color:var(--accent); }
     .section-dot.active { background:var(--accent); border-color:var(--accent); transform:scale(1.2); }
 
-    /* ── RESPONSIVE ── */
+    /* ── RESPONSIVE — MOBILE ── */
     @media(max-width:768px){
-      .sidebar{display:none;}
-      .main{margin-left:0;}
-      #pgbar{left:0;}
-      .section{padding:48px 20px 96px; align-items:flex-start;}
-      .section-inner{max-width:100%;}
-      .pill-nav{display:flex;}
-      .hero-name{font-size:clamp(30px,9vw,48px);}
-      .sk-grid{grid-template-columns:1fr;}
-      .sections-wrap{scrollbar-width:none; -ms-overflow-style:none;}
-      .sections-wrap::-webkit-scrollbar{display:none; width:0; height:0;}
-      .section-dots{right:10px; gap:8px;}
-      .scroll-hint{display:none;}
-      #cursorHeart{display:none !important;}
-      *, *::before, *::after { cursor:auto !important; }
-      a, button, [role="button"], .pill-nav-item, .section-dot, input, textarea, select, label { cursor:pointer !important; }
-      input, textarea { cursor:text !important; }
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      #pgbar { left: 0; }
+      .section { padding: 56px 20px 96px; align-items: flex-start; }
+      .section-inner { max-width: 100%; }
+      .pill-nav { display: flex; }
+      .hero-name { font-size: clamp(30px,9vw,48px); }
+      .sk-grid { grid-template-columns: 1fr; }
+      .sections-wrap { scrollbar-width: none; -ms-overflow-style: none; }
+      .sections-wrap::-webkit-scrollbar { display: none; width: 0; height: 0; }
+      #cursorHeart { display: none !important; }
+      *, *::before, *::after { cursor: auto !important; }
+      a, button, [role="button"], .pill-nav-item, .section-dot, input, textarea, select, label { cursor: pointer !important; }
+      input, textarea { cursor: text !important; }
+
+      /* Hide ALL desktop hints/dots — no visual clutter */
+      .scroll-hint { display: none !important; }
+      .scroll-hint-shortcut { display: none !important; }
+      .section-dots { display: none !important; }
+      .swipe-arrow { display: none !important; }
+
+      /* Section entry animation on mobile: opacity-only, NO translateY/X
+         (avoids fighting with native vertical scroll) */
+      .section-inner {
+        opacity: 0;
+        transform: none !important;
+        transition: opacity .4s ease;
+      }
+      .section-inner.visible {
+        opacity: 1;
+        transform: none !important;
+      }
+
+      /* ── BLOG READER: fullscreen on mobile ── */
+      #blogModal { padding: 0 !important; align-items: stretch !important; justify-content: stretch !important; }
+      .reader-box {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        margin: 0 !important;
+      }
+      .reader-close {
+        top: 10px !important; right: 10px !important;
+        width: 36px !important; height: 36px !important;
+        border-radius: 50% !important;
+        background: var(--surface) !important;
+        border: 1.5px solid var(--border) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,.15) !important;
+        z-index: 10 !important;
+      }
+      .reader-close svg { width: 16px !important; height: 16px !important; }
+      .reader-head { padding: 14px 52px 8px 16px !important; }
+      .reader-frame-wrap { margin: 0 8px 8px !important; border-radius: 8px !important; }
+      .reader-footer { padding: 8px 14px !important; }
     }
+    /* ── BLOG FILTER BAR ── */
+    .blog-filter {
+      display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;
+    }
+    .blog-filter-input {
+      flex: 1; min-width: 140px;
+      padding: 7px 12px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--surface2);
+      font-family: 'Inter', sans-serif; font-size: 12.5px; color: var(--ink);
+      outline: none; transition: border-color .15s, background .15s;
+    }
+    .blog-filter-input::placeholder { color: var(--ink3); }
+    .blog-filter-input:focus { border-color: var(--accent); background: var(--surface); }
+    .blog-filter-select {
+      padding: 7px 10px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--surface2);
+      font-family: 'Inter', sans-serif; font-size: 12px; color: var(--ink);
+      outline: none; cursor: pointer; transition: border-color .15s;
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238A8E9A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 9px center;
+      padding-right: 26px;
+    }
+    .blog-filter-select:focus { border-color: var(--accent); }
+    .blog-filter-clear {
+      padding: 7px 11px; border-radius: 8px; border: 1px solid var(--border);
+      background: none; font-size: 11.5px; font-weight: 600; color: var(--ink3);
+      cursor: pointer; transition: border-color .15s, color .15s, background .15s;
+      white-space: nowrap; display: none;
+    }
+    .blog-filter-clear.visible { display: block; }
+    .blog-filter-clear:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .blog-no-results {
+      font-size: 13px; color: var(--ink3); padding: 24px 0; text-align: center; display: none;
+    }
+    .blog-no-results.visible { display: block; }
+
     @media print{
       body::before{content:"Printing disabled.";position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fff;font-size:18pt;z-index:9999;}
       body>*{display:none!important;}
@@ -1050,6 +1130,14 @@
       <div class="section-inner">
         <div class="sec-label">Blog</div>
         <p class="sec-intro">Notes and write-ups from labs and CTFs — an honest record of the process, not polished tutorials.</p>
+        <div class="blog-filter">
+          <input class="blog-filter-input" id="blogSearch" type="text" placeholder="Search by title…" autocomplete="off" spellcheck="false">
+          <select class="blog-filter-select" id="blogDateFilter">
+            <option value="">All dates</option>
+          </select>
+          <button class="blog-filter-clear" id="blogFilterClear">Clear</button>
+        </div>
+        <div class="blog-no-results" id="blogNoResults">No posts match your filter.</div>
         <div class="blog-list" id="blogList"></div>
       </div>
     </section>
@@ -1410,15 +1498,56 @@ const blogPosts = [
   }
 ];
 
-function blogHTML(list){
-  return list.map((b,i)=>`<div class="blog-card">
+function blogHTML(list, allList){
+  return list.map(b=>{
+    const i = allList.indexOf(b);
+    return `<div class="blog-card">
     <span class="blog-date">${b.d}</span>
     <a class="blog-title" href="${b.l}" data-blog-index="${i}">${b.t}</a>
     <div class="blog-desc">${b.excerpt}</div>
     <a class="blog-read" href="${b.l}" data-blog-index="${i}">Read full post ↗</a>
-  </div>`).join('');
+  </div>`;
+  }).join('');
 }
-document.getElementById('blogList').innerHTML = blogHTML(blogPosts);
+document.getElementById('blogList').innerHTML = blogHTML(blogPosts, blogPosts);
+
+// ── BLOG FILTER ──
+(function(){
+  const searchEl  = document.getElementById('blogSearch');
+  const dateEl    = document.getElementById('blogDateFilter');
+  const clearBtn  = document.getElementById('blogFilterClear');
+  const listEl    = document.getElementById('blogList');
+  const noRes     = document.getElementById('blogNoResults');
+
+  // Populate date dropdown from unique dates
+  const uniqueDates = [...new Set(blogPosts.map(b=>b.d))];
+  uniqueDates.forEach(d=>{
+    const opt = document.createElement('option');
+    opt.value = d; opt.textContent = d;
+    dateEl.appendChild(opt);
+  });
+
+  function applyFilter(){
+    const q    = searchEl.value.trim().toLowerCase();
+    const date = dateEl.value;
+    const filtered = blogPosts.filter(b=>{
+      const matchName = !q || b.t.toLowerCase().includes(q);
+      const matchDate = !date || b.d === date;
+      return matchName && matchDate;
+    });
+    listEl.innerHTML = blogHTML(filtered, blogPosts);
+    noRes.classList.toggle('visible', filtered.length === 0);
+    clearBtn.classList.toggle('visible', q !== '' || date !== '');
+  }
+
+  searchEl.addEventListener('input', applyFilter);
+  dateEl.addEventListener('change', applyFilter);
+  clearBtn.addEventListener('click', ()=>{
+    searchEl.value = '';
+    dateEl.value = '';
+    applyFilter();
+  });
+})();
 
 // ── BLOG READER MODAL ──
 const blogModal = document.getElementById('blogModal');
@@ -2112,6 +2241,152 @@ document.addEventListener('keydown', e=>{
     if(soundOn) schedSound();
     else { clearTimeout(soundTimer); }
   });
+})();
+
+// ── MOBILE SWIPE NAVIGATION ──
+// Strategy: keep native vertical scroll fully intact.
+// Only intercept a CLEAR horizontal swipe (dx >> dy, fast enough).
+// On mobile, section-inner animation uses opacity only (no translateX/Y).
+(function(){
+  const isMobile = () => window.matchMedia('(max-width:768px)').matches;
+  if(!isMobile()) return;
+
+  // ── SIMPLE TEXT HINT (shows once, bottom-center, no buttons, no arrows) ──
+  if(!localStorage.getItem('swipeHintSeen')){
+    const hint = document.createElement('div');
+    hint.style.cssText = [
+      'position:fixed','bottom:76px','left:50%',
+      'transform:translateX(-50%)',
+      'font-size:11px','font-family:Inter,sans-serif',
+      'color:var(--ink3)','background:var(--surface)',
+      'border:1px solid var(--border)',
+      'padding:5px 13px','border-radius:20px',
+      'z-index:8000','pointer-events:none',
+      'opacity:0','transition:opacity .4s ease',
+      'white-space:nowrap','letter-spacing:.02em'
+    ].join(';');
+    hint.textContent = '← swipe to switch sections →';
+    document.body.appendChild(hint);
+    requestAnimationFrame(()=>{
+      hint.style.opacity = '1';
+      setTimeout(()=>{
+        hint.style.opacity = '0';
+        setTimeout(()=> hint.remove(), 450);
+        localStorage.setItem('swipeHintSeen','1');
+      }, 2800);
+    });
+  }
+
+  // ── TOUCH STATE ──
+  let startX = 0, startY = 0, startTime = 0;
+  let startScrollTop = 0; // capture where vertical scroll is at touchstart
+  let decided = false;    // have we decided horizontal vs vertical for this touch?
+  let isHoriz = false;    // is this touch horizontal?
+
+  wrap.addEventListener('touchstart', e => {
+    if(document.getElementById('blogModal').classList.contains('open')) return;
+    startX        = e.touches[0].clientX;
+    startY        = e.touches[0].clientY;
+    startTime     = Date.now();
+    startScrollTop= wrap.scrollTop;
+    decided       = false;
+    isHoriz       = false;
+  }, {passive: true});
+
+  wrap.addEventListener('touchmove', e => {
+    if(document.getElementById('blogModal').classList.contains('open')) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    const adx = Math.abs(dx), ady = Math.abs(dy);
+
+    if(!decided && (adx > 8 || ady > 8)){
+      decided = true;
+      // Only treat as horizontal if dx is clearly dominant (2:1 ratio, min 10px)
+      isHoriz = adx > ady * 2 && adx > 10;
+    }
+
+    if(isHoriz){
+      // Block native scroll only when we're sure it's a horizontal swipe
+      e.preventDefault();
+    }
+    // vertical: do nothing — native scroll handles it
+  }, {passive: false});
+
+  wrap.addEventListener('touchend', e => {
+    if(document.getElementById('blogModal').classList.contains('open')) return;
+    if(!isHoriz) return; // not a horizontal swipe — ignore
+
+    const dx  = e.changedTouches[0].clientX - startX;
+    const dt  = Date.now() - startTime;
+    const adx = Math.abs(dx);
+    const vel = adx / dt; // px/ms
+
+    // Require either a decent distance (55px) OR a fast flick (0.4px/ms)
+    if(adx < 55 && vel < 0.4) return;
+
+    // Only navigate if we haven't scrolled vertically much during this gesture
+    const scrollDrift = Math.abs(wrap.scrollTop - startScrollTop);
+    if(scrollDrift > 30) return;
+
+    const dir = dx < 0 ? 1 : -1; // left swipe = next, right swipe = prev
+    const cur = getCurrentSectionIndex();
+    const next = cur + dir;
+    if(next < 0 || next >= sectionEls.length) return;
+
+    // Scroll wrap to the next section top (vertical position)
+    wrap.scrollTo({top: sectionEls[next].offsetTop, behavior: 'smooth'});
+
+    isHoriz = false;
+  }, {passive: true});
+
+  // Resize: nothing to undo since we never disabled overflow
+  window.addEventListener('resize', ()=>{
+    if(!isMobile()){
+      // restore desktop defaults if resized out of mobile
+    }
+  });
+})();
+
+// ── PWA SERVICE WORKER (inline via Blob) ──
+(function(){
+  if(!('serviceWorker' in navigator)) return;
+  const SW_SRC = `
+const CACHE = 'psvineet-v1';
+const PRECACHE = ['/'];
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting())
+  );
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+self.addEventListener('fetch', e => {
+  if(e.request.method !== 'GET') return;
+  const url = new URL(e.request.url);
+  // Network-first for same-origin HTML, cache-first for assets
+  if(url.origin === location.origin){
+    e.respondWith(
+      fetch(e.request)
+        .then(res => {
+          const clone = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+          return res;
+        })
+        .catch(() => caches.match(e.request))
+    );
+  }
+});
+`;
+  const blob = new Blob([SW_SRC], {type:'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, {scope:'/'})
+    .then(reg => console.log('[PWA] Service worker registered:', reg.scope))
+    .catch(err => console.warn('[PWA] SW registration failed (localhost/iframe normal):', err));
 })();
 
 // ── EASTER EGG: type "vineet" anywhere ──
