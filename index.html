@@ -1789,8 +1789,8 @@ async function fetchGH(){
     const r=await fetch('https://api.github.com/users/psvineet/repos?sort=updated&per_page=100');
     if(!r.ok) return;
     const repos=await r.json();
-    // cyber-attacks is skipped here — it's already featured as a full write-up in the Blog section.
-    const skip=['drxstore-basic','syniq-release','syniq-releases','js.org','psvineet','cyber-attacks'];
+    // cyber-blog is skipped here — it's already featured as a full write-up in the Blog section.
+    const skip=['drxstore-basic','syniq-release','syniq-releases','js.org','psvineet','cyber-blog'];
     const git=repos.filter(r=>!r.fork&&!skip.some(s=>r.name.toLowerCase().includes(s)))
       .map(r=>({t:r.name,d:r.description||'Open-source repository.',l:r.html_url,lang:r.language||'?',topics:r.topics||[]}));
     const known=manualProjects.map(p=>p.t.toLowerCase());
@@ -1855,13 +1855,19 @@ const blogPosts = [
     d:'Aug 2026',
     t:'Hacker Holidays 2026 — The Byte Lotus Writeups',
     excerpt:'Completed all 14 rooms of TryHackMe Hacker Holidays 2026 — AI security, web enumeration, cloud security, PCAP/network analysis, digital forensics, OSINT, cryptography, and malware analysis.',
-    l:'https://admin.xo.je/Cyber%20Security/Hacker%20Holiday%202026/index.html'
+    l:'https://psvineet.me/hh26/Cyber%20Security/Hacker%20Holiday%202026'
   },
   {
     d:'Aug 2026',
     t:'Common Cyber Attacks — What They Are & How to Stay Safe',
     excerpt:'A field-guide style breakdown of the attack types people actually run into: social engineering, phishing, malware and ransomware, SQL injection and XSS, DDoS, password attacks, and newer threats like SIM swapping and AI voice cloning. Each section pairs the mechanics with practical defences — MFA, password managers, the 3-2-1 backup rule, and patching discipline. ~23 min read.',
-    l:'https://psvineet.me/cyber-attacks'
+    l:'https://psvineet.me/cyber-blog/cca'
+  }
+  {
+    d:'Aug 2026',
+    t:'Common Cyber Attacks — What They Are & How to Stay Safe',
+    excerpt:'A field-guide style breakdown of the attack types people actually run into: social engineering, phishing, malware and ransomware, SQL injection and XSS, DDoS, password attacks, and newer threats like SIM swapping and AI voice cloning. Each section pairs the mechanics with practical defences — MFA, password managers, the 3-2-1 backup rule, and patching discipline. ~23 min read.',
+    l:'https://psvineet.me/cyber-blog/ptfw'
   }
 ];
 
