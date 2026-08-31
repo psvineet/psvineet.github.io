@@ -269,11 +269,15 @@
 
     .section {
       min-height: 100vh; scroll-snap-align: start; scroll-snap-stop: normal;
-      display: flex; align-items: flex-start; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 64px 56px; border-bottom: 1px solid var(--border); position: relative;
       box-sizing: border-box;
     }
-    .section-inner { margin: auto 0; }
+    /* Short viewports (small-height phones, landscape, etc.) — top align
+       instead of centering, so content never sits under the bottom bar */
+    @media (max-height: 700px) {
+      .section { align-items: flex-start; padding-top: 40px; }
+    }
     .section-inner {
       width: 100%; max-width: 720px;
       opacity: 0; transform: translateY(18px);
@@ -810,13 +814,35 @@
     .section-dot:hover { transform:scale(1.4); border-color:var(--accent); }
     .section-dot.active { background:var(--accent); border-color:var(--accent); transform:scale(1.2); }
 
+    /* ── RESPONSIVE — TABLET PORTRAIT (e.g. iPad portrait) ──
+       Wide enough that phone font/padding rules feel cramped, but still
+       needs the bottom pill-nav + top-aligned content instead of the
+       desktop sidebar. Handled separately from the <768px phone rules
+       below so it doesn't inherit phone-only sizing by accident. */
+    @media (min-width:769px) and (max-width:1024px) and (orientation:portrait){
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      #pgbar { left: 0; }
+      .section {
+        align-items: flex-start;
+        padding: 72px 48px calc(120px + env(safe-area-inset-bottom));
+      }
+      .section-inner { max-width: 640px; margin: 0 auto; }
+      .pill-nav { display: flex; }
+      .section-dots { display: none !important; }
+      .scroll-hint { display: none !important; }
+    }
+
     /* ── RESPONSIVE — MOBILE ── */
     @media(max-width:768px){
       .sidebar { display: none; }
       .main { margin-left: 0; }
       #pgbar { left: 0; }
-      .section { padding: 56px 20px 96px; align-items: flex-start; }
-      .section-inner { max-width: 100%; }
+      .section {
+        padding: 56px 20px calc(96px + env(safe-area-inset-bottom));
+        align-items: flex-start;
+      }
+      .section-inner { max-width: 100%; margin: auto 0; }
       .pill-nav { display: flex; }
       .hero-name { font-size: clamp(30px,9vw,48px); }
       .sk-grid { grid-template-columns: 1fr; }
