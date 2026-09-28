@@ -1322,7 +1322,7 @@
   <div class="modal-box">
     <h3>Send a message</h3>
     <div class="email-copy-row">
-      <span id="emailAddrText">connect.vps@icloud.com</span>
+      <span id="emailAddrText">ci.vps@proton.me</span>
       <button class="copy-btn" id="copyEmailBtn" title="Copy email address" aria-label="Copy email address">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
@@ -2055,7 +2055,7 @@ emailModal.addEventListener('click',e=>{if(e.target===emailModal)emailModal.clas
 document.getElementById('mSend').addEventListener('click',()=>{
   const s=encodeURIComponent(document.getElementById('mSub').value||'');
   const b=encodeURIComponent(document.getElementById('mBod').value||'');
-  window.location.href=`mailto:connect.vps@icloud.com?subject=${s}&body=${b}`;
+  window.location.href=`mailto:ci.vps@proton.me?subject=${s}&body=${b}`;
   emailModal.classList.remove('open');
 });
 
