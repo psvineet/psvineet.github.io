@@ -118,10 +118,6 @@ input,textarea,select,button{background-color:revert;color:revert;border-color:r
 
 /* PAGE AREA */
 #pagearea{flex:1;overflow:hidden;position:relative;perspective:2400px}
-.tap{position:absolute;top:0;bottom:0;z-index:5;cursor:pointer;pointer-events:none}
-#tap-l{left:0;width:44px;pointer-events:all}
-#tap-r{right:0;width:44px;pointer-events:all}
-#tap-c{display:none}
 
 /* PAGES */
 .page{position:absolute;inset:0;background:var(--page);overflow:hidden;backface-visibility:hidden;z-index:2}
@@ -529,6 +525,111 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
   .stat,.proj,.cert,.rc,.quote,.cg-item,#menu-panel{background:var(--page2)!important}
   #topbar,#botbar,#desktop-sidebar{background:var(--chrome)!important}
 }
+
+/* ══ LAYOUT REFINEMENT ══ */
+:root{--r:14px;--gut:20px;--gap:12px}
+*{-webkit-tap-highlight-color:transparent}
+.tap{display:none!important}
+#pagearea{perspective:none}
+.page-inner{padding-left:var(--gut);padding-right:var(--gut);padding-bottom:36px}
+
+/* content rhythm: one gap for everything */
+.content{display:grid;gap:var(--gap);align-content:start;padding-top:22px}
+.content>*{margin:0!important}
+.proj-grid{display:contents}
+.ch-h1{font-size:clamp(24px,7vw,30px);line-height:1.12}
+.ch-h1-sub{margin-top:-6px!important;font-size:13.5px;line-height:1.5}
+.lede{font-size:15px;line-height:1.7}
+.lede::first-letter{float:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;margin:0}
+p{font-size:15px;line-height:1.7}
+.s-div{margin:10px 0 0!important}
+.tags{gap:8px}
+.tag{padding:5px 12px}
+
+/* cards: one radius, one padding, one border */
+.proj,.cert,.rc,.tl-item,.blog,.sk-sec,.info,.quote{
+  padding:14px 16px!important;border:1px solid var(--glass-b)!important;border-radius:var(--r)!important;
+  background:var(--glass)!important;box-shadow:var(--glass-sh)}
+.cert,.tl-item,.quote{border-left:3px solid var(--accent)!important}
+.tl-item::before{display:none}
+.stat{padding:16px 10px;border-radius:var(--r)!important}
+.stat-v{font-size:24px}
+.stats{gap:var(--gap);margin:0!important}
+.sk-head{margin-bottom:12px}
+.quote p{font-size:13.5px}
+.cert-n,.blog-t,.rc-title{font-size:14.5px;line-height:1.35}
+.cert-i,.blog-b{font-size:13px;line-height:1.6}
+.info{padding:2px 16px!important}
+.info .ir{padding:12px 0}
+.pg-cols,.col-a,.col-b{display:grid;gap:var(--gap);align-content:start}
+.pg-cols p,.pg-cols .stats,.pg-cols .quote{margin:0!important}
+
+/* project card: name row, meta row, description */
+.proj{gap:12px;align-items:flex-start}
+.proj-ph{width:40px;height:40px;border-radius:10px}
+.proj-top{flex-wrap:wrap;gap:4px 8px;margin-bottom:6px;align-items:center}
+.proj-name{flex:1 1 100%;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}
+.proj-lang{order:2;padding:2px 9px;font-size:10.5px}
+.proj-top>span[style*="margin-left:auto"]{order:3}
+.proj-desc{font-size:13px;line-height:1.6}
+
+.nm-br,.hint-d{display:none}
+
+@media(max-width:899px){
+  #topbar{position:relative;height:calc(52px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 12px 0}
+  #tb-title{position:absolute;left:50%;top:env(safe-area-inset-top,0px);transform:translateX(-50%);
+    height:52px;line-height:52px;max-width:calc(100% - 160px);padding:0;font-size:14px;font-weight:700}
+  .th-pills{margin-left:auto;gap:2px}
+  .tp{font-size:0;gap:0;width:30px;height:26px;padding:0;justify-content:center}
+  .tp-dot{width:11px;height:11px}
+  #botbar{height:calc(46px + env(safe-area-inset-bottom,0px));padding:0 var(--gut) env(safe-area-inset-bottom,0px);gap:14px}
+  #prog-wrap{height:6px;border-radius:3px}
+  #prog-fill{border-radius:3px}
+  #page-num{font-size:12px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+
+  /* title page */
+  #pg-0 .page-inner{overflow-y:auto!important;overflow-x:hidden!important}
+  .t-wrap{height:auto!important;min-height:100%}
+  .t-main{padding:28px var(--gut) 24px!important}
+  .nm-wrap{font-size:clamp(44px,17vw,84px)!important;line-height:.98!important;margin-bottom:18px!important}
+  .nm-br{display:inline}
+  .t-stats{width:100%!important;display:grid!important;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:10px!important;
+    text-align:center;padding:14px 8px!important;align-items:center}
+  .t-stats>div:not([style*="width:1px"]){min-width:0}
+  .t-stats>div>div:last-child{text-wrap:balance}
+  .t-cta{display:grid!important;grid-template-columns:1fr 1fr;gap:8px!important}
+  .t-cta>a{justify-content:center;padding:12px 10px!important;font-size:13px!important;border-radius:10px!important}
+  .t-cta>a:first-child{grid-column:1/-1}
+  .t-foot{flex-direction:column;align-items:flex-start!important;gap:4px!important;padding:12px var(--gut)!important}
+
+  /* contact page */
+  #pg-10 [style*="clamp(24px,5vw,52px)"]{padding-left:var(--gut)!important;padding-right:var(--gut)!important}
+  .ct-cta{display:grid!important;grid-template-columns:1fr 1fr;gap:8px!important}
+  .ct-cta>a{justify-content:center;padding:12px 10px!important}
+  .ct-cta>a:first-child{grid-column:1/-1}
+  .ct-grid>a:last-child{grid-column:1/-1}
+}
+
+@media(min-width:900px){
+  .hint-m{display:none}.hint-d{display:inline}
+  .page-inner{padding-left:44px;padding-right:44px;padding-bottom:64px}
+  .content{padding-top:40px;gap:16px}
+  .ch-h1-sub{margin-bottom:4px!important}
+  .proj,.cert,.rc,.blog,.sk-sec,.tl-item{padding:18px 20px!important}
+  .info{padding:4px 20px!important}
+  #pg-4 .content,#pg-5 .content,#pg-6 .content,#pg-7 .content,#pg-8 .content,#pg-9 .content{column-gap:16px;row-gap:16px}
+  .lede+.blog{grid-column:1/-1}
+  .pg-cols{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:start}
+  .col-a,.col-b{gap:16px}
+  #pg-2 .content{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #pg-3 .content{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .content>.pg-cols{grid-column:1/-1}
+  .content .tl-item,.content .sk-sec{height:100%}
+  .ct-cta{display:flex!important}
+  .ct-grid{grid-template-columns:repeat(6,1fr)!important}
+  .ct-grid>a{grid-column:span 2}
+  .ct-grid>a:nth-child(n+4){grid-column:span 3}
+}
 </style>
 </head>
 <body>
@@ -601,20 +702,17 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
   </div>
 
   <div id="pagearea">
-    <div class="tap" id="tap-l" onclick="turn(-1)"></div>
-    <div class="tap" id="tap-r" onclick="turn(1)"></div>
-    <div class="tap" id="tap-c" onclick="toggleMenu()"></div>
 
     <!-- PG 0: TITLE -->
     <div class="page" id="pg-0">
       <div class="page-inner" style="padding:0;overflow:hidden">
-        <div style="height:100%;display:flex;flex-direction:column;position:relative;background:var(--page);overflow:hidden">
+        <div class="t-wrap" style="height:100%;display:flex;flex-direction:column;position:relative;background:var(--page);overflow:hidden">
 
           <!-- Background decorative letterform -->
           <div aria-hidden="true" style="position:absolute;right:-10px;bottom:-30px;font-size:min(55vw,420px);font-weight:900;letter-spacing:-.08em;color:var(--line);line-height:1;pointer-events:none;user-select:none;z-index:0;opacity:.35;line-height:.85">S</div>
 
           <!-- Main content -->
-          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,6vw,64px) clamp(28px,6vw,64px) 0;position:relative;z-index:1;min-height:0">
+          <div class="t-main" style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,6vw,64px) clamp(28px,6vw,64px) 0;position:relative;z-index:1;min-height:0">
 
             <!-- Eyebrow label — terminal typewriter -->
             <div style="font-size:11px;font-weight:600;font-family:'JetBrains Mono','Fira Mono','Courier New',monospace;color:var(--ink3);margin-bottom:clamp(18px,3vw,30px);display:flex;align-items:center;gap:0;white-space:nowrap;overflow:hidden;min-width:0">
@@ -624,7 +722,7 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
 
             <!-- FULL NAME — big, uniform, one weight, each line fits its row -->
             <h1 class="nm-wrap" aria-label="Vineet Pratap Singh (psvineet)" style="margin-bottom:clamp(16px,2.5vw,26px);font-size:clamp(36px,11vw,72px);font-weight:900;letter-spacing:-.04em;line-height:1.02;white-space:nowrap">
-              <span class="nm-a" style="color:var(--ink);display:block">Vineet Pratap</span>
+              <span class="nm-a" style="color:var(--ink);display:block">Vineet<br class="nm-br"> Pratap</span>
               <span class="nm-b" style="color:var(--accent);display:block">Singh</span>
             </h1>
 
@@ -634,7 +732,7 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
             </div>
 
             <!-- Stats row -->
-            <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,2.5vw,28px);align-items:center;margin-bottom:clamp(20px,3.5vw,34px);padding:clamp(12px,2vw,18px) clamp(14px,2.5vw,22px);background:var(--page2);border:1px solid var(--line);border-radius:10px;width:fit-content;max-width:100%">
+            <div class="t-stats" style="display:flex;flex-wrap:wrap;gap:clamp(12px,2.5vw,28px);align-items:center;margin-bottom:clamp(20px,3.5vw,34px);padding:clamp(12px,2vw,18px) clamp(14px,2.5vw,22px);background:var(--page2);border:1px solid var(--line);border-radius:10px;width:fit-content;max-width:100%">
               <div>
                 <div style="font-size:clamp(18px,3vw,26px);font-weight:900;color:var(--accent);letter-spacing:-.03em;line-height:1">Top 1%</div>
                 <div style="font-size:10px;color:var(--ink4);font-weight:600;margin-top:2px;letter-spacing:.04em">TryHackMe Global</div>
@@ -652,7 +750,7 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
             </div>
 
             <!-- CTA links -->
-            <div style="display:flex;flex-wrap:wrap;gap:7px">
+            <div class="t-cta" style="display:flex;flex-wrap:wrap;gap:7px">
               <a href="https://github.com/psvineet" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:var(--ink);color:var(--page);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:7px;text-decoration:none">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 GitHub
@@ -662,18 +760,6 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
               <a href="https://psvineet.me/cyber-blog/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:var(--tag-bg);color:var(--tag-ink);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:7px;text-decoration:none;border:1px solid rgba(200,119,58,.18)">Blog</a>
               <a href="mailto:ci.vps@proton.me" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:var(--tag-bg);color:var(--tag-ink);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:7px;text-decoration:none;border:1px solid rgba(200,119,58,.18)">Email</a>
             </div>
-          </div>
-
-          <!-- Footer strip -->
-          <div style="flex-shrink:0;padding:10px clamp(28px,6vw,64px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;background:var(--page2)">
-            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-              <span style="font-size:10.5px;color:var(--ink4);font-weight:500">AKTU · Lucknow</span>
-              <span style="width:3px;height:3px;border-radius:50%;background:var(--line)"></span>
-              <span style="font-size:10.5px;color:var(--ink4);font-weight:500">B.Pharm 2024–2028</span>
-              <span style="width:3px;height:3px;border-radius:50%;background:var(--line)"></span>
-              <span style="font-size:10.5px;color:var(--ink4);font-weight:500">India</span>
-            </div>
-            <div style="font-size:10px;color:var(--ink4);letter-spacing:.06em">swipe, use ← → keys, or the menu</div>
           </div>
         </div>
       </div>
@@ -686,21 +772,29 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
         <div class="content">
           <div class="ch-h1">About Me</div>
           <div class="ch-h1-sub">A developer who chose pharmacy — and codes anyway</div>
+          <div class="pg-cols">
+<div class="col-a">
           <p class="lede">I'm a third-year B.Pharm student at AKTU, Lucknow — but the terminal is always open. I build open-source tools that sit at the crossroads of healthcare and security, because those two worlds share more problems than they usually admit.</p>
           <p>My background spans pharmaceutical science, self-taught web development, and active cybersecurity practice. I've contributed to academic research on cancer targets using in-silico methods, built pharmacy management systems from scratch, and placed in the top 1% of TryHackMe's global learner base.</p>
           <p>Everything I build is zero-dependency, self-hosted, and designed to work in the real world — not just in a demo.</p>
+          <div class="quote"><p>"I don't think in silos. Pharmacokinetics and network enumeration both follow patterns — find the system, understand the flow, find the weakness."</p></div>
+</div>
+<div class="col-b">
           <div class="stats">
             <div class="stat"><div class="stat-v">Top 1%</div><div class="stat-l">TryHackMe Global</div></div>
             <div class="stat"><div class="stat-v">25+</div><div class="stat-l">Open Source Projects</div></div>
             <div class="stat"><div class="stat-v">14</div><div class="stat-l">Certificates Earned</div></div>
             <div class="stat"><div class="stat-v">3rd Yr</div><div class="stat-l">B.Pharm at AKTU</div></div>
           </div>
-          <div class="quote"><p>"I don't think in silos. Pharmacokinetics and network enumeration both follow patterns — find the system, understand the flow, find the weakness."</p></div>
+<div class="info">
           <div class="ir"><span class="ir-k">Location</span><span class="ir-v">Lucknow, India</span></div>
           <div class="ir"><span class="ir-k">University</span><span class="ir-v">AKTU, Lucknow</span></div>
           <div class="ir"><span class="ir-k">Program</span><span class="ir-v">B.Pharm (2024–2028)</span></div>
           <div class="ir"><span class="ir-k">Year</span><span class="ir-v">Third Year — In Progress</span></div>
           <div class="ir"><span class="ir-k">Handle</span><span class="ir-v">psvineet (all platforms)</span></div>
+</div>
+</div>
+</div>
         </div>
       </div>
     </div>
@@ -948,7 +1042,7 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
           </div>
 
           <!-- Primary CTA row -->
-          <div style="padding:0 clamp(24px,5vw,52px);display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;flex-shrink:0">
+          <div class="ct-cta" style="padding:0 clamp(24px,5vw,52px);display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;flex-shrink:0">
             <a href="mailto:ci.vps@proton.me" style="display:inline-flex;align-items:center;gap:7px;padding:10px 18px;background:var(--ink);color:var(--page);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:8px;text-decoration:none;transition:.18s">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
               ci.vps@proton.me
@@ -966,7 +1060,7 @@ body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
           <!-- Links grid -->
           <div style="padding:0 clamp(24px,5vw,52px);flex:1;min-height:0">
             <div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);margin-bottom:12px">All Platforms</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px">
+            <div class="ct-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px">
 
               <a href="https://psvineet.github.io" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--page2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:.15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
                 <div style="width:30px;height:30px;border-radius:7px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
@@ -1232,6 +1326,8 @@ function animateTurn(from,to,fwd,done){
 
   // show target, stack it behind
   toEl.hidden=false;
+  const pi=toEl.querySelector('.page-inner');
+  if(pi){pi.style.scrollBehavior='auto';pi.scrollTop=0;pi.style.scrollBehavior='';}
   toEl.style.zIndex='1';
   fromEl.style.zIndex='10';
 
@@ -1291,18 +1387,6 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='Escape')closeMenu();
 });
 
-// ── TOUCH DETECTION ──
-let isTouchDevice = false;
-window.addEventListener('touchstart',()=>{isTouchDevice=true},{once:true,passive:true});
-
-// Block tap-zone clicks on touch devices (swipe only)
-['tap-l','tap-r'].forEach(id=>{
-  const el=document.getElementById(id);
-  el.addEventListener('click',e=>{
-    if(isTouchDevice) e.stopImmediatePropagation();
-  },true);
-});
-
 // ── SWIPE — full-page, not just tap zones ──
 let tx=0,ty=0,swiping=false;
 const pa=document.getElementById('pagearea');
@@ -1318,39 +1402,6 @@ pa.addEventListener('touchend',e=>{
 },{passive:true});
 document.addEventListener('touchmove',()=>{},{passive:true});
 
-// ── GREETING TYPEWRITER ──
-(function(){
-  const el=document.getElementById('greeting-text');
-  const cur=document.getElementById('greeting-cursor');
-  if(!el) return;
-  const hour=new Date().getHours();
-  const greeting=hour>=5&&hour<12?'good morning':hour>=12&&hour<17?'good afternoon':hour>=17&&hour<21?'good evening':'still up?';
-  const prefix=`${greeting} — portfolio --since 2024 --status `;
-  const statuses=['active','breaking things on TryHackMe','Top 1% and climbing','building tools in PHP & Go','pharmacy by day, packets by night','still learning, one exploit at a time'];
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=prefix+statuses[0];return;}
-  let si=0,i=0,phase='prefix';
-  function tick(){
-    if(phase==='prefix'){
-      i++;el.textContent=prefix.slice(0,i);
-      if(i>=prefix.length){phase='type';i=0;setTimeout(tick,300);return;}
-      setTimeout(tick,35+Math.random()*45);return;
-    }
-    const status=statuses[si];
-    if(phase==='type'){
-      i++;el.textContent=prefix+status.slice(0,i);
-      if(i>=status.length){phase='hold';setTimeout(tick,2000);return;}
-      setTimeout(tick,40+Math.random()*50);return;
-    }
-    if(phase==='hold'){phase='delete';setTimeout(tick,200);return;}
-    if(phase==='delete'){
-      i--;el.textContent=prefix+status.slice(0,i);
-      if(i<=0){si=(si+1)%statuses.length;phase='type';setTimeout(tick,250);return;}
-      setTimeout(tick,20+Math.random()*25);
-    }
-  }
-  setInterval(()=>cur.style.opacity=cur.style.opacity==='0'?'1':'0',530);
-  setTimeout(tick,400);
-})();
 </script>
 </body>
 </html>
