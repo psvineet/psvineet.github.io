@@ -1415,10 +1415,6 @@ async function fetchGHRepos(){
   }catch(e){}
 }
 
-function langColor(lang){
-  const c={PHP:'#4F5D95',Python:'#3572A5',Go:'#00ADD8',JavaScript:'#f1e05a',HTML:'#e34c26','HTML/JS':'#e34c26',Shell:'#89e051',Java:'#b07219'};
-  return c[lang]||'var(--accent)';
-}
 
 function updateProjectPage(pgId, names, map, cat){
   const pg = document.getElementById(pgId);
@@ -1472,7 +1468,7 @@ function makeCard(repo, name){
   const updated = repo ? `<span style="font-size:10px;color:var(--ink4);margin-left:auto">${new Date(repo.updated_at).toLocaleDateString('en-GB',{month:'short',year:'numeric'})}</span>` : '';
   el.innerHTML=`<div class="proj-ph">${name.charAt(0).toUpperCase()}</div><div class="proj-body"><div class="proj-top">
     <span class="proj-name"><a href="${url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${name} ↗</a>${stars}</span>
-    ${lang?`<span class="proj-lang" style="border-left:2px solid ${langColor(lang)}">${lang}</span>`:''}
+    ${lang?`<span class="proj-lang">${lang}</span>`:''}
     ${updated}
   </div>
   <div class="proj-desc">${desc||'<span style="color:var(--ink4);font-style:italic">No description · view on GitHub</span>'}</div></div>`;
