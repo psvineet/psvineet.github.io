@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -8,7 +8,7 @@
 <meta name="keywords" content="psvineet, Vineet Pratap Singh, Vineet Pratap Singh portfolio, psvineet GitHub, psvineet TryHackMe, B.Pharm developer, AKTU pharmacy student, cybersecurity portfolio India, CTF writeups, TryHackMe top 1%, pharmacy software, PHP developer Lucknow, PharmI, open source security tools">
 <meta name="author" content="Vineet Pratap Singh (psvineet)">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#1e1a16">
+<meta name="theme-color" content="#080604">
 <link rel="canonical" href="https://psvineet.github.io/">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="psvineet">
@@ -630,6 +630,189 @@ p{font-size:15px;line-height:1.7}
   .ct-grid>a{grid-column:span 2}
   .ct-grid>a:nth-child(n+4){grid-column:span 3}
 }
+
+/* ══════════ V2 POLISH — page by page ══════════ */
+:root{--ease:cubic-bezier(.2,.7,.2,1)}
+:root[data-theme="dark"]{
+  --bg:#0a0806;--page:#0f0b08;--page2:#16100b;
+  --ink:#f1e8dc;--ink2:#cdbba6;--ink3:#947d68;--ink4:#6b5846;
+  --accent:#e08e4c;--accent2:#f0a468;
+  --glass:rgba(255,235,210,.045);--glass-b:rgba(255,220,180,.11);--glass-sh:0 1px 0 rgba(255,255,255,.04) inset,0 10px 30px rgba(0,0,0,.35);
+  --blob1:rgba(224,142,76,.16);--blob2:rgba(120,80,200,.12);--blob3:rgba(40,140,170,.10);
+  --tag-bg:rgba(224,142,76,.12);--tag-ink:#efa468}
+body{background:var(--bg)!important}
+body::before{opacity:.9}
+::selection{background:var(--accent);color:#fff}
+
+/* shared: chapter eyebrow, headings, rhythm */
+.content{position:relative;max-width:1100px;margin:0 auto;padding-top:34px}
+.content::before{display:block;font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:-2px}
+#pg-1 .content::before{content:'01 — About'}
+#pg-2 .content::before{content:'02 — Education'}
+#pg-3 .content::before{content:'03 — Skills'}
+#pg-4 .content::before{content:'04 — Credentials'}
+#pg-5 .content::before{content:'05 — Security'}
+#pg-6 .content::before{content:'06 — Healthcare'}
+#pg-7 .content::before{content:'07 — Systems'}
+#pg-8 .content::before{content:'08 — Research'}
+#pg-9 .content::before{content:'09 — Writing'}
+.ch-h1{font-size:clamp(30px,7.5vw,52px)!important;font-weight:900;letter-spacing:-.045em;line-height:1.02;white-space:normal!important}
+.ch-h1-sub{font-size:15px!important;color:var(--ink3);margin-top:0!important;padding-bottom:6px;max-width:640px}
+.lede{color:var(--ink2);max-width:720px;font-size:16px!important;line-height:1.75!important}
+.s-div span{color:var(--accent);font-size:10.5px;letter-spacing:.2em}
+.s-div::before{display:none}
+.s-div::after{background:linear-gradient(90deg,var(--glass-b),transparent)}
+
+/* shared: cards */
+.proj,.cert,.rc,.tl-item,.sk-sec,.stat,.info,.quote,.blog{
+  border-radius:16px!important;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s,background .25s}
+.proj:hover,.cert:hover,.rc:hover,.sk-sec:hover,.blog:hover,.tl-item:hover{transform:translateY(-3px);border-color:var(--accent)!important;
+  box-shadow:0 14px 40px rgba(0,0,0,.28),0 0 0 1px rgba(224,142,76,.18)}
+.tag{border-radius:999px;font-weight:600;transition:.2s}
+.tag:hover{border-color:var(--accent);color:var(--accent)}
+.page-inner{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+
+/* ── PAGE 0: TITLE ── */
+#pg-0 .page-inner{overflow:hidden}
+.t-wrap{background:transparent!important}
+.t-wrap::before{content:'';position:absolute;width:min(70vw,620px);aspect-ratio:1;right:-12%;top:50%;transform:translateY(-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:blur(30px);pointer-events:none}
+.t-main{justify-content:center!important;padding-bottom:clamp(24px,5vw,64px)!important}
+.nm-wrap{font-weight:900!important;letter-spacing:-.055em!important;line-height:.95!important;margin-bottom:22px!important}
+.nm-b{background:linear-gradient(100deg,var(--accent),var(--accent2) 60%,#ffd7a8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent!important}
+.t-main>div[style*="letter-spacing:.05em"]{font-size:clamp(13px,1.9vw,16px)!important;color:var(--ink2)!important;font-weight:600!important;display:flex;flex-wrap:wrap;gap:6px 0}
+.t-main>div[style*="letter-spacing:.05em"]::before{content:'';display:inline-block;width:34px;height:2px;background:var(--accent);margin:auto 14px auto 0;border-radius:2px}
+.t-stats{border-radius:16px!important;background:var(--glass)!important;border:1px solid var(--glass-b)!important;box-shadow:var(--glass-sh);backdrop-filter:blur(12px)}
+.t-cta a{transition:transform .2s var(--ease),box-shadow .2s,background .2s!important}
+.t-cta a:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(224,142,76,.25)}
+.t-cta a:first-child{background:var(--accent)!important;color:#1a0f06!important}
+
+/* ── PAGE 1: ABOUT ── */
+#pg-1 .lede{font-size:clamp(17px,2.4vw,20px)!important;color:var(--ink)!important;line-height:1.6!important}
+.quote{position:relative;padding:20px 22px 20px 26px!important}
+.quote::before{content:'“';position:absolute;top:-6px;left:14px;font-size:64px;line-height:1;color:var(--accent);opacity:.35;font-family:Georgia,serif}
+.quote p{font-size:14.5px!important;color:var(--ink)!important;padding-top:10px}
+.stat{padding:20px 12px!important;position:relative;overflow:hidden}
+.stat::after{content:'';position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
+.stat-v{font-size:clamp(24px,3.2vw,32px)!important}
+.ir-k{text-transform:uppercase;font-size:10.5px;letter-spacing:.12em;color:var(--ink4)}
+
+/* ── PAGE 2: EDUCATION ── */
+.tl-item{padding:20px 22px 20px 24px!important;border-left:3px solid var(--accent)!important}
+.tl-date{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--tag-bg);color:var(--tag-ink)!important;margin-bottom:10px}
+.tl-title{font-size:17px!important;letter-spacing:-.02em}
+.tl-desc{font-size:13.5px!important;line-height:1.65}
+
+/* ── PAGE 3: SKILLS ── */
+.sk-sec{padding:20px 22px!important}
+.sk-head{border-bottom:none!important;padding-bottom:0;font-size:12px;display:flex;align-items:center;gap:10px}
+.sk-head::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+.sk-note{color:var(--ink3);margin-top:12px!important;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px}
+
+/* ── PAGE 4: CERTIFICATIONS ── */
+.cert{padding:16px 18px!important;border-left:3px solid var(--accent)!important}
+.cert-d{color:var(--accent)!important;letter-spacing:.12em}
+.cert-n{font-size:15px!important;margin:4px 0}
+.cert-n a{background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease),color .2s}
+.cert-n a:hover{background-size:100% 1px}
+
+/* ── PAGES 5-7: PROJECTS ── */
+.proj{padding:18px!important;gap:14px!important;flex-direction:row}
+.proj-ph{width:44px!important;height:44px!important;border-radius:12px!important;flex-shrink:0;color:#fff!important;font-size:16px!important;border:none!important;
+  background:linear-gradient(135deg,var(--accent),#7a3f14)!important;box-shadow:0 6px 16px rgba(224,142,76,.25)}
+.proj-name{font-size:15px!important;font-weight:800!important;letter-spacing:-.02em}
+.proj-name a:hover{color:var(--accent)}
+.proj-lang{background:var(--tag-bg);color:var(--tag-ink);border:1px solid var(--glass-b)}
+.proj-desc{color:var(--ink3)!important;font-size:13px!important;line-height:1.65!important}
+
+/* ── PAGE 8: RESEARCH ── */
+.rc{padding:22px 24px!important;position:relative;overflow:hidden}
+.rc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--accent),transparent)}
+.rc-badge{padding:3px 10px;border-radius:999px;background:var(--tag-bg);margin-bottom:12px!important}
+.rc-title{font-size:clamp(16px,2vw,19px)!important;letter-spacing:-.02em;margin-bottom:8px!important}
+.rc-desc{color:var(--ink2)!important}
+
+/* ── PAGE 9: WRITING ── */
+.blog{padding:18px 20px!important;position:relative}
+.blog-d{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--tag-bg);margin-bottom:8px!important}
+.blog-t{font-size:15.5px!important;line-height:1.35!important;letter-spacing:-.015em}
+.blog-t a:hover{color:var(--accent)}
+.blog-b{margin-top:6px;font-size:13px!important}
+
+/* ── PAGE 10: CONTACT ── */
+#pg-10 .ct-h{font-size:clamp(36px,8vw,68px)!important;letter-spacing:-.05em!important;line-height:.98!important}
+#pg-10 [style*="height:3px"]{background:linear-gradient(90deg,var(--accent),transparent 70%)!important}
+.ct-grid>a{border-radius:14px!important;background:var(--glass)!important;border:1px solid var(--glass-b)!important;transition:transform .2s var(--ease),border-color .2s!important}
+.ct-grid>a:hover{transform:translateY(-2px)}
+.ct-cta a{transition:transform .2s var(--ease)!important}
+.ct-cta a:hover{transform:translateY(-2px)}
+.ct-cta a:first-child{background:var(--accent)!important;color:#1a0f06!important}
+
+/* ── SIDEBAR + CHROME ── */
+.ds-head{padding:26px 20px 18px!important}
+.ds-avatar{width:44px!important;height:44px!important;border-radius:12px!important;font-size:16px!important;background:linear-gradient(135deg,var(--accent),#7a3f14)!important;box-shadow:0 8px 20px rgba(224,142,76,.3)}
+.ds-mi{border-radius:0 10px 10px 0;margin:1px 0;transition:background .2s,padding-left .2s var(--ease)!important}
+.ds-mi:hover{padding-left:18px!important}
+#botbar{border-top:1px solid var(--glass-b)}
+#prog-fill{background:linear-gradient(90deg,var(--accent),var(--accent2))!important}
+@media(max-width:899px){
+  .content{padding-top:24px}
+  .proj{padding:15px!important}
+  .rc,.sk-sec,.tl-item{padding:16px 18px!important}
+}
+@media(min-width:900px){
+  .content{padding-top:56px;gap:18px}
+  #pg-1 .pg-cols{gap:64px}
+  #pg-4 .content{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  #pg-5 .content,#pg-6 .content,#pg-7 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #pg-3 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #pg-8 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #pg-8 .content>.rc:last-of-type,#pg-8 .content>.tags{grid-column:1/-1}
+  .content>.ch-h1,.content>.ch-h1-sub,.content>.lede,.content>.s-div,.content>.tags{grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ══════════ NO EARLY LINE BREAKS ══════════ */
+.lede,.ch-h1-sub,.content p,.proj-desc,.rc-desc,.tl-desc,.blog-b,.sk-note,.cert-i{max-width:none!important;text-wrap:pretty}
+.content{max-width:none!important}
+.page-inner{max-width:1480px!important}
+.tag,.proj-lang,.tl-date,.cert-d,.blog-d,.rc-badge,.stat-l,.ir-k,.ir-v{white-space:nowrap}
+.proj-name,.cert-n,.blog-t,.rc-title,.tl-title{overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important}
+.tags{flex-wrap:wrap}
+@media(min-width:900px){
+  .ch-h1{white-space:nowrap!important}
+  .ch-h1-sub,.lede{white-space:normal}
+  .ct-h,.nm-wrap{white-space:nowrap!important}
+  .ct-h .ct-br{display:none}
+  .t-stats{flex-wrap:nowrap!important}
+  .t-stats>div{white-space:nowrap}
+  .proj-top{flex-wrap:nowrap!important}
+  .proj-name{flex:1 1 auto!important;min-width:0}
+  .proj-name a{white-space:nowrap}
+  .proj-lang{order:0!important}
+  .ir{gap:16px}
+}
+
+/* ══════════ ONE-LINE NAME + HEADLINE, NO DIVIDER LINES ══════════ */
+.nm-wrap{white-space:nowrap!important;font-size:calc((100vw - 2*var(--gut) - 6px)/10.4)!important;margin-bottom:18px!important}
+.nm-a,.nm-b{display:inline!important}
+.nm-a::after{content:' '}
+.nm-br{display:none!important}
+@media(min-width:900px){
+  .nm-wrap{font-size:min(104px,calc((100vw - 260px - 180px)/10.4))!important}
+}
+#pg-10 .ct-h{white-space:nowrap!important;font-size:calc((100vw - 2*clamp(24px,5vw,52px))/11.6)!important}
+@media(min-width:900px){
+  #pg-10 .ct-h{font-size:min(68px,calc((100vw - 260px - 2*52px)/11.6))!important}
+}
+#pg-10 .ct-br,.ct-br{display:none!important}
+/* remove lines */
+.t-main>div[style*="letter-spacing:.05em"]::before{display:none!important}
+#pg-10 [style*="height:3px"]{display:none!important}
+.s-div::before,.s-div::after{display:none!important}
+.s-div{margin:14px 0 0!important}
+.ch-h1-sub{border:none!important}
+.content::after{display:none!important}
 </style>
 </head>
 <body>
@@ -663,8 +846,8 @@ p{font-size:15px;line-height:1.7}
       <div class="ds-sub">B.Pharm · Developer · Security</div>
     </div>
     <div class="ds-theme">
-      <button class="ds-tp on" id="ds-dot-light" onclick="setTheme('light')"><span class="ds-tp-dot" style="background:#e8d8c0;border:1px solid rgba(0,0,0,.2)"></span>Light</button>
-      <button class="ds-tp" id="ds-dot-dark" onclick="setTheme('dark')"><span class="ds-tp-dot" style="background:#1a1410;border:1px solid rgba(255,255,255,.2)"></span>Dark</button>
+      <button class="ds-tp" id="ds-dot-light" onclick="setTheme('light')"><span class="ds-tp-dot" style="background:#e8d8c0;border:1px solid rgba(0,0,0,.2)"></span>Light</button>
+      <button class="ds-tp on" id="ds-dot-dark" onclick="setTheme('dark')"><span class="ds-tp-dot" style="background:#1a1410;border:1px solid rgba(255,255,255,.2)"></span>Dark</button>
       <button class="ds-tp" id="ds-dot-mono" onclick="setTheme('mono')"><span class="ds-tp-dot" style="background:conic-gradient(#fff 180deg,#111 180deg)"></span>Mono</button>
     </div>
     <div class="ds-nav" id="ds-nav">
@@ -695,8 +878,8 @@ p{font-size:15px;line-height:1.7}
     </button>
     <span id="tb-title" onclick="toggleMenu()" style="cursor:pointer">Vineet Pratap Singh</span>
     <div class="th-pills">
-      <button class="tp tl on" id="dot-light" onclick="setTheme('light')"><span class="tp-dot"></span>L</button>
-      <button class="tp tk" id="dot-dark" onclick="setTheme('dark')"><span class="tp-dot"></span>D</button>
+      <button class="tp tl" id="dot-light" onclick="setTheme('light')"><span class="tp-dot"></span>L</button>
+      <button class="tp tk on" id="dot-dark" onclick="setTheme('dark')"><span class="tp-dot"></span>D</button>
       <button class="tp tm" id="dot-mono" onclick="setTheme('mono')"><span class="tp-dot"></span>M</button>
     </div>
   </div>
@@ -713,12 +896,6 @@ p{font-size:15px;line-height:1.7}
 
           <!-- Main content -->
           <div class="t-main" style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,6vw,64px) clamp(28px,6vw,64px) 0;position:relative;z-index:1;min-height:0">
-
-            <!-- Eyebrow label — terminal typewriter -->
-            <div style="font-size:11px;font-weight:600;font-family:'JetBrains Mono','Fira Mono','Courier New',monospace;color:var(--ink3);margin-bottom:clamp(18px,3vw,30px);display:flex;align-items:center;gap:0;white-space:nowrap;overflow:hidden;min-width:0">
-              <span style="color:var(--accent);margin-right:6px;flex-shrink:0">$</span>
-              <span id="greeting-text" style="min-width:0;overflow:hidden;text-overflow:ellipsis"></span><span id="greeting-cursor" style="display:inline-block;width:2px;height:1.1em;background:var(--accent);margin-left:2px;vertical-align:middle;border-radius:1px;flex-shrink:0"></span>
-            </div>
 
             <!-- FULL NAME — big, uniform, one weight, each line fits its row -->
             <h1 class="nm-wrap" aria-label="Vineet Pratap Singh (psvineet)" style="margin-bottom:clamp(16px,2.5vw,26px);font-size:clamp(36px,11vw,72px);font-weight:900;letter-spacing:-.04em;line-height:1.02;white-space:nowrap">
@@ -761,7 +938,8 @@ p{font-size:15px;line-height:1.7}
               <a href="mailto:ci.vps@proton.me" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:var(--tag-bg);color:var(--tag-ink);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:7px;text-decoration:none;border:1px solid rgba(200,119,58,.18)">Email</a>
             </div>
           </div>
-        </div>
+
+          </div>
       </div>
     </div>
 
@@ -1177,7 +1355,7 @@ function setTheme(t){
   });
   try{localStorage.setItem('vps-theme',t)}catch(e){}
 }
-try{const s=localStorage.getItem('vps-theme');setTheme(s||'light')}catch(e){setTheme('light')}
+try{const s=localStorage.getItem('vps-theme');setTheme(s||'dark')}catch(e){setTheme('dark')}
 
 // ── AUDIO — very soft paper whisper ──
 function getAC(){
@@ -1401,6 +1579,7 @@ pa.addEventListener('touchend',e=>{
   if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5) turn(dx<0?1:-1);
 },{passive:true});
 document.addEventListener('touchmove',()=>{},{passive:true});
+
 
 </script>
 </body>
