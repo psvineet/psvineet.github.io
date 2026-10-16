@@ -1,5 +1,6 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#0a0806!important;color:#f1e8dc!important}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -10,6 +11,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, noarchive">
 <meta name="theme-color" content="#080604">
 <link rel="canonical" href="https://psvineet.github.io/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0806'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Inter%2Csystem-ui%2Csans-serif' font-size='16' font-weight='900' fill='%23e08e4c' letter-spacing='-1'%3EVS%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="psvineet">
 <meta property="og:title" content="psvineet – Vineet Pratap Singh | Developer, Cybersecurity &amp; B.Pharm">
@@ -25,7 +27,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Ubuntu:wght@400;500;700&display=swap">
 <style>
 :root {
 --bg:#f7f3ee;--page:#fdfaf6;--page2:#f5f0e8;
@@ -87,7 +89,11 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 a,img{-webkit-user-drag:none}
 @media print{html{display:none}}
 html,body{width:100%;height:100%;overflow:hidden;font-family:'Inter',system-ui,sans-serif;background:var(--bg)!important;color:var(--ink)!important}
+html{color-scheme:only dark}
+:root[data-theme="light"] html,:root[data-theme="light"]{color-scheme:only light}
+:root[data-theme="mono"] html,:root[data-theme="mono"]{color-scheme:only light}
 *{color-scheme:inherit!important}
+@media(forced-colors:active){*{forced-color-adjust:none!important}}
 input,textarea,select,button{background-color:revert;color:revert;border-color:revert}
 :root{forced-color-adjust:none}
 @media(forced-colors:active){:root{forced-color-adjust:none}}
@@ -155,18 +161,35 @@ animation:pgFadeSlideInBack .34s cubic-bezier(.0,0,.2,1) forwards;
 animation-delay:.16s;opacity:0;
 will-change:transform,opacity;
 }
-#botbar{flex:0 0 auto;height:44px;background:var(--chrome);display:flex;align-items:center;
-gap:12px;padding:0 16px;box-shadow:0 -1px 0 rgba(255,255,255,.04)}
-#prog-wrap{flex:1;height:4px;background:var(--progress-bg);border-radius:2px;cursor:pointer;position:relative;overflow:hidden}
-#prog-fill{height:100%;background:var(--progress-fill);border-radius:2px;transition:width .28s ease;pointer-events:none}
-#page-num{font-size:12px;color:rgba(255,255,255,.42);font-weight:500;min-width:50px;text-align:right;flex-shrink:0}
+#botbar{flex:0 0 auto;height:26px;background:var(--chrome);display:flex;align-items:center;
+gap:12px;padding:0 16px;box-shadow:0 -1px 0 rgba(255,255,255,.05)}
+#prog-wrap{flex:1;display:flex;align-items:center;gap:3px;min-width:0}
+:root{--dot-inactive:rgba(255,255,255,.5)}
+:root[data-theme="light"]{--dot-inactive:rgba(0,0,0,.28)}
+:root[data-theme="mono"]{--dot-inactive:rgba(0,0,0,.3)}
+.pg-dot{
+  flex:1;height:4px;border-radius:2px;
+  background:var(--dot-inactive)!important;cursor:pointer;
+  transition:background .22s,height .18s,box-shadow .22s;
+  box-shadow:none!important;
+  forced-color-adjust:none;
+}
+.pg-dot.on{
+  background:var(--progress-fill)!important;
+  height:5px;border-radius:3px;
+  box-shadow:0 0 8px rgba(212,136,74,.7),0 0 2px rgba(212,136,74,.9)!important;
+}
+.pg-dot:hover:not(.on){background:rgba(255,255,255,.6)!important;height:5px}
+:root[data-theme="light"] .pg-dot:hover:not(.on),:root[data-theme="mono"] .pg-dot:hover:not(.on){background:rgba(0,0,0,.45)!important}
+#prog-fill{display:none}
+#page-num{font-size:10px;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.06em;white-space:nowrap;flex-shrink:0;text-transform:uppercase}
 .run-head{display:none}
 .rh-chap{display:none}
 .rh-folio{display:none}
 @media(min-width:900px){
 #reader{flex-direction:row;flex-wrap:nowrap}
 #topbar{display:none}
-#botbar{position:fixed;bottom:0;left:260px;right:0;height:38px;z-index:10}
+#botbar{position:fixed;bottom:0;left:260px;right:0;height:26px;z-index:10}
 #pagearea{flex:1;margin-left:0}
 #desktop-sidebar{
 width:260px;flex-shrink:0;height:100%;background:var(--chrome);
@@ -275,14 +298,14 @@ text-align:center;padding:40px 24px;position:relative}
 .pg-splash::before{display:none}
 .sp-num{font-size:90px;font-weight:900;letter-spacing:-.07em;color:var(--line);line-height:1;margin-bottom:12px}
 .sp-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px}
-.sp-title{font-size:clamp(24px,5vw,40px);font-weight:900;color:var(--ink);letter-spacing:-.04em;line-height:1.15;margin-bottom:14px}
+.sp-title{font-size:clamp(24px,5vw,40px);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.15;margin-bottom:14px;font-family:'Ubuntu',system-ui,sans-serif}
 .sp-desc{font-size:14px;color:var(--ink3);max-width:380px;line-height:1.68}
 .content{padding-top:6px}
-.ch-h1{font-size:clamp(20px,4vw,28px);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1.15;margin-bottom:6px}
+.ch-h1{font-size:clamp(20px,4vw,28px);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.15;margin-bottom:6px;font-family:'Ubuntu',system-ui,sans-serif}
 .ch-h1-sub{font-size:13px;color:var(--ink3);margin-bottom:22px;font-weight:400}
 @media(min-width:900px){
 .content{padding-top:32px}
-.ch-h1{font-size:clamp(24px,2.2vw,34px);white-space:nowrap}
+.ch-h1{font-size:clamp(24px,2.2vw,34px);white-space:nowrap;font-family:'Ubuntu',system-ui,sans-serif!important}
 .ch-h1-sub{font-size:14px}
 }
 p{color:var(--ink2);line-height:1.76;font-size:15px;margin-bottom:12px}
@@ -322,14 +345,19 @@ border-left:3px solid var(--accent)}
 .cert-i{font-size:12px;color:var(--ink3)}
 .proj{padding:11px 13px;border:1px solid var(--line);border-radius:8px;margin-bottom:9px;background:var(--page2);display:flex;gap:11px;align-items:flex-start;transition:box-shadow .2s,border-color .2s}
 .proj:hover{border-color:var(--accent);box-shadow:0 4px 18px rgba(0,0,0,.1)}
-.proj-ph{width:40px;height:40px;border-radius:8px;flex-shrink:0;border:1px solid var(--line);background:var(--page);
-display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;font-weight:800;font-family:'Inter',sans-serif}
-.proj-body{flex:1;min-width:0}
-.proj-top{display:flex;align-items:flex-start;gap:9px;margin-bottom:4px}
+.proj-ph{display:none!important}
+.proj-body{flex:1;min-width:0;width:100%}
+.proj-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
 .proj-name{font-size:13.5px;font-weight:700;color:var(--ink);flex:1;min-width:0}
-.proj-lang{font-size:10px;font-weight:700;letter-spacing:.07em;background:var(--tag-bg);color:var(--tag-ink);
-padding:3px 9px;border-radius:12px;white-space:nowrap;flex-shrink:0}
+.proj-meta{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.proj-lang{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:.04em;
+padding:2px 8px 2px 6px;border-radius:999px;white-space:nowrap;flex-shrink:0;
+background:var(--tag-bg);color:var(--tag-ink);border:1px solid var(--glass-b)}
+.proj-lang-dot{display:none!important}
 .proj-desc{font-size:12px;color:var(--ink3);line-height:1.58}
+.proj-foot{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.proj-stars{font-size:10.5px;color:var(--ink4);display:flex;align-items:center;gap:3px}
+.proj-updated{font-size:10px;color:var(--ink4);letter-spacing:.02em}
 .rc{padding:16px;background:var(--page2);border:1px solid var(--line);border-radius:10px;margin-bottom:13px}
 .rc-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
 .rc-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.4}
@@ -370,9 +398,10 @@ text-decoration:none;margin-top:5px;transition:.15s}
 :root[data-theme="mono"]{--glass:rgba(255,255,255,.55);--glass-b:rgba(255,255,255,.8);--glass-sh:0 8px 32px rgba(0,0,0,.1);
 --blob1:rgba(120,120,120,.3);--blob2:rgba(200,200,200,.5);--blob3:rgba(90,90,90,.18);--bar:rgba(17,17,17,.68)}
 body::before{content:'';position:fixed;inset:-10%;z-index:0;pointer-events:none;
-background:radial-gradient(circle at 15% 20%,var(--blob1) 0,transparent 42%),
-radial-gradient(circle at 85% 30%,var(--blob2) 0,transparent 45%),
-radial-gradient(circle at 50% 90%,var(--blob3) 0,transparent 48%);
+background:radial-gradient(circle at 15% 20%,var(--blob1) 0,transparent 38%),
+radial-gradient(circle at 85% 30%,var(--blob2) 0,transparent 40%),
+radial-gradient(circle at 50% 90%,var(--blob3) 0,transparent 42%);
+opacity:.6;
 animation:blobDrift 24s ease-in-out infinite alternate}
 @keyframes blobDrift{to{transform:translate3d(-3%,2%,0) scale(1.08)}}
 @media(prefers-reduced-motion:reduce){body::before{animation:none}}
@@ -387,7 +416,7 @@ border-color:var(--glass-b)!important;box-shadow:var(--glass-sh)}
 .tl-item{border-left:2px solid var(--accent)!important;border-radius:0 10px 10px 0;box-shadow:var(--glass-sh)}
 .cert{border-left:3px solid var(--accent)!important}
 .quote{border-left:3px solid var(--accent)!important}
-.proj-ph{background:var(--glass)!important;border-color:var(--glass-b)}
+.proj-ph{background:transparent!important;border:none!important}
 .tag{background:var(--glass);border:1px solid var(--glass-b);
 -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--tag-ink)}
 .proj:hover,.cert:hover,.rc:hover,.stat:hover{transform:translateY(-2px);border-color:var(--accent)!important;
@@ -462,7 +491,7 @@ border-right:1px solid var(--glass-b)}
 .content{display:grid;gap:var(--gap);align-content:start;padding-top:22px}
 .content>*{margin:0!important}
 .proj-grid{display:contents}
-.ch-h1{font-size:clamp(24px,7vw,30px);line-height:1.12}
+.ch-h1{font-size:clamp(19px,6vw,26px);line-height:1.12;font-family:'Ubuntu',system-ui,sans-serif!important}
 .ch-h1-sub{margin-top:-6px!important;font-size:13.5px;line-height:1.5}
 .lede{font-size:15px;line-height:1.7}
 .lede::first-letter{float:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;margin:0}
@@ -487,7 +516,7 @@ background:var(--glass)!important;box-shadow:var(--glass-sh)}
 .pg-cols,.col-a,.col-b{display:grid;gap:var(--gap);align-content:start}
 .pg-cols p,.pg-cols .stats,.pg-cols .quote{margin:0!important}
 .proj{gap:12px;align-items:flex-start}
-.proj-ph{width:40px;height:40px;border-radius:10px}
+.proj-ph{display:none!important}
 .proj-top{flex-wrap:wrap;gap:4px 8px;margin-bottom:6px;align-items:center}
 .proj-name{flex:1 1 100%;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}
 .proj-lang{order:2;padding:2px 9px;font-size:10.5px}
@@ -501,14 +530,12 @@ height:52px;line-height:52px;max-width:calc(100% - 160px);padding:0;font-size:14
 .th-pills{margin-left:auto;gap:2px}
 .tp{font-size:0;gap:0;width:30px;height:26px;padding:0;justify-content:center}
 .tp-dot{width:11px;height:11px}
-#botbar{height:calc(46px + env(safe-area-inset-bottom,0px));padding:0 var(--gut) env(safe-area-inset-bottom,0px);gap:14px}
-#prog-wrap{height:6px;border-radius:3px}
-#prog-fill{border-radius:3px}
-#page-num{font-size:12px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+#botbar{height:calc(26px + env(safe-area-inset-bottom,0px));padding:0 var(--gut) env(safe-area-inset-bottom,0px);gap:12px}
+#page-num{font-size:10px;letter-spacing:.06em}
 #pg-0 .page-inner{overflow-y:auto!important;overflow-x:hidden!important}
 .t-wrap{height:auto!important;min-height:100%}
 .t-main{padding:28px var(--gut) 24px!important}
-.nm-wrap{font-size:clamp(44px,17vw,84px)!important;line-height:.98!important;margin-bottom:18px!important}
+.nm-wrap{font-size:clamp(34px,13vw,84px)!important;line-height:.98!important;margin-bottom:18px!important;font-family:'Ubuntu',system-ui,sans-serif!important}
 .nm-br{display:inline}
 .t-stats{width:100%!important;display:grid!important;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:10px!important;
 text-align:center;padding:14px 8px!important;align-items:center}
@@ -566,7 +593,7 @@ body::before{opacity:.9}
 #pg-7 .content::before{content:'07 — Systems'}
 #pg-8 .content::before{content:'08 — Research'}
 #pg-9 .content::before{content:'09 — Writing'}
-.ch-h1{font-size:clamp(30px,7.5vw,52px)!important;font-weight:900;letter-spacing:-.045em;line-height:1.02;white-space:normal!important}
+.ch-h1{font-size:clamp(22px,7.5vw,52px)!important;font-weight:700;letter-spacing:-.025em;line-height:1.05;white-space:normal!important;font-family:'Ubuntu',system-ui,sans-serif!important}
 .ch-h1-sub{font-size:15px!important;color:var(--ink3);margin-top:0!important;padding-bottom:6px;max-width:640px}
 .lede{color:var(--ink2);max-width:720px;font-size:16px!important;line-height:1.75!important}
 .s-div span{color:var(--accent);font-size:10.5px;letter-spacing:.2em}
@@ -613,13 +640,12 @@ background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:b
 .cert-n{font-size:15px!important;margin:4px 0}
 .cert-n a{background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease),color .2s}
 .cert-n a:hover{background-size:100% 1px}
-.proj{padding:18px!important;gap:14px!important;flex-direction:row}
-.proj-ph{width:44px!important;height:44px!important;border-radius:12px!important;flex-shrink:0;color:#fff!important;font-size:16px!important;border:none!important;
-background:linear-gradient(135deg,var(--accent),#7a3f14)!important;box-shadow:0 6px 16px rgba(224,142,76,.25)}
-.proj-name{font-size:15px!important;font-weight:800!important;letter-spacing:-.02em}
+.proj{padding:16px 18px!important;gap:0!important;flex-direction:column!important;align-items:stretch!important}
+.proj-name{font-size:14.5px!important;font-weight:800!important;letter-spacing:-.02em}
+.proj-name a{text-decoration:none;color:inherit;transition:color .15s}
 .proj-name a:hover{color:var(--accent)}
-.proj-lang{background:var(--tag-bg);color:var(--tag-ink);border:1px solid var(--glass-b)}
-.proj-desc{color:var(--ink3)!important;font-size:13px!important;line-height:1.65!important}
+.proj-lang{background:var(--tag-bg)!important;color:var(--tag-ink)!important;border:1px solid var(--glass-b)!important}
+.proj-desc{color:var(--ink3)!important;font-size:12.5px!important;line-height:1.65!important}
 .rc{padding:22px 24px!important;position:relative;overflow:hidden}
 .rc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--accent),transparent)}
 .rc-badge{padding:3px 10px;border-radius:999px;background:var(--tag-bg);margin-bottom:12px!important}
@@ -655,7 +681,7 @@ background:linear-gradient(135deg,var(--accent),#7a3f14)!important;box-shadow:0 
 #pg-5 .content,#pg-6 .content,#pg-7 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 #pg-3 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 #pg-8 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-#pg-8 .content>.rc:last-of-type,#pg-8 .content>.tags{grid-column:1/-1}
+#pg-8 .content>.rc:last-of-type,#pg-8 .content>.tags,#pg-8 .content>.s-div{grid-column:1/-1}
 .content>.ch-h1,.content>.ch-h1-sub,.content>.lede,.content>.s-div,.content>.tags{grid-column:1/-1}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -717,6 +743,66 @@ button,input,select,textarea{font-family:inherit}
 :root[data-theme="mono"] .mi.on .mi-num,:root[data-theme="mono"] .ds-mi.on .ds-mi-num,:root[data-theme="mono"] .tp.on,:root[data-theme="mono"] .ds-tp.on{background:#111;color:#fff}
 :root[data-theme="mono"] .ds-tp.on{background:#fff;color:#111}
 :root[data-theme="mono"] .tag,:root[data-theme="mono"] .tl-date,:root[data-theme="mono"] .rc-badge,:root[data-theme="mono"] .blog-d,:root[data-theme="mono"] .proj-lang{border-color:rgba(0,0,0,.12)}
+/* mono: kill all hardcoded greens in contact */
+:root[data-theme="mono"] .ct-status-dot{background:#555!important;box-shadow:none!important;animation:none!important}
+:root[data-theme="mono"] .ct-status-pill{background:rgba(0,0,0,.06)!important;border-color:rgba(0,0,0,.18)!important}
+:root[data-theme="mono"] .ct-status-pill-text{color:#333!important}
+:root[data-theme="mono"] .ct-pl-badge{background:rgba(0,0,0,.06)!important;color:#333!important;border-color:rgba(0,0,0,.18)!important}
+:root[data-theme="mono"] .ct-primary-link--main{border-color:rgba(0,0,0,.2)!important;background:rgba(0,0,0,.04)!important}
+:root[data-theme="mono"] .ct-primary-link:hover{border-color:#111!important}
+:root[data-theme="mono"] .ct-card:hover{border-color:#111!important}
+:root[data-theme="mono"] .pg-dot.on{box-shadow:none!important}
+/* Contact page */
+.ct-about-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}
+.ct-about-text{min-width:0}
+.ct-status-card{padding:20px 18px 18px;background:var(--glass);border:1px solid var(--glass-b);border-radius:16px;box-shadow:var(--glass-sh);min-width:190px;flex-shrink:0;display:flex;flex-direction:column;gap:0}
+.ct-status-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 6px;border-radius:999px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.22);width:fit-content;margin-bottom:14px}
+.ct-status-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse-green 2s ease-out infinite}
+@keyframes pulse-green{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 5px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.ct-status-pill-text{font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#4ade80}
+.ct-status-name{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin-bottom:3px}
+.ct-status-role{font-size:11px;color:var(--ink3);line-height:1.5;margin-bottom:12px}
+.ct-status-tags{display:flex;flex-wrap:wrap;gap:5px}
+.ct-status-tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--tag-bg);color:var(--tag-ink);letter-spacing:.03em}
+.ct-status-meta{font-size:10px;color:var(--ink4);margin-top:12px;padding-top:10px;border-top:1px solid var(--glass-b);display:flex;align-items:center;gap:5px}
+.ct-status-meta svg{opacity:.5;flex-shrink:0}
+.ct-primary-links{display:flex;flex-direction:column;gap:8px}
+.ct-primary-link{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--glass);border:1px solid var(--glass-b);border-radius:14px;text-decoration:none;transition:.2s;position:relative}
+.ct-primary-link:hover{border-color:var(--accent);transform:translateX(4px)}
+.ct-primary-link--main{border-color:var(--accent);background:rgba(224,142,76,.06)}
+.ct-primary-link svg{color:var(--accent);flex-shrink:0}
+.ct-pl-label{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.ct-pl-val{font-size:13px;color:var(--accent);font-weight:500}
+.ct-pl-badge{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:20px;background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.25);flex-shrink:0}
+.ct-pl-arrow{margin-left:auto;font-size:16px;color:var(--ink4);flex-shrink:0}
+.ct-grid-new{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ct-card{display:flex;flex-direction:column;gap:8px;padding:16px 16px 14px;background:var(--glass);border:1px solid var(--glass-b);border-radius:14px;text-decoration:none;transition:.2s;box-shadow:var(--glass-sh)}
+.ct-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.ct-card-label{font-size:13px;font-weight:700;color:var(--ink);line-height:1.2}
+.ct-card-sub{font-size:11px;color:var(--ink3);margin-top:1px}
+.ct-interests{padding:16px 18px;background:var(--glass);border:1px solid var(--glass-b);border-radius:14px;box-shadow:var(--glass-sh)}
+.ct-interests-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);margin-bottom:10px}
+.ct-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;padding-top:8px;border-top:1px solid var(--line);font-size:10px;color:var(--ink4)}
+@media(max-width:599px){
+.ct-about-row{grid-template-columns:1fr}
+.ct-status-card{min-width:0;width:100%}
+.ct-grid-new{grid-template-columns:repeat(2,1fr)}
+.ct-grid-new>.ct-card:last-child:nth-child(odd){grid-column:1/-1}
+}
+/* About page */
+.about-hero{display:flex;gap:20px;align-items:flex-start;margin-bottom:4px}
+.about-avatar{display:none!important}
+.about-intro{flex:1;min-width:0}
+.about-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.about-pillar{padding:18px 16px;background:var(--glass);border:1px solid var(--glass-b);border-radius:14px;box-shadow:var(--glass-sh)}
+.about-pillar-icon{font-size:22px;margin-bottom:8px;line-height:1}
+.about-pillar-title{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
+.about-pillar-desc{font-size:12px;color:var(--ink3);line-height:1.6}
+@media(max-width:599px){
+.about-hero{flex-direction:column;gap:14px}
+.about-avatar{width:52px;height:52px;font-size:18px}
+.about-pillars{grid-template-columns:1fr}
+}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{overscroll-behavior:none}
 img,svg{max-width:100%}
@@ -766,34 +852,178 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 @media(hover:none){
 .proj:hover,.cert:hover,.rc:hover,.sk-sec:hover,.blog:hover,.tl-item:hover,.stat:hover{transform:none}
 }
+/* odd last-child fills full row */
+@media(min-width:600px){
+#pg-4 .content>.cert:last-child:nth-child(odd),
+#pg-5 .content>.proj:last-child:nth-child(odd),
+#pg-6 .content>.proj:last-child:nth-child(odd),
+#pg-7 .content>.proj:last-child:nth-child(odd),
+#pg-8 .content>.rc:last-child:nth-child(odd),
+#pg-9 .content>.blog:last-child:nth-child(odd){grid-column:1/-1}
+}
+/* desktop max-width: constrain content width */
+@media(min-width:900px){
+.page-inner{max-width:1080px!important;padding-left:52px!important;padding-right:52px!important}
+}
+/* ── Education cards ── */
+.edu-card{
+  display:flex;gap:16px;align-items:stretch;
+  padding:20px 20px 20px 18px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:16px;box-shadow:var(--glass-sh);
+  transition:transform .22s var(--ease),border-color .22s,box-shadow .22s;
+  min-width:0;
+}
+.edu-card:hover{transform:translateY(-3px);border-color:var(--accent)!important;box-shadow:0 14px 40px rgba(0,0,0,.28),0 0 0 1px rgba(224,142,76,.18)}
+.edu-card--active{border-left:3px solid var(--accent)!important}
+.edu-card-aside{
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;width:34px;padding-top:2px;
+}
+.edu-card-year{
+  font-size:10px;font-weight:700;color:var(--accent);
+  letter-spacing:.08em;writing-mode:vertical-rl;
+  text-orientation:mixed;transform:rotate(180deg);
+  white-space:nowrap;
+}
+.edu-card-year--end{color:var(--ink4)}
+.edu-card-line{
+  flex:1;width:1px;background:linear-gradient(var(--accent),var(--line));
+  margin:5px 0;min-height:12px;
+}
+.edu-card-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.edu-card-badge{
+  display:inline-block;font-size:9.5px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 9px;border-radius:999px;
+  background:rgba(224,142,76,.12);color:var(--accent);
+  width:fit-content;margin-bottom:4px;
+}
+.edu-card-score{
+  display:inline-block;font-size:20px;font-weight:900;
+  color:var(--accent);letter-spacing:-.03em;line-height:1;
+  margin-bottom:4px;
+}
+.edu-card-title{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.25;font-family:'Ubuntu',system-ui,sans-serif}
+.edu-card-inst{font-size:11.5px;color:var(--ink3);font-weight:500;margin-bottom:2px}
+.edu-card-desc{font-size:12.5px;color:var(--ink3);line-height:1.62;margin-top:4px}
+.edu-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.edu-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--tag-bg);color:var(--tag-ink);letter-spacing:.03em}
+:root[data-theme="mono"] .edu-card--active{border-left-color:#444!important}
+:root[data-theme="mono"] .edu-card-badge{background:rgba(0,0,0,.07)!important;color:#333!important}
+:root[data-theme="mono"] .edu-card-score{color:#222}
+:root[data-theme="mono"] .edu-card-line{background:linear-gradient(#555,rgba(0,0,0,.1))}
+:root[data-theme="mono"] .edu-card:hover{border-color:#111!important}
+
+/* ── Blog cards ── */
+.bcard{
+  display:flex;flex-direction:column;gap:8px;
+  padding:18px 20px 16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:16px;box-shadow:var(--glass-sh);
+  text-decoration:none;
+  transition:transform .22s var(--ease),border-color .22s,box-shadow .22s;
+  min-width:0;
+}
+.bcard:hover{transform:translateY(-3px);border-color:var(--accent)!important;box-shadow:0 14px 40px rgba(0,0,0,.28),0 0 0 1px rgba(224,142,76,.18)}
+.bcard--essay{border-top:2px solid var(--accent)}
+.bcard-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.bcard-cat{
+  font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:2px 9px;border-radius:999px;
+  background:var(--tag-bg);color:var(--tag-ink);
+  white-space:nowrap;
+}
+.bcard-cat--essay{background:rgba(224,142,76,.15);color:var(--accent)}
+.bcard-date{font-size:10px;color:var(--ink4);font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.bcard-title{
+  font-size:14px;font-weight:700;color:var(--ink);
+  line-height:1.35;letter-spacing:-.015em;
+  font-family:'Ubuntu',system-ui,sans-serif;
+}
+.bcard-body{font-size:12.5px;color:var(--ink3);line-height:1.6;flex:1}
+.bcard-foot{margin-top:6px;border-top:1px solid var(--glass-b);padding-top:10px}
+.bcard-arrow{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+:root[data-theme="mono"] .bcard:hover{border-color:#111!important}
+:root[data-theme="mono"] .bcard--essay{border-top-color:#444}
+:root[data-theme="mono"] .bcard-cat--essay{background:rgba(0,0,0,.07);color:#333}
+:root[data-theme="mono"] .bcard-arrow{color:#333}
+/* Redesigned quote */
+.quote-redesign{
+  position:relative;
+  padding:28px 28px 22px 32px;
+  border-radius:16px;
+  background:var(--glass);
+  border:1px solid var(--glass-b);
+  box-shadow:var(--glass-sh);
+  overflow:hidden;
+}
+.quote-redesign::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--accent),transparent);
+  border-radius:2px 0 0 2px;
+}
+.quote-redesign::after{
+  content:'';position:absolute;
+  right:-20px;bottom:-30px;
+  width:120px;height:120px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);
+  opacity:.06;pointer-events:none;
+}
+.qr-mark{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:88px;line-height:.7;
+  color:var(--accent);opacity:.25;
+  margin-bottom:4px;
+  display:block;margin-left:-4px;
+  user-select:none;
+}
+.qr-text{
+  font-size:15.5px!important;
+  line-height:1.72!important;
+  color:var(--ink)!important;
+  font-style:italic;
+  letter-spacing:.01em;
+  margin:0 0 18px!important;
+  position:relative;z-index:1;
+}
+.qr-attr{
+  display:flex;align-items:center;gap:8px;
+}
+.qr-dash{color:var(--accent);font-size:14px;font-weight:300}
+.qr-name{font-size:12px;font-weight:700;color:var(--ink2);letter-spacing:.02em}
+.qr-role{font-size:11px;color:var(--ink4);padding:2px 8px;background:var(--tag-bg);border-radius:999px;letter-spacing:.04em;font-weight:600}
+:root[data-theme="mono"] .quote-redesign::before{background:linear-gradient(180deg,#555,transparent)}
+:root[data-theme="mono"] .quote-redesign::after{display:none}
+:root[data-theme="mono"] .qr-mark{color:#333;opacity:.18}
+:root[data-theme="mono"] .qr-dash{color:#555}
 </style>
 </head>
 <body>
 <div id="reader">
 <div id="desktop-sidebar">
 <div class="ds-head">
-<div class="ds-avatar">VS</div>
 <div class="ds-name">Vineet Pratap Singh</div>
 <div class="ds-sub">B.Pharm · Developer · Security</div>
 </div>
 <div class="ds-theme">
-<button class="ds-tp" id="ds-dot-light" onclick="setTheme('light')"><span class="ds-tp-dot" style="background:#e8d8c0;border:1px solid rgba(0,0,0,.2)"></span>Light</button>
 <button class="ds-tp on" id="ds-dot-dark" onclick="setTheme('dark')"><span class="ds-tp-dot" style="background:#1a1410;border:1px solid rgba(255,255,255,.2)"></span>Dark</button>
+<button class="ds-tp" id="ds-dot-light" onclick="setTheme('light')"><span class="ds-tp-dot" style="background:#e8d8c0;border:1px solid rgba(0,0,0,.2)"></span>Light</button>
 <button class="ds-tp" id="ds-dot-mono" onclick="setTheme('mono')"><span class="ds-tp-dot" style="background:conic-gradient(#fff 180deg,#111 180deg)"></span>Mono</button>
 </div>
 <div class="ds-nav" id="ds-nav">
 <div class="ds-label">Contents</div>
-<button class="ds-mi on" id="ds-mi-0" onclick="goTo(0)"><span class="ds-mi-num">—</span><span class="ds-mi-title">Title Page</span><span class="ds-mi-pg">p.1</span></button>
-<button class="ds-mi" id="ds-mi-1" onclick="goTo(1)"><span class="ds-mi-num">01</span><span class="ds-mi-title">About Me</span><span class="ds-mi-pg">p.2</span></button>
-<button class="ds-mi" id="ds-mi-2" onclick="goTo(2)"><span class="ds-mi-num">02</span><span class="ds-mi-title">Education</span><span class="ds-mi-pg">p.3</span></button>
-<button class="ds-mi" id="ds-mi-3" onclick="goTo(3)"><span class="ds-mi-num">03</span><span class="ds-mi-title">Skills &amp; Tools</span><span class="ds-mi-pg">p.4</span></button>
-<button class="ds-mi" id="ds-mi-4" onclick="goTo(4)"><span class="ds-mi-num">04</span><span class="ds-mi-title">Certifications</span><span class="ds-mi-pg">p.5</span></button>
-<button class="ds-mi" id="ds-mi-5" onclick="goTo(5)"><span class="ds-mi-num">05</span><span class="ds-mi-title">Security Projects</span><span class="ds-mi-pg">p.6</span></button>
-<button class="ds-mi" id="ds-mi-6" onclick="goTo(6)"><span class="ds-mi-num">06</span><span class="ds-mi-title">Healthcare Projects</span><span class="ds-mi-pg">p.7</span></button>
-<button class="ds-mi" id="ds-mi-7" onclick="goTo(7)"><span class="ds-mi-num">07</span><span class="ds-mi-title">Systems &amp; Dev Tools</span><span class="ds-mi-pg">p.8</span></button>
-<button class="ds-mi" id="ds-mi-8" onclick="goTo(8)"><span class="ds-mi-num">08</span><span class="ds-mi-title">Research &amp; Achievements</span><span class="ds-mi-pg">p.9</span></button>
-<button class="ds-mi" id="ds-mi-9" onclick="goTo(9)"><span class="ds-mi-num">09</span><span class="ds-mi-title">Writing &amp; Blog</span><span class="ds-mi-pg">p.10</span></button>
-<button class="ds-mi" id="ds-mi-10" onclick="goTo(10)"><span class="ds-mi-num">10</span><span class="ds-mi-title">Contact</span><span class="ds-mi-pg">p.11</span></button>
+<button class="ds-mi on" id="ds-mi-0" onclick="goTo(1)"><span class="ds-mi-num">01</span><span class="ds-mi-title">About Me</span></button>
+<button class="ds-mi" id="ds-mi-1" onclick="goTo(2)"><span class="ds-mi-num">02</span><span class="ds-mi-title">Education</span></button>
+<button class="ds-mi" id="ds-mi-2" onclick="goTo(3)"><span class="ds-mi-num">03</span><span class="ds-mi-title">Skills &amp; Tools</span></button>
+<button class="ds-mi" id="ds-mi-3" onclick="goTo(4)"><span class="ds-mi-num">04</span><span class="ds-mi-title">Certifications</span></button>
+<button class="ds-mi" id="ds-mi-4" onclick="goTo(5)"><span class="ds-mi-num">05</span><span class="ds-mi-title">Security Projects</span></button>
+<button class="ds-mi" id="ds-mi-5" onclick="goTo(6)"><span class="ds-mi-num">06</span><span class="ds-mi-title">Healthcare Projects</span></button>
+<button class="ds-mi" id="ds-mi-6" onclick="goTo(7)"><span class="ds-mi-num">07</span><span class="ds-mi-title">Systems &amp; Dev Tools</span></button>
+<button class="ds-mi" id="ds-mi-7" onclick="goTo(8)"><span class="ds-mi-num">08</span><span class="ds-mi-title">Research &amp; Achievements</span></button>
+<button class="ds-mi" id="ds-mi-8" onclick="goTo(9)"><span class="ds-mi-num">09</span><span class="ds-mi-title">Writing &amp; Blog</span></button>
+<button class="ds-mi" id="ds-mi-9" onclick="goTo(10)"><span class="ds-mi-num">10</span><span class="ds-mi-title">Contact</span></button>
 </div>
 <div class="ds-foot">
 <div class="ds-prog-wrap" onclick="seekProg(event)" id="ds-prog-wrap">
@@ -808,13 +1038,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 </button>
 <span id="tb-title" onclick="toggleMenu()" style="cursor:pointer">Vineet Pratap Singh</span>
 <div class="th-pills">
-<button class="tp tl" id="dot-light" onclick="setTheme('light')"><span class="tp-dot"></span>L</button>
 <button class="tp tk on" id="dot-dark" onclick="setTheme('dark')"><span class="tp-dot"></span>D</button>
+<button class="tp tl" id="dot-light" onclick="setTheme('light')"><span class="tp-dot"></span>L</button>
 <button class="tp tm" id="dot-mono" onclick="setTheme('mono')"><span class="tp-dot"></span>M</button>
 </div>
 </div>
 <div id="pagearea">
-<div class="page" id="pg-0">
+<div class="page" id="pg-0" hidden>
 <div class="page-inner" style="padding:0;overflow:hidden">
 <div class="t-wrap" style="height:100%;display:flex;flex-direction:column;position:relative;background:var(--page);overflow:hidden">
 <div aria-hidden="true" style="position:absolute;right:-10px;bottom:-30px;font-size:min(55vw,420px);font-weight:900;letter-spacing:-.08em;color:var(--line);line-height:1;pointer-events:none;user-select:none;z-index:0;opacity:.35;line-height:.85">S</div>
@@ -856,34 +1086,63 @@ GitHub
 </div>
 </div>
 </div>
-<div class="page" id="pg-1" hidden>
+<div class="page" id="pg-1">
 <div class="page-inner">
-<div class="run-head"><span class="rh-chap">About Me</span><span class="rh-folio">01</span></div>
 <div class="content">
-<div class="ch-h1">About Me</div>
-<div class="ch-h1-sub">A developer who chose pharmacy — and codes anyway</div>
-<div class="pg-cols">
-<div class="col-a">
-<p class="lede">I'm a third-year B.Pharm student at AKTU, Lucknow — but the terminal is always open. I build open-source tools that sit at the crossroads of healthcare and security, because those two worlds share more problems than they usually admit.</p>
-<p>My background spans pharmaceutical science, self-taught web development, and active cybersecurity practice. I've contributed to academic research on cancer targets using in-silico methods, built pharmacy management systems from scratch, and placed in the top 1% of TryHackMe's global learner base.</p>
-<p>Everything I build is zero-dependency, self-hosted, and designed to work in the real world — not just in a demo.</p>
-<div class="quote"><p>"I don't think in silos. Pharmacokinetics and network enumeration both follow patterns — find the system, understand the flow, find the weakness."</p></div>
+<div class="ch-h1">Vineet Pratap Singh</div>
+<div class="ch-h1-sub">B.Pharm student at AKTU · Open-source developer · Cybersecurity learner</div>
+
+<div class="about-hero">
+  <div class="about-avatar">VS</div>
+  <div class="about-intro">
+    <p class="lede">Third-year B.Pharm student at AKTU, Lucknow — with a terminal always open. I build open-source tools at the crossroads of healthcare and security, because those two worlds share more unsolved problems than either admits.</p>
+    <p>My work spans pharmaceutical science, self-taught web development, and active security practice. I've contributed to in-silico cancer research, built zero-dependency pharmacy systems, and placed in the top 1% of TryHackMe globally.</p>
+    <p>Everything I ship is self-hosted, dependency-free, and built to work in the real world — not just in a demo.</p>
+    <div class="tags" style="margin-top:14px">
+      <span class="tag">PHP</span><span class="tag">Python</span><span class="tag">Go</span>
+      <span class="tag">Pentesting</span><span class="tag">Pharmacology</span><span class="tag">Linux</span>
+    </div>
+  </div>
 </div>
-<div class="col-b">
+
 <div class="stats">
-<div class="stat"><div class="stat-v">Top 1%</div><div class="stat-l">TryHackMe Global</div></div>
-<div class="stat"><div class="stat-v">25+</div><div class="stat-l">Open Source Projects</div></div>
-<div class="stat"><div class="stat-v">14</div><div class="stat-l">Certificates Earned</div></div>
-<div class="stat"><div class="stat-v">3rd Yr</div><div class="stat-l">B.Pharm at AKTU</div></div>
+  <div class="stat"><div class="stat-v">Top 1%</div><div class="stat-l">TryHackMe Global</div></div>
+  <div class="stat"><div class="stat-v">25+</div><div class="stat-l">Open Source Projects</div></div>
+  <div class="stat"><div class="stat-v">14</div><div class="stat-l">Certificates Earned</div></div>
+  <div class="stat"><div class="stat-v">3 Yrs</div><div class="stat-l">B.Pharm · AKTU</div></div>
 </div>
+
+<div class="about-pillars">
+  <div class="about-pillar">
+    <div class="about-pillar-icon">⚕</div>
+    <div class="about-pillar-title">Healthcare</div>
+    <div class="about-pillar-desc">Pharmacy management systems, dosage calculators, clinical tools — built from actual pharmaceutical knowledge, not generic templates.</div>
+  </div>
+  <div class="about-pillar">
+    <div class="about-pillar-icon">⚔</div>
+    <div class="about-pillar-title">Security</div>
+    <div class="about-pillar-desc">Zero-trust routers, anonymity toolkits, CTF writeups. Top 1% on TryHackMe. Security thinking informs how every tool is built.</div>
+  </div>
+  <div class="about-pillar">
+    <div class="about-pillar-icon">⚙</div>
+    <div class="about-pillar-title">Systems</div>
+    <div class="about-pillar-desc">CLI tools, monitoring dashboards, automation scripts. Zero-dependency where possible — deployable anywhere.</div>
+  </div>
+</div>
+
+<div class="quote-redesign">
+  <div class="qr-mark">"</div>
+  <p class="qr-text">I don't think in silos. Pharmacokinetics and network enumeration both follow patterns — find the system, understand the flow, find the weakness.</p>
+  <div class="qr-attr"><span class="qr-dash">—</span><span class="qr-name">Vineet Pratap Singh</span><span class="qr-role">psvineet</span></div>
+</div>
+
 <div class="info">
-<div class="ir"><span class="ir-k">Location</span><span class="ir-v">Lucknow, India</span></div>
-<div class="ir"><span class="ir-k">University</span><span class="ir-v">AKTU, Lucknow</span></div>
-<div class="ir"><span class="ir-k">Program</span><span class="ir-v">B.Pharm (2024–2028)</span></div>
-<div class="ir"><span class="ir-k">Year</span><span class="ir-v">Third Year — In Progress</span></div>
-<div class="ir"><span class="ir-k">Handle</span><span class="ir-v">psvineet (all platforms)</span></div>
-</div>
-</div>
+  <div class="ir"><span class="ir-k">Location</span><span class="ir-v">Lucknow, India</span></div>
+  <div class="ir"><span class="ir-k">University</span><span class="ir-v">AKTU, Lucknow</span></div>
+  <div class="ir"><span class="ir-k">Program</span><span class="ir-v">B.Pharm (2024–2028)</span></div>
+  <div class="ir"><span class="ir-k">Year</span><span class="ir-v">Third Year — In Progress</span></div>
+  <div class="ir"><span class="ir-k">Handle</span><span class="ir-v">psvineet (all platforms)</span></div>
+  <div class="ir"><span class="ir-k">Email</span><span class="ir-v">ci.vps@proton.me</span></div>
 </div>
 </div>
 </div>
@@ -895,23 +1154,47 @@ GitHub
 <div class="ch-h1">Education</div>
 <div class="ch-h1-sub">Academic foundation across pharmaceutical science and hard sciences</div>
 <p class="lede">Formal education in pharmaceutical sciences at one of India's leading technical universities, supported by a strong academic record through secondary school and active research contributions.</p>
-<div class="tl-item">
-<div class="tl-date">2024 – 2028 · In Progress</div>
-<div class="tl-title">Bachelor of Pharmacy (B.Pharm)</div>
-<div class="tl-sub">AKTU, Lucknow · Third Year</div>
-<div class="tl-desc">Core coursework: drug formulation, pharmacokinetics, medicinal chemistry, pharmaceutical analysis, and quality assurance. Contributed to a research poster at the IPGA 37th Annual Conference alongside Dr. Shreya Singh.</div>
+<div class="edu-card edu-card--active">
+  <div class="edu-card-aside">
+    <div class="edu-card-year">2024</div>
+    <div class="edu-card-line"></div>
+    <div class="edu-card-year edu-card-year--end">2028</div>
+  </div>
+  <div class="edu-card-body">
+    <div class="edu-card-badge">In Progress</div>
+    <div class="edu-card-title">Bachelor of Pharmacy (B.Pharm)</div>
+    <div class="edu-card-inst">AKTU, Lucknow · Third Year</div>
+    <div class="edu-card-desc">Core coursework: drug formulation, pharmacokinetics, medicinal chemistry, pharmaceutical analysis, and quality assurance. Contributed to a research poster at the IPGA 37th Annual Conference alongside Dr. Shreya Singh.</div>
+    <div class="edu-card-tags">
+      <span class="edu-tag">Pharmacokinetics</span>
+      <span class="edu-tag">Medicinal Chemistry</span>
+      <span class="edu-tag">QA</span>
+    </div>
+  </div>
 </div>
-<div class="tl-item">
-<div class="tl-date">2022 – 2024</div>
-<div class="tl-title">Class XII — PCB Stream</div>
-<div class="tl-sub">Physics, Chemistry, Biology · 92.4%</div>
-<div class="tl-desc">Strong foundation in the physical and life sciences. The PCB stream fed directly into pharmacy curriculum and early pharmacology research interest.</div>
+<div class="edu-card">
+  <div class="edu-card-aside">
+    <div class="edu-card-year">2022</div>
+    <div class="edu-card-line"></div>
+    <div class="edu-card-year edu-card-year--end">2024</div>
+  </div>
+  <div class="edu-card-body">
+    <div class="edu-card-score">92.4%</div>
+    <div class="edu-card-title">Class XII — PCB Stream</div>
+    <div class="edu-card-inst">Physics · Chemistry · Biology</div>
+    <div class="edu-card-desc">Strong foundation in the physical and life sciences. The PCB stream fed directly into pharmacy curriculum and early pharmacology research interest.</div>
+  </div>
 </div>
-<div class="tl-item">
-<div class="tl-date">2022</div>
-<div class="tl-title">Class X — General Science</div>
-<div class="tl-sub">87%</div>
-<div class="tl-desc">Solid academic performance across core subjects.</div>
+<div class="edu-card">
+  <div class="edu-card-aside">
+    <div class="edu-card-year">2022</div>
+  </div>
+  <div class="edu-card-body">
+    <div class="edu-card-score">87%</div>
+    <div class="edu-card-title">Class X — General Science</div>
+    <div class="edu-card-inst">Secondary School</div>
+    <div class="edu-card-desc">Solid academic performance across core subjects.</div>
+  </div>
 </div>
 <div class="s-div"><span>Coursework Highlights</span></div>
 <div class="tags">
@@ -1089,146 +1372,189 @@ GitHub
 <div class="ch-h1">Writing &amp; Blog</div>
 <div class="ch-h1-sub">Security walkthroughs, technical essays, and deep-dives</div>
 <p class="lede">Writing is how I process what I learn. From CTF walkthroughs to academic essays on humanity's relationship with dangerous technology — the blog is where the technical and the philosophical meet.</p>
-<div class="blog"><div class="blog-d">Sep 2026</div><div class="blog-t"><a href="https://vps.iblogger.org" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">CTF Challenges Writeups — TryHackMe Walkthroughs ↗</a></div><div class="blog-b">Ongoing series covering TryHackMe rooms and CTF walkthroughs. Step-by-step methodology from recon to privilege escalation.</div></div>
-<div class="blog"><div class="blog-d">Aug 2026</div><div class="blog-t"><a href="https://psvineet.me/cyber-blog/hh26/Cyber%20Security/Hacker%20Holiday%202026/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Hacker Holidays 2026 — The Byte Lotus Writeups ↗</a></div><div class="blog-b">All 14 rooms: AI security, web enumeration, cloud security, PCAP analysis, digital forensics, OSINT, cryptography, and malware analysis.</div></div>
-<div class="blog"><div class="blog-d">Aug 2026</div><div class="blog-t"><a href="https://psvineet.me/cyber-blog/cca" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Common Cyber Attacks — What They Are &amp; How to Stay Safe ↗</a></div><div class="blog-b">Social engineering, phishing, malware, ransomware, SQL injection, XSS, DDoS, SIM swapping, AI voice cloning — with practical defenses including MFA and the 3-2-1 backup rule.</div></div>
-<div class="blog"><div class="blog-d">Aug 2026</div><div class="blog-t"><a href="https://psvineet.me/cyber-blog/ptfw" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Pentesting Frameworks — and How to Choose the Right One ↗</a></div><div class="blog-b">Standards and methodologies for repeatable, defensible penetration testing. Comparing PTES, OWASP, NIST, and OSSTMM.</div></div>
-<div class="blog"><div class="blog-d">Sep 2026</div><div class="blog-t"><a href="https://psvineet.me/cyber-blog/sqli" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">SQL Injection — How It Works, How to Find It, and How to Stop It ↗</a></div><div class="blog-b">In-Band, Blind, and Out-of-Band SQL injection techniques; defenses via parameterized queries and WAF rules.</div></div>
-<div class="blog"><div class="blog-d">Sep 2026</div><div class="blog-t"><a href="https://psvineet.me/cyber-blog/csrf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Cross-Site Request Forgery — How Browsers Are Turned Against Their Users ↗</a></div><div class="blog-b">Mechanics, three attack vectors, CSRF tokens, SameSite cookies, and Origin header validation.</div></div>
-<div class="blog"><div class="blog-d">Sep 2026</div><div class="blog-t"><a href="https://psvineet.me/cyber-blog/sid" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Mankind Built the Atomic Bomb — But No Mouse Ever Built a Mousetrap ↗</a></div><div class="blog-b">Research essay on humanity's self-destructive relationship with technology: nuclear weapons, biotech, AI, and cybersecurity. Cites Lancet, RAND, IBM, and Mandiant.</div></div>
+<a href="https://vps.iblogger.org" target="_blank" rel="noopener" class="bcard">
+  <div class="bcard-top"><span class="bcard-cat">CTF</span><span class="bcard-date">Sep 2026</span></div>
+  <div class="bcard-title">CTF Challenges Writeups — TryHackMe Walkthroughs</div>
+  <div class="bcard-body">Ongoing series covering TryHackMe rooms and CTF walkthroughs. Step-by-step methodology from recon to privilege escalation.</div>
+  <div class="bcard-foot"><span class="bcard-arrow">Read →</span></div>
+</a>
+<a href="https://psvineet.me/cyber-blog/hh26/Cyber%20Security/Hacker%20Holiday%202026/" target="_blank" rel="noopener" class="bcard">
+  <div class="bcard-top"><span class="bcard-cat">CTF</span><span class="bcard-date">Aug 2026</span></div>
+  <div class="bcard-title">Hacker Holidays 2026 — The Byte Lotus Writeups</div>
+  <div class="bcard-body">All 14 rooms: AI security, web enumeration, cloud security, PCAP analysis, digital forensics, OSINT, cryptography, and malware analysis.</div>
+  <div class="bcard-foot"><span class="bcard-arrow">Read →</span></div>
+</a>
+<a href="https://psvineet.me/cyber-blog/cca" target="_blank" rel="noopener" class="bcard">
+  <div class="bcard-top"><span class="bcard-cat">Security</span><span class="bcard-date">Aug 2026</span></div>
+  <div class="bcard-title">Common Cyber Attacks — What They Are &amp; How to Stay Safe</div>
+  <div class="bcard-body">Social engineering, phishing, malware, ransomware, SQL injection, XSS, DDoS, SIM swapping, AI voice cloning — with practical defenses.</div>
+  <div class="bcard-foot"><span class="bcard-arrow">Read →</span></div>
+</a>
+<a href="https://psvineet.me/cyber-blog/ptfw" target="_blank" rel="noopener" class="bcard">
+  <div class="bcard-top"><span class="bcard-cat">Security</span><span class="bcard-date">Aug 2026</span></div>
+  <div class="bcard-title">Pentesting Frameworks — and How to Choose the Right One</div>
+  <div class="bcard-body">Comparing PTES, OWASP, NIST, and OSSTMM for repeatable, defensible penetration testing.</div>
+  <div class="bcard-foot"><span class="bcard-arrow">Read →</span></div>
+</a>
+<a href="https://psvineet.me/cyber-blog/sqli" target="_blank" rel="noopener" class="bcard">
+  <div class="bcard-top"><span class="bcard-cat">Deep Dive</span><span class="bcard-date">Sep 2026</span></div>
+  <div class="bcard-title">SQL Injection — How It Works, How to Find It, and How to Stop It</div>
+  <div class="bcard-body">In-Band, Blind, and Out-of-Band SQL injection; defenses via parameterized queries and WAF rules.</div>
+  <div class="bcard-foot"><span class="bcard-arrow">Read →</span></div>
+</a>
+<a href="https://psvineet.me/cyber-blog/csrf" target="_blank" rel="noopener" class="bcard">
+  <div class="bcard-top"><span class="bcard-cat">Deep Dive</span><span class="bcard-date">Sep 2026</span></div>
+  <div class="bcard-title">Cross-Site Request Forgery — How Browsers Are Turned Against Their Users</div>
+  <div class="bcard-body">Mechanics, three attack vectors, CSRF tokens, SameSite cookies, and Origin header validation.</div>
+  <div class="bcard-foot"><span class="bcard-arrow">Read →</span></div>
+</a>
+<a href="https://psvineet.me/cyber-blog/sid" target="_blank" rel="noopener" class="bcard bcard--essay">
+  <div class="bcard-top"><span class="bcard-cat bcard-cat--essay">Essay</span><span class="bcard-date">Sep 2026</span></div>
+  <div class="bcard-title">Mankind Built the Atomic Bomb — But No Mouse Ever Built a Mousetrap</div>
+  <div class="bcard-body">Research essay on humanity's self-destructive relationship with technology: nuclear weapons, biotech, AI, and cybersecurity.</div>
+  <div class="bcard-foot"><span class="bcard-arrow">Read →</span></div>
+</a>
 </div>
 </div>
 </div>
 <div class="page" id="pg-10" hidden>
-<div class="page-inner" style="padding:0;overflow:hidden">
-<div style="height:100%;display:flex;flex-direction:column;background:var(--page);position:relative;overflow-y:auto">
-<div style="height:3px;background:var(--accent);flex-shrink:0"></div>
-<div style="padding:clamp(28px,5vw,52px) clamp(24px,5vw,52px) 0;flex-shrink:0">
-<div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Contact</div>
-<div class="ct-h" style="font-size:clamp(30px,6vw,52px);font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--ink);margin-bottom:10px">Let's build <br class="ct-br">something.</div>
-<div style="font-size:14px;color:var(--ink3);line-height:1.65;max-width:420px;margin-bottom:28px">Open to collaboration, research, security projects, and conversations worth having. Reach out on any platform below.</div>
+<div class="page-inner">
+<div class="content">
+<div class="ch-h1">Contact</div>
+<div class="ch-h1-sub">Open to collaboration, research projects, and conversations worth having</div>
+
+<div class="ct-about-row">
+  <div class="ct-about-text">
+    <p class="lede">Whether it's a security project, a healthcare tool, research collaboration, or just a technical conversation — I'm reachable. Preferred contact is email; I also respond on LinkedIn and GitHub.</p>
+    <p>I'm particularly interested in: open-source security tooling, pharmacy informatics, AI safety in healthcare, and CTF collaboration. If you have something in that space, reach out.</p>
+  </div>
+  <div class="ct-status-card">
+    <div class="ct-status-pill">
+      <div class="ct-status-dot"></div>
+      <span class="ct-status-pill-text">Open to Collab</span>
+    </div>
+    <div class="ct-status-name">Vineet Pratap Singh</div>
+    <div class="ct-status-role">B.Pharm · AKTU Lucknow · 2024–2028</div>
+    <div class="ct-status-tags">
+      <span class="ct-status-tag">Security</span>
+      <span class="ct-status-tag">Healthcare</span>
+      <span class="ct-status-tag">Open Source</span>
+      <span class="ct-status-tag">CTF</span>
+    </div>
+    <div class="ct-status-meta">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="var(--ink3)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Lucknow, India · UTC+5:30
+    </div>
+  </div>
 </div>
-<div class="ct-cta" style="padding:0 clamp(24px,5vw,52px);display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;flex-shrink:0">
-<a href="mailto:ci.vps@proton.me" style="display:inline-flex;align-items:center;gap:7px;padding:10px 18px;background:var(--ink);color:var(--page);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:8px;text-decoration:none;transition:.18s">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-ci.vps@proton.me
-</a>
-<a href="https://github.com/psvineet" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;padding:10px 18px;background:var(--tag-bg);color:var(--tag-ink);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:8px;text-decoration:none;border:1px solid rgba(200,119,58,.18);transition:.18s">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-GitHub
-</a>
-<a href="https://linkedin.com/in/psvineet" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;padding:10px 18px;background:var(--tag-bg);color:var(--tag-ink);font-size:12px;font-weight:700;letter-spacing:.02em;border-radius:8px;text-decoration:none;border:1px solid rgba(200,119,58,.18);transition:.18s">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-LinkedIn
-</a>
+
+<div class="s-div"><span>Primary</span></div>
+
+<div class="ct-primary-links">
+  <a href="mailto:ci.vps@proton.me" class="ct-primary-link ct-primary-link--main">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <div>
+      <div class="ct-pl-label">Email — ProtonMail</div>
+      <div class="ct-pl-val">ci.vps@proton.me</div>
+    </div>
+    <span class="ct-pl-badge">Preferred</span>
+  </a>
+  <a href="https://github.com/psvineet" target="_blank" rel="noopener" class="ct-primary-link">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    <div>
+      <div class="ct-pl-label">GitHub</div>
+      <div class="ct-pl-val">github.com/psvineet</div>
+    </div>
+    <span class="ct-pl-arrow">↗</span>
+  </a>
+  <a href="https://linkedin.com/in/psvineet" target="_blank" rel="noopener" class="ct-primary-link">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <div>
+      <div class="ct-pl-label">LinkedIn</div>
+      <div class="ct-pl-val">linkedin.com/in/psvineet</div>
+    </div>
+    <span class="ct-pl-arrow">↗</span>
+  </a>
 </div>
-<div style="padding:0 clamp(24px,5vw,52px);flex:1;min-height:0">
-<div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);margin-bottom:12px">All Platforms</div>
-<div class="ct-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px">
-<a href="https://psvineet.github.io" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--page2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:.15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-<div style="width:30px;height:30px;border-radius:7px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+
+<div class="s-div"><span>All Platforms</span></div>
+
+<div class="ct-grid-new">
+  <a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener" class="ct-card">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+    <div class="ct-card-label">TryHackMe</div>
+    <div class="ct-card-sub">Top 1% Global · psvineet</div>
+  </a>
+
+  <a href="https://vps.iblogger.org" target="_blank" rel="noopener" class="ct-card">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+    <div class="ct-card-label">CTF Writeups</div>
+    <div class="ct-card-sub">vps.iblogger.org</div>
+  </a>
+  <a href="https://twitter.com/psvineet" target="_blank" rel="noopener" class="ct-card">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <div class="ct-card-label">Twitter / X</div>
+    <div class="ct-card-sub">@psvineet</div>
+  </a>
+  <a href="https://orcid.org/0009-0006-8424-0643" target="_blank" rel="noopener" class="ct-card">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    <div class="ct-card-label">ORCID</div>
+    <div class="ct-card-sub">0009-0006-8424-0643</div>
+  </a>
+  <a href="https://psvineet.github.io" target="_blank" rel="noopener" class="ct-card">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+    <div class="ct-card-label">Portfolio</div>
+    <div class="ct-card-sub">psvineet.github.io</div>
+  </a>
 </div>
-<div>
-<div style="font-size:11px;font-weight:700;color:var(--ink);line-height:1.2">Website</div>
-<div style="font-size:10px;color:var(--ink4);margin-top:1px">psvineet.github.io</div>
+
+<div class="ct-interests">
+  <div class="ct-interests-label">Open to</div>
+  <div class="tags">
+    <span class="tag">Security tooling</span>
+    <span class="tag">Healthcare software</span>
+    <span class="tag">CTF collaboration</span>
+    <span class="tag">Research projects</span>
+    <span class="tag">AI safety in pharma</span>
+    <span class="tag">Open source</span>
+  </div>
 </div>
-</a>
-<a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--page2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:.15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-<div style="width:30px;height:30px;border-radius:7px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-</div>
-<div>
-<div style="font-size:11px;font-weight:700;color:var(--ink);line-height:1.2">TryHackMe</div>
-<div style="font-size:10px;color:var(--ink4);margin-top:1px">Top 1% Global</div>
-</div>
-</a>
-<a href="https://vps.iblogger.org" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--page2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:.15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-<div style="width:30px;height:30px;border-radius:7px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-</div>
-<div>
-<div style="font-size:11px;font-weight:700;color:var(--ink);line-height:1.2">CTF Blog</div>
-<div style="font-size:10px;color:var(--ink4);margin-top:1px">vps.iblogger.org</div>
-</div>
-</a>
-<a href="https://twitter.com/psvineet" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--page2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:.15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-<div style="width:30px;height:30px;border-radius:7px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="var(--accent)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-</div>
-<div>
-<div style="font-size:11px;font-weight:700;color:var(--ink);line-height:1.2">Twitter / X</div>
-<div style="font-size:10px;color:var(--ink4);margin-top:1px">@psvineet</div>
-</div>
-</a>
-<a href="https://orcid.org/0009-0006-8424-0643" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--page2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:.15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-<div style="width:30px;height:30px;border-radius:7px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-</div>
-<div>
-<div style="font-size:11px;font-weight:700;color:var(--ink);line-height:1.2">ORCID</div>
-<div style="font-size:10px;color:var(--ink4);margin-top:1px">0009-0006-8424-0643</div>
-</div>
-</a>
-</div>
-</div>
-<div style="flex-shrink:0;padding:14px clamp(24px,5vw,52px);border-top:1px solid var(--line);background:var(--page2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
-<span style="font-size:10px;color:var(--ink4);line-height:1.6">Vineet Pratap Singh · B.Pharm 2024–2028 · AKTU, Lucknow</span>
-<span style="font-size:10px;color:var(--ink4)">Portfolio · 2026</span>
-</div>
+
 </div>
 </div>
 </div>
 </div>
 <div id="botbar">
-<div id="prog-wrap" onclick="seekProg(event)"><div id="prog-fill" style="width:0%"></div></div>
-<div id="page-num">1 / 11</div>
+<div id="prog-wrap"></div>
+<div id="page-num"></div>
 </div>
 </div>
 <div id="menu-overlay" onclick="handleBd(event)">
 <div id="menu-bd"></div>
 <div id="menu-panel">
 <div class="mh">
-<div class="mh-avatar">VS</div>
 <div class="mh-name">Vineet Pratap Singh</div>
 <div class="mh-sub">B.Pharm, AKTU · Developer · Security</div>
 <div class="mh-badges"><span class="mh-badge">Top 1% TryHackMe</span><span class="mh-badge">25+ Projects</span><span class="mh-badge">2026</span></div>
 </div>
 <div class="ms-label">Contents</div>
-<button class="mi on" id="mi-0" onclick="goTo(0);closeMenu()"><span class="mi-num">—</span><span class="mi-body"><span class="mi-title">Title Page</span></span><span class="mi-pg">p.1</span></button>
-<button class="mi" id="mi-1" onclick="goTo(1);closeMenu()"><span class="mi-num">01</span><span class="mi-body"><span class="mi-title">About Me</span></span><span class="mi-pg">p.2</span></button>
-<button class="mi" id="mi-2" onclick="goTo(2);closeMenu()"><span class="mi-num">02</span><span class="mi-body"><span class="mi-title">Education</span></span><span class="mi-pg">p.3</span></button>
-<button class="mi" id="mi-3" onclick="goTo(3);closeMenu()"><span class="mi-num">03</span><span class="mi-body"><span class="mi-title">Skills &amp; Tools</span></span><span class="mi-pg">p.4</span></button>
-<button class="mi" id="mi-4" onclick="goTo(4);closeMenu()"><span class="mi-num">04</span><span class="mi-body"><span class="mi-title">Certifications</span></span><span class="mi-pg">p.5</span></button>
-<button class="mi" id="mi-5" onclick="goTo(5);closeMenu()"><span class="mi-num">05</span><span class="mi-body"><span class="mi-title">Security Projects</span></span><span class="mi-pg">p.6</span></button>
-<button class="mi" id="mi-6" onclick="goTo(6);closeMenu()"><span class="mi-num">06</span><span class="mi-body"><span class="mi-title">Healthcare Projects</span></span><span class="mi-pg">p.7</span></button>
-<button class="mi" id="mi-7" onclick="goTo(7);closeMenu()"><span class="mi-num">07</span><span class="mi-body"><span class="mi-title">Systems &amp; Dev Tools</span></span><span class="mi-pg">p.8</span></button>
-<button class="mi" id="mi-8" onclick="goTo(8);closeMenu()"><span class="mi-num">08</span><span class="mi-body"><span class="mi-title">Research &amp; Achievements</span></span><span class="mi-pg">p.9</span></button>
-<button class="mi" id="mi-9" onclick="goTo(9);closeMenu()"><span class="mi-num">09</span><span class="mi-body"><span class="mi-title">Writing &amp; Blog</span></span><span class="mi-pg">p.10</span></button>
-<button class="mi" id="mi-10" onclick="goTo(10);closeMenu()"><span class="mi-num">10</span><span class="mi-body"><span class="mi-title">Contact</span></span><span class="mi-pg">p.11</span></button>
+<button class="mi on" id="mi-0" onclick="goTo(1);closeMenu()"><span class="mi-num">01</span><span class="mi-body"><span class="mi-title">About Me</span></span></button>
+<button class="mi" id="mi-1" onclick="goTo(2);closeMenu()"><span class="mi-num">02</span><span class="mi-body"><span class="mi-title">Education</span></span></button>
+<button class="mi" id="mi-2" onclick="goTo(3);closeMenu()"><span class="mi-num">03</span><span class="mi-body"><span class="mi-title">Skills &amp; Tools</span></span></button>
+<button class="mi" id="mi-3" onclick="goTo(4);closeMenu()"><span class="mi-num">04</span><span class="mi-body"><span class="mi-title">Certifications</span></span></button>
+<button class="mi" id="mi-4" onclick="goTo(5);closeMenu()"><span class="mi-num">05</span><span class="mi-body"><span class="mi-title">Security Projects</span></span></button>
+<button class="mi" id="mi-5" onclick="goTo(6);closeMenu()"><span class="mi-num">06</span><span class="mi-body"><span class="mi-title">Healthcare Projects</span></span></button>
+<button class="mi" id="mi-6" onclick="goTo(7);closeMenu()"><span class="mi-num">07</span><span class="mi-body"><span class="mi-title">Systems &amp; Dev Tools</span></span></button>
+<button class="mi" id="mi-7" onclick="goTo(8);closeMenu()"><span class="mi-num">08</span><span class="mi-body"><span class="mi-title">Research &amp; Achievements</span></span></button>
+<button class="mi" id="mi-8" onclick="goTo(9);closeMenu()"><span class="mi-num">09</span><span class="mi-body"><span class="mi-title">Writing &amp; Blog</span></span></button>
+<button class="mi" id="mi-9" onclick="goTo(10);closeMenu()"><span class="mi-num">10</span><span class="mi-body"><span class="mi-title">Contact</span></span></button>
 <div class="m-foot"><button class="m-close" onclick="closeMenu()">Close</button></div>
 </div>
 </div>
 <script>
-(function(){
-var d=document,w=window;
-var touch=('ontouchstart' in w)||navigator.maxTouchPoints>0;
-function stop(e){e.preventDefault();e.stopPropagation();return false}
-['contextmenu','copy','cut','dragstart','selectstart','beforeprint'].forEach(function(t){d.addEventListener(t,stop,true)});
-d.addEventListener('keydown',function(e){
-var k=(e.key||'').toLowerCase(),c=e.ctrlKey||e.metaKey;
-if(e.key==='F12'||(c&&e.shiftKey&&'ijcks'.indexOf(k)>-1)||(c&&e.altKey&&'ijcu'.indexOf(k)>-1)||(c&&'usapc x'.indexOf(k)>-1&&k.length===1&&k!==' ')){return stop(e)}
-},true);
-if(!touch){
-var hid=false;
-setInterval(function(){
-var open=(w.outerWidth-w.innerWidth>200)||(w.outerHeight-w.innerHeight>220);
-if(open!==hid){hid=open;d.documentElement.style.visibility=open?'hidden':''}
-},800);
-}
-})();
-const N = 11;
-let cur = 0, busy = false, audioCtx = null;
+const N = 10;
+const PG_OFFSET = 1; // pages start at pg-1 (title page removed)
+let cur = 1, busy = false, audioCtx = null;
 function setTheme(t){
 document.documentElement.setAttribute('data-theme',t);
 ['light','dark','mono'].forEach(id=>{
@@ -1337,19 +1663,19 @@ const desc = repo ? (repo.description||'') : '';
 const url = repo ? repo.html_url : `https://github.com/${GH_USER}/${name}`;
 const stars = repo && repo.stargazers_count>0 ? `<span style="font-size:10px;color:var(--ink4);margin-left:6px">★ ${repo.stargazers_count}</span>` : '';
 const updated = repo ? `<span style="font-size:10px;color:var(--ink4);margin-left:auto">${new Date(repo.updated_at).toLocaleDateString('en-GB',{month:'short',year:'numeric'})}</span>` : '';
-el.innerHTML=`<div class="proj-ph">${name.charAt(0).toUpperCase()}</div><div class="proj-body"><div class="proj-top">
-<span class="proj-name"><a href="${url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${name} ↗</a>${stars}</span>
-${lang?`<span class="proj-lang">${lang}</span>`:''}
-${updated}
-</div>
-<div class="proj-desc">${desc||'<span style="color:var(--ink4);font-style:italic">No description · view on GitHub</span>'}</div></div>`;
+const langColors={PHP:'#4F5D95',Python:'#3572A5',Go:'#00ADD8',JavaScript:'#f1e05a','PHP/MySQL':'#4F5D95',HTML:'#e34c26',CSS:'#563d7c',Shell:'#89e051',Ruby:'#701516',Rust:'#dea584',TypeScript:'#2b7489',C:'#555555','C++':'#f34b7d'};
+const lc=lang&&langColors[lang]?langColors[lang]:'var(--accent)';
+const langDot=lang?`<span class="proj-lang"><span class="proj-lang-dot" style="background:${lc}"></span>${lang}</span>`:'';
+const starsHtml=repo&&repo.stargazers_count>0?`<span class="proj-stars">★ ${repo.stargazers_count}</span>`:'';
+const updHtml=repo?`<span class="proj-updated">${new Date(repo.updated_at).toLocaleDateString('en-GB',{month:'short',year:'numeric'})}</span>`:'';
+el.innerHTML=`<div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="${url}" target="_blank" rel="noopener">${name}</a></span></div><div class="proj-meta">${langDot}</div><div class="proj-desc">${desc||'<span style="color:var(--ink4);font-style:italic">No description · view on GitHub</span>'}</div>${(starsHtml||updHtml)?`<div class="proj-foot">${starsHtml||'<span></span>'}${updHtml}</div>`:''}</div>`;
 return el;
 }
 document.addEventListener('DOMContentLoaded',()=>{ui();(window.requestIdleCallback||function(f){setTimeout(f,300)})(fetchGHRepos)});
 function turn(dir){
 if(busy)return;
 const next=cur+dir;
-if(next<0||next>=N)return;
+if(next<PG_OFFSET||next>=N+PG_OFFSET)return;
 busy=true;
 playFlip();
 animateTurn(cur,next,dir>0,()=>{cur=next;ui();busy=false});
@@ -1384,23 +1710,40 @@ toEl.style.zIndex='';
 done();
 },480);
 }
-const TITLES=['Title Page','About Me','Education','Skills & Tools',
+const TITLES=['About Me','Education','Skills & Tools',
 'Certifications','Security Projects','Healthcare Projects',
 'Systems & Dev Tools','Research & Achievements','Writing & Blog','Contact'];
 function ui(){
-document.getElementById('tb-title').textContent=TITLES[cur]||'';
-document.getElementById('prog-fill').style.width=(N>1?cur/(N-1)*100:0)+'%';
-document.getElementById('page-num').textContent=(cur+1)+' / '+N;
-document.querySelectorAll('.mi').forEach((el,i)=>el.classList.toggle('on',i===cur));
-document.querySelectorAll('.ds-mi').forEach((el,i)=>el.classList.toggle('on',i===cur));
+const idx=cur-PG_OFFSET;
+document.getElementById('tb-title').textContent=TITLES[idx]||'';
+const pct=N>1?idx/(N-1)*100:0;
+// botbar: rebuild dots + show section name
+const pw=document.getElementById('prog-wrap');
+if(pw){
+  // build dots once
+  if(pw.children.length!==N){
+    pw.innerHTML='';
+    for(let i=0;i<N;i++){
+      const d=document.createElement('span');
+      d.className='pg-dot';
+      d.dataset.i=i;
+      d.addEventListener('click',()=>goTo(i+PG_OFFSET));
+      pw.appendChild(d);
+    }
+  }
+  pw.querySelectorAll('.pg-dot').forEach((d,i)=>d.classList.toggle('on',i===idx));
+}
+document.getElementById('page-num').textContent=TITLES[idx]||'';
+document.querySelectorAll('.mi').forEach((el,i)=>el.classList.toggle('on',i===idx));
+document.querySelectorAll('.ds-mi').forEach((el,i)=>el.classList.toggle('on',i===idx));
 const dsf=document.getElementById('ds-prog-fill');
 const dsn=document.getElementById('ds-page-num');
-if(dsf) dsf.style.width=(N>1?cur/(N-1)*100:0)+'%';
-if(dsn) dsn.textContent=(cur+1)+' / '+N;
+if(dsf) dsf.style.width=pct+'%';
+if(dsn) dsn.textContent=(idx+1)+' / '+N;
 }
 function seekProg(e){
 const r=e.currentTarget.getBoundingClientRect();
-goTo(Math.round((e.clientX-r.left)/r.width*(N-1)));
+goTo(Math.round((e.clientX-r.left)/r.width*(N-1))+PG_OFFSET);
 }
 function toggleMenu(){document.getElementById('menu-overlay').classList.toggle('open')}
 function closeMenu(){document.getElementById('menu-overlay').classList.remove('open')}
@@ -1426,3 +1769,5 @@ document.addEventListener('touchmove',()=>{},{passive:true});
 </script>
 </body>
 </html>
+
+</body></html>
