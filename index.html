@@ -1,6 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#0a0806!important;color:#f1e8dc!important}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><script>
+(function(){try{var t=localStorage.getItem('vps-theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+</script><style>:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#0a0806!important;color:#f1e8dc!important}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+/* pre-render dark theme to prevent flash */
+[data-theme="dark"] body{background:#0a0806!important}
+[data-theme="light"] body{background:#f7f3ee!important}
+[data-theme="mono"] body{background:#f0f0f0!important}
+</style></head><body>
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" id="root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -11,17 +18,23 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, noarchive">
 <meta name="theme-color" content="#080604">
 <link rel="canonical" href="https://psvineet.github.io/">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0806'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Inter%2Csystem-ui%2Csans-serif' font-size='16' font-weight='900' fill='%23e08e4c' letter-spacing='-1'%3EVS%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACJElEQVR42u2Xz2uScRzHX8+j+Mi0huiyyazdpjQXC6HbaIaLCCEpFzHoXofcCDrXH9DhOYwug6LTiIWnrWBktFOBtX4tGTVYP1guHIZuzsf80aWtsukj6fSQ7+P31/v9/fH5fj5vgTJo0+uK1BnpTFYobRMaQVxJiNho8lIesdHkpXxCM8h/h7ZSZzjo9teTzCNHQn8JUNv9TpP+BeU2I9JktAS0BLQEtAQ0XYC2mkFywEGvzcjIrdfEkgoAp3otXDneze0nK9x5usLpw/sYPmLFYtShfC/w+VuGi5PR2k7AI0dC4aDbf38hjgCccJq3+4acFopFePA2TpdJz+VjB5j/lMJ3c57RqUVWU9k/8kC5nKJ6BR45Errq7T6fzuYZcpoRAFu7hMtmJPIxyddUFoNOA0Bnu4TdpOdDYpNr00uEg25/JXIAodpaIBx0zwLesalF+u17uHDUxvWZJR6/SwBwacCOz9WBpBVRcgUkrTh3cvz5gJIrVFy3agHO/QbGzzkBHn1JKoMGnYazEy/J5X9N12lEeqxtyAHHK6DvxsNlpt/E6xMF0dgGy2ubFIsMdu6VmI2ubZP3WA2MeQ7SZZKQA47hyWexPoANpVDfMJxZiCP8rGfP9FtHt9pTmRw+V0d0YuTQer5QvOt1mLn3YpW59wnVNYVa6sGtB6b20HZNgFqINURAzV/xTnbp/0tGzTqFdCYriJWcayMMqqhmn3fbHf8AmSTRKvKMgaQAAAAASUVORK5CYII=">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e08e4c'/%3E%3Cstop offset='1' stop-color='%23c8773a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='%230a0806'/%3E%3Cpath d='M16 4L5 8.5V16c0 5.8 4.6 10.8 11 12 6.4-1.2 11-6.2 11-12V8.5L16 4z' fill='url(%23g)' opacity='.18'/%3E%3Cpath d='M16 5.5L6 9.5V16c0 5.2 4.1 9.7 10 10.8C21.9 25.7 26 21.2 26 16V9.5L16 5.5z' fill='none' stroke='%23e08e4c' stroke-width='1.2' opacity='.5'/%3E%3Ctext x='16' y='20' dominant-baseline='auto' text-anchor='middle' font-family='Georgia%2Cserif' font-size='11' font-weight='700' fill='%23e08e4c' letter-spacing='-.5'%3EVS%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="psvineet">
-<meta property="og:title" content="psvineet – Vineet Pratap Singh | Developer, Cybersecurity &amp; B.Pharm">
-<meta property="og:description" content="Top 1% TryHackMe, 25+ open-source projects, CTF writeups and pharmacy tools by Vineet Pratap Singh (psvineet).">
+<meta property="og:title" content="psvineet — Developer, Cybersecurity &amp; B.Pharm Student">
+<meta property="og:description" content="Vineet Pratap Singh (psvineet) — Top 1% on TryHackMe, 25+ open-source security &amp; pharmacy projects, CTF writeups, B.Pharm @ AKTU Lucknow.">
 <meta property="og:url" content="https://psvineet.github.io/">
+<meta property="og:image" content="https://opengraph.githubassets.com/1/psvineet/psvineet.github.io">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://opengraph.githubassets.com/1/psvineet/psvineet.github.io">
 <meta property="profile:username" content="psvineet">
-<meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@psvineet">
-<meta name="twitter:title" content="psvineet – Vineet Pratap Singh | Developer, Cybersecurity &amp; B.Pharm">
-<meta name="twitter:description" content="Top 1% TryHackMe, 25+ open-source projects, CTF writeups and pharmacy tools.">
+<meta name="twitter:title" content="psvineet — Developer, Cybersecurity &amp; B.Pharm Student">
+<meta name="twitter:description" content="Top 1% TryHackMe · 25+ open-source projects · CTF writeups · B.Pharm @ AKTU Lucknow">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Vineet Pratap Singh","alternateName":["psvineet","Vineet Singh psvineet"],"url":"https://psvineet.github.io/","jobTitle":"B.Pharm Student, Developer and Cybersecurity Learner","description":"B.Pharm student at AKTU Lucknow building open-source security and healthcare tools. Top 1% on TryHackMe.","alumniOf":{"@type":"CollegeOrUniversity","name":"Dr. A.P.J. Abdul Kalam Technical University (AKTU), Lucknow"},"knowsAbout":["Cybersecurity","Penetration testing","TryHackMe","CTF","PHP","Python","Go","Pharmacology","Network pharmacology","Open source"],"sameAs":["https://github.com/psvineet","https://linkedin.com/in/psvineet","https://tryhackme.com/p/psvineet","https://twitter.com/psvineet","https://orcid.org/0009-0006-8424-0643","https://psvineet.me/cyber-blog/"]}}
 </script>
@@ -123,11 +136,8 @@ transition:.18s;flex-shrink:0;display:flex;align-items:center;gap:5px;white-spac
 .page-inner{height:100%;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;
 padding:0 max(22px,env(safe-area-inset-left,0px)) 72px;padding-top:0;
 -webkit-overflow-scrolling:touch}
-.page-inner::-webkit-scrollbar{width:2px;background:transparent}
-.page-inner::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:99px}
-.page-inner::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.3)}
-:root[data-theme="light"] .page-inner::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15)}
-:root[data-theme="light"] .page-inner::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.28)}
+.page-inner::-webkit-scrollbar{width:3px}
+.page-inner::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
 @keyframes pgFadeSlideOut{
 0%  {opacity:1;transform:translateX(0) scale(1)}
 100%{opacity:0;transform:translateX(-28px) scale(.98)}
@@ -208,7 +218,7 @@ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px;row-g
 .content .proj,.content .cert,.content .rc{margin-bottom:0}
 .content .proj,.content .cert,.content .rc,.content .blog{height:100%}
 #pg-9 .content{column-gap:28px}
-.stats{grid-template-columns:repeat(4,minmax(0,160px))}
+.stats{grid-template-columns:repeat(4,1fr)}
 .lede{max-width:760px}
 .nm-a,.nm-b{display:inline!important}
 .nm-a::after{content:' '}
@@ -228,7 +238,7 @@ transition:.15s;display:flex;align-items:center;gap:4px}
 .ds-nav::-webkit-scrollbar{width:2px}
 .ds-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
 .ds-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.22);padding:12px 18px 5px}
-.ds-mi{display:flex;align-items:center;gap:10px;padding:8px 18px 8px 14px;cursor:pointer;border:none;background:none;
+.ds-mi{;padding:8px 18px 8px 14px;cursor:pointer;border:none;background:none;
 width:100%;text-align:left;transition:background .12s,border-color .12s;border-left:2px solid transparent;
 color:rgba(255,255,255,.55);font-family:'Inter',sans-serif}
 .ds-mi:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.85);border-left-color:rgba(200,119,58,.4)}
@@ -318,10 +328,9 @@ p{color:var(--ink2);line-height:1.76;font-size:15px;margin-bottom:12px}
 .s-div span{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink4);white-space:nowrap}
 .s-div::before,.s-div::after{content:'';flex:1;height:1px;background:var(--line)}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:18px}
-.stat{padding:18px 14px 16px;background:var(--page2);border:1px solid var(--line);border-radius:12px;text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:6px}
-.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent 70%);opacity:.8}
-.stat-v{font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.stat-l{font-size:10.5px;color:var(--ink3);font-weight:600;line-height:1.3;letter-spacing:.04em;text-transform:uppercase}
+.stat{padding:14px 12px;background:var(--page2);border:1px solid var(--line);border-radius:8px;text-align:center}
+.stat-v{font-size:26px;font-weight:900;color:var(--accent);letter-spacing:-.03em;line-height:1}
+.stat-l{font-size:11px;color:var(--ink3);margin-top:3px;font-weight:500;line-height:1.4}
 .quote{margin:18px 0;padding:14px 18px;border-left:3px solid var(--accent);
 background:var(--page2);border-radius:0 6px 6px 0}
 .quote p{font-size:13px;font-style:italic;color:var(--ink2);margin:0;line-height:1.72}
@@ -354,10 +363,6 @@ border-left:3px solid var(--accent)}
 .proj-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
 .proj-name{font-size:13.5px;font-weight:700;color:var(--ink);flex:1;min-width:0}
 .proj-meta{display:flex;align-items:center;gap:6px;margin-bottom:6px}
-.proj-lang{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:.04em;
-padding:2px 8px 2px 6px;border-radius:999px;white-space:nowrap;flex-shrink:0;
-background:var(--tag-bg);color:var(--tag-ink);border:1px solid var(--glass-b)}
-.proj-lang-dot{display:none!important}
 .proj-desc{font-size:12px;color:var(--ink3);line-height:1.58}
 .proj-foot{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
 .proj-stars{font-size:10.5px;color:var(--ink4);display:flex;align-items:center;gap:3px}
@@ -523,7 +528,6 @@ background:var(--glass)!important;box-shadow:var(--glass-sh)}
 .proj-ph{display:none!important}
 .proj-top{flex-wrap:wrap;gap:4px 8px;margin-bottom:6px;align-items:center}
 .proj-name{flex:1 1 100%;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}
-.proj-lang{order:2;padding:2px 9px;font-size:10.5px}
 .proj-top>span[style*="margin-left:auto"]{order:3}
 .proj-desc{font-size:13px;line-height:1.6}
 .nm-br,.hint-d{display:none}
@@ -609,8 +613,7 @@ border-radius:16px!important;transition:transform .25s var(--ease),border-color 
 box-shadow:0 14px 40px rgba(0,0,0,.28),0 0 0 1px rgba(224,142,76,.18)}
 .tag{border-radius:999px;font-weight:600;transition:.2s}
 .tag:hover{border-color:var(--accent);color:var(--accent)}
-.page-inner{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.15) transparent}
-:root[data-theme="light"] .page-inner{scrollbar-color:rgba(0,0,0,.15) transparent}
+.page-inner{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
 #pg-0 .page-inner{overflow:hidden}
 .t-wrap{background:transparent!important}
 .t-wrap::before{content:'';position:absolute;width:min(70vw,620px);aspect-ratio:1;right:-12%;top:50%;transform:translateY(-50%);border-radius:50%;
@@ -628,16 +631,16 @@ background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:b
 .quote{position:relative;padding:20px 22px 20px 26px!important}
 .quote::before{content:'“';position:absolute;top:-6px;left:14px;font-size:64px;line-height:1;color:var(--accent);opacity:.35;font-family:Georgia,serif}
 .quote p{font-size:14.5px!important;color:var(--ink)!important;padding-top:10px}
-.stat{padding:22px 18px 18px!important}
-.stat-v{font-size:clamp(26px,3.2vw,36px)!important}
+.stat{padding:20px 12px!important;position:relative;overflow:hidden}
+.stat::after{display:none}
+.stat-v{font-size:clamp(24px,3.2vw,32px)!important}
 .ir-k{text-transform:uppercase;font-size:10.5px;letter-spacing:.12em;color:var(--ink4)}
 .tl-item{padding:20px 22px 20px 24px!important;border-left:3px solid var(--accent)!important}
 .tl-date{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--tag-bg);color:var(--tag-ink)!important;margin-bottom:10px}
 .tl-title{font-size:17px!important;letter-spacing:-.02em}
 .tl-desc{font-size:13.5px!important;line-height:1.65}
 .sk-sec{padding:20px 22px!important}
-.sk-head{border-bottom:none!important;padding-bottom:0;font-size:12px;display:flex;align-items:center;gap:10px}
-.sk-head::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+.sk-head{border-bottom:none!important;padding-bottom:0;font-size:12px;}
 .sk-note{color:var(--ink3);margin-top:12px!important;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px}
 .cert{padding:16px 18px!important;border-left:3px solid var(--accent)!important}
 .cert-d{color:var(--accent)!important;letter-spacing:.12em}
@@ -648,10 +651,9 @@ background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:b
 .proj-name{font-size:14.5px!important;font-weight:800!important;letter-spacing:-.02em}
 .proj-name a{text-decoration:none;color:inherit;transition:color .15s}
 .proj-name a:hover{color:var(--accent)}
-.proj-lang{background:var(--tag-bg)!important;color:var(--tag-ink)!important;border:1px solid var(--glass-b)!important}
 .proj-desc{color:var(--ink3)!important;font-size:12.5px!important;line-height:1.65!important}
 .rc{padding:22px 24px!important;position:relative;overflow:hidden}
-.rc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--accent),transparent)}
+.rc::before{display:none}
 .rc-badge{padding:3px 10px;border-radius:999px;background:var(--tag-bg);margin-bottom:12px!important}
 .rc-title{font-size:clamp(16px,2vw,19px)!important;letter-spacing:-.02em;margin-bottom:8px!important}
 .rc-desc{color:var(--ink2)!important}
@@ -681,7 +683,7 @@ background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:b
 @media(min-width:900px){
 .content{padding-top:56px;gap:18px}
 #pg-1 .pg-cols{gap:64px}
-#pg-4 .content{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#pg-4 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 #pg-5 .content,#pg-6 .content,#pg-7 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 #pg-3 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 #pg-8 .content{grid-template-columns:repeat(2,minmax(0,1fr))!important}
@@ -689,10 +691,52 @@ background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:b
 .content>.ch-h1,.content>.ch-h1-sub,.content>.lede,.content>.s-div,.content>.tags{grid-column:1/-1}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* ── Preloader ── */
+#preloader{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  transition:opacity .5s ease, visibility .5s ease;
+}
+#preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+.pl-logo{
+  width:52px;height:52px;position:relative;
+}
+.pl-logo svg{width:100%;height:100%}
+.pl-ring{
+  position:absolute;inset:-8px;
+  border-radius:50%;
+  border:2px solid transparent;
+  border-top-color:var(--accent);
+  border-right-color:var(--accent);
+  animation:pl-spin 1s cubic-bezier(.6,.2,.4,.8) infinite;
+}
+@keyframes pl-spin{to{transform:rotate(360deg)}}
+.pl-text{
+  font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink4);
+  font-family:'Ubuntu',system-ui,sans-serif;
+}
+.pl-dots{display:inline-flex;gap:4px;margin-top:4px}
+.pl-dots span{
+  width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.3;
+  animation:pl-pulse 1.2s ease-in-out infinite;
+}
+.pl-dots span:nth-child(2){animation-delay:.2s}
+.pl-dots span:nth-child(3){animation-delay:.4s}
+@keyframes pl-pulse{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
 .lede,.ch-h1-sub,.content p,.proj-desc,.rc-desc,.tl-desc,.blog-b,.sk-note,.cert-i{max-width:none!important;text-wrap:pretty}
 .content{max-width:none!important}
-.page-inner{max-width:1480px!important}
-.tag,.proj-lang,.tl-date,.cert-d,.blog-d,.rc-badge,.stat-l,.ir-k,.ir-v{white-space:nowrap}
+@media(min-width:900px){
+.page-inner{
+  max-width:1080px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:48px!important;
+  padding-right:48px!important;
+}
+}
+.tag,.tl-date,.cert-d,.blog-d,.rc-badge,.stat-l,.ir-k,.ir-v{white-space:nowrap}
 .proj-name,.cert-n,.blog-t,.rc-title,.tl-title{overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important}
 .tags{flex-wrap:wrap}
 @media(min-width:900px){
@@ -705,7 +749,6 @@ background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:b
 .proj-top{flex-wrap:nowrap!important}
 .proj-name{flex:1 1 auto!important;min-width:0}
 .proj-name a{white-space:nowrap}
-.proj-lang{order:0!important}
 .ir{gap:16px}
 }
 .nm-wrap{white-space:nowrap!important;font-size:calc((100vw - 2*var(--gut) - 6px)/10.4)!important;margin-bottom:18px!important}
@@ -728,6 +771,18 @@ background:radial-gradient(circle,rgba(224,142,76,.22),transparent 65%);filter:b
 .content::after{display:none!important}
 button,input,select,textarea{font-family:inherit}
 .mi,.mi *,.ds-mi,.ds-mi *,.tb-btn,.tp,.ds-tp,.m-close{font-family:'Inter',system-ui,sans-serif}
+/* Ubuntu for all headings and bold contexts */
+h1,h2,h3,h4,h5,h6,
+.ch-h1,.ch-h1-sub,.sp-title,.nm-wrap,
+.proj-name,.cert-n,.rc-title,.sk-head,
+.stat-v,.stat-l,
+.tl-title,.edu-card-title,
+.bcard-title,.blog-t,
+.ab-stat-v,.ab-pillar-title,.ab-quote-name,
+.ab-info-v,.ab-stat-l,
+.qr-name,.ct-h,.end-headline,
+.ds-name,.ds-role,
+strong,b{font-family:'Ubuntu',system-ui,sans-serif!important}
 :root[data-theme="mono"] body::before{display:none}
 :root[data-theme="mono"] ::selection{background:#111;color:#fff}
 :root[data-theme="mono"] .nm-b{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;-webkit-text-fill-color:var(--ink)!important;color:var(--ink)!important}
@@ -746,21 +801,7 @@ button,input,select,textarea{font-family:inherit}
 :root[data-theme="mono"] .mi:hover,:root[data-theme="mono"] .mi.on{border-left-color:#111}
 :root[data-theme="mono"] .mi.on .mi-num,:root[data-theme="mono"] .ds-mi.on .ds-mi-num,:root[data-theme="mono"] .tp.on,:root[data-theme="mono"] .ds-tp.on{background:#111;color:#fff}
 :root[data-theme="mono"] .ds-tp.on{background:#fff;color:#111}
-:root[data-theme="mono"] .tag,:root[data-theme="mono"] .tl-date,:root[data-theme="mono"] .rc-badge,:root[data-theme="mono"] .blog-d,:root[data-theme="mono"] .proj-lang{border-color:rgba(0,0,0,.12)}
-/* light theme: darken green status colors */
-:root[data-theme="light"] .ct-status-dot{background:#16a34a!important;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse-green-dark 2s ease-out infinite}
-@keyframes pulse-green-dark{0%{box-shadow:0 0 0 0 rgba(22,163,74,.55)}70%{box-shadow:0 0 0 5px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
-:root[data-theme="light"] .ct-status-pill{background:rgba(22,163,74,.12)!important;border-color:rgba(22,163,74,.35)!important}
-:root[data-theme="light"] .ct-status-pill-text{color:#15803d!important}
-:root[data-theme="light"] .ct-pl-badge{background:rgba(22,163,74,.12)!important;color:#15803d!important;border-color:rgba(22,163,74,.3)!important}
-/* auto dark: same darken */
-@media(prefers-color-scheme:light){
-:root:not([data-theme="dark"]):not([data-theme="mono"]) .ct-status-dot{background:#16a34a!important}
-:root:not([data-theme="dark"]):not([data-theme="mono"]) .ct-status-pill{background:rgba(22,163,74,.12)!important;border-color:rgba(22,163,74,.35)!important}
-:root:not([data-theme="dark"]):not([data-theme="mono"]) .ct-status-pill-text{color:#15803d!important}
-:root:not([data-theme="dark"]):not([data-theme="mono"]) .ct-pl-badge{background:rgba(22,163,74,.12)!important;color:#15803d!important;border-color:rgba(22,163,74,.3)!important}
-}
-/* mono: kill all hardcoded greens in contact */
+:root[data-theme="mono"] .tag,:root[data-theme="mono"] .tl-date,:root[data-theme="mono"] .rc-badge,:root[data-theme="mono"] .blog-d,:root[data-theme="mono"] /* mono: kill all hardcoded greens in contact */
 :root[data-theme="mono"] .ct-status-dot{background:#555!important;box-shadow:none!important;animation:none!important}
 :root[data-theme="mono"] .ct-status-pill{background:rgba(0,0,0,.06)!important;border-color:rgba(0,0,0,.18)!important}
 :root[data-theme="mono"] .ct-status-pill-text{color:#333!important}
@@ -811,10 +852,10 @@ button,input,select,textarea{font-family:inherit}
 .about-avatar{display:none!important}
 .about-intro{flex:1;min-width:0}
 .about-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.about-pillar{padding:18px 16px;background:var(--glass);border:1px solid var(--glass-b);border-radius:14px;box-shadow:var(--glass-sh)}
-.about-pillar-icon{font-size:22px;margin-bottom:8px;line-height:1}
-.about-pillar-title{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
-.about-pillar-desc{font-size:12px;color:var(--ink3);line-height:1.6}
+.about-pillar{padding:18px 16px;background:var(--glass);border:1px solid var(--glass-b);border-radius:14px}
+.about-pillar-icon{font-size:20px;margin-bottom:10px;line-height:1;opacity:.75}
+.about-pillar-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px;letter-spacing:-.01em;font-family:'Ubuntu',system-ui,sans-serif}
+.about-pillar-desc{font-size:12px;color:var(--ink3);line-height:1.62}
 @media(max-width:599px){
 .about-hero{flex-direction:column;gap:14px}
 .about-avatar{width:52px;height:52px;font-size:18px}
@@ -843,10 +884,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .page-inner{padding-left:32px;padding-right:32px}
 .content{gap:14px}
 #pg-4 .content,#pg-5 .content,#pg-6 .content,#pg-7 .content,#pg-8 .content,#pg-9 .content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.content>.ch-h1,.content>.ch-h1-sub,.content>.lede,.content>.s-div,.content>.tags,.content>.pg-cols{grid-column:1/-1}
+.content>.ch-h1,.content>.ch-h1-sub,.content>.lede,.content>.s-div,.content>.tags,.content>.pg-cols,.content>.about-hero,.content>.ab-stats,.content>.ab-pillars,.content>.ab-quote,.content>.ab-info{grid-column:1/-1}
 #pg-3 .content{grid-template-columns:repeat(2,minmax(0,1fr))}
 #pg-2 .content>.tl-item{grid-column:1/-1}
-.stats{grid-template-columns:repeat(4,minmax(0,160px))}
+.stats{grid-template-columns:repeat(4,1fr)}
 .t-main{padding:40px 32px 24px!important}
 .ct-grid{grid-template-columns:repeat(3,1fr)!important}
 .ct-grid>a:last-child{grid-column:auto}
@@ -869,23 +910,176 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 @media(hover:none){
 .proj:hover,.cert:hover,.rc:hover,.sk-sec:hover,.blog:hover,.tl-item:hover,.stat:hover{transform:none}
 }
-/* fix certs 3-col last odd item */
-/* odd last-child fills full row — NOT certs (3-col) */
+/* odd last-child fills full row */
 @media(min-width:600px){
+#pg-4 .content>.cert:last-child:nth-child(odd),
 #pg-5 .content>.proj:last-child:nth-child(odd),
 #pg-6 .content>.proj:last-child:nth-child(odd),
 #pg-7 .content>.proj:last-child:nth-child(odd),
 #pg-8 .content>.rc:last-child:nth-child(odd),
 #pg-9 .content>.blog:last-child:nth-child(odd){grid-column:1/-1}
 }
-/* certs 3-col: lock last item to its natural column */
-@media(min-width:900px){
-#pg-4 .content>.cert:last-child{grid-column:auto!important}
-}
 /* desktop max-width: constrain content width */
 @media(min-width:900px){
 .page-inner{max-width:1080px!important;padding-left:52px!important;padding-right:52px!important}
 }
+/* ── About: Stats ── */
+.ab-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ab-stat{
+  padding:18px 14px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:14px;text-align:center;
+}
+.ab-stat-v{font-size:clamp(20px,3.5vw,28px);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1;margin-bottom:5px;font-family:'Ubuntu',system-ui,sans-serif}
+.ab-stat-l{font-size:10.5px;font-weight:600;color:var(--ink4);letter-spacing:.04em;text-transform:uppercase;line-height:1.4}
+@media(max-width:899px){.ab-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ── About: Pillars ── */
+.ab-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ab-pillar{
+  padding:20px 18px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:14px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.ab-pillar-icon svg{width:22px;height:22px;color:var(--accent);display:block;margin-bottom:10px}
+.ab-pillar-title{font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em;font-family:'Ubuntu',system-ui,sans-serif}
+.ab-pillar-desc{font-size:12px;color:var(--ink3);line-height:1.65}
+@media(max-width:899px){.ab-pillars{grid-template-columns:1fr}}
+
+/* ── About: Quote ── */
+.ab-quote{
+  padding:28px 30px 24px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:16px;
+  position:relative;overflow:hidden;
+}
+.ab-quote-mark{
+  width:28px;height:auto;
+  color:var(--accent);opacity:.3;
+  margin-bottom:14px;display:block;
+}
+.ab-quote-text{
+  font-size:17px!important;font-style:italic;
+  color:var(--ink)!important;line-height:1.7!important;
+  letter-spacing:.01em;margin:0 0 20px!important;
+  font-family:Georgia,'Times New Roman',serif;
+}
+.ab-quote-attr{display:flex;align-items:center;gap:12px}
+.ab-quote-line{width:24px;height:1px;background:var(--accent);flex-shrink:0}
+.ab-quote-name{font-size:12px;font-weight:700;color:var(--ink2);letter-spacing:.02em}
+.ab-quote-handle{font-size:11px;color:var(--ink4);letter-spacing:.04em}
+:root[data-theme="mono"] .ab-quote-mark{color:#555}
+:root[data-theme="mono"] .ab-quote-line{background:#888}
+
+/* ── About: Info grid ── */
+.ab-info{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;
+}
+.ab-info-item{
+  display:flex;flex-direction:column;gap:3px;
+  padding:14px 16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:12px;
+}
+.ab-info-k{font-size:10px;font-weight:700;color:var(--ink4);letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:5px}
+.ab-info-k svg{width:11px;height:11px;flex-shrink:0;opacity:.7}
+.ab-info-v{font-size:13px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+@media(min-width:900px){.ab-info{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Skill cards ── */
+.sk-sec{
+  padding:20px 22px!important;
+  background:var(--glass)!important;border:1px solid var(--glass-b)!important;
+  border-radius:16px!important;display:flex;flex-direction:column;gap:12px;
+}
+.sk-head{
+  font-size:12.5px!important;font-weight:700!important;
+  color:var(--ink)!important;letter-spacing:.01em;
+  ;
+  border-bottom:none!important;padding-bottom:0!important;
+  font-family:'Ubuntu',system-ui,sans-serif!important;
+}
+.sk-note{
+  font-size:11.5px!important;color:var(--ink4)!important;
+  margin-top:0!important;padding-top:10px!important;
+  border-top:1px solid var(--glass-b)!important;
+  line-height:1.6;
+}
+
+/* ── Cert cards ── */
+.cert{
+  padding:16px 18px!important;
+  background:var(--glass)!important;border:1px solid var(--glass-b)!important;
+  border-radius:14px!important;border-left:none!important;
+  display:grid;grid-template-columns:1fr auto;
+  grid-template-rows:auto auto;gap:2px 12px;align-items:start;
+}
+.cert-d{
+  font-size:9.5px!important;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink4)!important;
+  grid-column:1;grid-row:1;align-self:center;
+}
+.cert-n{
+  font-size:14px!important;font-weight:700;color:var(--ink)!important;
+  grid-column:1;grid-row:2;margin:0!important;line-height:1.3;
+  font-family:'Ubuntu',system-ui,sans-serif!important;
+}
+.cert-n a{
+  color:inherit!important;text-decoration:none;
+  background:none!important;
+}
+.cert-n a:hover{color:var(--accent)!important}
+.cert-i{
+  font-size:11.5px!important;color:var(--ink3)!important;
+  grid-column:1/-1;grid-row:3;margin-top:6px;line-height:1.55;
+}
+.cert-arrow{
+  grid-column:2;grid-row:1/-1;
+  align-self:center;
+  width:28px;height:28px;border-radius:8px;
+  background:var(--tag-bg);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cert-arrow svg{width:12px;height:12px;color:var(--accent)}
+:root[data-theme="mono"] .cert-arrow{background:rgba(0,0,0,.06)}
+:root[data-theme="mono"] .cert-arrow svg{color:#444}
+
+/* ── Project cards (cert-identical) ── */
+.proj{
+  padding:16px 18px!important;
+  background:var(--glass)!important;border:1px solid var(--glass-b)!important;
+  border-radius:14px!important;border-left:none!important;
+  display:grid;grid-template-columns:1fr auto;
+  grid-template-rows:auto auto;gap:2px 12px;align-items:start;
+}
+.proj-name{
+  font-size:14px!important;font-weight:700;color:var(--ink)!important;
+  grid-column:1;grid-row:2;margin:0!important;line-height:1.3;
+  font-family:'Ubuntu',system-ui,sans-serif!important;
+  min-width:0;
+}
+.proj-name a{
+  color:inherit!important;text-decoration:none;
+  background:none!important;
+}
+.proj-name a:hover{color:var(--accent)!important}
+.proj-desc{
+  font-size:11.5px!important;color:var(--ink3)!important;
+  grid-column:1/-1;grid-row:3;margin-top:6px;line-height:1.55;
+}
+.proj-arrow{
+  grid-column:2;grid-row:1/3;
+  align-self:center;
+  width:28px;height:28px;border-radius:8px;
+  background:var(--tag-bg);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  text-decoration:none;
+}
+.proj-arrow svg{width:12px;height:12px;color:var(--accent)}
+:root[data-theme="mono"] .proj-arrow{background:rgba(0,0,0,.06)}
+:root[data-theme="mono"] .proj-arrow svg{color:#444}
+
 /* ── Education cards ── */
 .edu-card{
   display:flex;gap:16px;align-items:stretch;
@@ -1022,6 +1216,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 </style>
 </head>
 <body>
+<div id="preloader">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);font-family:'Ubuntu',system-ui,sans-serif">psvineet</div>
+    <div class="pl-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>
+  </div>
+  <div>
+    <div class="pl-text">psvineet</div>
+    <div class="pl-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>
 <div id="reader">
 <div id="desktop-sidebar">
 <div class="ds-head">
@@ -1126,44 +1332,82 @@ GitHub
   </div>
 </div>
 
-<div class="stats">
-  <div class="stat"><div class="stat-v">Top 1%</div><div class="stat-l">TryHackMe Global</div></div>
-  <div class="stat"><div class="stat-v">25+</div><div class="stat-l">Open Source Projects</div></div>
-  <div class="stat"><div class="stat-v">14</div><div class="stat-l">Certificates Earned</div></div>
-  <div class="stat"><div class="stat-v">3 Yrs</div><div class="stat-l">B.Pharm · AKTU</div></div>
-</div>
-
-<div class="about-pillars">
-  <div class="about-pillar">
-    <div class="about-pillar-icon">⚕</div>
-    <div class="about-pillar-title">Healthcare</div>
-    <div class="about-pillar-desc">Pharmacy management systems, dosage calculators, clinical tools — built from actual pharmaceutical knowledge, not generic templates.</div>
+<!-- Stats row -->
+<div class="ab-stats">
+  <div class="ab-stat">
+    <div class="ab-stat-v">Top 1%</div>
+    <div class="ab-stat-l">TryHackMe Global</div>
   </div>
-  <div class="about-pillar">
-    <div class="about-pillar-icon">⚔</div>
-    <div class="about-pillar-title">Security</div>
-    <div class="about-pillar-desc">Zero-trust routers, anonymity toolkits, CTF writeups. Top 1% on TryHackMe. Security thinking informs how every tool is built.</div>
+  <div class="ab-stat">
+    <div class="ab-stat-v">25+</div>
+    <div class="ab-stat-l">Open Source Projects</div>
   </div>
-  <div class="about-pillar">
-    <div class="about-pillar-icon">⚙</div>
-    <div class="about-pillar-title">Systems</div>
-    <div class="about-pillar-desc">CLI tools, monitoring dashboards, automation scripts. Zero-dependency where possible — deployable anywhere.</div>
+  <div class="ab-stat">
+    <div class="ab-stat-v">14</div>
+    <div class="ab-stat-l">Certificates</div>
+  </div>
+  <div class="ab-stat">
+    <div class="ab-stat-v">3 Yrs</div>
+    <div class="ab-stat-l">B.Pharm · AKTU</div>
   </div>
 </div>
 
-<div class="quote-redesign">
-  <div class="qr-mark">"</div>
-  <p class="qr-text">I don't think in silos. Pharmacokinetics and network enumeration both follow patterns — find the system, understand the flow, find the weakness.</p>
-  <div class="qr-attr"><span class="qr-dash">—</span><span class="qr-name">Vineet Pratap Singh</span><span class="qr-role">psvineet</span></div>
+<!-- Pillar cards -->
+<div class="ab-pillars">
+  <div class="ab-pillar">
+    <div class="ab-pillar-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0 2.25a.75.75 0 0 0-.75.75v2.75H6.5a.75.75 0 0 0 0 1.5h2.75v2.75a.75.75 0 0 0 1.5 0v-2.75h2.75a.75.75 0 0 0 0-1.5h-2.75V6.5A.75.75 0 0 0 10 5.75Z" fill="currentColor"/></svg></div>
+    <div class="ab-pillar-title">Healthcare</div>
+    <div class="ab-pillar-desc">Pharmacy systems, dosage calculators, clinical tools — built from real pharmaceutical knowledge.</div>
+  </div>
+  <div class="ab-pillar">
+    <div class="ab-pillar-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2 3 5v5c0 4.418 3.134 8.547 7 9.5C13.866 18.547 17 14.418 17 10V5l-7-3Zm0 1.677L15.5 5.87V10c0 3.7-2.614 7.138-5.5 8.1C7.114 17.138 4.5 13.7 4.5 10V5.87L10 3.677Z" fill="currentColor"/></svg></div>
+    <div class="ab-pillar-title">Security</div>
+    <div class="ab-pillar-desc">Zero-trust routers, anonymity toolkits, CTF writeups. Top 1% on TryHackMe globally.</div>
+  </div>
+  <div class="ab-pillar">
+    <div class="ab-pillar-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm0-1.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm6.5-1a.75.75 0 0 0-.716-.75l-.97-.065a5.53 5.53 0 0 0-.496-1.197l.588-.777a.75.75 0 0 0-.063-1l-.554-.554a.75.75 0 0 0-1-.063l-.777.588a5.53 5.53 0 0 0-1.197-.496L11.25 4.216a.75.75 0 0 0-.75-.716h-.784a.75.75 0 0 0-.75.716l-.065.97a5.53 5.53 0 0 0-1.197.496l-.777-.588a.75.75 0 0 0-1 .063l-.554.554a.75.75 0 0 0-.063 1l.588.777a5.53 5.53 0 0 0-.496 1.197l-.97.065a.75.75 0 0 0-.716.75v.784a.75.75 0 0 0 .716.75l.97.065a5.53 5.53 0 0 0 .496 1.197l-.588.777a.75.75 0 0 0 .063 1l.554.554a.75.75 0 0 0 1 .063l.777-.588a5.53 5.53 0 0 0 1.197.496l.065.97a.75.75 0 0 0 .75.716h.784a.75.75 0 0 0 .75-.716l.065-.97a5.53 5.53 0 0 0 1.197-.496l.777.588a.75.75 0 0 0 1-.063l.554-.554a.75.75 0 0 0 .063-1l-.588-.777a5.53 5.53 0 0 0 .496-1.197l.97-.065a.75.75 0 0 0 .716-.75V10Z" fill="currentColor"/></svg></div>
+    <div class="ab-pillar-title">Systems</div>
+    <div class="ab-pillar-desc">CLI tools, dashboards, automation scripts. Zero-dependency — deployable anywhere.</div>
+  </div>
 </div>
 
-<div class="info">
-  <div class="ir"><span class="ir-k">Location</span><span class="ir-v">Lucknow, India</span></div>
-  <div class="ir"><span class="ir-k">University</span><span class="ir-v">AKTU, Lucknow</span></div>
-  <div class="ir"><span class="ir-k">Program</span><span class="ir-v">B.Pharm (2024–2028)</span></div>
-  <div class="ir"><span class="ir-k">Year</span><span class="ir-v">Third Year — In Progress</span></div>
-  <div class="ir"><span class="ir-k">Handle</span><span class="ir-v">psvineet (all platforms)</span></div>
-  <div class="ir"><span class="ir-k">Email</span><span class="ir-v">ci.vps@proton.me</span></div>
+<!-- Quote -->
+<div class="ab-quote">
+  <svg class="ab-quote-mark" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 30V18.75C0 8.438 5.833 2.292 17.5 0l2 3.75C13.333 5.417 10 8.75 10 12.5h7.5V30H0Zm22.5 0V18.75C22.5 8.438 28.333 2.292 40 0l2 3.75C35.833 5.417 32.5 8.75 32.5 12.5H40V30H22.5Z" fill="currentColor"/></svg>
+  <p class="ab-quote-text">Every system has a surface — biological or digital. I just learned to read both.</p>
+  <div class="ab-quote-attr">
+    <div class="ab-quote-line"></div>
+    <span class="ab-quote-name">Vineet Pratap Singh</span>
+    <span class="ab-quote-handle">@psvineet</span>
+  </div>
+</div>
+
+<!-- Info grid -->
+<div class="ab-info">
+  <div class="ab-info-item">
+    <span class="ab-info-k"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5A4.5 4.5 0 0 0 3.5 6c0 3.375 4.5 8.5 4.5 8.5S12.5 9.375 12.5 6A4.5 4.5 0 0 0 8 1.5Zm0 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" fill="currentColor"/></svg>Location</span>
+    <span class="ab-info-v">Lucknow, India</span>
+  </div>
+  <div class="ab-info-item">
+    <span class="ab-info-k"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1 1 5v1h14V5L8 1ZM2 7v5h2V7H2Zm4 0v5h2V7H6Zm4 0v5h2V7h-2Zm4 0v5h-1v1H1v-1H1V7h1ZM1 13h14v2H1v-2Z" fill="currentColor"/></svg>University</span>
+    <span class="ab-info-v">AKTU, Lucknow</span>
+  </div>
+  <div class="ab-info-item">
+    <span class="ab-info-k"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm0 2a5 5 0 1 1 0 10A5 5 0 0 1 8 3Zm-.5 2v4l3.5 2-.5-.866L8 8.866V5H7.5Z" fill="currentColor"/></svg>Program</span>
+    <span class="ab-info-v">B.Pharm · 2024–2028</span>
+  </div>
+  <div class="ab-info-item">
+    <span class="ab-info-k"><svg viewBox="0 0 16 16" fill="none"><path d="M4 1v1H2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-2V1h-1v1H5V1H4Zm0 3h8v1H4V4Zm-2 3h12v6H2V7Zm2 1v1h2V8H4Zm3 0v1h2V8H7Zm3 0v1h2V8h-2ZM4 11v1h2v-1H4Zm3 0v1h2v-1H7Z" fill="currentColor"/></svg>Year</span>
+    <span class="ab-info-v">Third Year — In Progress</span>
+  </div>
+  <div class="ab-info-item">
+    <span class="ab-info-k"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm0 2a5 5 0 1 1 0 10A5 5 0 0 1 8 3Zm0 2a3 3 0 1 0 0 6A3 3 0 0 0 8 5Zm0 2a1 1 0 1 1 0 2A1 1 0 0 1 8 7Z" fill="currentColor"/></svg>Handle</span>
+    <span class="ab-info-v">psvineet (all platforms)</span>
+  </div>
+  <div class="ab-info-item">
+    <span class="ab-info-k"><svg viewBox="0 0 16 16" fill="none"><path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3Zm1 0v.511l6 3.6 6-3.6V3H2Zm0 2.022V13h12V5.022l-6 3.6-6-3.6Z" fill="currentColor"/></svg>Email</span>
+    <span class="ab-info-v">ci.vps@proton.me</span>
+  </div>
 </div>
 </div>
 </div>
@@ -1273,20 +1517,20 @@ GitHub
 <div class="ch-h1">Certifications</div>
 <div class="ch-h1-sub">14 verified credentials — security, development, and AI</div>
 <p class="lede">From TryHackMe learning paths and Google Cloud skill badges to LinkedIn Learning and Simplilearn — a broad certification base covering the full stack of interests, all earned in 2025–2026.</p>
-<div class="cert"><div class="cert-d">Aug 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener">Hacker Holidays — Byte Lotus ↗</a></div><div class="cert-i">Holiday CTF: enumeration, exploitation, privilege escalation</div></div>
-<div class="cert"><div class="cert-d">Jul 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf" target="_blank" rel="noopener">Cyber Security 101 ↗</a></div><div class="cert-i">Networking basics, attack types, core defensive concepts</div></div>
-<div class="cert"><div class="cert-d">Jun 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf" target="_blank" rel="noopener">Pre Security ↗</a></div><div class="cert-i">Networking fundamentals, web basics — foundations for offensive security</div></div>
-<div class="cert"><div class="cert-d">May 2026 · LinkedIn Learning</div><div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/" target="_blank" rel="noopener">Microsoft Copilot: Prompt Writing ↗</a></div><div class="cert-i">Effective prompt writing for AI-generated output</div></div>
-<div class="cert"><div class="cert-d">May 2026 · LinkedIn Learning</div><div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/" target="_blank" rel="noopener">Practical GitHub Actions ↗</a></div><div class="cert-i">CI/CD pipelines and workflow automation</div></div>
-<div class="cert"><div class="cert-d">Apr 2026 · Google Cloud</div><div class="cert-n"><a href="https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858" target="_blank" rel="noopener">Generative AI (Skill Badge) ↗</a></div><div class="cert-i">LLM fundamentals and real-world AI applications</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/nrAyF5CfYXb" target="_blank" rel="noopener">UI/UX Design via ChatGPT ↗</a></div><div class="cert-i">Using AI to accelerate design workflows</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/6LPJqpTQ5Vb" target="_blank" rel="noopener">WordPress ↗</a></div><div class="cert-i">Site setup, themes, plugins, and content management</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/N802ehHeaWb" target="_blank" rel="noopener">SEO ↗</a></div><div class="cert-i">On-page SEO, keyword research, ranking factors</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/hGdQswzsaWb" target="_blank" rel="noopener">Computer Networking ↗</a></div><div class="cert-i">OSI model, IP addressing, routing, protocols</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/5MRFlE4N5Vb" target="_blank" rel="noopener">HTML ↗</a></div><div class="cert-i">HTML fundamentals for web page structure</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/1ZMWOCrS5Vb" target="_blank" rel="noopener">Canva Designing ↗</a></div><div class="cert-i">Graphics and visual layout using Canva</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/b4EnOZHsaWb" target="_blank" rel="noopener">Java ↗</a></div><div class="cert-i">Core Java syntax, OOP concepts, and program structure</div></div>
-<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/XGxxzwSL5Vb" target="_blank" rel="noopener">Introduction to Cybersecurity ↗</a></div><div class="cert-i">Core concepts, common threats, and basic defenses</div></div>
+<div class="cert"><div class="cert-d">Aug 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener">Hacker Holidays — Byte Lotus</a></div><div class="cert-i">Holiday CTF: enumeration, exploitation, privilege escalation</div><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">Jul 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf" target="_blank" rel="noopener">Cyber Security 101</a></div><div class="cert-i">Networking basics, attack types, core defensive concepts</div><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">Jun 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf" target="_blank" rel="noopener">Pre Security</a></div><div class="cert-i">Networking fundamentals, web basics — foundations for offensive security</div><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">May 2026 · LinkedIn Learning</div><div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/" target="_blank" rel="noopener">Microsoft Copilot: Prompt Writing</a></div><div class="cert-i">Effective prompt writing for AI-generated output</div><a href="https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">May 2026 · LinkedIn Learning</div><div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/" target="_blank" rel="noopener">Practical GitHub Actions</a></div><div class="cert-i">CI/CD pipelines and workflow automation</div><a href="https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">Apr 2026 · Google Cloud</div><div class="cert-n"><a href="https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858" target="_blank" rel="noopener">Generative AI (Skill Badge)</a></div><div class="cert-i">LLM fundamentals and real-world AI applications</div><a href="https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/nrAyF5CfYXb" target="_blank" rel="noopener">UI/UX Design via ChatGPT</a></div><div class="cert-i">Using AI to accelerate design workflows</div><a href="https://simpli-web.app.link/e/nrAyF5CfYXb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/6LPJqpTQ5Vb" target="_blank" rel="noopener">WordPress</a></div><div class="cert-i">Site setup, themes, plugins, and content management</div><a href="https://simpli-web.app.link/e/6LPJqpTQ5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/N802ehHeaWb" target="_blank" rel="noopener">SEO</a></div><div class="cert-i">On-page SEO, keyword research, ranking factors</div><a href="https://simpli-web.app.link/e/N802ehHeaWb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/hGdQswzsaWb" target="_blank" rel="noopener">Computer Networking</a></div><div class="cert-i">OSI model, IP addressing, routing, protocols</div><a href="https://simpli-web.app.link/e/hGdQswzsaWb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/5MRFlE4N5Vb" target="_blank" rel="noopener">HTML</a></div><div class="cert-i">HTML fundamentals for web page structure</div><a href="https://simpli-web.app.link/e/5MRFlE4N5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/1ZMWOCrS5Vb" target="_blank" rel="noopener">Canva Designing</a></div><div class="cert-i">Graphics and visual layout using Canva</div><a href="https://simpli-web.app.link/e/1ZMWOCrS5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/b4EnOZHsaWb" target="_blank" rel="noopener">Java</a></div><div class="cert-i">Core Java syntax, OOP concepts, and program structure</div><a href="https://simpli-web.app.link/e/b4EnOZHsaWb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cert"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/XGxxzwSL5Vb" target="_blank" rel="noopener">Introduction to Cybersecurity</a></div><div class="cert-i">Core concepts, common threats, and basic defenses</div><a href="https://simpli-web.app.link/e/XGxxzwSL5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </div>
 </div>
 </div>
@@ -1298,12 +1542,12 @@ GitHub
 <div class="ch-h1-sub">Zero-trust tools, anonymity utilities, and forensics gear</div>
 <p class="lede">Built for hostile-facing environments and real attack surfaces — not demos. Each project solves a problem encountered while practising security or building infrastructure.</p>
 <div class="proj-grid">
-<div class="proj"><div class="proj-ph">P</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/php-router" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">php-router ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Zero Trust PHP router: signed URLs with anti-replay protection, adaptive bot detection, stealth banning, and rate limiting for hostile-facing endpoints.</div></div></div>
-<div class="proj"><div class="proj-ph">G</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/GhostShift" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">GhostShift ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Network identity management toolkit: MAC spoofing, Tor IP rotation with watchdog, IPv6 leak detection, and DNS-over-HTTPS routing.</div></div></div>
-<div class="proj"><div class="proj-ph">C</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/CipherForge" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">CipherForge ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Cyber Swiss Army Knife — single-file PHP tool for encoding, hashing, encryption, text processing, and data forensics.</div></div></div>
-<div class="proj"><div class="proj-ph">C</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/cipherjournal" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">cipherjournal ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Single-file app for logging CTF, HTB, and THM writeups: structured fields, auto-save, full-text search, PDF/Markdown export.</div></div></div>
-<div class="proj"><div class="proj-ph">S</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/secure-otp-image-viewer" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">secure-otp-image-viewer ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Password-gated, one-time image viewer with session expiry and access logging.</div></div></div>
-<div class="proj"><div class="proj-ph">W</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/web-directory-search" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">web-directory-search ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Authenticated file directory system: CSRF protection, Argon2ID hashing, rate limiting, and integrated document viewer.</div></div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/php-router" target="_blank" rel="noopener">php-router</a></div><a href="https://github.com/psvineet/php-router" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Zero Trust PHP router: signed URLs with anti-replay protection, adaptive bot detection, stealth banning, and rate limiting for hostile-facing endpoints.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/GhostShift" target="_blank" rel="noopener">GhostShift</a></div><a href="https://github.com/psvineet/GhostShift" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Network identity management toolkit: MAC spoofing, Tor IP rotation with watchdog, IPv6 leak detection, and DNS-over-HTTPS routing.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/CipherForge" target="_blank" rel="noopener">CipherForge</a></div><a href="https://github.com/psvineet/CipherForge" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Cyber Swiss Army Knife — single-file PHP tool for encoding, hashing, encryption, text processing, and data forensics.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/cipherjournal" target="_blank" rel="noopener">cipherjournal</a></div><a href="https://github.com/psvineet/cipherjournal" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Single-file app for logging CTF, HTB, and THM writeups: structured fields, auto-save, full-text search, PDF/Markdown export.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/secure-otp-image-viewer" target="_blank" rel="noopener">secure-otp-image-viewer</a></div><a href="https://github.com/psvineet/secure-otp-image-viewer" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Password-gated, one-time image viewer with session expiry and access logging.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/web-directory-search" target="_blank" rel="noopener">web-directory-search</a></div><a href="https://github.com/psvineet/web-directory-search" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Authenticated file directory system: CSRF protection, Argon2ID hashing, rate limiting, and integrated document viewer.</div></div>
 </div>
 </div>
 </div>
@@ -1316,13 +1560,13 @@ GitHub
 <div class="ch-h1-sub">Software built from actual pharmaceutical knowledge</div>
 <p class="lede">The intersection of pharmacy and code isn't common — I live there deliberately. These tools solve real problems encountered in coursework, clinical study, and lab practice.</p>
 <div class="proj-grid">
-<div class="proj"><div class="proj-ph">D</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/drxstore" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">drxstore ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Zero-dependency pharmacy management system with dedicated portals for admins, staff, suppliers, and customers. Full inventory and billing workflow.</div></div></div>
-<div class="proj"><div class="proj-ph">G</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/glycotrack" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">glycotrack ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Self-hosted diabetic record system: glucose logging, 30-day trend charts, and a personal health journal. Built for patient self-management.</div></div></div>
-<div class="proj"><div class="proj-ph">D</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://admin.xo.je/shared/tools/dose-calc.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Dosage Calculator ↗</a></span><span class="proj-lang">JavaScript</span></div><div class="proj-desc">Pharmaceutical dosing tool accounting for patient weight, renal function (CrCl), and route of administration.</div></div></div>
-<div class="proj"><div class="proj-ph">C</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://admin.xo.je/shared/tools/chem-conc.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Chemical Concentration Calc ↗</a></span><span class="proj-lang">JavaScript</span></div><div class="proj-desc">Molarity, normality, and dilution calculator built for lab use. Handles unit conversions and solution preparation protocols.</div></div></div>
-<div class="proj"><div class="proj-ph">B</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://admin.xo.je/shared/tools/bmi.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">BMI Tool ↗</a></span><span class="proj-lang">JavaScript</span></div><div class="proj-desc">Interactive BMI calculator with classification, health insights, and visual weight range indicator.</div></div></div>
-<div class="proj"><div class="proj-ph">S</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://admin.xo.je/shared/tools/sci-calc.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Scientific Calculator ↗</a></span><span class="proj-lang">JavaScript</span></div><div class="proj-desc">Full-featured scientific calculator with logarithmic, trigonometric, and exponential operations. Built for pharmaceutical math.</div></div></div>
-<div class="proj"><div class="proj-ph">A</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/Academic-Tools-Games" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Academic-Tools-Games ↗</a></span><span class="proj-lang">HTML/JS</span></div><div class="proj-desc">Collection of academic calculators, pharmacy utilities, and learning games organized by subject category — built for fellow AKTU students.</div></div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/drxstore" target="_blank" rel="noopener">drxstore</a></div><a href="https://github.com/psvineet/drxstore" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Zero-dependency pharmacy management system with dedicated portals for admins, staff, suppliers, and customers. Full inventory and billing workflow.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/glycotrack" target="_blank" rel="noopener">glycotrack</a></div><a href="https://github.com/psvineet/glycotrack" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Self-hosted diabetic record system: glucose logging, 30-day trend charts, and a personal health journal. Built for patient self-management.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://admin.xo.je/shared/tools/dose-calc.html" target="_blank" rel="noopener">Dosage Calculator</a></div><a href="https://admin.xo.je/shared/tools/dose-calc.html" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Pharmaceutical dosing tool accounting for patient weight, renal function (CrCl), and route of administration.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://admin.xo.je/shared/tools/chem-conc.html" target="_blank" rel="noopener">Chemical Concentration Calc</a></div><a href="https://admin.xo.je/shared/tools/chem-conc.html" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Molarity, normality, and dilution calculator built for lab use. Handles unit conversions and solution preparation protocols.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://admin.xo.je/shared/tools/bmi.html" target="_blank" rel="noopener">BMI Tool</a></div><a href="https://admin.xo.je/shared/tools/bmi.html" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Interactive BMI calculator with classification, health insights, and visual weight range indicator.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://admin.xo.je/shared/tools/sci-calc.html" target="_blank" rel="noopener">Scientific Calculator</a></div><a href="https://admin.xo.je/shared/tools/sci-calc.html" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Full-featured scientific calculator with logarithmic, trigonometric, and exponential operations. Built for pharmaceutical math.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/Academic-Tools-Games" target="_blank" rel="noopener">Academic-Tools-Games</a></div><a href="https://github.com/psvineet/Academic-Tools-Games" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Collection of academic calculators, pharmacy utilities, and learning games organized by subject category — built for fellow AKTU students.</div></div>
 </div>
 </div>
 </div>
@@ -1335,20 +1579,20 @@ GitHub
 <div class="ch-h1-sub">Infrastructure, CLI tools, and automation utilities</div>
 <p class="lede">Tools built for developers and self-hosters. Zero-dependency where possible, deployable anywhere, designed for real operational use.</p>
 <div class="s-div"><span>Linux &amp; Infrastructure</span></div>
-<div class="proj"><div class="proj-ph">V</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/vigilon" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">vigilon ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Single-file Linux system monitoring dashboard: live CPU, memory, disk, network metrics with process controls via Flask and psutil.</div></div></div>
-<div class="proj"><div class="proj-ph">H</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/homelink" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">homelink ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Secure remote access to a home machine over Telegram as an encrypted relay. No static IP or VPS — works via Termux.</div></div></div>
-<div class="proj"><div class="proj-ph">P</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/pyu" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">pyu ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Drop-anywhere, dependency-free upload endpoint locked by key/password. Deployable via Cloudflare.</div></div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/vigilon" target="_blank" rel="noopener">vigilon</a></div><a href="https://github.com/psvineet/vigilon" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Single-file Linux system monitoring dashboard: live CPU, memory, disk, network metrics with process controls via Flask and psutil.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/homelink" target="_blank" rel="noopener">homelink</a></div><a href="https://github.com/psvineet/homelink" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Secure remote access to a home machine over Telegram as an encrypted relay. No static IP or VPS — works via Termux.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/pyu" target="_blank" rel="noopener">pyu</a></div><a href="https://github.com/psvineet/pyu" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Drop-anywhere, dependency-free upload endpoint locked by key/password. Deployable via Cloudflare.</div></div>
 <div class="s-div"><span>CLI &amp; Automation</span></div>
-<div class="proj"><div class="proj-ph">S</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/syniq" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">syniq ↗</a></span><span class="proj-lang">Go</span></div><div class="proj-desc">Local-first CLI translating natural language into safe Linux shell commands using a free public AI model — no API key required.</div></div></div>
-<div class="proj"><div class="proj-ph">C</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/CertiForge-Auto" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">CertiForge-Auto ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Bulk certificate generator — renders participant names onto an image template with auto-sized, centered typography.</div></div></div>
-<div class="proj"><div class="proj-ph">B</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/BatchMail-Cert" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">BatchMail-Cert ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Bulk certificate email sender with retry handling, duplicate control, and logging.</div></div></div>
-<div class="proj"><div class="proj-ph">F</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/FlexiMatch-XL" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">FlexiMatch-XL ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Matches and validates values between Excel and CSV datasets, exporting categorized multi-sheet reports.</div></div></div>
-<div class="proj"><div class="proj-ph">O</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/orbit" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">orbit ↗</a></span><span class="proj-lang">Python</span></div><div class="proj-desc">Zero-dependency AI news aggregator: fetches 13 RSS feeds, scores and deduplicates articles, emails a dark-themed HTML digest.</div></div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/syniq" target="_blank" rel="noopener">syniq</a></div><a href="https://github.com/psvineet/syniq" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Local-first CLI translating natural language into safe Linux shell commands using a free public AI model — no API key required.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/CertiForge-Auto" target="_blank" rel="noopener">CertiForge-Auto</a></div><a href="https://github.com/psvineet/CertiForge-Auto" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Bulk certificate generator — renders participant names onto an image template with auto-sized, centered typography.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/BatchMail-Cert" target="_blank" rel="noopener">BatchMail-Cert</a></div><a href="https://github.com/psvineet/BatchMail-Cert" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Bulk certificate email sender with retry handling, duplicate control, and logging.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/FlexiMatch-XL" target="_blank" rel="noopener">FlexiMatch-XL</a></div><a href="https://github.com/psvineet/FlexiMatch-XL" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Matches and validates values between Excel and CSV datasets, exporting categorized multi-sheet reports.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/orbit" target="_blank" rel="noopener">orbit</a></div><a href="https://github.com/psvineet/orbit" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Zero-dependency AI news aggregator: fetches 13 RSS feeds, scores and deduplicates articles, emails a dark-themed HTML digest.</div></div>
 <div class="s-div"><span>Web &amp; Productivity</span></div>
-<div class="proj"><div class="proj-ph">V</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/vaultmark" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">vaultmark ↗</a></span><span class="proj-lang">PHP</span></div><div class="proj-desc">Dependency-free bookmark manager storing links in portable JSON — no database required.</div></div></div>
-<div class="proj"><div class="proj-ph">L</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/lexivault" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">lexivault ↗</a></span><span class="proj-lang">PHP/MySQL</span></div><div class="proj-desc">Self-hosted vocabulary manager with spaced repetition and a minimal API.</div></div></div>
-<div class="proj"><div class="proj-ph">D</div><div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="https://github.com/psvineet/document-viewer" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">document-viewer ↗</a></span><span class="proj-lang">HTML/JS</span></div><div class="proj-desc">Browser-based viewer for PDF, Office, and OpenDocument formats with multi-provider rendering and upload fallback. <a href="http://psvineet.github.io/document-viewer/" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-weight:600;text-decoration:none">Live demo ↗</a></div></div></div>
-<div class="proj"><div class="proj-ph">A</div><div class="proj-body"><div class="proj-top"><span class="proj-name">aktu-navigation</span><span class="proj-lang">HTML</span></div><div class="proj-desc">Unofficial AKTU student portal linking results, ERP login, admit cards, circulars, and syllabus resources.</div></div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/vaultmark" target="_blank" rel="noopener">vaultmark</a></div><a href="https://github.com/psvineet/vaultmark" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Dependency-free bookmark manager storing links in portable JSON — no database required.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/lexivault" target="_blank" rel="noopener">lexivault</a></div><a href="https://github.com/psvineet/lexivault" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Self-hosted vocabulary manager with spaced repetition and a minimal API.</div></div>
+<div class="proj"><div class="proj-name"><a href="https://github.com/psvineet/document-viewer" target="_blank" rel="noopener">document-viewer</a></div><a href="https://github.com/psvineet/document-viewer" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Browser-based viewer for PDF, Office, and OpenDocument formats with multi-provider rendering and upload fallback. <a href="http://psvineet.github.io/document-viewer/" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-weight:600;text-decoration:none">Live demo ↗</a></div></div>
+<div class="proj"><div class="proj-name"><a href="#" target="_blank" rel="noopener">aktu-navigation</a></div><a href="#" target="_blank" rel="noopener" class="proj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="proj-desc">Unofficial AKTU student portal linking results, ERP login, admit cards, circulars, and syllabus resources.</div></div>
 </div>
 </div>
 </div>
@@ -1572,49 +1816,6 @@ GitHub
 <div class="m-foot"><button class="m-close" onclick="closeMenu()">Close</button></div>
 </div>
 </div>
-<style>
-#vps-loader{position:fixed;inset:0;z-index:9999;background:#0a0806;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease,visibility .5s ease}
-#vps-loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.vpl-name{font-family:'Inter',system-ui,sans-serif;font-size:22px;font-weight:900;letter-spacing:-.04em;color:#f1e8dc}
-.vpl-name span{color:#e08e4c}
-.vpl-bar-wrap{width:160px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
-.vpl-bar{height:100%;width:0%;background:linear-gradient(90deg,#e08e4c,#f0a468);border-radius:2px;transition:width .35s ease}
-.vpl-sub{font-family:'Inter',system-ui,sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-:root[data-theme="light"] #vps-loader{background:#f7f3ee}
-:root[data-theme="light"] .vpl-name{color:#1a1208}
-:root[data-theme="light"] .vpl-bar-wrap{background:rgba(0,0,0,.1)}
-:root[data-theme="light"] .vpl-sub{color:rgba(0,0,0,.3)}
-:root[data-theme="mono"] #vps-loader{background:#f0f0f0}
-:root[data-theme="mono"] .vpl-name{color:#111}
-:root[data-theme="mono"] .vpl-name span{color:#333}
-:root[data-theme="mono"] .vpl-bar{background:#555}
-</style>
-<div id="vps-loader">
-  <div class="vpl-name">ps<span>vineet</span></div>
-  <div class="vpl-bar-wrap"><div class="vpl-bar" id="vpl-bar"></div></div>
-  <div class="vpl-sub">Loading portfolio…</div>
-</div>
-<script>
-(function(){
-  var bar=document.getElementById('vpl-bar');
-  var p=0;
-  var iv=setInterval(function(){
-    p=Math.min(p+(Math.random()*18+8),88);
-    bar.style.width=p+'%';
-  },120);
-  function finish(){
-    clearInterval(iv);
-    bar.style.width='100%';
-    setTimeout(function(){
-      document.getElementById('vps-loader').classList.add('done');
-    },320);
-  }
-  if(document.readyState==='complete'){finish();}
-  else{window.addEventListener('load',finish);}
-  // fallback: force hide after 3s
-  setTimeout(finish,3000);
-})();
-</script>
 <script>
 const N = 10;
 const PG_OFFSET = 1; // pages start at pg-1 (title page removed)
@@ -1725,17 +1926,16 @@ el.className='proj';
 const lang = repo ? (repo.language||'') : '';
 const desc = repo ? (repo.description||'') : '';
 const url = repo ? repo.html_url : `https://github.com/${GH_USER}/${name}`;
-const stars = repo && repo.stargazers_count>0 ? `<span style="font-size:10px;color:var(--ink4);margin-left:6px">★ ${repo.stargazers_count}</span>` : '';
-const updated = repo ? `<span style="font-size:10px;color:var(--ink4);margin-left:auto">${new Date(repo.updated_at).toLocaleDateString('en-GB',{month:'short',year:'numeric'})}</span>` : '';
-const langColors={PHP:'#4F5D95',Python:'#3572A5',Go:'#00ADD8',JavaScript:'#f1e05a','PHP/MySQL':'#4F5D95',HTML:'#e34c26',CSS:'#563d7c',Shell:'#89e051',Ruby:'#701516',Rust:'#dea584',TypeScript:'#2b7489',C:'#555555','C++':'#f34b7d'};
-const lc=lang&&langColors[lang]?langColors[lang]:'var(--accent)';
-const langDot=lang?`<span class="proj-lang"><span class="proj-lang-dot" style="background:${lc}"></span>${lang}</span>`:'';
-const starsHtml=repo&&repo.stargazers_count>0?`<span class="proj-stars">★ ${repo.stargazers_count}</span>`:'';
-const updHtml=repo?`<span class="proj-updated">${new Date(repo.updated_at).toLocaleDateString('en-GB',{month:'short',year:'numeric'})}</span>`:'';
-el.innerHTML=`<div class="proj-body"><div class="proj-top"><span class="proj-name"><a href="${url}" target="_blank" rel="noopener">${name}</a></span></div><div class="proj-meta">${langDot}</div><div class="proj-desc">${desc||'<span style="color:var(--ink4);font-style:italic">No description · view on GitHub</span>'}</div>${(starsHtml||updHtml)?`<div class="proj-foot">${starsHtml||'<span></span>'}${updHtml}</div>`:''}</div>`;
+const ARROW='<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+el.innerHTML=`<div class="proj-name"><a href="${url}" target="_blank" rel="noopener">${name}</a></div><a href="${url}" target="_blank" rel="noopener" class="proj-arrow">${ARROW}</a><div class="proj-desc">${desc||'<span style="color:var(--ink4);font-style:italic">No description</span>'}</div>`;
 return el;
 }
-document.addEventListener('DOMContentLoaded',()=>{ui();(window.requestIdleCallback||function(f){setTimeout(f,300)})(fetchGHRepos)});
+document.addEventListener('DOMContentLoaded',()=>{
+  ui();
+  (window.requestIdleCallback||function(f){setTimeout(f,300)})(fetchGHRepos);
+  const pl=document.getElementById('preloader');
+  if(pl){setTimeout(()=>pl.classList.add('done'),420);}
+});
 function turn(dir){
 if(busy)return;
 const next=cur+dir;
