@@ -102,20 +102,20 @@
 <style>
 /* ── GROQ EXACT DESIGN SYSTEM ── */
 :root {
-  /* Groq exact colors */
-  --bg: #e8e8de;          /* Parchment — page canvas */
-  --bg2: #f3f3ee;         /* Bone — elevated surface */
-  --surface: #f3f3ee;     /* Bone card */
-  --surface2: #ffffff;    /* White card — inset */
-  --border: #cecebf;      /* Khaki — hairline borders */
-  --border2: #c2c2be;     /* Mist — secondary borders */
-  --ink: #2d2f33;         /* Graphite — primary text */
-  --ink2: #2a2a25;        /* Obsidian — deep dark */
-  --ink3: #69695d;        /* Stone — secondary text */
-  --ink4: #9c9c90;        /* Ash — tertiary/disabled */
+  /* Improved light theme — warmer, higher contrast */
+  --bg: #f0ede6;          /* Warm cream — page canvas */
+  --bg2: #faf8f4;         /* Warm white — elevated surface */
+  --surface: #faf8f4;     /* Warm white card */
+  --surface2: #ffffff;    /* Pure white — inset */
+  --border: #d8d2c8;      /* Warm tan — hairline borders */
+  --border2: #ccc6bc;     /* Warm mist — secondary borders */
+  --ink: #1a1a18;         /* Near-black — primary text (higher contrast) */
+  --ink2: #222220;        /* Deep ink — body text */
+  --ink3: #5a5a50;        /* Warm stone — secondary text */
+  --ink4: #8a8a7e;        /* Warm ash — tertiary/disabled */
   --accent: #f43e01;      /* Ember Orange — CTA/labels */
   --accent2: #d63500;     /* Ember darker hover */
-  --accent-muted: rgba(244,62,1,.08);
+  --accent-muted: rgba(244,62,1,.09);
   --nav-h: 62px;
   --r: 5px;               /* Groq: tags = 5px */
   --r2: 10px;             /* Groq: cards = 10px */
@@ -182,6 +182,10 @@ img { max-width: 100%; }
   gap: 0;
   transition: background .2s, border-color .2s, opacity .3s;
 }
+@media (max-width: 767px) {
+  :root { --nav-h: 58px; }
+  #nav { padding: 0 16px; background: var(--bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+}
 /* Hide nav during preload — prevents double wordmark */
 body:not(.site-ready) #nav { opacity: 0; pointer-events: none; }
 
@@ -197,6 +201,9 @@ body::before {
   color: var(--ink);
   flex-shrink: 0;
   margin-right: auto;
+}
+@media (max-width: 767px) {
+  .nav-logo { font-size: 19px; }
 }
 .nav-logo span { color: var(--accent); }
 .nav-links {
@@ -225,25 +232,32 @@ body::before {
 .nav-cta:hover { color: var(--accent); border-color: var(--accent); }
 .nav-theme {
   margin-left: 10px;
-  width: 34px; height: 34px;
+  width: 38px; height: 38px;
   display: flex; align-items: center; justify-content: center;
   border: 1px solid var(--border);
   border-radius: var(--r);
   background: none; cursor: pointer; color: var(--ink3);
-  transition: color .15s, border-color .15s;
+  transition: color .15s, border-color .15s, background .15s;
   flex-shrink: 0;
 }
 .nav-theme:hover { color: var(--ink); border-color: var(--ink3); }
+.nav-theme:active { background: var(--border2); }
 .nav-theme svg { width: 16px; height: 16px; }
+@media (max-width: 767px) {
+  .nav-theme { width: 44px; height: 44px; margin-left: 4px; }
+}
 
 /* ── HAMBURGER (mobile) — 3×3 dot grid ── */
 .nav-hamburger {
   display: none;
   align-items: center; justify-content: center;
-  width: 38px; height: 38px; padding: 6px;
+  width: 44px; height: 44px; padding: 6px;
   background: none; border: none; cursor: pointer;
-  margin-left: 10px; flex-shrink: 0;
+  margin-left: 6px; flex-shrink: 0;
+  border-radius: var(--r);
+  transition: background .15s;
 }
+.nav-hamburger:active { background: var(--border2); }
 .nav-hamburger .dot-grid {
   display: grid;
   grid-template-columns: repeat(3, 4px);
@@ -465,38 +479,79 @@ main { padding-top: var(--nav-h); flex: 1; }
 .pillar-desc { font-size: 12.5px; color: var(--ink3); line-height: 1.6; }
 
 /* ── EDUCATION ── */
-.edu-list { display: flex; flex-direction: column; gap: 16px; }
+.edu-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 900px) { .edu-list { grid-template-columns: 1fr; } }
 .edu-card {
-  display: flex; gap: 20px; align-items: stretch;
-  padding: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 22px 24px;
   border: 1px solid var(--border);
   border-radius: var(--r2);
   background: var(--surface);
   transition: border-color .2s;
 }
 .edu-card:hover { border-color: var(--accent); }
-.edu-card.active { border-left: 3px solid var(--accent); }
-.edu-aside {
-  display: flex; flex-direction: column; align-items: center;
-  flex-shrink: 0; width: 38px; gap: 0;
-}
-.edu-year { font-size: 9.5px; font-weight: 700; color: var(--accent); letter-spacing: .06em; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
-.edu-year-end { color: var(--ink4); }
-.edu-line { flex: 1; width: 1px; background: linear-gradient(var(--accent), var(--border)); margin: 4px 0; min-height: 8px; }
-.edu-body { flex: 1; min-width: 0; }
+.edu-card.active { border-top: 3px solid var(--accent); }
 .edu-badge {
   display: inline-block; font-size: 9.5px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
   padding: 2px 9px; border-radius: 999px;
   background: var(--accent-muted); color: var(--accent);
-  margin-bottom: 8px;
+  width: fit-content;
 }
-.edu-score { font-family: 'Inter', system-ui, sans-serif; font-size: 28px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
-.edu-title { font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: normal; line-height: 1.3; margin-bottom: 4px; }
-.edu-inst { font-size: 12.5px; color: var(--ink3); margin-bottom: 8px; }
-.edu-desc { font-size: 13px; color: var(--ink3); line-height: 1.62; }
-.edu-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.edu-tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 6px; background: var(--surface2); color: var(--ink3); border: 1px solid var(--border2); }
+.edu-score { font-family: 'Inter', system-ui, sans-serif; font-size: 26px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
+.edu-period { font-size: 10px; font-weight: 700; color: var(--ink4); letter-spacing: .08em; text-transform: uppercase; }
+.edu-title { font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: normal; line-height: 1.3; }
+.edu-inst { font-size: 12px; color: var(--ink3); }
+.edu-desc { font-size: 12.5px; color: var(--ink3); line-height: 1.6; flex: 1; }
+.edu-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+.edu-tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 5px; background: var(--surface2); color: var(--ink3); border: 1px solid var(--border2); }
+.edu-aside { display: none; }
+
+/* ── EXPERIENCE ── */
+.exp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.exp-card {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  background: var(--surface);
+  transition: border-color .2s;
+}
+.exp-card:hover { border-color: var(--accent); }
+.exp-card-wide { grid-column: 1 / -1; }
+.exp-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 2px 9px; border-radius: 999px;
+  background: var(--accent-muted); color: var(--accent);
+  width: fit-content;
+}
+.exp-role { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.exp-org { font-size: 12px; color: var(--ink3); }
+.exp-org a { color: var(--accent); font-weight: 600; }
+.exp-desc { font-size: 13.5px; color: var(--ink3); line-height: 1.65; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.exp-bullets li {
+  font-size: 13px; color: var(--ink3); line-height: 1.6;
+  padding-left: 16px; position: relative;
+}
+.exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.exp-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
+.exp-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 5px; background: var(--surface2); border: 1px solid var(--border2); color: var(--ink3); }
+.exp-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 5px; width: fit-content;
+  background: rgba(244,62,1,.07); border: 1px solid rgba(244,62,1,.2);
+  font-size: 11.5px; font-weight: 700; color: var(--accent);
+  text-decoration: none; transition: background .15s;
+}
+.exp-link:hover { background: rgba(244,62,1,.14); }
+.exp-stat { font-size: 28px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
+.exp-stat-label { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+@media (max-width: 767px) {
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-card-wide { grid-column: 1; }
+}
 
 /* ── SKILLS ── */
 .sk-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
@@ -853,6 +908,7 @@ main > section.s-active {
   <ul class="nav-links" role="list">
     <li><a href="#about">About</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#certifications">Certs</a></li>
@@ -880,6 +936,7 @@ main > section.s-active {
   <ul class="mob-links">
     <li><a href="#about">About<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#education">Education<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#experience">Experience<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#skills">Skills<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#projects">Projects<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#certifications">Certifications<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
@@ -968,42 +1025,28 @@ main > section.s-active {
   <p class="section-sub">Pharmaceutical sciences at AKTU — backed by strong academics and active research.</p>
   <div class="edu-list">
     <div class="edu-card active">
-      <div class="edu-aside">
-        <div class="edu-year">2024</div>
-        <div class="edu-line"></div>
-        <div class="edu-year edu-year-end">2028</div>
-      </div>
-      <div class="edu-body">
-        <div class="edu-badge">In Progress</div>
-        <div class="edu-title">Bachelor of Pharmacy (B.Pharm)</div>
-        <div class="edu-inst">AKTU, Lucknow · Third Year</div>
-        <div class="edu-desc">Core coursework: drug formulation, pharmacokinetics, medicinal chemistry, pharmaceutical analysis, and quality assurance.</div>
-        <div class="edu-tags"><span class="edu-tag">Pharmacokinetics</span><span class="edu-tag">Medicinal Chemistry</span><span class="edu-tag">QA</span></div>
-      </div>
+      <div class="edu-badge">In Progress</div>
+      <div class="edu-period">2024 – 2028</div>
+      <div class="edu-title">Bachelor of Pharmacy (B.Pharm)</div>
+      <div class="edu-inst">AKTU, Lucknow · Third Year</div>
+      <div class="edu-desc">Core coursework: drug formulation, pharmacokinetics, medicinal chemistry, pharmaceutical analysis, and quality assurance.</div>
+      <div class="edu-tags"><span class="edu-tag">Pharmacokinetics</span><span class="edu-tag">Medicinal Chemistry</span><span class="edu-tag">QA</span><span class="edu-tag">Drug Formulation</span></div>
     </div>
     <div class="edu-card">
-      <div class="edu-aside">
-        <div class="edu-year">2022</div>
-        <div class="edu-line"></div>
-        <div class="edu-year edu-year-end">2024</div>
-      </div>
-      <div class="edu-body">
-        <div class="edu-score">92.4%</div>
-        <div class="edu-title">Class XII — PCB Stream</div>
-        <div class="edu-inst">Physics · Chemistry · Biology</div>
-        <div class="edu-desc">Strong foundation in the physical and life sciences. The PCB stream fed directly into pharmacy curriculum and early pharmacology research interest.</div>
-      </div>
+      <div class="edu-score">92.4%</div>
+      <div class="edu-period">2022 – 2024</div>
+      <div class="edu-title">Class XII — PCB Stream</div>
+      <div class="edu-inst">Physics · Chemistry · Biology</div>
+      <div class="edu-desc">Strong foundation in the physical and life sciences. PCB stream fed directly into pharmacy curriculum and early pharmacology research interest.</div>
+      <div class="edu-tags"><span class="edu-tag">Physics</span><span class="edu-tag">Chemistry</span><span class="edu-tag">Biology</span></div>
     </div>
     <div class="edu-card">
-      <div class="edu-aside">
-        <div class="edu-year">2022</div>
-      </div>
-      <div class="edu-body">
-        <div class="edu-score">87%</div>
-        <div class="edu-title">Class X — General Science</div>
-        <div class="edu-inst">Secondary School</div>
-        <div class="edu-desc">Solid academic performance across core subjects.</div>
-      </div>
+      <div class="edu-score">87%</div>
+      <div class="edu-period">2022</div>
+      <div class="edu-title">Class X — General Science</div>
+      <div class="edu-inst">Secondary School</div>
+      <div class="edu-desc">Solid academic performance across core subjects — building the foundation for scientific study.</div>
+      <div class="edu-tags"><span class="edu-tag">Science</span><span class="edu-tag">Mathematics</span></div>
     </div>
   </div>
   <div class="s-div" style="margin-top:32px"><span>Coursework Highlights</span></div>
@@ -1011,6 +1054,120 @@ main > section.s-active {
     <span class="tag">Drug Formulation</span><span class="tag">Pharmacokinetics</span>
     <span class="tag">Medicinal Chemistry</span><span class="tag">Pharmaceutical Analysis</span>
     <span class="tag">Quality Assurance</span><span class="tag">Pharmacology</span>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience" class="section" aria-labelledby="exp-title">
+  <h2 class="section-title" id="exp-title">Built in public.</h2>
+  <p class="section-sub">Security research, open-source stewardship, competitive hacking, and conference-level research — all while in undergrad.</p>
+  <div class="exp-grid">
+
+    <!-- DRXStore wide card -->
+    <div class="exp-card exp-card-wide">
+      <div class="exp-badge">Main Developer &amp; Security Maintainer · 2026 – Present</div>
+      <div class="exp-role">DRXStore — Open-Source Pharmacy Management System</div>
+      <div class="exp-org">PHP · MySQL · Self-hosted · <a href="https://github.com/psvineet/drxstore" target="_blank" rel="noopener">github.com/psvineet/drxstore ↗</a></div>
+      <a href="https://github.com/psvineet/drxstore/security/advisories/GHSA-7xhx-j29g-xgx4" target="_blank" rel="noopener" class="exp-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        GHSA-7xhx-j29g-xgx4 · CVSS 8.8 · High Severity · CVE Pending
+      </a>
+      <ul class="exp-bullets">
+        <li>Triaged and patched two High-severity flaws (CVSS 8.8) — missing role checks (CWE-863) and unvalidated archive extraction (CWE-434) — in private coordination with external researcher Anil Kumar Voleti; patches shipped in v3.0.0 and v3.0.1.</li>
+        <li>Published official GitHub Security Advisory (GHSA-7xhx-j29g-xgx4) and submitted CVE assignment through GitHub CNA.</li>
+        <li>Fixed UTF-8 BOM encoding in CSV exports; upgraded XLSX reports with bold headers, frozen rows, and dynamic column sizing.</li>
+        <li>Re-architected staff navigation UI with strict role-based access controls; updated updater engine to rewrite <code style="font-size:12px;background:var(--surface2);border:1px solid var(--border2);border-radius:4px;padding:1px 5px;color:var(--ink2)">APP_VERSION</code> in <code style="font-size:12px;background:var(--surface2);border:1px solid var(--border2);border-radius:4px;padding:1px 5px;color:var(--ink2)">config/app.php</code> on deploy.</li>
+        <li>Transitioned to GPLv3; structured <code style="font-size:12px;background:var(--surface2);border:1px solid var(--border2);border-radius:4px;padding:1px 5px;color:var(--ink2)">SECURITY.md</code> disclosure guidelines and <code style="font-size:12px;background:var(--surface2);border:1px solid var(--border2);border-radius:4px;padding:1px 5px;color:var(--ink2)">CHANGELOG.md</code> release documentation.</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">PHP</span><span class="exp-tag">MySQL</span><span class="exp-tag">CVE / GHSA</span>
+        <span class="exp-tag">CWE-863</span><span class="exp-tag">CWE-434</span><span class="exp-tag">CVSS 8.8</span>
+        <span class="exp-tag">GPLv3</span><span class="exp-tag">DevSecOps</span><span class="exp-tag">RBAC</span>
+      </div>
+    </div>
+
+    <!-- 25+ Open Source -->
+    <div class="exp-card">
+      <div class="exp-badge">Open-Source Developer · 2024 – Present</div>
+      <div class="exp-stat">25+</div>
+      <div class="exp-stat-label">Public repositories on GitHub</div>
+      <div class="exp-role">Independent Open-Source Projects</div>
+      <div class="exp-org"><a href="https://github.com/psvineet" target="_blank" rel="noopener">github.com/psvineet ↗</a></div>
+      <ul class="exp-bullets">
+        <li>25+ public repositories across security tooling, healthcare systems, and developer utilities.</li>
+        <li>All projects zero-dependency and built for hostile-facing or real-world production use.</li>
+        <li>Spans PHP, Python, and Go — with a focus on self-hosted, privacy-first architecture.</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Healthcare</span><span class="exp-tag">Security</span><span class="exp-tag">Dev Tools</span><span class="exp-tag">Zero-dependency</span>
+      </div>
+    </div>
+
+    <!-- TryHackMe -->
+    <div class="exp-card">
+      <div class="exp-badge">Competitive Security · 2025 – Present</div>
+      <div class="exp-stat">Top 1%</div>
+      <div class="exp-stat-label">TryHackMe — Global Ranking</div>
+      <div class="exp-role">Penetration Testing &amp; CTF Practice</div>
+      <div class="exp-org"><a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener">tryhackme.com/p/psvineet ↗</a></div>
+      <ul class="exp-bullets">
+        <li>Ranked top 1% globally on TryHackMe through consistent lab completions.</li>
+        <li>Practice spans web exploitation, privilege escalation, network analysis, digital forensics, OSINT, and cryptography.</li>
+        <li>Regular CTF participation — sharpening offensive techniques in real-world scenarios.</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Web Exploitation</span><span class="exp-tag">Privilege Escalation</span><span class="exp-tag">OSINT</span><span class="exp-tag">CTF</span>
+      </div>
+    </div>
+
+    <!-- Hacker Holidays -->
+    <div class="exp-card">
+      <div class="exp-badge">CTF Competition · Aug 2026</div>
+      <div class="exp-role">TryHackMe — Hacker Holidays 2026</div>
+      <div class="exp-org">Byte Lotus Challenge · <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener">Certificate ↗</a></div>
+      <ul class="exp-bullets">
+        <li>Completed all 14 rooms across the Byte Lotus Challenge event.</li>
+        <li>Covered AI security, web enumeration, cloud security, PCAP analysis, digital forensics, OSINT, cryptography, and malware analysis.</li>
+        <li>Full writeups published for all rooms.</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">AI Security</span><span class="exp-tag">PCAP Analysis</span><span class="exp-tag">Forensics</span>
+        <span class="exp-tag">Cloud Security</span><span class="exp-tag">Malware Analysis</span>
+      </div>
+    </div>
+
+    <!-- PharmI Conference -->
+    <div class="exp-card">
+      <div class="exp-badge">🥇 1st Place · AI Innovation · ICS-22 · 2026</div>
+      <div class="exp-role">PharmI — AI for Pharmaceutical Decision Support</div>
+      <div class="exp-org">22nd International Cyclodextrin Symposium, Moga · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi ↗</a></div>
+      <ul class="exp-bullets">
+        <li>Built a Random Forest model for cyclodextrin-drug solubility prediction achieving R² ≈ 0.96.</li>
+        <li>Wrapped model inside a six-layer security framework; defended all four live attack scenarios at the venue.</li>
+        <li>Presented and awarded 1st Place in AI Innovation at the 22nd International Cyclodextrin Symposium.</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">scikit-learn</span><span class="exp-tag">Flask</span>
+        <span class="exp-tag">R² 0.96</span><span class="exp-tag">Adversarial ML</span>
+      </div>
+    </div>
+
+    <!-- Cancer Research -->
+    <div class="exp-card">
+      <div class="exp-badge">Conference Poster · 2025</div>
+      <div class="exp-role">In-Silico Cancer Research</div>
+      <div class="exp-org">IPGA 37th Annual Conference · Co-authored with Dr. Shreya Singh</div>
+      <ul class="exp-bullets">
+        <li>Investigated anti-cancer potential of Nigella sativa bioactives via network pharmacology.</li>
+        <li>Target identification using STRING, ShinyGO, and SwissTargetPrediction databases.</li>
+        <li>Drug-likeness profiling performed via SwissADME; poster presented at IPGA 37th Annual Conference.</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Network Pharmacology</span><span class="exp-tag">SwissADME</span>
+        <span class="exp-tag">In-Silico</span><span class="exp-tag">Cancer Research</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
