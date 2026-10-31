@@ -1,6 +1,6 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -55,6 +55,17 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://psvineet.github.io/av.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://psvineet.github.io/av.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://psvineet.github.io/av.png">
+<!-- ── THEME INIT (runs before paint — prevents flash) ── -->
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('vps-theme-v2') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch(e) {
+    document.documentElement.setAttribute('data-theme','dark');
+  }
+})();
+</script>
 <!-- ── PERF / SEO ── -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://api.github.com">
@@ -99,8 +110,14 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=block">
 <style>
+/* ── FONT BLOCK — prevent FOUT ── */
+@font-face {
+  font-family: 'Inter';
+  font-display: block;
+}
 /* ── GROQ EXACT DESIGN SYSTEM ── */
 :root {
   /* Improved light theme — warmer, higher contrast */
@@ -124,19 +141,19 @@
   color-scheme: light;
 }
 [data-theme="dark"] {
-  --bg: #111113;          /* Near-black base */
-  --bg2: #1a1a1e;         /* Slightly lifted surface */
-  --surface: #1e1e23;     /* Card surface */
-  --surface2: #25252b;    /* Inset / elevated card */
-  --border: rgba(255,255,255,.09);
-  --border2: rgba(255,255,255,.05);
-  --ink: #f0f0eb;         /* Warm white — primary text */
-  --ink2: #e2e2dc;        /* Slightly dimmer */
-  --ink3: #a0a09a;        /* Secondary text */
-  --ink4: #636360;        /* Tertiary/disabled */
-  --accent: #f43e01;
-  --accent2: #ff5a1f;     /* Lighter hover for dark bg */
-  --accent-muted: rgba(244,62,1,.14);
+  --bg: #080809;          /* True black base */
+  --bg2: #0f0f11;         /* Barely lifted */
+  --surface: #131315;     /* Card — distinct from bg */
+  --surface2: #1c1c1f;    /* Inset / elevated */
+  --border: rgba(255,255,255,.10);
+  --border2: rgba(255,255,255,.06);
+  --ink: #f2f2ee;         /* Crisp warm white */
+  --ink2: #d8d8d2;        /* Body text */
+  --ink3: #888884;        /* Secondary */
+  --ink4: #4a4a48;        /* Muted/disabled */
+  --accent: #ff4500;      /* Vivid ember — pops on black */
+  --accent2: #ff6228;     /* Hover — brighter */
+  --accent-muted: rgba(255,69,0,.16);
   color-scheme: dark;
 }
 
@@ -166,9 +183,9 @@ img { max-width: 100%; }
 }
 #preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
 .pl-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.pl-wordmark { font-family: 'Inter', system-ui, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: normal; color: var(--ink); }
+.pl-wordmark { font-family: 'Inter', system-ui, sans-serif; font-size: 52px; font-weight: 800; letter-spacing: -.03em; color: var(--ink); }
 .pl-wordmark span { color: var(--accent); }
-.pl-bar { width: 120px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.pl-bar { width: 320px; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; max-width: 90vw; }
 .pl-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; animation: pl-load .8s ease forwards; }
 @keyframes pl-load { from { width: 0 } to { width: 100% } }
 
@@ -228,16 +245,18 @@ body::before {
   border-radius: 2px;
 }
 .nav-cta {
-  margin-left: 16px;
-  font-size: 13px; font-weight: 500;
-  color: var(--ink);
-  border-bottom: 1.5px solid var(--accent);
-  padding-bottom: 1px;
-  transition: color .15s, border-color .15s;
+  margin-left: 10px;
+  font-size: 12px; font-weight: 500;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--r-btn);
+  padding: 6px 14px;
+  transition: background .15s, opacity .15s;
   white-space: nowrap;
   flex-shrink: 0;
+  letter-spacing: .01em;
 }
-.nav-cta:hover { color: var(--accent); border-color: var(--accent); }
+.nav-cta:hover { background: var(--accent2); opacity: 1; }
 .nav-theme {
   margin-left: 10px;
   width: 38px; height: 38px;
@@ -311,16 +330,20 @@ body::before {
   transition: color .15s;
 }
 .mob-links a:hover { color: var(--ink); }
+.mob-links a.active { color: var(--accent); font-weight: 600; }
+.mob-links a.active svg { color: var(--accent); }
 .mob-links a svg { width: 14px; height: 14px; color: var(--ink4); }
+.mob-cta-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
 .mob-cta {
-  margin-top: 24px;
   display: flex; align-items: center; justify-content: center;
-  padding: 14px; background: var(--accent); color: #fff;
-  font-size: 15px; font-weight: 500; border-radius: 999px;
+  height: 42px; padding: 0 24px;
+  background: var(--accent); color: #fff;
+  font-size: 13px; font-weight: 500; border-radius: 999px;
   transition: background .15s;
 }
 .mob-cta:hover { background: var(--accent2); }
-.mob-social { display: flex; gap: 12px; margin-top: 24px; }
+.mob-social { display: flex; gap: 8px; margin-top: 0; flex-shrink: 0; }
+.mob-social a { width: 42px; height: 42px; border-radius: var(--r); }
 .mob-social a {
   width: 38px; height: 38px; border: 1px solid var(--border);
   border-radius: var(--r); display: flex; align-items: center; justify-content: center;
@@ -870,15 +893,15 @@ footer {
   line-height: 1.65; max-width: 240px;
   margin-bottom: 18px;
 }
-.footer-brand-social { display: flex; gap: 8px; }
+.footer-brand-social { display: flex; gap: 7px; }
 .footer-brand-social a {
-  width: 30px; height: 30px;
-  border: 1px solid var(--border2); border-radius: var(--r);
+  width: 32px; height: 32px;
+  border: 1px solid var(--border); border-radius: var(--r);
   display: flex; align-items: center; justify-content: center;
-  color: var(--ink4); transition: color .15s, border-color .15s;
+  color: var(--ink4); transition: color .15s, border-color .15s, background .15s;
 }
-.footer-brand-social a:hover { color: var(--ink); border-color: var(--ink3); }
-.footer-brand-social svg { width: 13px; height: 13px; }
+.footer-brand-social a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-muted); }
+.footer-brand-social svg { width: 14px; height: 14px; }
 .footer-col-label {
   font-size: 10px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
@@ -948,15 +971,25 @@ footer {
 .quote-name { font-size: 12px; font-weight: 600; color: var(--ink3); }
 .quote-handle { font-size: 11px; color: var(--ink4); }
 
-/* ── SECTION SWITCHER (one section at a time, fade) ── */
+/* ── SECTION SWITCHER ── */
 main > section { display: none; }
 main > section.s-active {
   display: block;
-  animation: s-fade-in .35s ease both;
+  animation: s-enter .42s cubic-bezier(.22,1,.36,1) both;
 }
-@keyframes s-fade-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+main > section.s-exit {
+  display: block;
+  animation: s-leave .22s cubic-bezier(.4,0,1,1) both;
+  pointer-events: none;
+  position: absolute; width: 100%;
+}
+@keyframes s-enter {
+  from { opacity: 0; transform: translateY(28px) scale(.98); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   filter: blur(0); }
+}
+@keyframes s-leave {
+  from { opacity: 1; transform: translateY(0)     scale(1);   filter: blur(0); }
+  to   { opacity: 0; transform: translateY(-14px) scale(.99); filter: blur(3px); }
 }
 
 /* ── RESPONSIVE ── */
@@ -1006,8 +1039,78 @@ main > section.s-active {
   transform: translate(1px, -1px);
 }
 
+/* ── DARK MODE CARD POLISH ── */
+[data-theme="dark"] .proj-card,
+[data-theme="dark"] .exp-card,
+[data-theme="dark"] .edu-card:not(.active),
+[data-theme="dark"] .sk-card,
+[data-theme="dark"] .cert-card,
+[data-theme="dark"] .rc-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .ct-link,
+[data-theme="dark"] .pillar {
+  background: var(--surface);
+  border-color: rgba(255,255,255,.08);
+}
+[data-theme="dark"] .proj-card:hover,
+[data-theme="dark"] .exp-card:hover,
+[data-theme="dark"] .edu-card:hover,
+[data-theme="dark"] .sk-card:hover,
+[data-theme="dark"] .cert-card:hover,
+[data-theme="dark"] .rc-card:hover,
+[data-theme="dark"] .blog-card:hover,
+[data-theme="dark"] .ct-link:hover,
+[data-theme="dark"] .pillar:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(255,69,0,.15), 0 4px 24px rgba(0,0,0,.5);
+}
+[data-theme="dark"] .hero-stats {
+  background: var(--surface);
+  border-color: rgba(255,255,255,.08);
+}
+[data-theme="dark"] .hero-stat {
+  background: transparent;
+  border-color: rgba(255,255,255,.08);
+}
+[data-theme="dark"] #nav {
+  background: rgba(8,8,9,.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(255,255,255,.07);
+}
+[data-theme="dark"] #mobile-menu {
+  background: #0c0c0e;
+}
+[data-theme="dark"] .edu-card.active {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.08);
+  border-top: 3px solid var(--accent);
+  box-shadow: 0 -2px 12px rgba(255,69,0,.18);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ── THEME SWITCH ANIMATION (View Transitions API) ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: theme-reveal .55s cubic-bezier(.4,0,.2,1) both;
+}
+::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+@keyframes theme-reveal {
+  from { clip-path: circle(0% at var(--theme-tx, 50%) var(--theme-ty, 50%)); }
+  to   { clip-path: circle(150% at var(--theme-tx, 50%) var(--theme-ty, 50%)); }
 }
 </style>
 </head>
@@ -1016,14 +1119,14 @@ main > section.s-active {
 <!-- PRELOADER -->
 <div id="preloader">
   <div class="pl-inner">
-    <div class="pl-wordmark">psv<span>ineet</span></div>
+    <div class="pl-wordmark"><span>ps</span>vineet</div>
     <div class="pl-bar"><div class="pl-bar-fill"></div></div>
   </div>
 </div>
 
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
-  <a href="#hero" class="nav-logo" aria-label="Home">psv<span>ineet</span></a>
+  <a href="#hero" class="nav-logo" aria-label="Home"><span>ps</span>vineet</a>
   <ul class="nav-links" role="list">
     <li><a href="#about">Profile</a></li>
     <li><a href="#education">Learning</a></li>
@@ -1039,7 +1142,7 @@ main > section.s-active {
     <svg id="icon-sun" viewBox="0 0 20 20" fill="currentColor" style="display:none"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
     <svg id="icon-moon" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
   </button>
-  <a href="mailto:ci.vps@proton.me" class="nav-cta">Get in touch</a>
+  <a href="mailto:ci.vps@proton.me" class="nav-cta">Contact</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <div class="dot-grid">
       <span></span><span></span><span></span>
@@ -1053,21 +1156,23 @@ main > section.s-active {
 <!-- MOBILE MENU -->
 <div id="mobile-menu" role="dialog" aria-label="Navigation menu">
   <ul class="mob-links">
-    <li><a href="#about">About<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#education">Education<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#experience">Experience<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#skills">Skills<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#projects">Projects<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#certifications">Certifications<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#research">Research<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#blog">Blog<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#contact">Contact<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#about">Profile<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#education">Learning<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#experience">Work<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#skills">Stack<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#projects">Builds<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#certifications">Badges<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#research">Papers<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#blog">Notes<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#contact">Reach<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
   </ul>
-  <a href="mailto:ci.vps@proton.me" class="mob-cta">Get in touch</a>
+  <div class="mob-cta-row">
+  <a href="mailto:ci.vps@proton.me" class="mob-cta">Contact</a>
   <div class="mob-social">
     <a href="https://github.com/psvineet" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
     <a href="https://linkedin.com/in/psvineet" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
     <a href="https://twitter.com/psvineet" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  </div>
   </div>
 </div>
 
@@ -1503,7 +1608,7 @@ main > section.s-active {
     <!-- Main grid -->
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo">psv<span>ineet</span></div>
+        <div class="footer-logo"><span>ps</span>vineet</div>
         <div class="footer-tagline">Open-source developer &amp; cybersecurity learner building at the crossroads of healthcare and security.</div>
         <div class="footer-brand-social">
           <a href="https://github.com/psvineet" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
@@ -1515,20 +1620,20 @@ main > section.s-active {
       <div>
         <div class="footer-col-label">Navigate</div>
         <div class="footer-col-links">
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
+          <a href="#about">Profile</a>
+          <a href="#education">Learning</a>
+          <a href="#experience">Work</a>
+          <a href="#skills">Stack</a>
+          <a href="#projects">Builds</a>
         </div>
       </div>
       <div>
         <div class="footer-col-label">More</div>
         <div class="footer-col-links">
-          <a href="#certifications">Certifications</a>
-          <a href="#research">Research</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
+          <a href="#certifications">Badges</a>
+          <a href="#research">Papers</a>
+          <a href="#blog">Notes</a>
+          <a href="#contact">Reach</a>
         </div>
       </div>
       <div>
@@ -1547,6 +1652,7 @@ main > section.s-active {
       <div class="footer-copy">© 2024–2026 Vineet Pratap Singh</div>
       <div class="footer-bottom-links">
         <a href="mailto:ci.vps@proton.me">ci.vps@proton.me</a>
+        <a href="mailto:i@psvineet.me">i@psvineet.me</a>
         <a href="https://psvineet.github.io" target="_blank" rel="noopener">psvineet.github.io</a>
       </div>
     </div>
@@ -1558,7 +1664,7 @@ main > section.s-active {
 // ── THEME ──
 (function(){
   try {
-    var saved = localStorage.getItem('vps-theme-v2') || 'light';
+    var saved = localStorage.getItem('vps-theme-v2') || 'dark';
     document.documentElement.setAttribute('data-theme', saved);
     updateThemeIcon(saved);
   } catch(e) {
@@ -1572,12 +1678,24 @@ function updateThemeIcon(t) {
   sun.style.display = t === 'dark' ? 'block' : 'none';
   moon.style.display = t === 'dark' ? 'none' : 'block';
 }
-document.getElementById('theme-toggle').addEventListener('click', function() {
+document.getElementById('theme-toggle').addEventListener('click', function(e) {
   var cur = document.documentElement.getAttribute('data-theme') || 'dark';
   var next = cur === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  updateThemeIcon(next);
-  try { localStorage.setItem('vps-theme-v2', next); } catch(e) {}
+  var rect = this.getBoundingClientRect();
+  var x = (rect.left + rect.width / 2) + 'px';
+  var y = (rect.top + rect.height / 2) + 'px';
+  document.documentElement.style.setProperty('--theme-tx', x);
+  document.documentElement.style.setProperty('--theme-ty', y);
+  function apply() {
+    document.documentElement.setAttribute('data-theme', next);
+    updateThemeIcon(next);
+    try { localStorage.setItem('vps-theme-v2', next); } catch(e) {}
+  }
+  if (document.startViewTransition) {
+    document.startViewTransition(apply);
+  } else {
+    apply();
+  }
 });
 
 // ── PRELOADER ──
@@ -1619,17 +1737,25 @@ document.addEventListener('keydown', function(e) {
 var _active = null;
 
 function showSection(id) {
-  // hide current
-  if (_active) {
-    _active.classList.remove('s-active');
-  }
   var target = document.getElementById(id);
-  if (!target) return;
+  if (!target || target === _active) return;
+  if (_active) {
+    var leaving = _active;
+    leaving.classList.remove('s-active');
+    leaving.classList.add('s-exit');
+    leaving.addEventListener('animationend', function() {
+      leaving.classList.remove('s-exit');
+    }, { once: true });
+  }
   target.classList.add('s-active');
   _active = target;
   window.scrollTo(0, 0);
-  // nav active state
+  // desktop nav active
   document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+  });
+  // mobile menu active
+  document.querySelectorAll('.mob-links a').forEach(function(a) {
     a.classList.toggle('active', a.getAttribute('href') === '#' + id);
   });
 }
