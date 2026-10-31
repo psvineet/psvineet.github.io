@@ -109,14 +109,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=block">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=block">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <style>
-/* ── FONT BLOCK — prevent FOUT ── */
-@font-face {
-  font-family: 'Inter';
-  font-display: block;
-}
 /* ── DESIGN SYSTEM ── */
 :root {
   /* Improved light theme — warmer, higher contrast */
@@ -543,7 +538,6 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
   letter-spacing: .01em;
   transition: border-color .15s;
 }
-.edu-aside { display: none; }
 
 /* ── EXPERIENCE ── */
 .exp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -733,38 +727,6 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
 }
 .proj-stars svg { width: 11px; height: 11px; fill: #f5a623; }
 
-/* ── RESEARCH ── */
-.rc-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-@media (max-width: 767px) { .rc-list { grid-template-columns: 1fr; } }
-.rc-card {
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
-  background: var(--surface);
-  transition: border-color .2s;
-}
-.rc-card:hover { border-color: var(--accent); }
-.rc-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
-  color: var(--ink4);
-  margin-bottom: 12px;
-}
-.rc-title { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.35; letter-spacing: normal; margin-bottom: 6px; }
-.rc-meta { font-size: 12px; color: var(--ink4); margin-bottom: 10px; }
-.rc-meta a { color: var(--accent); font-weight: 600; }
-.rc-desc { font-size: 13.5px; color: var(--ink3); line-height: 1.65; }
-.rc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
-.rc-tag {
-  font-size: 11px; font-weight: 500;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--ink3);
-  letter-spacing: .01em;
-  transition: border-color .15s;
-}
 
 /* ── BLOG ── */
 .blog-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
@@ -929,16 +891,6 @@ footer {
 .footer-bottom-links a { font-size: 11.5px; color: var(--ink4); transition: color .15s; }
 .footer-bottom-links a:hover { color: var(--ink3); }
 
-/* Social (kept for possible use elsewhere) */
-.footer-social { display: flex; gap: 10px; }
-.footer-social a {
-  width: 32px; height: 32px;
-  border: 1px solid var(--border2); border-radius: var(--r);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--ink4); transition: color .15s, border-color .15s;
-}
-.footer-social a:hover { color: var(--ink); border-color: var(--ink3); }
-.footer-social svg { width: 14px; height: 14px; }
 
 @media (max-width: 900px) {
   .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
@@ -950,29 +902,11 @@ footer {
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── DIVIDERS ── */
-.s-div {
-  display: flex; align-items: center; gap: 12px;
-  margin: 8px 0 4px;
-}
-.s-div span { font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ink4); white-space: nowrap; }
-.s-div::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
-
-/* ── QUOTE ── */
-.quote-block {
-  padding: 16px 20px;
-  border-left: 2px solid var(--accent);
-  position: relative;
-}
-.quote-mark { display: none; }
-.quote-text { font-size: 14px; color: var(--ink3); font-style: italic; line-height: 1.65; margin-bottom: 12px; }
-.quote-attr { display: flex; align-items: center; gap: 8px; }
-.quote-line { width: 16px; height: 1px; background: var(--border2); }
-.quote-name { font-size: 12px; font-weight: 600; color: var(--ink3); }
-.quote-handle { font-size: 11px; color: var(--ink4); }
 
 /* ── SECTION SWITCHER ── */
 main > section { display: none; }
+/* If JS hasn't run yet, still show hero so page isn't blank */
+body:not(.js-ready) main > #hero { display: block; }
 main > section.s-active {
   display: block;
   animation: s-enter .25s ease both;
@@ -1046,7 +980,6 @@ main > section.s-exit {
 [data-theme="dark"] .edu-card:not(.active),
 [data-theme="dark"] .sk-card,
 [data-theme="dark"] .cert-card,
-[data-theme="dark"] .rc-card,
 [data-theme="dark"] .blog-card,
 [data-theme="dark"] .ct-link,
 [data-theme="dark"] .pillar,
@@ -1059,7 +992,6 @@ main > section.s-exit {
 [data-theme="dark"] .edu-card:hover,
 [data-theme="dark"] .sk-card:hover,
 [data-theme="dark"] .cert-card:hover,
-[data-theme="dark"] .rc-card:hover,
 [data-theme="dark"] .blog-card:hover,
 [data-theme="dark"] .ct-link:hover,
 [data-theme="dark"] .pillar:hover {
@@ -1134,7 +1066,6 @@ main > section.s-exit {
     <li><a href="#skills">Stack</a></li>
     <li><a href="#projects">Builds</a></li>
     <li><a href="#certifications">Badges</a></li>
-    <li><a href="#research">Papers</a></li>
     <li><a href="#blog">Notes</a></li>
     <li><a href="#contact">Reach</a></li>
   </ul>
@@ -1162,7 +1093,6 @@ main > section.s-exit {
     <li><a href="#skills">Stack<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#projects">Builds<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#certifications">Badges<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#research">Papers<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#blog">Notes<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="#contact">Reach<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
   </ul>
@@ -1198,7 +1128,7 @@ main > section.s-exit {
 
 <!-- ── ABOUT ── -->
 <section id="about" class="section" aria-labelledby="about-title">
-  <h2 class="section-title" id="about-title">Every system has a surface.</h2>
+  <h2 class="section-title" id="about-title">Profile.</h2>
   <div class="about-grid">
     <div class="about-left">
       <p>Third-year B.Pharm student at AKTU, Lucknow — with a terminal always open. I build open-source tools at the crossroads of healthcare and security, because those two worlds share more unsolved problems than either admits.</p>
@@ -1224,8 +1154,8 @@ main > section.s-exit {
 
 <!-- ── EDUCATION ── -->
 <section id="education" class="section" aria-labelledby="edu-title">
-  <h2 class="section-title" id="edu-title">Academic foundation.</h2>
-  <p class="section-sub">Pharmaceutical sciences at AKTU — backed by strong academics and active research.</p>
+  <h2 class="section-title" id="edu-title">Learning.</h2>
+  <p class="section-sub">Where the learning started — pharmacy, science, and the fundamentals behind everything else.</p>
   <div class="edu-list">
     <div class="edu-card active">
       <div class="edu-badge">In Progress</div>
@@ -1257,8 +1187,8 @@ main > section.s-exit {
 
 <!-- ── EXPERIENCE ── -->
 <section id="experience" class="section" aria-labelledby="exp-title">
-  <h2 class="section-title" id="exp-title">Projects & Research.</h2>
-  <p class="section-sub">Security research, open-source development, competitive hacking, and conference presentations — all during undergrad.</p>
+  <h2 class="section-title" id="exp-title">Work.</h2>
+  <p class="section-sub">CVE disclosures, open-source projects, CTF rankings, and conference wins — the actual work, not a summary of it.</p>
   <div class="exp-grid">
 
     <!-- DRXStore wide card -->
@@ -1371,8 +1301,8 @@ main > section.s-exit {
 
 <!-- ── SKILLS ── -->
 <section id="skills" class="section" aria-labelledby="sk-title">
-  <h2 class="section-title" id="sk-title">Three domains,<br>one toolkit.</h2>
-  <p class="section-sub">Security thinking meets pharmaceutical knowledge — applied across every project.</p>
+  <h2 class="section-title" id="sk-title">Stack.</h2>
+  <p class="section-sub">Languages, tools, and domains — everything in active use across security, development, and pharmacy.</p>
   <div class="sk-grid">
     <div class="sk-card">
       <div class="sk-head">Cybersecurity (Learning)</div>
@@ -1398,8 +1328,8 @@ main > section.s-exit {
 
 <!-- ── CERTIFICATIONS ── -->
 <section id="certifications" class="section" aria-labelledby="cert-title">
-  <h2 class="section-title" id="cert-title">Certifications.</h2>
-  <p class="section-sub">Verified credentials across security, development, and AI — earned 2025–2026.</p>
+  <h2 class="section-title" id="cert-title">Badges.</h2>
+  <p class="section-sub">Verified credentials across security, development, and AI — each one earned, not collected.</p>
   <div class="cert-grid">
     <div class="cert-card">
       <div class="cert-d">Aug 2026 · TryHackMe</div>
@@ -1460,41 +1390,16 @@ main > section.s-exit {
 
 <!-- ── PROJECTS (live from GitHub) ── -->
 <section id="projects" class="section" aria-labelledby="proj-title">
-  <h2 class="section-title" id="proj-title">Open-source work.</h2>
-  <p class="section-sub">Security tooling, healthcare systems, and developer utilities — built for hostile-facing environments and real use. Fetched live from GitHub.</p>
+  <h2 class="section-title" id="proj-title">Builds.</h2>
+  <p class="section-sub">Security tooling, healthcare systems, and developer utilities — all self-hosted, zero-dependency, fetched live from GitHub.</p>
   <div id="projects-loading">Loading projects from GitHub…</div>
   <div id="projects-root" style="display:none"></div>
 </section>
 
-<!-- ── RESEARCH ── -->
-<section id="research" class="section" aria-labelledby="rc-title">
-  <h2 class="section-title" id="rc-title">Crossing disciplines.</h2>
-  <p class="section-sub">Conference research and computational tools at the intersection of pharmacology and AI.</p>
-  <div class="rc-list">
-    <div class="rc-card">
-      <div class="rc-badge">Conference Poster · 2025</div>
-      <div class="rc-title">Anti-Cancer Potential of Nigella sativa — In-Silico Network Pharmacology Study</div>
-      <div class="rc-meta">IPGA 37th Annual Conference · Co-authored with Dr. Shreya Singh</div>
-      <div class="rc-desc">Examined thymoquinone and related bioactives from black seed against cancer-associated molecular targets. Target identification via STRING, ShinyGO, and SwissTargetPrediction; drug-likeness profiling via SwissADME.</div>
-    </div>
-    <div class="rc-card">
-      <div class="rc-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg> 1st Place · ICS-22 · AI Innovation</div>
-      <div class="rc-title">PharmI — Trustworthy AI for Pharmaceutical Decision Support</div>
-      <div class="rc-meta">22nd International Cyclodextrin Symposium, Moga 2026 · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-      <div class="rc-desc">A Python prototype that wraps a Random Forest model inside a six-layer security framework to predict cyclodextrin-drug aqueous solubility — while defending against SQL injection, data poisoning, adversarial inputs, and manipulated outputs. Trained on 30 real reference drugs. R² ≈ 0.96. Caught all four live attack scenarios at the conference. Licensed CC BY-NC 4.0.</div>
-      <div class="rc-tags">
-        <span class="rc-tag">Python</span><span class="rc-tag">scikit-learn</span><span class="rc-tag">SHA-256</span>
-        <span class="rc-tag">Flask</span><span class="rc-tag">SQLite</span><span class="rc-tag">R² 0.96</span>
-        <span class="rc-tag">CC BY-NC 4.0</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ── BLOG ── -->
 <section id="blog" class="section" aria-labelledby="blog-title">
-  <h2 class="section-title" id="blog-title">Security writing.</h2>
-  <p class="section-sub">CTF walkthroughs, vulnerability deep-dives, and technical essays.</p>
+  <h2 class="section-title" id="blog-title">Notes.</h2>
+  <p class="section-sub">CTF walkthroughs, vulnerability deep-dives, and technical essays — written to be useful, not just published.</p>
   <div class="blog-grid">
     <a href="https://vps.iblogger.org/p/hnccnj" target="_blank" rel="noopener" class="blog-card featured">
       <div class="blog-top"><span class="blog-cat sec">Security</span><span class="blog-date">Oct 2026</span></div>
@@ -1549,7 +1454,7 @@ main > section.s-exit {
 
 <!-- ── CONTACT ── -->
 <section id="contact" class="section" aria-labelledby="ct-title">
-  <h2 class="section-title" id="ct-title">Let's build something.</h2>
+  <h2 class="section-title" id="ct-title">Reach.</h2>
   <div class="contact-grid">
     <div class="contact-left">
       <div class="ct-status">
@@ -1631,7 +1536,6 @@ main > section.s-exit {
         <div class="footer-col-label">More</div>
         <div class="footer-col-links">
           <a href="#certifications">Badges</a>
-          <a href="#research">Papers</a>
           <a href="#blog">Notes</a>
           <a href="#contact">Reach</a>
         </div>
@@ -1661,6 +1565,7 @@ main > section.s-exit {
 </footer>
 
 <script>
+document.body.classList.add('js-ready');
 // ── THEME ──
 (function(){
   try {
@@ -1699,13 +1604,19 @@ document.getElementById('theme-toggle').addEventListener('click', function(e) {
 });
 
 // ── PRELOADER ──
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.getElementById('preloader').classList.add('done');
-    // Reveal nav after preloader fades — fixes double wordmark
+function dismissPreloader() {
+  var pl = document.getElementById('preloader');
+  if (pl && !pl.classList.contains('done')) {
+    pl.classList.add('done');
     document.body.classList.add('site-ready');
-  }, 620);
+  }
+}
+// Normal path: after load + short delay for bar animation
+window.addEventListener('load', function() {
+  setTimeout(dismissPreloader, 620);
 });
+// Fallback: never block content longer than 2.5s regardless of font/resource load
+setTimeout(dismissPreloader, 2500);
 
 // ── MOBILE MENU ──
 var menuOpen = false;
