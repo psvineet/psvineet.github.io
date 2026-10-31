@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -218,7 +219,14 @@ body::before {
   white-space: nowrap;
 }
 .nav-links a:hover { color: var(--ink); background: var(--border2); }
+.nav-links a { position: relative; }
 .nav-links a.active { color: var(--ink); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 8px; right: 8px;
+  height: 1.5px; background: var(--accent);
+  border-radius: 2px;
+}
 .nav-cta {
   margin-left: 16px;
   font-size: 13px; font-weight: 500;
@@ -492,10 +500,9 @@ main { padding-top: var(--nav-h); flex: 1; }
 .edu-card:hover { border-color: var(--accent); }
 .edu-card.active { border-top: 3px solid var(--accent); }
 .edu-badge {
-  display: inline-block; font-size: 9.5px; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  padding: 2px 9px; border-radius: 999px;
-  background: var(--accent-muted); color: var(--accent);
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink4);
   width: fit-content;
 }
 .edu-score { font-family: 'Inter', system-ui, sans-serif; font-size: 26px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
@@ -504,7 +511,16 @@ main { padding-top: var(--nav-h); flex: 1; }
 .edu-inst { font-size: 12px; color: var(--ink3); }
 .edu-desc { font-size: 12.5px; color: var(--ink3); line-height: 1.6; flex: 1; }
 .edu-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
-.edu-tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 5px; background: var(--surface2); color: var(--ink3); border: 1px solid var(--border2); }
+.edu-tag {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--ink3);
+  letter-spacing: .01em;
+  transition: border-color .15s;
+}
 .edu-aside { display: none; }
 
 /* ── EXPERIENCE ── */
@@ -521,31 +537,68 @@ main { padding-top: var(--nav-h); flex: 1; }
 .exp-card-wide { grid-column: 1 / -1; }
 .exp-badge {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  padding: 2px 9px; border-radius: 999px;
-  background: var(--accent-muted); color: var(--accent);
+  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink4);
   width: fit-content;
 }
 .exp-role { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.3; }
 .exp-org { font-size: 12px; color: var(--ink3); }
 .exp-org a { color: var(--accent); font-weight: 600; }
 .exp-desc { font-size: 13.5px; color: var(--ink3); line-height: 1.65; }
-.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
 .exp-bullets li {
   font-size: 13px; color: var(--ink3); line-height: 1.6;
-  padding-left: 16px; position: relative;
+  padding-left: 18px; position: relative;
 }
-.exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-.exp-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
-.exp-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 5px; background: var(--surface2); border: 1px solid var(--border2); color: var(--ink3); }
+.exp-bullets li::before {
+  content: '';
+  position: absolute; left: 2px; top: 8px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.8;
+}
+.exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+.exp-tag {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--ink3);
+  letter-spacing: .01em;
+  transition: border-color .15s, color .15s;
+}
+.exp-card:hover .exp-tag { border-color: var(--border2); }
 .exp-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 12px; border-radius: 5px; width: fit-content;
-  background: rgba(244,62,1,.07); border: 1px solid rgba(244,62,1,.2);
-  font-size: 11.5px; font-weight: 700; color: var(--accent);
-  text-decoration: none; transition: background .15s;
+  display: inline-flex; align-items: center; gap: 8px;
+  flex-wrap: wrap;
+  text-decoration: none;
 }
-.exp-link:hover { background: rgba(244,62,1,.14); }
+.exp-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  border: 1px solid; white-space: nowrap;
+  transition: opacity .15s;
+}
+.exp-chip-id {
+  background: rgba(244,62,1,.07); border-color: rgba(244,62,1,.25);
+  color: var(--accent);
+}
+.exp-chip-cvss {
+  background: rgba(234,88,12,.08); border-color: rgba(234,88,12,.25);
+  color: #ea580c;
+}
+.exp-chip-sev {
+  background: rgba(220,38,38,.1); border-color: rgba(220,38,38,.3);
+  color: #dc2626;
+}
+.exp-chip-cve {
+  background: var(--bg); border-color: var(--border);
+  color: var(--ink4);
+}
+.exp-link:hover .exp-chip { opacity: .8; }
 .exp-stat { font-size: 28px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
 .exp-stat-label { font-size: 12px; color: var(--ink3); margin-top: 2px; }
 @media (max-width: 767px) {
@@ -566,29 +619,44 @@ main { padding-top: var(--nav-h); flex: 1; }
 .sk-head { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .04em; margin-bottom: 14px; text-transform: uppercase; font-size: 10.5px; }
 .sk-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 .sk-tag {
-  padding: 4px 10px; border-radius: 5px;
-  background: var(--surface2); border: 1px solid var(--border2);
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
   font-size: 12px; font-weight: 500; color: var(--ink2);
+  transition: border-color .15s, color .15s;
 }
+.sk-card:hover .sk-tag { border-color: var(--border2); }
 .sk-note { font-size: 12px; color: var(--ink4); margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border2); font-style: italic; }
 
 /* ── CERTS ── */
-.cert-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0 48px; }
+.cert-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
 .cert-card {
-  display: grid; grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto auto;
-  gap: 2px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border2);
-  transition: opacity .2s;
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  background: var(--surface);
+  transition: border-color .2s;
+  position: relative;
 }
-.cert-card:hover { opacity: .75; }
-.cert-d { font-size: 10px; font-weight: 600; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; grid-column: 1; grid-row: 1; }
-.cert-n { font-size: 13.5px; font-weight: 600; color: var(--ink); grid-column: 1; grid-row: 2; line-height: 1.3; margin: 3px 0 0; }
+.cert-card:hover { border-color: var(--accent); }
+.cert-card:hover .cert-arrow { color: var(--accent); }
+.cert-d { font-size: 10px; font-weight: 600; color: var(--ink4); letter-spacing: .07em; text-transform: uppercase; }
+.cert-n { font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.3; flex: 1; }
 .cert-n a { color: inherit; transition: color .15s; }
 .cert-n a:hover { color: var(--accent); }
-.cert-i { font-size: 11px; color: var(--ink4); grid-column: 1/-1; grid-row: 3; margin-top: 4px; line-height: 1.5; }
-.cert-arrow { display: none; }
+.cert-i { font-size: 11.5px; color: var(--ink4); line-height: 1.5; margin-top: 2px; }
+.cert-arrow {
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; top: 14px; right: 14px;
+  width: 24px; height: 24px; border-radius: var(--r);
+  border: 1px solid var(--border);
+  color: var(--ink4);
+  transition: background .15s, border-color .15s, color .15s;
+}
+.cert-card:hover .cert-arrow { background: var(--accent-muted); border-color: var(--accent); }
+.cert-arrow svg { width: 12px; height: 12px; }
 
 /* ── PROJECTS ── */
 #projects-loading { text-align: center; padding: 40px; color: var(--ink4); font-size: 14px; }
@@ -617,14 +685,14 @@ main { padding-top: var(--nav-h); flex: 1; }
 .proj-name a:first-child { flex: 1; color: inherit; transition: color .15s; }
 .proj-name a:first-child:hover { color: var(--accent); }
 .proj-arrow {
-  width: 22px; height: 22px; border-radius: var(--r);
+  width: 24px; height: 24px; border-radius: var(--r);
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   color: var(--ink4); flex-shrink: 0;
   transition: background .15s, border-color .15s, color .15s;
 }
 .proj-card:hover .proj-arrow { background: var(--accent-muted); border-color: var(--accent); color: var(--accent); }
-.proj-arrow svg { width: 10px; height: 10px; }
+.proj-arrow svg { width: 12px; height: 12px; }
 .proj-desc { font-size: 14px; color: var(--ink3); line-height: 1.57; flex: 1; letter-spacing: normal; }
 .proj-foot {
   display: flex; align-items: center; gap: 12px; margin-top: 4px;
@@ -643,7 +711,8 @@ main { padding-top: var(--nav-h); flex: 1; }
 .proj-stars svg { width: 11px; height: 11px; fill: #f5a623; }
 
 /* ── RESEARCH ── */
-.rc-list { display: flex; flex-direction: column; gap: 16px; }
+.rc-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 767px) { .rc-list { grid-template-columns: 1fr; } }
 .rc-card {
   padding: 24px;
   border: 1px solid var(--border);
@@ -654,9 +723,8 @@ main { padding-top: var(--nav-h); flex: 1; }
 .rc-card:hover { border-color: var(--accent); }
 .rc-badge {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 3px 10px; border-radius: 999px;
-  background: var(--accent-muted); color: var(--accent);
-  font-size: 10.5px; font-weight: 700; letter-spacing: .06em;
+  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink4);
   margin-bottom: 12px;
 }
 .rc-title { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.35; letter-spacing: normal; margin-bottom: 6px; }
@@ -664,7 +732,16 @@ main { padding-top: var(--nav-h); flex: 1; }
 .rc-meta a { color: var(--accent); font-weight: 600; }
 .rc-desc { font-size: 13.5px; color: var(--ink3); line-height: 1.65; }
 .rc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
-.rc-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 5px; background: var(--surface2); border: 1px solid var(--border2); color: var(--ink3); }
+.rc-tag {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--ink3);
+  letter-spacing: .01em;
+  transition: border-color .15s;
+}
 
 /* ── BLOG ── */
 .blog-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
@@ -681,18 +758,21 @@ main { padding-top: var(--nav-h); flex: 1; }
 .blog-card.featured { border-top: 3px solid var(--accent); }
 .blog-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .blog-cat {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  padding: 2px 9px; border-radius: 999px;
-  background: var(--surface2); color: var(--ink4);
-  border: 1px solid var(--border2);
+  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink4);
 }
-.blog-cat.sec { background: var(--accent-muted); color: var(--accent); border-color: rgba(229,71,28,.2); }
-.blog-cat.essay { background: rgba(120,80,200,.1); color: #9060e0; border-color: rgba(120,80,200,.2); }
+.blog-cat.sec { color: var(--accent); }
+.blog-cat.essay { color: #9060e0; }
 .blog-date { font-size: 11px; color: var(--ink4); font-weight: 500; }
 .blog-title { font-size: 14.5px; font-weight: 700; color: var(--ink); line-height: 1.35; letter-spacing: normal; }
 .blog-body { font-size: 12.5px; color: var(--ink3); line-height: 1.6; flex: 1; }
 .blog-foot { margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border2); }
-.blog-arrow { font-size: 12px; font-weight: 700; color: var(--accent); }
+.blog-arrow {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 600; color: var(--accent);
+}
+.blog-arrow svg { width: 11px; height: 11px; transition: transform .18s cubic-bezier(.4,0,.2,1); }
+.blog-card:hover .blog-arrow svg { transform: translate(1.5px,-1.5px); }
 
 /* ── CONTACT ── */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
@@ -733,7 +813,14 @@ main { padding-top: var(--nav-h); flex: 1; }
   padding: 3px 9px; border-radius: 999px;
   background: var(--accent); color: #fff; flex-shrink: 0;
 }
-.ct-link-arrow { font-size: 14px; color: var(--ink4); }
+.ct-link-arrow {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink4); flex-shrink: 0;
+  transition: color .15s;
+}
+.ct-link-arrow svg { width: 14px; height: 14px; transition: transform .18s cubic-bezier(.4,0,.2,1); }
+.ct-link:hover .ct-link-arrow { border-color: var(--accent); color: var(--accent); }
+.ct-link:hover .ct-link-arrow svg { transform: translate(1.5px,-1.5px); }
 .contact-right { display: flex; flex-direction: column; gap: 12px; }
 .ct-card-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
 .ct-card {
@@ -759,31 +846,41 @@ footer {
 .footer-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 28px max(32px, 5vw);
+  padding: 0 max(32px, 5vw);
 }
+
+
+
+/* Main grid */
 .footer-top {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 48px;
   align-items: start;
-  padding-bottom: 40px;
+  padding: 36px 0 32px;
   border-bottom: 1px solid var(--border2);
 }
-.footer-brand {}
 .footer-logo {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 17px; font-weight: 800;
-  letter-spacing: normal; color: var(--ink);
-  margin-bottom: 8px;
+  font-size: 15px; font-weight: 800;
+  color: var(--ink); margin-bottom: 8px;
 }
 .footer-logo span { color: var(--accent); }
 .footer-tagline {
   font-size: 12px; color: var(--ink4);
-  line-height: 1.6; max-width: 220px;
-  letter-spacing: normal;
+  line-height: 1.65; max-width: 240px;
+  margin-bottom: 18px;
 }
+.footer-brand-social { display: flex; gap: 8px; }
+.footer-brand-social a {
+  width: 30px; height: 30px;
+  border: 1px solid var(--border2); border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink4); transition: color .15s, border-color .15s;
+}
+.footer-brand-social a:hover { color: var(--ink); border-color: var(--ink3); }
+.footer-brand-social svg { width: 13px; height: 13px; }
 .footer-col-label {
-  font-size: 10px; font-weight: 600;
+  font-size: 10px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
   color: var(--ink4); margin-bottom: 14px;
 }
@@ -792,33 +889,39 @@ footer {
 }
 .footer-col-links a {
   font-size: 13px; color: var(--ink3);
-  letter-spacing: normal;
   transition: color .15s;
+  display: flex; align-items: center; gap: 5px;
 }
 .footer-col-links a:hover { color: var(--ink); }
+
+/* Bottom bar */
 .footer-bottom {
   display: flex; align-items: center;
   justify-content: space-between;
-  padding-top: 24px;
-  flex-wrap: wrap; gap: 12px;
+  padding: 18px 0;
+  flex-wrap: wrap; gap: 10px;
 }
-.footer-copy { font-size: 11.5px; color: var(--ink4); letter-spacing: normal; }
+.footer-copy { font-size: 11.5px; color: var(--ink4); }
+.footer-bottom-links { display: flex; gap: 20px; }
+.footer-bottom-links a { font-size: 11.5px; color: var(--ink4); transition: color .15s; }
+.footer-bottom-links a:hover { color: var(--ink3); }
+
+/* Social (kept for possible use elsewhere) */
 .footer-social { display: flex; gap: 10px; }
 .footer-social a {
   width: 32px; height: 32px;
-  border: 1px solid var(--border2);
-  border-radius: var(--r);
+  border: 1px solid var(--border2); border-radius: var(--r);
   display: flex; align-items: center; justify-content: center;
   color: var(--ink4); transition: color .15s, border-color .15s;
 }
 .footer-social a:hover { color: var(--ink); border-color: var(--ink3); }
 .footer-social svg { width: 14px; height: 14px; }
-@media (max-width: 767px) {
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
+
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
   .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
 }
 @media (max-width: 480px) {
   .footer-top { grid-template-columns: 1fr 1fr; }
@@ -863,7 +966,7 @@ main > section.s-active {
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .pillars { grid-template-columns: 1fr; gap: 12px; }
   .sk-grid { grid-template-columns: 1fr; }
-  .cert-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; gap: 10px; }
   .proj-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -887,6 +990,22 @@ main > section.s-active {
   .cert-grid { grid-template-columns: repeat(3, 1fr); }
   .blog-grid { grid-template-columns: repeat(3, 1fr); }
 }
+/* ── ARROW HOVER NUDGE ── */
+.proj-arrow svg,
+.cert-arrow svg {
+  transition: transform .18s cubic-bezier(.4,0,.2,1);
+}
+.proj-card:hover .proj-arrow svg,
+.cert-card:hover .cert-arrow svg {
+  transform: translate(1.5px, -1.5px);
+}
+.mob-links a svg {
+  transition: transform .18s cubic-bezier(.4,0,.2,1);
+}
+.mob-links a:hover svg {
+  transform: translate(1px, -1px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
@@ -906,15 +1025,15 @@ main > section.s-active {
 <nav id="nav" role="navigation" aria-label="Main navigation">
   <a href="#hero" class="nav-logo" aria-label="Home">psv<span>ineet</span></a>
   <ul class="nav-links" role="list">
-    <li><a href="#about">About</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#certifications">Certs</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">Profile</a></li>
+    <li><a href="#education">Learning</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#skills">Stack</a></li>
+    <li><a href="#projects">Builds</a></li>
+    <li><a href="#certifications">Badges</a></li>
+    <li><a href="#research">Papers</a></li>
+    <li><a href="#blog">Notes</a></li>
+    <li><a href="#contact">Reach</a></li>
   </ul>
   <button class="nav-theme" id="theme-toggle" aria-label="Toggle theme">
     <svg id="icon-sun" viewBox="0 0 20 20" fill="currentColor" style="display:none"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
@@ -934,15 +1053,15 @@ main > section.s-active {
 <!-- MOBILE MENU -->
 <div id="mobile-menu" role="dialog" aria-label="Navigation menu">
   <ul class="mob-links">
-    <li><a href="#about">About<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#education">Education<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#experience">Experience<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#skills">Skills<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#projects">Projects<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#certifications">Certifications<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#research">Research<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#blog">Blog<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="#contact">Contact<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#about">About<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#education">Education<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#experience">Experience<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#skills">Skills<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#projects">Projects<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#certifications">Certifications<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#research">Research<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#blog">Blog<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="#contact">Contact<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
   </ul>
   <a href="mailto:ci.vps@proton.me" class="mob-cta">Get in touch</a>
   <div class="mob-social">
@@ -960,23 +1079,13 @@ main > section.s-active {
   <h1 class="hero-name" id="hero-name">
     Vineet Pratap <span class="accent">Singh</span>
   </h1>
-  <p class="hero-tagline">B.Pharm student at AKTU · Open-source developer · Cybersecurity learner. Building tools at the crossroads of healthcare and security.</p>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-v">Top 1%</div>
-      <div class="hero-stat-l">TryHackMe Global</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-v">25+</div>
-      <div class="hero-stat-l">Open Source Repos</div>
-    </div>
-  </div>
+  <p class="hero-tagline">Open-source developer & cybersecurity practitioner. Building tools at the crossroads of healthcare and security — B.Pharm student at AKTU.</p>
   <div class="hero-actions">
     <a href="#projects" class="btn-primary">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       View Projects
     </a>
-    <a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener" class="btn-ghost">TryHackMe Profile</a>
+    <a href="https://github.com/psvineet" target="_blank" rel="noopener" class="btn-ghost">GitHub Profile</a>
     <a href="mailto:ci.vps@proton.me" class="btn-accent">ci.vps@proton.me</a>
   </div>
   </div>
@@ -988,8 +1097,8 @@ main > section.s-active {
   <div class="about-grid">
     <div class="about-left">
       <p>Third-year B.Pharm student at AKTU, Lucknow — with a terminal always open. I build open-source tools at the crossroads of healthcare and security, because those two worlds share more unsolved problems than either admits.</p>
-      <p>My work spans pharmaceutical science, self-taught web development, and active security practice. I've contributed to in-silico cancer research, built zero-dependency pharmacy systems, and placed in the top 1% of TryHackMe globally.</p>
-      <p>Everything I ship is self-hosted, dependency-free, and built to work in the real world — not just in a demo.</p>
+      <p>My work spans pharmaceutical science, self-taught web development, and active security practice — from in-silico cancer research to zero-dependency pharmacy systems to published CVE disclosure.</p>
+      <p>Everything I ship is self-hosted, dependency-free, and built for real-world use.</p>
       <div class="about-tags">
         <span class="tag">PHP</span><span class="tag">Python</span><span class="tag">Go</span>
         <span class="tag">Pentesting</span><span class="tag">Pharmacology</span>
@@ -999,21 +1108,10 @@ main > section.s-active {
     <div class="about-right">
       <div class="info-row"><span class="info-k">Location</span><span class="info-v">Lucknow, India · UTC+5:30</span></div>
       <div class="info-row"><span class="info-k">University</span><span class="info-v">AKTU, Lucknow</span></div>
-      <div class="info-row"><span class="info-k">Program</span><span class="info-v">B.Pharm · 2024–2028</span></div>
-      <div class="info-row"><span class="info-k">Year</span><span class="info-v">Third Year — In Progress</span></div>
+      <div class="info-row"><span class="info-k">Program</span><span class="info-v">B.Pharm · 2024–2028 · Third Year</span></div>
       <div class="info-row"><span class="info-k">Handle</span><span class="info-v">psvineet (all platforms)</span></div>
-      <div class="info-row"><span class="info-k">Email</span><span class="info-v">ci.vps@proton.me</span></div>
-      <div style="margin-top:16px">
-        <div class="quote-block">
-          <div class="quote-mark">"</div>
-          <p class="quote-text">Every system has a surface — biological or digital. I just learned to read both.</p>
-          <div class="quote-attr">
-            <div class="quote-line"></div>
-            <span class="quote-name">Vineet Pratap Singh</span>
-            <span class="quote-handle">@psvineet</span>
-          </div>
-        </div>
-      </div>
+      <div class="info-row"><span class="info-k">Email</span><span class="info-v">ci.vps@proton.me · i@psvineet.me</span></div>
+
     </div>
   </div>
 
@@ -1049,28 +1147,23 @@ main > section.s-active {
       <div class="edu-tags"><span class="edu-tag">Science</span><span class="edu-tag">Mathematics</span></div>
     </div>
   </div>
-  <div class="s-div" style="margin-top:32px"><span>Coursework Highlights</span></div>
-  <div class="about-tags" style="margin-top:16px">
-    <span class="tag">Drug Formulation</span><span class="tag">Pharmacokinetics</span>
-    <span class="tag">Medicinal Chemistry</span><span class="tag">Pharmaceutical Analysis</span>
-    <span class="tag">Quality Assurance</span><span class="tag">Pharmacology</span>
-  </div>
+
 </section>
 
 <!-- ── EXPERIENCE ── -->
 <section id="experience" class="section" aria-labelledby="exp-title">
-  <h2 class="section-title" id="exp-title">Built in public.</h2>
-  <p class="section-sub">Security research, open-source stewardship, competitive hacking, and conference-level research — all while in undergrad.</p>
+  <h2 class="section-title" id="exp-title">Projects & Research.</h2>
+  <p class="section-sub">Security research, open-source development, competitive hacking, and conference presentations — all during undergrad.</p>
   <div class="exp-grid">
 
     <!-- DRXStore wide card -->
     <div class="exp-card exp-card-wide">
-      <div class="exp-badge">Main Developer &amp; Security Maintainer · 2026 – Present</div>
+      <div class="exp-badge">Main Developer &amp; Security Maintainer · 2024 – Present</div>
       <div class="exp-role">DRXStore — Open-Source Pharmacy Management System</div>
-      <div class="exp-org">PHP · MySQL · Self-hosted · <a href="https://github.com/psvineet/drxstore" target="_blank" rel="noopener">github.com/psvineet/drxstore ↗</a></div>
+      <div class="exp-org">PHP · MySQL · Self-hosted · <a href="https://github.com/psvineet/drxstore" target="_blank" rel="noopener">github.com/psvineet/drxstore <svg viewBox="0 0 12 12" fill="none" width="10" height="10" style="vertical-align:middle"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <a href="https://github.com/psvineet/drxstore/security/advisories/GHSA-7xhx-j29g-xgx4" target="_blank" rel="noopener" class="exp-link">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-        GHSA-7xhx-j29g-xgx4 · CVSS 8.8 · High Severity · CVE Pending
+        <span class="exp-chip exp-chip-id">GHSA-7xhx-j29g-xgx4</span><span class="exp-chip exp-chip-cvss">CVSS 8.8</span><span class="exp-chip exp-chip-sev">High Severity</span><span class="exp-chip exp-chip-cve">CVE Pending</span>
       </a>
       <ul class="exp-bullets">
         <li>Triaged and patched two High-severity flaws (CVSS 8.8) — missing role checks (CWE-863) and unvalidated archive extraction (CWE-434) — in private coordination with external researcher Anil Kumar Voleti; patches shipped in v3.0.0 and v3.0.1.</li>
@@ -1092,11 +1185,11 @@ main > section.s-active {
       <div class="exp-stat">25+</div>
       <div class="exp-stat-label">Public repositories on GitHub</div>
       <div class="exp-role">Independent Open-Source Projects</div>
-      <div class="exp-org"><a href="https://github.com/psvineet" target="_blank" rel="noopener">github.com/psvineet ↗</a></div>
+      <div class="exp-org"><a href="https://github.com/psvineet" target="_blank" rel="noopener">github.com/psvineet <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <ul class="exp-bullets">
-        <li>25+ public repositories across security tooling, healthcare systems, and developer utilities.</li>
-        <li>All projects zero-dependency and built for hostile-facing or real-world production use.</li>
-        <li>Spans PHP, Python, and Go — with a focus on self-hosted, privacy-first architecture.</li>
+        <li>Public repositories across security tooling, healthcare systems, and developer utilities.</li>
+        <li>All projects zero-dependency, built for hostile-facing or real-world production use.</li>
+        <li>Primary languages: PHP, Python, Go — with a focus on self-hosted, privacy-first architecture.</li>
       </ul>
       <div class="exp-tags">
         <span class="exp-tag">Healthcare</span><span class="exp-tag">Security</span><span class="exp-tag">Dev Tools</span><span class="exp-tag">Zero-dependency</span>
@@ -1109,7 +1202,7 @@ main > section.s-active {
       <div class="exp-stat">Top 1%</div>
       <div class="exp-stat-label">TryHackMe — Global Ranking</div>
       <div class="exp-role">Penetration Testing &amp; CTF Practice</div>
-      <div class="exp-org"><a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener">tryhackme.com/p/psvineet ↗</a></div>
+      <div class="exp-org"><a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener">tryhackme.com/p/psvineet <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <ul class="exp-bullets">
         <li>Ranked top 1% globally on TryHackMe through consistent lab completions.</li>
         <li>Practice spans web exploitation, privilege escalation, network analysis, digital forensics, OSINT, and cryptography.</li>
@@ -1124,7 +1217,7 @@ main > section.s-active {
     <div class="exp-card">
       <div class="exp-badge">CTF Competition · Aug 2026</div>
       <div class="exp-role">TryHackMe — Hacker Holidays 2026</div>
-      <div class="exp-org">Byte Lotus Challenge · <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener">Certificate ↗</a></div>
+      <div class="exp-org">Byte Lotus Challenge · <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener">Certificate <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <ul class="exp-bullets">
         <li>Completed all 14 rooms across the Byte Lotus Challenge event.</li>
         <li>Covered AI security, web enumeration, cloud security, PCAP analysis, digital forensics, OSINT, cryptography, and malware analysis.</li>
@@ -1138,9 +1231,9 @@ main > section.s-active {
 
     <!-- PharmI Conference -->
     <div class="exp-card">
-      <div class="exp-badge">🥇 1st Place · AI Innovation · ICS-22 · 2026</div>
+      <div class="exp-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg> 1st Place · AI Innovation · ICS-22 · 2026</div>
       <div class="exp-role">PharmI — AI for Pharmaceutical Decision Support</div>
-      <div class="exp-org">22nd International Cyclodextrin Symposium, Moga · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi ↗</a></div>
+      <div class="exp-org">22nd International Cyclodextrin Symposium, Moga · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <ul class="exp-bullets">
         <li>Built a Random Forest model for cyclodextrin-drug solubility prediction achieving R² ≈ 0.96.</li>
         <li>Wrapped model inside a six-layer security framework; defended all four live attack scenarios at the venue.</li>
@@ -1179,7 +1272,7 @@ main > section.s-active {
     <div class="sk-card">
       <div class="sk-head">Cybersecurity (Learning)</div>
       <div class="sk-tags"><span class="sk-tag">Pentesting</span><span class="sk-tag">Wireshark</span><span class="sk-tag">Metasploit</span><span class="sk-tag">Burp Suite</span><span class="sk-tag">Nmap</span></div>
-      <div class="sk-note">Practising through TryHackMe labs and CTFs. Top 1% globally ranked.</div>
+      <div class="sk-note">Practising through TryHackMe labs and CTF competitions.</div>
     </div>
     <div class="sk-card">
       <div class="sk-head">Web &amp; Development</div>
@@ -1200,30 +1293,70 @@ main > section.s-active {
 
 <!-- ── CERTIFICATIONS ── -->
 <section id="certifications" class="section" aria-labelledby="cert-title">
-  <h2 class="section-title" id="cert-title">14 verified credentials.</h2>
-  <p class="section-sub">14 verified credentials across security, development, and AI. All earned 2025–2026.</p>
+  <h2 class="section-title" id="cert-title">Certifications.</h2>
+  <p class="section-sub">Verified credentials across security, development, and AI — earned 2025–2026.</p>
   <div class="cert-grid">
-    <div class="cert-card"><div class="cert-d">Aug 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener">Hacker Holidays — Byte Lotus</a></div><div class="cert-i">Holiday CTF: enumeration, exploitation, privilege escalation</div><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">Jul 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf" target="_blank" rel="noopener">Cyber Security 101</a></div><div class="cert-i">Networking basics, attack types, core defensive concepts</div><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">Jun 2026 · TryHackMe</div><div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf" target="_blank" rel="noopener">Pre Security</a></div><div class="cert-i">Networking fundamentals, web basics — foundations for offensive security</div><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">May 2026 · LinkedIn Learning</div><div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/" target="_blank" rel="noopener">Microsoft Copilot: Prompt Writing</a></div><div class="cert-i">Effective prompt writing for AI-generated output</div><a href="https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">May 2026 · LinkedIn Learning</div><div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/" target="_blank" rel="noopener">Practical GitHub Actions</a></div><div class="cert-i">CI/CD pipelines and workflow automation</div><a href="https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">Apr 2026 · Google Cloud</div><div class="cert-n"><a href="https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858" target="_blank" rel="noopener">Generative AI (Skill Badge)</a></div><div class="cert-i">LLM fundamentals and real-world AI applications</div><a href="https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/nrAyF5CfYXb" target="_blank" rel="noopener">UI/UX Design via ChatGPT</a></div><div class="cert-i">Using AI to accelerate design workflows</div><a href="https://simpli-web.app.link/e/nrAyF5CfYXb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/6LPJqpTQ5Vb" target="_blank" rel="noopener">WordPress</a></div><div class="cert-i">Site setup, themes, plugins, and content management</div><a href="https://simpli-web.app.link/e/6LPJqpTQ5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/N802ehHeaWb" target="_blank" rel="noopener">SEO</a></div><div class="cert-i">On-page SEO, keyword research, ranking factors</div><a href="https://simpli-web.app.link/e/N802ehHeaWb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/hGdQswzsaWb" target="_blank" rel="noopener">Computer Networking</a></div><div class="cert-i">OSI model, IP addressing, routing, protocols</div><a href="https://simpli-web.app.link/e/hGdQswzsaWb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/b4EnOZHsaWb" target="_blank" rel="noopener">Java</a></div><div class="cert-i">Core Java syntax, OOP concepts, and program structure</div><a href="https://simpli-web.app.link/e/b4EnOZHsaWb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/XGxxzwSL5Vb" target="_blank" rel="noopener">Introduction to Cybersecurity</a></div><div class="cert-i">Core concepts, common threats, and basic defenses</div><a href="https://simpli-web.app.link/e/XGxxzwSL5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/5MRFlE4N5Vb" target="_blank" rel="noopener">HTML</a></div><div class="cert-i">HTML fundamentals for web page structure</div><a href="https://simpli-web.app.link/e/5MRFlE4N5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <div class="cert-card"><div class="cert-d">2025 · Simplilearn</div><div class="cert-n"><a href="https://simpli-web.app.link/e/1ZMWOCrS5Vb" target="_blank" rel="noopener">Canva Designing</a></div><div class="cert-i">Graphics and visual layout using Canva</div><a href="https://simpli-web.app.link/e/1ZMWOCrS5Vb" target="_blank" rel="noopener" class="cert-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <div class="cert-card">
+      <div class="cert-d">Aug 2026 · TryHackMe</div>
+      <div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener">Hacker Holidays — Byte Lotus</a></div>
+      <div class="cert-i">Holiday CTF: enumeration, exploitation, privilege escalation</div>
+      <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-ICFTLN1XAO.pdf" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">Jul 2026 · TryHackMe</div>
+      <div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf" target="_blank" rel="noopener">Cyber Security 101</a></div>
+      <div class="cert-i">Networking basics, attack types, core defensive concepts</div>
+      <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-7TVZKQ9WUB.pdf" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">Jun 2026 · TryHackMe</div>
+      <div class="cert-n"><a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf" target="_blank" rel="noopener">Pre Security</a></div>
+      <div class="cert-i">Networking fundamentals, web basics — foundations for offensive security</div>
+      <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-SUIGZAAOTB.pdf" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">May 2026 · LinkedIn Learning</div>
+      <div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/" target="_blank" rel="noopener">Microsoft Copilot: Prompt Writing</a></div>
+      <div class="cert-i">Effective prompt writing for AI-generated output</div>
+      <a href="https://www.linkedin.com/learning/certificates/21fef1b075f062b0bbf375134b5941a00c7a06c7f72e7f2d7a9ee257ce7f747e/" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">May 2026 · LinkedIn Learning</div>
+      <div class="cert-n"><a href="https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/" target="_blank" rel="noopener">Practical GitHub Actions</a></div>
+      <div class="cert-i">CI/CD pipelines and workflow automation</div>
+      <a href="https://www.linkedin.com/learning/certificates/566ed3545a8707fafdcea2e850f9940d49216f6d9740422c1fc34b3273cb6ef6/" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">Apr 2026 · Google Cloud</div>
+      <div class="cert-n"><a href="https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858" target="_blank" rel="noopener">Generative AI (Skill Badge)</a></div>
+      <div class="cert-i">LLM fundamentals and real-world AI applications</div>
+      <a href="https://www.skills.google/public_profiles/fee98caa-4166-4be0-86d5-b5f05e95c2fb/badges/23495858" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">2025 · Simplilearn</div>
+      <div class="cert-n"><a href="https://simpli-web.app.link/e/hGdQswzsaWb" target="_blank" rel="noopener">Computer Networking</a></div>
+      <div class="cert-i">OSI model, IP addressing, routing, protocols</div>
+      <a href="https://simpli-web.app.link/e/hGdQswzsaWb" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">2025 · Simplilearn</div>
+      <div class="cert-n"><a href="https://simpli-web.app.link/e/b4EnOZHsaWb" target="_blank" rel="noopener">Java</a></div>
+      <div class="cert-i">Core Java syntax, OOP concepts, and program structure</div>
+      <a href="https://simpli-web.app.link/e/b4EnOZHsaWb" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="cert-card">
+      <div class="cert-d">2025 · Simplilearn</div>
+      <div class="cert-n"><a href="https://simpli-web.app.link/e/XGxxzwSL5Vb" target="_blank" rel="noopener">Introduction to Cybersecurity</a></div>
+      <div class="cert-i">Core concepts, common threats, and basic defenses</div>
+      <a href="https://simpli-web.app.link/e/XGxxzwSL5Vb" target="_blank" rel="noopener" class="cert-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
   </div>
 </section>
 
 <!-- ── PROJECTS (live from GitHub) ── -->
 <section id="projects" class="section" aria-labelledby="proj-title">
-  <h2 class="section-title" id="proj-title">25+ repos.<br>Zero dependencies.</h2>
-  <p class="section-sub">Built for hostile-facing environments and real use. Projects fetched live from GitHub.</p>
+  <h2 class="section-title" id="proj-title">Open-source work.</h2>
+  <p class="section-sub">Security tooling, healthcare systems, and developer utilities — built for hostile-facing environments and real use. Fetched live from GitHub.</p>
   <div id="projects-loading">Loading projects from GitHub…</div>
   <div id="projects-root" style="display:none"></div>
 </section>
@@ -1231,7 +1364,7 @@ main > section.s-active {
 <!-- ── RESEARCH ── -->
 <section id="research" class="section" aria-labelledby="rc-title">
   <h2 class="section-title" id="rc-title">Crossing disciplines.</h2>
-  <p class="section-sub">Conference research, security ranking, and computational tools for pharmaceutical education.</p>
+  <p class="section-sub">Conference research and computational tools at the intersection of pharmacology and AI.</p>
   <div class="rc-list">
     <div class="rc-card">
       <div class="rc-badge">Conference Poster · 2025</div>
@@ -1240,9 +1373,9 @@ main > section.s-active {
       <div class="rc-desc">Examined thymoquinone and related bioactives from black seed against cancer-associated molecular targets. Target identification via STRING, ShinyGO, and SwissTargetPrediction; drug-likeness profiling via SwissADME.</div>
     </div>
     <div class="rc-card">
-      <div class="rc-badge">🥇 1st Place · ICS-22 · AI Innovation</div>
+      <div class="rc-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg> 1st Place · ICS-22 · AI Innovation</div>
       <div class="rc-title">PharmI — Trustworthy AI for Pharmaceutical Decision Support</div>
-      <div class="rc-meta">22nd International Cyclodextrin Symposium, Moga 2026 · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi ↗</a></div>
+      <div class="rc-meta">22nd International Cyclodextrin Symposium, Moga 2026 · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <div class="rc-desc">A Python prototype that wraps a Random Forest model inside a six-layer security framework to predict cyclodextrin-drug aqueous solubility — while defending against SQL injection, data poisoning, adversarial inputs, and manipulated outputs. Trained on 30 real reference drugs. R² ≈ 0.96. Caught all four live attack scenarios at the conference. Licensed CC BY-NC 4.0.</div>
       <div class="rc-tags">
         <span class="rc-tag">Python</span><span class="rc-tag">scikit-learn</span><span class="rc-tag">SHA-256</span>
@@ -1255,56 +1388,56 @@ main > section.s-active {
 
 <!-- ── BLOG ── -->
 <section id="blog" class="section" aria-labelledby="blog-title">
-  <h2 class="section-title" id="blog-title">Technical and philosophical.</h2>
-  <p class="section-sub">CTF walkthroughs, security deep-dives, and technical essays.</p>
+  <h2 class="section-title" id="blog-title">Security writing.</h2>
+  <p class="section-sub">CTF walkthroughs, vulnerability deep-dives, and technical essays.</p>
   <div class="blog-grid">
     <a href="https://vps.iblogger.org/p/hnccnj" target="_blank" rel="noopener" class="blog-card featured">
       <div class="blog-top"><span class="blog-cat sec">Security</span><span class="blog-date">Oct 2026</span></div>
       <div class="blog-title">14 Years Hidden in Plain Sight — The PHP Flaw That Needs Nothing to Take Everything</div>
       <div class="blog-body">PHP2Shell: a remote code execution vulnerability buried in the PHP runtime since 5.4.0. No login, no file upload, no framework bug required.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
     <a href="https://vps.iblogger.org" target="_blank" rel="noopener" class="blog-card">
       <div class="blog-top"><span class="blog-cat">CTF</span><span class="blog-date">Sep 2026</span></div>
       <div class="blog-title">CTF Challenges Writeups — TryHackMe Walkthroughs</div>
       <div class="blog-body">Ongoing series covering TryHackMe rooms and CTF walkthroughs. Step-by-step methodology from recon to privilege escalation.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
     <a href="https://psvineet.me/cyber-blog/hh26/Cyber%20Security/Hacker%20Holiday%202026/" target="_blank" rel="noopener" class="blog-card">
       <div class="blog-top"><span class="blog-cat">CTF</span><span class="blog-date">Aug 2026</span></div>
       <div class="blog-title">Hacker Holidays 2026 — The Byte Lotus Writeups</div>
       <div class="blog-body">All 14 rooms: AI security, web enumeration, cloud security, PCAP analysis, digital forensics, OSINT, cryptography, and malware analysis.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
     <a href="https://psvineet.me/cyber-blog/cca" target="_blank" rel="noopener" class="blog-card">
       <div class="blog-top"><span class="blog-cat sec">Security</span><span class="blog-date">Aug 2026</span></div>
       <div class="blog-title">Common Cyber Attacks — What They Are &amp; How to Stay Safe</div>
       <div class="blog-body">Social engineering, phishing, malware, ransomware, SQL injection, XSS, DDoS — with practical defenses.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
     <a href="https://psvineet.me/cyber-blog/sqli" target="_blank" rel="noopener" class="blog-card">
       <div class="blog-top"><span class="blog-cat">Deep Dive</span><span class="blog-date">Sep 2026</span></div>
       <div class="blog-title">SQL Injection — How It Works, How to Find It, and How to Stop It</div>
       <div class="blog-body">In-Band, Blind, and Out-of-Band SQL injection; defenses via parameterized queries and WAF rules.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
     <a href="https://psvineet.me/cyber-blog/ptfw" target="_blank" rel="noopener" class="blog-card">
       <div class="blog-top"><span class="blog-cat sec">Security</span><span class="blog-date">Aug 2026</span></div>
       <div class="blog-title">Pentesting Frameworks — and How to Choose the Right One</div>
       <div class="blog-body">Comparing PTES, OWASP, NIST, and OSSTMM for repeatable, defensible penetration testing.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
     <a href="https://psvineet.me/cyber-blog/csrf" target="_blank" rel="noopener" class="blog-card">
       <div class="blog-top"><span class="blog-cat">Deep Dive</span><span class="blog-date">Sep 2026</span></div>
       <div class="blog-title">Cross-Site Request Forgery — How Browsers Are Turned Against Their Users</div>
       <div class="blog-body">Mechanics, three attack vectors, CSRF tokens, SameSite cookies, and Origin header validation.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
     <a href="https://psvineet.me/cyber-blog/sid" target="_blank" rel="noopener" class="blog-card">
       <div class="blog-top"><span class="blog-cat essay">Essay</span><span class="blog-date">Sep 2026</span></div>
       <div class="blog-title">Mankind Built the Atomic Bomb — But No Mouse Ever Built a Mousetrap</div>
       <div class="blog-body">Research essay on humanity's self-destructive relationship with technology: nuclear weapons, biotech, AI, and cybersecurity.</div>
-      <div class="blog-foot"><span class="blog-arrow">Read →</span></div>
+      <div class="blog-foot"><span class="blog-arrow">Read <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
   </div>
 </section>
@@ -1319,7 +1452,6 @@ main > section.s-active {
         Open to Collaboration
       </div>
       <p>Whether it's a security project, a healthcare tool, research collaboration, or just a technical conversation — I'm reachable. Preferred contact is email; I also respond on LinkedIn and GitHub.</p>
-      <p>Particularly interested in: open-source security tooling, pharmacy informatics, AI safety in healthcare, and CTF collaboration.</p>
       <div class="ct-tags" style="margin-top:24px">
         <span class="ct-tag">Security tooling</span><span class="ct-tag">Healthcare software</span>
         <span class="ct-tag">CTF collaboration</span><span class="ct-tag">Research projects</span>
@@ -1330,23 +1462,23 @@ main > section.s-active {
       <div class="ct-links">
         <a href="mailto:ci.vps@proton.me" class="ct-link">
           <div class="ct-link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-          <div class="ct-link-body"><div class="ct-link-label">Email — ProtonMail</div><div class="ct-link-val">ci.vps@proton.me</div></div>
+          <div class="ct-link-body"><div class="ct-link-label">Email — ProtonMail</div><div class="ct-link-val">ci.vps@proton.me · i@psvineet.me</div></div>
           <span class="ct-link-badge">Preferred</span>
         </a>
         <a href="https://github.com/psvineet" target="_blank" rel="noopener" class="ct-link">
           <div class="ct-link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div>
           <div class="ct-link-body"><div class="ct-link-label">GitHub</div><div class="ct-link-val">github.com/psvineet</div></div>
-          <span class="ct-link-arrow">↗</span>
+          <span class="ct-link-arrow"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a href="https://linkedin.com/in/psvineet" target="_blank" rel="noopener" class="ct-link">
           <div class="ct-link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
           <div class="ct-link-body"><div class="ct-link-label">LinkedIn</div><div class="ct-link-val">linkedin.com/in/psvineet</div></div>
-          <span class="ct-link-arrow">↗</span>
+          <span class="ct-link-arrow"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a href="https://tryhackme.com/p/psvineet" target="_blank" rel="noopener" class="ct-link">
           <div class="ct-link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
           <div class="ct-link-body"><div class="ct-link-label">TryHackMe</div><div class="ct-link-val">Top 1% Global · psvineet</div></div>
-          <span class="ct-link-arrow">↗</span>
+          <span class="ct-link-arrow"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
       </div>
       <div style="margin-top:16px">
@@ -1355,7 +1487,6 @@ main > section.s-active {
           <a href="https://twitter.com/psvineet" target="_blank" rel="noopener" class="ct-card"><div class="ct-card-label">Twitter / X</div><div class="ct-card-sub">@psvineet</div></a>
           <a href="https://orcid.org/0009-0006-8424-0643" target="_blank" rel="noopener" class="ct-card"><div class="ct-card-label">ORCID</div><div class="ct-card-sub">0009-0006-8424-0643</div></a>
           <a href="https://vps.iblogger.org" target="_blank" rel="noopener" class="ct-card"><div class="ct-card-label">CTF Writeups</div><div class="ct-card-sub">vps.iblogger.org</div></a>
-          <a href="https://psvineet.github.io" target="_blank" rel="noopener" class="ct-card"><div class="ct-card-label">Portfolio</div><div class="ct-card-sub">psvineet.github.io</div></a>
         </div>
       </div>
     </div>
@@ -1366,16 +1497,27 @@ main > section.s-active {
 
 <footer>
   <div class="footer-inner">
+
+
+
+    <!-- Main grid -->
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">psv<span>ineet</span></div>
         <div class="footer-tagline">Open-source developer &amp; cybersecurity learner building at the crossroads of healthcare and security.</div>
+        <div class="footer-brand-social">
+          <a href="https://github.com/psvineet" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+          <a href="https://linkedin.com/in/psvineet" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://twitter.com/psvineet" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="mailto:ci.vps@proton.me" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        </div>
       </div>
       <div>
         <div class="footer-col-label">Navigate</div>
         <div class="footer-col-links">
           <a href="#about">About</a>
           <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
         </div>
@@ -1383,6 +1525,7 @@ main > section.s-active {
       <div>
         <div class="footer-col-label">More</div>
         <div class="footer-col-links">
+          <a href="#certifications">Certifications</a>
           <a href="#research">Research</a>
           <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
@@ -1398,23 +1541,16 @@ main > section.s-active {
         </div>
       </div>
     </div>
+
+    <!-- Bottom bar -->
     <div class="footer-bottom">
-      <div class="footer-copy">© 2024–2026 Vineet Pratap Singh. All rights reserved.</div>
-      <div class="footer-social">
-        <a href="https://github.com/psvineet" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        </a>
-        <a href="https://linkedin.com/in/psvineet" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://twitter.com/psvineet" target="_blank" rel="noopener" aria-label="Twitter / X">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a href="mailto:ci.vps@proton.me" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </a>
+      <div class="footer-copy">© 2024–2026 Vineet Pratap Singh</div>
+      <div class="footer-bottom-links">
+        <a href="mailto:ci.vps@proton.me">ci.vps@proton.me</a>
+        <a href="https://psvineet.github.io" target="_blank" rel="noopener">psvineet.github.io</a>
       </div>
     </div>
+
   </div>
 </footer>
 
@@ -1551,7 +1687,7 @@ var HARDCODED = {
   'document-viewer':'Browser-based viewer for PDF, Office, and OpenDocument formats with multi-provider rendering and upload fallback.',
   'aktu-navigation':'Unofficial AKTU student portal linking results, ERP login, admit cards, circulars, and syllabus resources.'
 };
-var ARROW_SVG = '<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5 9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var ARROW_SVG = '<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 var STAR_SVG = '<svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 1l1.39 2.82L10.5 4.27l-2.25 2.19.53 3.1L6 8.1 3.22 9.56l.53-3.1L1.5 4.27l3.11-.45z"/></svg>';
 
@@ -1630,6 +1766,41 @@ function fetchProjects() {
     });
 }
 (window.requestIdleCallback || function(f){ setTimeout(f,200); })(fetchProjects);
+
+// ── CONSOLE BRANDING ──
+(function() {
+  var s = [
+    'font-size:13px;font-family:monospace;color:#f43e01;font-weight:700',
+    'font-size:11px;font-family:monospace;color:#555',
+    'font-size:11px;font-family:monospace;color:#555',
+  ];
+  console.log('%c© Vineet Pratap Singh (psvineet)', s[0]);
+  console.log('%cThis is a personal portfolio. Content is not for reuse.', s[1]);
+  console.log('%cContact: ci.vps@proton.me · i@psvineet.me', s[2]);
+})();
+
+// ── COPY-PASTE PROTECTION ──
+(function() {
+  // Warn on copy
+  document.addEventListener('copy', function() {
+    console.warn('[psvineet] Content copied — © Vineet Pratap Singh. Not licensed for reuse. Contact: ci.vps@proton.me');
+  });
+
+  // Block right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Block common keyboard shortcuts for view-source / save / select-all
+  document.addEventListener('keydown', function(e) {
+    var key = e.key.toLowerCase();
+    if (e.ctrlKey || e.metaKey) {
+      if (key === 'u' || key === 's' || key === 'p') {
+        e.preventDefault();
+      }
+    }
+  });
+})();
 </script>
 </body>
 </html>
