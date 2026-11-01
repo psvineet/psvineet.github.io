@@ -359,7 +359,7 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
 .section-sub {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 14px; color: var(--ink3);
-  max-width: 760px; line-height: 1.57;
+  line-height: 1.57;
   margin-bottom: 48px;
   letter-spacing: normal;
 }
@@ -603,12 +603,12 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
   color: var(--accent);
 }
 .exp-chip-cvss {
-  background: rgba(234,88,12,.08); border-color: rgba(234,88,12,.25);
-  color: #ea580c;
+  background: var(--accent-muted); border-color: rgba(244,62,1,.25);
+  color: var(--accent);
 }
 .exp-chip-sev {
-  background: rgba(220,38,38,.1); border-color: rgba(220,38,38,.3);
-  color: #dc2626;
+  background: var(--accent-muted); border-color: rgba(244,62,1,.35);
+  color: var(--accent);
 }
 .exp-chip-cve {
   background: var(--bg); border-color: var(--border);
@@ -646,7 +646,7 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
 .sk-card:hover .sk-tag { border-color: var(--border2); }
 .sk-note { font-size: 12px; color: var(--ink4); padding-top: 10px; border-top: 1px solid var(--border2); font-style: italic; margin-top: auto; }
 
-/* ── CERTS ── */
+/* ── CERTIFICATIONS ── */
 .cert-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
 .cert-card {
   display: flex; flex-direction: column; gap: 6px;
@@ -675,7 +675,7 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
 .cert-card:hover .cert-arrow { background: var(--accent-muted); border-color: var(--accent); }
 .cert-arrow svg { width: 12px; height: 12px; }
 
-/* ── PROJECTS ── */
+/* ── BUILDS / PROJECTS ── */
 #projects-loading { text-align: center; padding: 40px; color: var(--ink4); font-size: 14px; }
 .proj-section { margin-bottom: 48px; }
 .proj-section-label {
@@ -728,6 +728,19 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
 .proj-stars svg { width: 11px; height: 11px; fill: #f5a623; }
 
 
+
+/* ── BUILDS FILTER ── */
+.proj-filter-pill {
+  padding: 5px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background: transparent;
+  font-size: 12px; font-weight: 500; color: var(--ink3);
+  cursor: pointer; font-family: 'Inter', system-ui, sans-serif;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.proj-filter-pill:hover { border-color: var(--ink3); color: var(--ink); }
+.proj-filter-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.proj-section.f-enter { animation: s-enter .25s ease both; }
+
 /* ── BLOG ── */
 .blog-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
 .blog-card {
@@ -771,7 +784,7 @@ main { padding-top: var(--nav-h); flex: 1; position: relative; }
   font-size: 13px; color: var(--ink2);
   margin-bottom: 24px;
 }
-.ct-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: pulse-dot 2s ease-in-out infinite; }
+.ct-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse-dot 2s ease-in-out infinite; }
 .ct-links { display: flex; flex-direction: column; gap: 10px; }
 .ct-link {
   display: flex; align-items: center; gap: 14px;
@@ -1268,7 +1281,10 @@ main > section.s-exit {
     <div class="exp-card">
       <div class="exp-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg> 1st Place · AI Innovation · ICS-22 · 2026</div>
       <div class="exp-role">PharmI — AI for Pharmaceutical Decision Support</div>
-      <div class="exp-org">22nd International Cyclodextrin Symposium, Moga · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><br><a href="https://github.com/psvineet/psvineet.github.io/blob/6f6e2fcaa1b37b98c975c9a2ab0b0b9b9531a07f/1e445da2-776e-4c06-a5bd-bbf6f73caa37.pdf" target="_blank" rel="noopener">Certificate <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="exp-org">22nd International Cyclodextrin Symposium, Moga · <a href="https://github.com/psvineet/pharmi" target="_blank" rel="noopener">github.com/psvineet/pharmi <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <a href="https://github.com/psvineet/psvineet.github.io/blob/6f6e2fcaa1b37b98c975c9a2ab0b0b9b9531a07f/1e445da2-776e-4c06-a5bd-bbf6f73caa37.pdf" target="_blank" rel="noopener" class="exp-link">
+        <span class="exp-chip exp-chip-id">ICS-22 Certificate</span><span class="exp-chip" style="background:var(--accent-muted);border-color:rgba(244,62,1,.25);color:var(--accent);">AI Innovation</span>
+      </a>
       <ul class="exp-bullets">
         <li>Built a Random Forest model for cyclodextrin-drug solubility prediction achieving R² ≈ 0.96.</li>
         <li>Wrapped model inside a six-layer security framework; defended all four live attack scenarios at the venue.</li>
@@ -1388,10 +1404,11 @@ main > section.s-exit {
   </div>
 </section>
 
-<!-- ── PROJECTS (live from GitHub) ── -->
+<!-- ── BUILDS / PROJECTS ── -->
 <section id="projects" class="section" aria-labelledby="proj-title">
   <h2 class="section-title" id="proj-title">Builds.</h2>
   <p class="section-sub">Security tooling, healthcare systems, and developer utilities — all self-hosted, zero-dependency, fetched live from GitHub.</p>
+  <div id="proj-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;"></div>
   <div id="projects-loading">Loading projects from GitHub…</div>
   <div id="projects-root" style="display:none"></div>
 </section>
@@ -1495,7 +1512,7 @@ main > section.s-exit {
         <div class="ct-interests-label">Also on</div>
         <div class="ct-card-grid">
           <a href="https://twitter.com/psvineet" target="_blank" rel="noopener" class="ct-card"><div class="ct-card-label">Twitter / X</div><div class="ct-card-sub">@psvineet</div></a>
-          <a href="https://orcid.org/0009-0006-8424-0643" target="_blank" rel="noopener" class="ct-card"><div class="ct-card-label">ORCID</div><div class="ct-card-sub">0009-0006-8424-0643</div></a>
+
           <a href="https://vps.iblogger.org" target="_blank" rel="noopener" class="ct-card"><div class="ct-card-label">CTF Writeups</div><div class="ct-card-sub">vps.iblogger.org</div></a>
         </div>
       </div>
@@ -1687,7 +1704,7 @@ document.addEventListener('click', function(e) {
 // Boot: show hero
 showSection('hero');
 
-// ── GITHUB PROJECTS ──
+// ── BUILDS / PROJECTS (fetched live from GitHub) ──
 var GH_USER = 'psvineet';
 var LANG_COLORS = {
   'PHP':'#4f5d95','Python':'#3572A5','Go':'#00ADD8',
@@ -1699,6 +1716,32 @@ var PROJ_SECTIONS = {
   'Security': ['php-router','GhostShift','CipherForge','cipherjournal','secure-otp-image-viewer','web-directory-search'],
   'Healthcare': ['drxstore','glycotrack','Academic-Tools-Games','pharmi'],
   'Systems & Dev Tools': ['vigilon','homelink','pyu','syniq','CertiForge-Auto','BatchMail-Cert','FlexiMatch-XL','orbit','vaultmark','lexivault','document-viewer','aktu-navigation']
+};
+
+// Keywords per repo — used for filter pills
+var PROJ_KEYWORDS = {
+  'php-router':               ['Security','PHP','Zero Trust'],
+  'GhostShift':               ['Security','Network','Privacy'],
+  'CipherForge':              ['Security','PHP','Encryption'],
+  'cipherjournal':            ['Security','CTF','PHP'],
+  'secure-otp-image-viewer':  ['Security','PHP'],
+  'web-directory-search':     ['Security','PHP'],
+  'drxstore':                 ['Healthcare','PHP','MySQL'],
+  'glycotrack':               ['Healthcare','Python'],
+  'Academic-Tools-Games':     ['Healthcare','Education','PHP'],
+  'pharmi':                   ['Healthcare','AI','Python'],
+  'vigilon':                  ['Dev Tools','Python','Linux'],
+  'homelink':                 ['Dev Tools','Telegram','Python'],
+  'pyu':                      ['Dev Tools','PHP','Cloudflare'],
+  'syniq':                    ['Dev Tools','AI','CLI'],
+  'CertiForge-Auto':          ['Dev Tools','Python','Automation'],
+  'BatchMail-Cert':           ['Dev Tools','Python','Automation'],
+  'FlexiMatch-XL':            ['Dev Tools','Python','Excel'],
+  'orbit':                    ['Dev Tools','AI','RSS'],
+  'vaultmark':                ['Dev Tools','PHP'],
+  'lexivault':                ['Dev Tools','Python'],
+  'document-viewer':          ['Dev Tools','PHP'],
+  'aktu-navigation':          ['Dev Tools','Education','PHP']
 };
 var HARDCODED = {
   'php-router':'Zero Trust PHP router: signed URLs with anti-replay protection, adaptive bot detection, stealth banning, and rate limiting for hostile-facing endpoints.',
@@ -1733,16 +1776,18 @@ function makeCard(repo, name) {
   var desc = (repo && repo.description) ? repo.description : (HARDCODED[name] || '');
   var lang = repo ? repo.language : null;
   var stars = (repo && repo.stargazers_count > 0) ? repo.stargazers_count : null;
+  var kws = PROJ_KEYWORDS[name] || [];
   var langHtml = lang && LANG_COLORS[lang] ? '<div class="proj-lang"><div class="proj-lang-dot" style="background:' + LANG_COLORS[lang] + '"></div>' + lang + '</div>' : '';
   var starsHtml = stars ? '<div class="proj-stars">' + STAR_SVG + stars + '</div>' : '';
   var footHtml = (langHtml || starsHtml) ? '<div class="proj-foot">' + langHtml + starsHtml + '</div>' : '';
-  return '<div class="proj-card">' +
+  return '<div class="proj-card" data-kws="' + kws.join(',').toLowerCase() + '">' +
     '<div class="proj-name"><a href="' + url + '" target="_blank" rel="noopener">' + name + '</a>' +
     '<a href="' + url + '" target="_blank" rel="noopener" class="proj-arrow" tabindex="-1" aria-hidden="true">' + ARROW_SVG + '</a></div>' +
     '<div class="proj-desc">' + (desc || '<em style="color:var(--ink4)">No description</em>') + '</div>' +
     footHtml +
     '</div>';
 }
+
 
 function renderProjects(repos) {
   var map = {};
@@ -1766,28 +1811,112 @@ function renderProjects(repos) {
     secDiv.appendChild(grid);
     root.appendChild(secDiv);
   });
+  // Auto-categorize unlisted repos by scanning description + name for keywords
+  var SEC_KEYWORDS = {
+    'Security':          ['security','exploit','cve','ctf','pentest','hack','vulnerab','injection','cipher','encrypt','otp','auth','csrf','xss','sqli','malware','forensic','osint','recon','payload','shell','reverse','phish','scan','fuzz','brute','bypass','stealth','bot','rat','c2','waf','firewall','honeypot','sandbox','zero.day','zero trust'],
+    'Healthcare':        ['pharma','drug','medicine','health','clinic','hospital','patient','dose','glucose','diabetic','glyco','rxstore','pharmacy','medical','treatment','bioactive','solubility','cyclodextrin','cancer','bio','lab','prescription','formulat'],
+    'Education':         ['educat','learn','student','university','aktu','college','academic','course','quiz','exam','grade','result','syllabus','study','tutorial','classroom'],
+    'Systems & Dev Tools':['tool','util','script','automat','cli','dashboard','monitor','upload','sync','batch','mail','cert','generator','viewer','bookmark','vocab','document','orbit','rss','news','aggreg','deploy','server','proxy','relay','tunnel','workflow','pipeline','bot','parser','convert','export','import','report','spreadsheet','excel','csv','json','api','webhook'],
+  };
   var listed = [].concat.apply([], Object.values(PROJ_SECTIONS));
   var extras = repos.filter(function(r) {
     return listed.indexOf(r.name) === -1 && !r.fork &&
       r.name !== GH_USER + '.github.io' &&
       r.name.toLowerCase().indexOf('psvineet') === -1 &&
-      r.name !== GH_USER;
+      r.name !== GH_USER &&
+      r.name !== 'cyber-blog';
   });
-  if (extras.length) {
-    var secDiv = document.createElement('div');
-    secDiv.className = 'proj-section';
-    var label = document.createElement('div');
-    label.className = 'proj-section-label';
-    label.textContent = 'Other Repositories';
-    secDiv.appendChild(label);
-    var grid = document.createElement('div');
-    grid.className = 'proj-grid';
-    extras.forEach(function(r) { grid.innerHTML += makeCard(r, r.name); });
-    secDiv.appendChild(grid);
-    root.appendChild(secDiv);
+
+  function guessSection(repo) {
+    var haystack = ((repo.description || '') + ' ' + repo.name).toLowerCase();
+    var scores = {};
+    Object.keys(SEC_KEYWORDS).forEach(function(sec) {
+      scores[sec] = 0;
+      SEC_KEYWORDS[sec].forEach(function(kw) {
+        if (haystack.indexOf(kw) !== -1) scores[sec]++;
+      });
+    });
+    var best = null, bestScore = 0;
+    Object.keys(scores).forEach(function(sec) {
+      if (scores[sec] > bestScore) { bestScore = scores[sec]; best = sec; }
+    });
+    return bestScore > 0 ? best : 'Other';
   }
+
+  // Bucket extras into existing or new sections
+  var extraBuckets = {};
+  extras.forEach(function(r) {
+    var sec = guessSection(r);
+    if (!extraBuckets[sec]) extraBuckets[sec] = [];
+    extraBuckets[sec].push(r);
+  });
+
+  // Append cards into already-rendered sections where possible, else create new section
+  Object.keys(extraBuckets).forEach(function(secName) {
+    var existingSection = null;
+    root.querySelectorAll('.proj-section').forEach(function(el) {
+      var lbl = el.querySelector('.proj-section-label');
+      if (lbl && lbl.textContent === secName) existingSection = el;
+    });
+    var grid;
+    if (existingSection) {
+      grid = existingSection.querySelector('.proj-grid');
+    } else {
+      var secDiv = document.createElement('div');
+      secDiv.className = 'proj-section';
+      var label = document.createElement('div');
+      label.className = 'proj-section-label';
+      label.textContent = secName;
+      secDiv.appendChild(label);
+      grid = document.createElement('div');
+      grid.className = 'proj-grid';
+      secDiv.appendChild(grid);
+      root.appendChild(secDiv);
+    }
+    extraBuckets[secName].forEach(function(r) { grid.innerHTML += makeCard(r, r.name); });
+  });
   document.getElementById('projects-loading').style.display = 'none';
   root.style.display = 'block';
+  buildProjFilter();
+}
+
+function buildProjFilter() {
+  var bar = document.getElementById('proj-filter-bar');
+  var root = document.getElementById('projects-root');
+  if (!bar || !root) return;
+  // Collect section names from rendered sections
+  var sections = root.querySelectorAll('.proj-section');
+  if (sections.length < 2) { bar.style.display = 'none'; return; }
+  bar.innerHTML = '';
+  var cats = ['All'];
+  sections.forEach(function(s) {
+    var lbl = s.querySelector('.proj-section-label');
+    if (lbl) cats.push(lbl.textContent);
+  });
+  cats.forEach(function(cat) {
+    var btn = document.createElement('button');
+    btn.className = 'proj-filter-pill' + (cat === 'All' ? ' active' : '');
+    btn.textContent = cat;
+    btn.addEventListener('click', function() {
+      bar.querySelectorAll('.proj-filter-pill').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      sections.forEach(function(s) {
+        var lbl = s.querySelector('.proj-section-label');
+        var show = cat === 'All' || (lbl && lbl.textContent === cat);
+        if (show) {
+          s.style.display = '';
+          s.classList.remove('f-enter');
+          // Force reflow so animation retriggers
+          void s.offsetWidth;
+          s.classList.add('f-enter');
+        } else {
+          s.style.display = 'none';
+          s.classList.remove('f-enter');
+        }
+      });
+    });
+    bar.appendChild(btn);
+  });
 }
 
 function fetchProjects() {
