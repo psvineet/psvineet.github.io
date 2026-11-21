@@ -1,0 +1,5 @@
+Contact: mailto:ci.vps@proton.me
+Contact: https://github.com/psvineet
+Preferred-Languages: en
+Canonical: https://psvineet.me/.well-known/security.txt
+Policy: https://psvineet.me/privacy.html
