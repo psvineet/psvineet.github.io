@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Page not found — psvineet</title>
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111110'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='13' font-weight='800' fill='%23f2f2ef' letter-spacing='-0.3'%3Evp%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2f2ef" media="(prefers-color-scheme: light)">
+
+<!-- GitHub Pages has no server-side rewrites, so this file also handles the site's in-app routes -->
+<script type="text/javascript">
+(function () {
+  // Routes must match the nav links / section ids in index.html
+  var knownRoutes = ['', 'ask', 'facts', 'work', 'skills', 'education', 'badges', 'notes', 'reach'];
+  var l = window.location;
+  var seg = l.pathname.replace(/^\/+|\/+$/g, '').split('/')[0];
+
+  if (knownRoutes.indexOf(seg) !== -1) {
+    var pathSegmentsToKeep = 0; // custom domain at the root; use 1 if this ever moves to username.github.io/repo
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  } else {
+    document.documentElement.setAttribute('data-not-found', '1');
+  }
+})();
+
+// match whatever theme the visitor last picked on the main site
+(function () {
+  try {
+    var t = localStorage.getItem('vps-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  --bg: #f4f4f8; --surface: #ffffff; --border: #e0dfd8;
+  --ink: #111110; --ink3: #6a6a64; --ink4: #9a9a94;
+  --accent: #0f172a; --accent-fg: #ffffff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0a09; --surface: #161614; --border: rgba(255,255,255,.11);
+    --ink: #f2f2ef; --ink3: #888880; --ink4: #555550;
+    --accent: #f2f2ef; --accent-fg: #0a0a09;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a0a09; --surface: #161614; --border: rgba(255,255,255,.11);
+  --ink: #f2f2ef; --ink3: #888880; --ink4: #555550;
+  --accent: #f2f2ef; --accent-fg: #0a0a09;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; display: flex; align-items: center; justify-content: center;
+  min-height: 100dvh; padding: 32px max(24px, env(safe-area-inset-left, 0px));
+  background: var(--bg); color: var(--ink);
+  font: 15px/1.6 'DM Sans', system-ui, -apple-system, sans-serif;
+  position: relative; overflow: hidden;
+}
+
+/* same soft gradient orb used behind every section on the main site */
+.notfound-orb {
+  pointer-events: none; position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 15%, rgba(99,102,241,.15) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 35% at 85% 85%, rgba(129,140,248,.09) 0%, transparent 60%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .notfound-orb {
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 15%, rgba(255,255,255,.07) 0%, rgba(255,255,255,.025) 45%, transparent 72%),
+      radial-gradient(ellipse 45% 35% at 85% 85%, rgba(255,255,255,.045) 0%, transparent 65%);
+  }
+}
+:root[data-theme="dark"] .notfound-orb {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 15%, rgba(255,255,255,.07) 0%, rgba(255,255,255,.025) 45%, transparent 72%),
+    radial-gradient(ellipse 45% 35% at 85% 85%, rgba(255,255,255,.045) 0%, transparent 65%);
+}
+
+.wrap { max-width: 440px; text-align: center; position: relative; z-index: 1; }
+.code {
+  font-family: 'DM Serif Display', 'Georgia', serif;
+  font-weight: 400; font-size: clamp(56px, 14vw, 96px); line-height: 1;
+  color: var(--ink); margin: 0 0 14px;
+}
+h1 {
+  font-family: 'DM Serif Display', 'Georgia', serif; font-weight: 400;
+  font-size: clamp(20px, 4vw, 26px); line-height: 1.25; color: var(--ink);
+  margin: 0 0 10px;
+}
+p { color: var(--ink3); margin: 0 0 32px; }
+code {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 5px; padding: 1px 6px; font-size: 13px;
+}
+.actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 13.5px; font-weight: 500; text-decoration: none;
+  border-radius: 999px; padding: 10px 20px; transition: opacity .15s, border-color .15s;
+  border: 1px solid var(--border); color: var(--ink);
+}
+.btn:hover { border-color: var(--ink3); }
+.btn.primary { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+.btn.primary:hover { opacity: .8; }
+
+/* hide the 404 content entirely for a known route while the redirect fires,
+   so there's never a flash of "not found" before it bounces back in */
+html:not([data-not-found]) .wrap,
+html:not([data-not-found]) .notfound-orb { display: none; }
+</style>
+</head>
+<body>
+  <div class="notfound-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="code">404</p>
+    <h1>This page doesn't exist.</h1>
+    <p>There's nothing at <code id="bad-path"></code> — it may have moved, or the link might just be wrong.</p>
+    <div class="actions">
+      <a href="/" class="btn primary">Back to the homepage</a>
+      <a href="mailto:ci.vps@proton.me" class="btn">Report a broken link</a>
+    </div>
+    <p style="margin-top:28px;"><a href="/privacy.html" style="color:var(--ink3);border-bottom:1px solid var(--border);padding-bottom:1px;">Privacy policy</a></p>
+  </div>
+  <script>
+    document.getElementById('bad-path').textContent = window.location.pathname;
+  </script>
+</body>
+</html>

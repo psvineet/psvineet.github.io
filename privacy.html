@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Privacy policy — psvineet</title>
+<meta name="description" content="Privacy policy for psvineet.me. A static personal site: no backend, no tracking, no ads. What the status panel sends to GitHub and ip.sb, and why.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://psvineet.me/privacy.html">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111110'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='13' font-weight='800' fill='%23f2f2ef' letter-spacing='-0.3'%3Evp%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2f2ef" media="(prefers-color-scheme: light)">
+
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('vps-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+:root {
+  --bg: #f4f4f8; --surface: #ffffff; --border: #e0dfd8; --border2: #d0cfc8;
+  --ink: #111110; --ink2: #2a2a28; --ink3: #6a6a64; --ink4: #9a9a94;
+  --accent: #0f172a; --accent-fg: #ffffff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0a09; --surface: #161614; --border: rgba(255,255,255,.11); --border2: rgba(255,255,255,.16);
+    --ink: #f2f2ef; --ink2: #d8d8d4; --ink3: #9a9a92; --ink4: #6f6f69;
+    --accent: #f2f2ef; --accent-fg: #0a0a09;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a0a09; --surface: #161614; --border: rgba(255,255,255,.11); --border2: rgba(255,255,255,.16);
+  --ink: #f2f2ef; --ink2: #d8d8d4; --ink3: #9a9a92; --ink4: #6f6f69;
+  --accent: #f2f2ef; --accent-fg: #0a0a09;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0; min-height: 100dvh; background: var(--bg); color: var(--ink);
+  font: 15px/1.7 'DM Sans', system-ui, -apple-system, sans-serif;
+  padding: 0 max(20px, env(safe-area-inset-left,0px)) 64px;
+}
+a { color: var(--ink); border-bottom: 1px solid var(--border2); text-decoration: none; }
+a:hover { border-color: var(--ink3); }
+header.top {
+  max-width: 680px; margin: 0 auto; padding: 28px 0 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; border-bottom: none; }
+.brand-mark { width: 26px; height: 26px; border-radius: 6px; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; }
+.back { font-size: 12.5px; color: var(--ink3); border-bottom: 1px solid var(--border2); }
+main { max-width: 680px; margin: 0 auto; padding: 32px 0 0; }
+h1 { font-family: 'DM Serif Display', 'Georgia', serif; font-weight: 400; font-size: clamp(32px, 7vw, 46px); line-height: 1.05; margin: 0 0 8px; }
+.lede { color: var(--ink3); font-size: 14px; margin: 0 0 40px; }
+h2 { font-family: 'DM Serif Display', 'Georgia', serif; font-weight: 400; font-size: 22px; margin: 36px 0 10px; color: var(--ink); }
+p { color: var(--ink2); margin: 0 0 14px; }
+ul { margin: 0 0 14px; padding-left: 20px; color: var(--ink2); }
+li { margin-bottom: 6px; }
+code { background: var(--surface); border: 1px solid var(--border); border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+.box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin: 18px 0; }
+.box p:last-child { margin-bottom: 0; }
+footer.bottom { max-width: 680px; margin: 48px auto 0; padding-top: 20px; border-top: 1px solid var(--border); font-size: 12px; color: var(--ink4); }
+</style>
+</head>
+<body>
+
+<header class="top">
+<a href="/" class="brand"><span class="brand-mark">vp</span>Vineet Pratap Singh</a>
+<a href="/" class="back">&larr; Back home</a>
+</header>
+
+<main>
+<h1>Privacy policy.</h1>
+<p class="lede">Last updated November 2026. Short version: this is a personal, static site. It doesn't run a backend, doesn't use analytics, and doesn't sell or share data — because there's essentially no data to sell or share.</p>
+
+<h2>What this site is</h2>
+<p>psvineet.me is a single static HTML page hosted on GitHub Pages. There's no server-side code, no database, no user accounts, and no forms that submit anywhere. Everything you see — including the "ask" box on the homepage — runs entirely in your browser with a small built-in set of facts; it isn't a live AI model and it doesn't send what you type anywhere.</p>
+
+<h2>What is collected</h2>
+<p>Nothing is collected by this site itself. There's no first-party or third-party analytics script, no advertising, and no cookies set by psvineet.me.</p>
+<p>GitHub Pages, which hosts the site, and any CDN in front of it may log standard web-server data (IP address, user agent, requested URL) the way virtually every web host does. That's outside this site's control — it's Pages infrastructure, not something built into the page.</p>
+
+<h2>The status panel (ⓘ)</h2>
+<div class="box">
+<p>The small ⓘ button in the corner opens a "site status" panel showing things like the latest deploy and an approximate visitor location. It only does anything when you click it — nothing loads in the background.</p>
+<p>When opened, it makes two outbound requests, both visible in the page's Content-Security-Policy:</p>
+<ul>
+<li><strong>api.github.com</strong> — reads public repository metadata (e.g. latest commit) to show deploy status. No authentication, no write access, nothing sent about you.</li>
+<li><strong>api.ip.sb</strong> — a public IP lookup service used to show your approximate location (city-level) and IP in the panel, purely as a visual "where you're connecting from" detail. This request happens directly from your browser to that service; psvineet.me never sees or stores the result.</li>
+</ul>
+<p>Neither request happens unless you open the panel, and nothing from either call is stored, logged, or sent anywhere else by this site.</p>
+</div>
+
+<h2>Local storage</h2>
+<p>The site remembers your light/dark theme choice using your browser's <code>localStorage</code>. That stays on your device — it's never transmitted anywhere and can be cleared any time by clearing site data for psvineet.me.</p>
+
+<h2>Cookies</h2>
+<p>This site does not set any cookies.</p>
+
+<h2>Links to other sites</h2>
+<p>Links out — GitHub, LinkedIn, TryHackMe, the CTF blog, and project repos — go to third-party sites with their own privacy practices. An interstitial notice appears before you leave, but what happens after that is between you and the destination site.</p>
+
+<h2>Children's privacy</h2>
+<p>This is a personal portfolio site, not a service directed at children, and it doesn't knowingly collect information from anyone.</p>
+
+<h2>Changes to this policy</h2>
+<p>If anything here changes — say, a new feature is added that talks to a different third party — this page will be updated and the "last updated" date above will move.</p>
+
+<h2>Questions</h2>
+<p>For anything about this policy, the easiest way to reach out is through <a href="https://github.com/psvineet" target="_blank" rel="noopener noreferrer">GitHub</a>, or by email at <a href="mailto:ci.vps@proton.me">ci.vps@proton.me</a>.</p>
+</main>
+
+<footer class="bottom">
+<p>© 2024–2026 Vineet Pratap Singh · <a href="/">psvineet.me</a></p>
+</footer>
+
+</body>
+</html>
